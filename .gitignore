@@ -1,0 +1,20 @@
+# dependencies
+node_modules
+
+#build
+lib
+# Idea
+.idea
+
+# Visual Studio Code
+.vscode
+.js
+/src/**/*.js
+/src/**/*.js.map
+
+# MacOS
+.DS_Store
+
+# logs
+npm-debug.log
+yarn-error.log
