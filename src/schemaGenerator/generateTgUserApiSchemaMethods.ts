@@ -28,13 +28,13 @@ export const generateTgUserApiSchemaMethods = async () => {
     const methods = tgUserApiSchema.methods
         .map((itMethod) => {
             const params = itMethod.params
-                .map((param) => `    ${param.propName}${param.isMaybe ? '?' : ''}: ${param.typeName}`)
+                .map((param) => `    ${param.propName}?: ${param.typeName}`)
                 .join('\n');
 
             return [
                 `export const ${itMethod.methodName} = (dependencies: TgUserApiDependencies) => async (params: {`,
                 params,
-                `}) => tgUserApiRequest(dependencies)<${itMethod.returnTypeName}>('${itMethod.method}', params);`,
+                `} = {}) => tgUserApiRequest(dependencies)<${itMethod.returnTypeName}>('${itMethod.method}', params);`,
             ].join('\n');
         });
     const makeTgUserApiMethods = [

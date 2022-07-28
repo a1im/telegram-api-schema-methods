@@ -1,7 +1,7 @@
 {
   "name": "tg-user-api-shcema-methods",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Methods for working with Telegram API",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
   "files": [
@@ -13,11 +13,26 @@
   },
   "keywords": [
     "telegram",
-    "API",
-    "User API",
-    "shcema"
+    "telegram-api",
+    "telegram-user-api",
+    "tdlib",
+    "shcema",
+    "node",
+    "client",
+    "browser",
+    "nodejs",
+    "api"
   ],
-  "author": "a1im <a1imov233@gmail.com>",
+  "homepage": "https://github.com/a1im/tg-user-api-shcema-methods",
+  "bugs": {
+    "url" : "https://github.com/a1im/tg-user-api-shcema-methods/issues",
+    "email" : "a1imov233@gmail.com"
+  },
+  "author": "Alexandr Alimov <a1imov233@gmail.com>",
+  "repository": "github:a1im/tg-user-api-shcema-methods",
+  "engines": {
+    "node": ">=12"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.6.1",
