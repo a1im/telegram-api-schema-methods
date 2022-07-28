@@ -1,5 +1,8 @@
 # tg-user-api-shcema-methods
 
+[![NPM](https://img.shields.io/npm/v/tg-user-api-shcema-methods.svg?style=flat-square)](https://www.npmjs.com/package/tg-user-api-shcema-methods)
+[![Downloads](https://img.shields.io/npm/dm/tg-user-api-shcema-methods?style=flat-square)](https://www.npmjs.com/package/tg-user-api-shcema-methods)
+
 The library helps to type all methods for the Telegram User API (https://core.telegram.org/methods)
 
 - **Actual** 139 layer in the API scheme (https://core.telegram.org/schema)
