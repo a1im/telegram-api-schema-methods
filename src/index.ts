@@ -7122,14 +7122,14 @@ export interface TgUserApiRequestResponseError {
 export type TgUserApiRequestResponse<Data = any> = TgUserApiRequestResponseSuccess<Data> | TgUserApiRequestResponseError;
 
 export interface TgUserApiRequest {
-    (method: string, params: any): Promise<any>
+    (method: string, params: any, ...args: any[]): Promise<any>
 }
 
 export interface TgUserApiDependencies {
     request: TgUserApiRequest
 }
 
-export const tgUserApiRequest = (dependencies: TgUserApiDependencies) => async <Data = any>(method: string, params: any): Promise<TgUserApiRequestResponse<Data>> => dependencies.request(method, params)
+export const tgUserApiRequest = (dependencies: TgUserApiDependencies) => async <Data = any>(method: string, params: any, ...args: any[]): Promise<TgUserApiRequestResponse<Data>> => dependencies.request(method, params, ...args)
     .then((data: any) => ({
         success: true,
         data,
@@ -7148,56 +7148,56 @@ export const tgUserApiRequest = (dependencies: TgUserApiDependencies) => async <
 export const invokeAfterMsg = (dependencies: TgUserApiDependencies) => async (params: {
     msg_id?: number
     query?: any
-} = {}) => tgUserApiRequest(dependencies)<any>('invokeAfterMsg', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<any>('invokeAfterMsg', params, ...args);
 
 export const invokeAfterMsgs = (dependencies: TgUserApiDependencies) => async (params: {
     msg_ids?: number[]
     query?: any
-} = {}) => tgUserApiRequest(dependencies)<any>('invokeAfterMsgs', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<any>('invokeAfterMsgs', params, ...args);
 
 export const authSendCode = (dependencies: TgUserApiDependencies) => async (params: {
     phone_number?: string
     api_id?: number
     api_hash?: string
     settings?: CodeSettings
-} = {}) => tgUserApiRequest(dependencies)<AuthSentCode>('auth.sendCode', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthSentCode>('auth.sendCode', params, ...args);
 
 export const authSignUp = (dependencies: TgUserApiDependencies) => async (params: {
     phone_number?: string
     phone_code_hash?: string
     first_name?: string
     last_name?: string
-} = {}) => tgUserApiRequest(dependencies)<AuthAuthorization>('auth.signUp', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthAuthorization>('auth.signUp', params, ...args);
 
 export const authSignIn = (dependencies: TgUserApiDependencies) => async (params: {
     phone_number?: string
     phone_code_hash?: string
     phone_code?: string
-} = {}) => tgUserApiRequest(dependencies)<AuthAuthorization>('auth.signIn', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthAuthorization>('auth.signIn', params, ...args);
 
 export const authLogOut = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<AuthLoggedOut>('auth.logOut', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthLoggedOut>('auth.logOut', params, ...args);
 
 export const authResetAuthorizations = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<boolean>('auth.resetAuthorizations', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('auth.resetAuthorizations', params, ...args);
 
 export const authExportAuthorization = (dependencies: TgUserApiDependencies) => async (params: {
     dc_id?: number
-} = {}) => tgUserApiRequest(dependencies)<AuthExportedAuthorization>('auth.exportAuthorization', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthExportedAuthorization>('auth.exportAuthorization', params, ...args);
 
 export const authImportAuthorization = (dependencies: TgUserApiDependencies) => async (params: {
     id?: number
     bytes?: Uint8Array
-} = {}) => tgUserApiRequest(dependencies)<AuthAuthorization>('auth.importAuthorization', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthAuthorization>('auth.importAuthorization', params, ...args);
 
 export const authBindTempAuthKey = (dependencies: TgUserApiDependencies) => async (params: {
     perm_auth_key_id?: number
     nonce?: number
     expires_at?: number
     encrypted_message?: Uint8Array
-} = {}) => tgUserApiRequest(dependencies)<boolean>('auth.bindTempAuthKey', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('auth.bindTempAuthKey', params, ...args);
 
 export const accountRegisterDevice = (dependencies: TgUserApiDependencies) => async (params: {
     no_muted?: true
@@ -7206,95 +7206,95 @@ export const accountRegisterDevice = (dependencies: TgUserApiDependencies) => as
     app_sandbox?: boolean
     secret?: Uint8Array
     other_uids?: number[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.registerDevice', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.registerDevice', params, ...args);
 
 export const accountUnregisterDevice = (dependencies: TgUserApiDependencies) => async (params: {
     token_type?: number
     token?: string
     other_uids?: number[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.unregisterDevice', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.unregisterDevice', params, ...args);
 
 export const accountUpdateNotifySettings = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputNotifyPeer
     settings?: InputPeerNotifySettings
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.updateNotifySettings', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.updateNotifySettings', params, ...args);
 
 export const accountGetNotifySettings = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputNotifyPeer
-} = {}) => tgUserApiRequest(dependencies)<PeerNotifySettings>('account.getNotifySettings', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PeerNotifySettings>('account.getNotifySettings', params, ...args);
 
 export const accountResetNotifySettings = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.resetNotifySettings', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.resetNotifySettings', params, ...args);
 
 export const accountUpdateProfile = (dependencies: TgUserApiDependencies) => async (params: {
     first_name?: string
     last_name?: string
     about?: string
-} = {}) => tgUserApiRequest(dependencies)<User>('account.updateProfile', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<User>('account.updateProfile', params, ...args);
 
 export const accountUpdateStatus = (dependencies: TgUserApiDependencies) => async (params: {
     offline?: boolean
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.updateStatus', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.updateStatus', params, ...args);
 
 export const accountGetWallPapers = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<AccountWallPapers>('account.getWallPapers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountWallPapers>('account.getWallPapers', params, ...args);
 
 export const accountReportPeer = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     reason?: ReportReason
     message?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.reportPeer', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.reportPeer', params, ...args);
 
 export const usersGetUsers = (dependencies: TgUserApiDependencies) => async (params: {
     id?: InputUser[]
-} = {}) => tgUserApiRequest(dependencies)<User[]>('users.getUsers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<User[]>('users.getUsers', params, ...args);
 
 export const usersGetFullUser = (dependencies: TgUserApiDependencies) => async (params: {
     id?: InputUser
-} = {}) => tgUserApiRequest(dependencies)<UsersUserFull>('users.getFullUser', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<UsersUserFull>('users.getFullUser', params, ...args);
 
 export const contactsGetContactIDs = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<number[]>('contacts.getContactIDs', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<number[]>('contacts.getContactIDs', params, ...args);
 
 export const contactsGetStatuses = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<ContactStatus[]>('contacts.getStatuses', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ContactStatus[]>('contacts.getStatuses', params, ...args);
 
 export const contactsGetContacts = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<ContactsContacts>('contacts.getContacts', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ContactsContacts>('contacts.getContacts', params, ...args);
 
 export const contactsImportContacts = (dependencies: TgUserApiDependencies) => async (params: {
     contacts?: InputContact[]
-} = {}) => tgUserApiRequest(dependencies)<ContactsImportedContacts>('contacts.importContacts', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ContactsImportedContacts>('contacts.importContacts', params, ...args);
 
 export const contactsDeleteContacts = (dependencies: TgUserApiDependencies) => async (params: {
     id?: InputUser[]
-} = {}) => tgUserApiRequest(dependencies)<Updates>('contacts.deleteContacts', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('contacts.deleteContacts', params, ...args);
 
 export const contactsDeleteByPhones = (dependencies: TgUserApiDependencies) => async (params: {
     phones?: string[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('contacts.deleteByPhones', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('contacts.deleteByPhones', params, ...args);
 
 export const contactsBlock = (dependencies: TgUserApiDependencies) => async (params: {
     id?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<boolean>('contacts.block', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('contacts.block', params, ...args);
 
 export const contactsUnblock = (dependencies: TgUserApiDependencies) => async (params: {
     id?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<boolean>('contacts.unblock', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('contacts.unblock', params, ...args);
 
 export const contactsGetBlocked = (dependencies: TgUserApiDependencies) => async (params: {
     offset?: number
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<ContactsBlocked>('contacts.getBlocked', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ContactsBlocked>('contacts.getBlocked', params, ...args);
 
 export const messagesGetMessages = (dependencies: TgUserApiDependencies) => async (params: {
     id?: InputMessage[]
-} = {}) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getMessages', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getMessages', params, ...args);
 
 export const messagesGetDialogs = (dependencies: TgUserApiDependencies) => async (params: {
     exclude_pinned?: true
@@ -7304,7 +7304,7 @@ export const messagesGetDialogs = (dependencies: TgUserApiDependencies) => async
     offset_peer?: InputPeer
     limit?: number
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesDialogs>('messages.getDialogs', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesDialogs>('messages.getDialogs', params, ...args);
 
 export const messagesGetHistory = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
@@ -7315,7 +7315,7 @@ export const messagesGetHistory = (dependencies: TgUserApiDependencies) => async
     max_id?: number
     min_id?: number
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getHistory', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getHistory', params, ...args);
 
 export const messagesSearch = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
@@ -7331,12 +7331,12 @@ export const messagesSearch = (dependencies: TgUserApiDependencies) => async (pa
     max_id?: number
     min_id?: number
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.search', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.search', params, ...args);
 
 export const messagesReadHistory = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     max_id?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesAffectedMessages>('messages.readHistory', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAffectedMessages>('messages.readHistory', params, ...args);
 
 export const messagesDeleteHistory = (dependencies: TgUserApiDependencies) => async (params: {
     just_clear?: true
@@ -7345,22 +7345,22 @@ export const messagesDeleteHistory = (dependencies: TgUserApiDependencies) => as
     max_id?: number
     min_date?: number
     max_date?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesAffectedHistory>('messages.deleteHistory', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAffectedHistory>('messages.deleteHistory', params, ...args);
 
 export const messagesDeleteMessages = (dependencies: TgUserApiDependencies) => async (params: {
     revoke?: true
     id?: number[]
-} = {}) => tgUserApiRequest(dependencies)<MessagesAffectedMessages>('messages.deleteMessages', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAffectedMessages>('messages.deleteMessages', params, ...args);
 
 export const messagesReceivedMessages = (dependencies: TgUserApiDependencies) => async (params: {
     max_id?: number
-} = {}) => tgUserApiRequest(dependencies)<ReceivedNotifyMessage[]>('messages.receivedMessages', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ReceivedNotifyMessage[]>('messages.receivedMessages', params, ...args);
 
 export const messagesSetTyping = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     top_msg_id?: number
     action?: SendMessageAction
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.setTyping', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.setTyping', params, ...args);
 
 export const messagesSendMessage = (dependencies: TgUserApiDependencies) => async (params: {
     no_webpage?: true
@@ -7376,7 +7376,7 @@ export const messagesSendMessage = (dependencies: TgUserApiDependencies) => asyn
     entities?: MessageEntity[]
     schedule_date?: number
     send_as?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.sendMessage', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.sendMessage', params, ...args);
 
 export const messagesSendMedia = (dependencies: TgUserApiDependencies) => async (params: {
     silent?: true
@@ -7392,7 +7392,7 @@ export const messagesSendMedia = (dependencies: TgUserApiDependencies) => async 
     entities?: MessageEntity[]
     schedule_date?: number
     send_as?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.sendMedia', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.sendMedia', params, ...args);
 
 export const messagesForwardMessages = (dependencies: TgUserApiDependencies) => async (params: {
     silent?: true
@@ -7407,88 +7407,88 @@ export const messagesForwardMessages = (dependencies: TgUserApiDependencies) => 
     to_peer?: InputPeer
     schedule_date?: number
     send_as?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.forwardMessages', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.forwardMessages', params, ...args);
 
 export const messagesReportSpam = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.reportSpam', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.reportSpam', params, ...args);
 
 export const messagesGetPeerSettings = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<MessagesPeerSettings>('messages.getPeerSettings', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesPeerSettings>('messages.getPeerSettings', params, ...args);
 
 export const messagesReport = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     id?: number[]
     reason?: ReportReason
     message?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.report', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.report', params, ...args);
 
 export const messagesGetChats = (dependencies: TgUserApiDependencies) => async (params: {
     id?: number[]
-} = {}) => tgUserApiRequest(dependencies)<MessagesChats>('messages.getChats', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChats>('messages.getChats', params, ...args);
 
 export const messagesGetFullChat = (dependencies: TgUserApiDependencies) => async (params: {
     chat_id?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesChatFull>('messages.getFullChat', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChatFull>('messages.getFullChat', params, ...args);
 
 export const messagesEditChatTitle = (dependencies: TgUserApiDependencies) => async (params: {
     chat_id?: number
     title?: string
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.editChatTitle', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.editChatTitle', params, ...args);
 
 export const messagesEditChatPhoto = (dependencies: TgUserApiDependencies) => async (params: {
     chat_id?: number
     photo?: InputChatPhoto
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.editChatPhoto', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.editChatPhoto', params, ...args);
 
 export const messagesAddChatUser = (dependencies: TgUserApiDependencies) => async (params: {
     chat_id?: number
     user_id?: InputUser
     fwd_limit?: number
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.addChatUser', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.addChatUser', params, ...args);
 
 export const messagesDeleteChatUser = (dependencies: TgUserApiDependencies) => async (params: {
     revoke_history?: true
     chat_id?: number
     user_id?: InputUser
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.deleteChatUser', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.deleteChatUser', params, ...args);
 
 export const messagesCreateChat = (dependencies: TgUserApiDependencies) => async (params: {
     users?: InputUser[]
     title?: string
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.createChat', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.createChat', params, ...args);
 
 export const updatesGetState = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<UpdatesState>('updates.getState', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<UpdatesState>('updates.getState', params, ...args);
 
 export const updatesGetDifference = (dependencies: TgUserApiDependencies) => async (params: {
     pts?: number
     pts_total_limit?: number
     date?: number
     qts?: number
-} = {}) => tgUserApiRequest(dependencies)<UpdatesDifference>('updates.getDifference', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<UpdatesDifference>('updates.getDifference', params, ...args);
 
 export const photosUpdateProfilePhoto = (dependencies: TgUserApiDependencies) => async (params: {
     id?: InputPhoto
-} = {}) => tgUserApiRequest(dependencies)<PhotosPhoto>('photos.updateProfilePhoto', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhotosPhoto>('photos.updateProfilePhoto', params, ...args);
 
 export const photosUploadProfilePhoto = (dependencies: TgUserApiDependencies) => async (params: {
     file?: InputFile
     video?: InputFile
     video_start_ts?: number
-} = {}) => tgUserApiRequest(dependencies)<PhotosPhoto>('photos.uploadProfilePhoto', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhotosPhoto>('photos.uploadProfilePhoto', params, ...args);
 
 export const photosDeletePhotos = (dependencies: TgUserApiDependencies) => async (params: {
     id?: InputPhoto[]
-} = {}) => tgUserApiRequest(dependencies)<number[]>('photos.deletePhotos', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<number[]>('photos.deletePhotos', params, ...args);
 
 export const uploadSaveFilePart = (dependencies: TgUserApiDependencies) => async (params: {
     file_id?: number
     file_part?: number
     bytes?: Uint8Array
-} = {}) => tgUserApiRequest(dependencies)<boolean>('upload.saveFilePart', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('upload.saveFilePart', params, ...args);
 
 export const uploadGetFile = (dependencies: TgUserApiDependencies) => async (params: {
     precise?: true
@@ -7496,69 +7496,69 @@ export const uploadGetFile = (dependencies: TgUserApiDependencies) => async (par
     location?: InputFileLocation
     offset?: number
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<UploadFile>('upload.getFile', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<UploadFile>('upload.getFile', params, ...args);
 
 export const helpGetConfig = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<Config>('help.getConfig', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Config>('help.getConfig', params, ...args);
 
 export const helpGetNearestDc = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<NearestDc>('help.getNearestDc', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<NearestDc>('help.getNearestDc', params, ...args);
 
 export const helpGetAppUpdate = (dependencies: TgUserApiDependencies) => async (params: {
     source?: string
-} = {}) => tgUserApiRequest(dependencies)<HelpAppUpdate>('help.getAppUpdate', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<HelpAppUpdate>('help.getAppUpdate', params, ...args);
 
 export const helpGetInviteText = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<HelpInviteText>('help.getInviteText', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<HelpInviteText>('help.getInviteText', params, ...args);
 
 export const photosGetUserPhotos = (dependencies: TgUserApiDependencies) => async (params: {
     user_id?: InputUser
     offset?: number
     max_id?: number
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<PhotosPhotos>('photos.getUserPhotos', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhotosPhotos>('photos.getUserPhotos', params, ...args);
 
 export const messagesGetDhConfig = (dependencies: TgUserApiDependencies) => async (params: {
     version?: number
     random_length?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesDhConfig>('messages.getDhConfig', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesDhConfig>('messages.getDhConfig', params, ...args);
 
 export const messagesRequestEncryption = (dependencies: TgUserApiDependencies) => async (params: {
     user_id?: InputUser
     random_id?: number
     g_a?: Uint8Array
-} = {}) => tgUserApiRequest(dependencies)<EncryptedChat>('messages.requestEncryption', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<EncryptedChat>('messages.requestEncryption', params, ...args);
 
 export const messagesAcceptEncryption = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputEncryptedChat
     g_b?: Uint8Array
     key_fingerprint?: number
-} = {}) => tgUserApiRequest(dependencies)<EncryptedChat>('messages.acceptEncryption', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<EncryptedChat>('messages.acceptEncryption', params, ...args);
 
 export const messagesDiscardEncryption = (dependencies: TgUserApiDependencies) => async (params: {
     delete_history?: true
     chat_id?: number
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.discardEncryption', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.discardEncryption', params, ...args);
 
 export const messagesSetEncryptedTyping = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputEncryptedChat
     typing?: boolean
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.setEncryptedTyping', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.setEncryptedTyping', params, ...args);
 
 export const messagesReadEncryptedHistory = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputEncryptedChat
     max_date?: number
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.readEncryptedHistory', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.readEncryptedHistory', params, ...args);
 
 export const messagesSendEncrypted = (dependencies: TgUserApiDependencies) => async (params: {
     silent?: true
     peer?: InputEncryptedChat
     random_id?: number
     data?: Uint8Array
-} = {}) => tgUserApiRequest(dependencies)<MessagesSentEncryptedMessage>('messages.sendEncrypted', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesSentEncryptedMessage>('messages.sendEncrypted', params, ...args);
 
 export const messagesSendEncryptedFile = (dependencies: TgUserApiDependencies) => async (params: {
     silent?: true
@@ -7566,28 +7566,28 @@ export const messagesSendEncryptedFile = (dependencies: TgUserApiDependencies) =
     random_id?: number
     data?: Uint8Array
     file?: InputEncryptedFile
-} = {}) => tgUserApiRequest(dependencies)<MessagesSentEncryptedMessage>('messages.sendEncryptedFile', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesSentEncryptedMessage>('messages.sendEncryptedFile', params, ...args);
 
 export const messagesSendEncryptedService = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputEncryptedChat
     random_id?: number
     data?: Uint8Array
-} = {}) => tgUserApiRequest(dependencies)<MessagesSentEncryptedMessage>('messages.sendEncryptedService', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesSentEncryptedMessage>('messages.sendEncryptedService', params, ...args);
 
 export const messagesReceivedQueue = (dependencies: TgUserApiDependencies) => async (params: {
     max_qts?: number
-} = {}) => tgUserApiRequest(dependencies)<number[]>('messages.receivedQueue', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<number[]>('messages.receivedQueue', params, ...args);
 
 export const messagesReportEncryptedSpam = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputEncryptedChat
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.reportEncryptedSpam', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.reportEncryptedSpam', params, ...args);
 
 export const uploadSaveBigFilePart = (dependencies: TgUserApiDependencies) => async (params: {
     file_id?: number
     file_part?: number
     file_total_parts?: number
     bytes?: Uint8Array
-} = {}) => tgUserApiRequest(dependencies)<boolean>('upload.saveBigFilePart', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('upload.saveBigFilePart', params, ...args);
 
 export const initConnection = (dependencies: TgUserApiDependencies) => async (params: {
     api_id?: number
@@ -7600,132 +7600,132 @@ export const initConnection = (dependencies: TgUserApiDependencies) => async (pa
     proxy?: InputClientProxy
     params?: JSONValue
     query?: any
-} = {}) => tgUserApiRequest(dependencies)<any>('initConnection', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<any>('initConnection', params, ...args);
 
 export const helpGetSupport = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<HelpSupport>('help.getSupport', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<HelpSupport>('help.getSupport', params, ...args);
 
 export const messagesReadMessageContents = (dependencies: TgUserApiDependencies) => async (params: {
     id?: number[]
-} = {}) => tgUserApiRequest(dependencies)<MessagesAffectedMessages>('messages.readMessageContents', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAffectedMessages>('messages.readMessageContents', params, ...args);
 
 export const accountCheckUsername = (dependencies: TgUserApiDependencies) => async (params: {
     username?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.checkUsername', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.checkUsername', params, ...args);
 
 export const accountUpdateUsername = (dependencies: TgUserApiDependencies) => async (params: {
     username?: string
-} = {}) => tgUserApiRequest(dependencies)<User>('account.updateUsername', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<User>('account.updateUsername', params, ...args);
 
 export const contactsSearch = (dependencies: TgUserApiDependencies) => async (params: {
     q?: string
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<ContactsFound>('contacts.search', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ContactsFound>('contacts.search', params, ...args);
 
 export const accountGetPrivacy = (dependencies: TgUserApiDependencies) => async (params: {
     key?: InputPrivacyKey
-} = {}) => tgUserApiRequest(dependencies)<AccountPrivacyRules>('account.getPrivacy', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountPrivacyRules>('account.getPrivacy', params, ...args);
 
 export const accountSetPrivacy = (dependencies: TgUserApiDependencies) => async (params: {
     key?: InputPrivacyKey
     rules?: InputPrivacyRule[]
-} = {}) => tgUserApiRequest(dependencies)<AccountPrivacyRules>('account.setPrivacy', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountPrivacyRules>('account.setPrivacy', params, ...args);
 
 export const accountDeleteAccount = (dependencies: TgUserApiDependencies) => async (params: {
     reason?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.deleteAccount', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.deleteAccount', params, ...args);
 
 export const accountGetAccountTTL = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<AccountDaysTTL>('account.getAccountTTL', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountDaysTTL>('account.getAccountTTL', params, ...args);
 
 export const accountSetAccountTTL = (dependencies: TgUserApiDependencies) => async (params: {
     ttl?: AccountDaysTTL
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.setAccountTTL', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.setAccountTTL', params, ...args);
 
 export const invokeWithLayer = (dependencies: TgUserApiDependencies) => async (params: {
     layer?: number
     query?: any
-} = {}) => tgUserApiRequest(dependencies)<any>('invokeWithLayer', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<any>('invokeWithLayer', params, ...args);
 
 export const contactsResolveUsername = (dependencies: TgUserApiDependencies) => async (params: {
     username?: string
-} = {}) => tgUserApiRequest(dependencies)<ContactsResolvedPeer>('contacts.resolveUsername', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ContactsResolvedPeer>('contacts.resolveUsername', params, ...args);
 
 export const accountSendChangePhoneCode = (dependencies: TgUserApiDependencies) => async (params: {
     phone_number?: string
     settings?: CodeSettings
-} = {}) => tgUserApiRequest(dependencies)<AuthSentCode>('account.sendChangePhoneCode', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthSentCode>('account.sendChangePhoneCode', params, ...args);
 
 export const accountChangePhone = (dependencies: TgUserApiDependencies) => async (params: {
     phone_number?: string
     phone_code_hash?: string
     phone_code?: string
-} = {}) => tgUserApiRequest(dependencies)<User>('account.changePhone', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<User>('account.changePhone', params, ...args);
 
 export const messagesGetStickers = (dependencies: TgUserApiDependencies) => async (params: {
     emoticon?: string
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesStickers>('messages.getStickers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesStickers>('messages.getStickers', params, ...args);
 
 export const messagesGetAllStickers = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesAllStickers>('messages.getAllStickers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAllStickers>('messages.getAllStickers', params, ...args);
 
 export const accountUpdateDeviceLocked = (dependencies: TgUserApiDependencies) => async (params: {
     period?: number
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.updateDeviceLocked', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.updateDeviceLocked', params, ...args);
 
 export const authImportBotAuthorization = (dependencies: TgUserApiDependencies) => async (params: {
     flags?: number
     api_id?: number
     api_hash?: string
     bot_auth_token?: string
-} = {}) => tgUserApiRequest(dependencies)<AuthAuthorization>('auth.importBotAuthorization', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthAuthorization>('auth.importBotAuthorization', params, ...args);
 
 export const messagesGetWebPagePreview = (dependencies: TgUserApiDependencies) => async (params: {
     message?: string
     entities?: MessageEntity[]
-} = {}) => tgUserApiRequest(dependencies)<MessageMedia>('messages.getWebPagePreview', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessageMedia>('messages.getWebPagePreview', params, ...args);
 
 export const accountGetAuthorizations = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<AccountAuthorizations>('account.getAuthorizations', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountAuthorizations>('account.getAuthorizations', params, ...args);
 
 export const accountResetAuthorization = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.resetAuthorization', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.resetAuthorization', params, ...args);
 
 export const accountGetPassword = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<AccountPassword>('account.getPassword', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountPassword>('account.getPassword', params, ...args);
 
 export const accountGetPasswordSettings = (dependencies: TgUserApiDependencies) => async (params: {
     password?: InputCheckPasswordSRP
-} = {}) => tgUserApiRequest(dependencies)<AccountPasswordSettings>('account.getPasswordSettings', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountPasswordSettings>('account.getPasswordSettings', params, ...args);
 
 export const accountUpdatePasswordSettings = (dependencies: TgUserApiDependencies) => async (params: {
     password?: InputCheckPasswordSRP
     new_settings?: AccountPasswordInputSettings
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.updatePasswordSettings', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.updatePasswordSettings', params, ...args);
 
 export const authCheckPassword = (dependencies: TgUserApiDependencies) => async (params: {
     password?: InputCheckPasswordSRP
-} = {}) => tgUserApiRequest(dependencies)<AuthAuthorization>('auth.checkPassword', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthAuthorization>('auth.checkPassword', params, ...args);
 
 export const authRequestPasswordRecovery = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<AuthPasswordRecovery>('auth.requestPasswordRecovery', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthPasswordRecovery>('auth.requestPasswordRecovery', params, ...args);
 
 export const authRecoverPassword = (dependencies: TgUserApiDependencies) => async (params: {
     code?: string
     new_settings?: AccountPasswordInputSettings
-} = {}) => tgUserApiRequest(dependencies)<AuthAuthorization>('auth.recoverPassword', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthAuthorization>('auth.recoverPassword', params, ...args);
 
 export const invokeWithoutUpdates = (dependencies: TgUserApiDependencies) => async (params: {
     query?: any
-} = {}) => tgUserApiRequest(dependencies)<any>('invokeWithoutUpdates', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<any>('invokeWithoutUpdates', params, ...args);
 
 export const messagesExportChatInvite = (dependencies: TgUserApiDependencies) => async (params: {
     legacy_revoke_permanent?: true
@@ -7734,67 +7734,67 @@ export const messagesExportChatInvite = (dependencies: TgUserApiDependencies) =>
     expire_date?: number
     usage_limit?: number
     title?: string
-} = {}) => tgUserApiRequest(dependencies)<ExportedChatInvite>('messages.exportChatInvite', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ExportedChatInvite>('messages.exportChatInvite', params, ...args);
 
 export const messagesCheckChatInvite = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: string
-} = {}) => tgUserApiRequest(dependencies)<ChatInvite>('messages.checkChatInvite', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ChatInvite>('messages.checkChatInvite', params, ...args);
 
 export const messagesImportChatInvite = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: string
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.importChatInvite', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.importChatInvite', params, ...args);
 
 export const messagesGetStickerSet = (dependencies: TgUserApiDependencies) => async (params: {
     stickerset?: InputStickerSet
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesStickerSet>('messages.getStickerSet', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesStickerSet>('messages.getStickerSet', params, ...args);
 
 export const messagesInstallStickerSet = (dependencies: TgUserApiDependencies) => async (params: {
     stickerset?: InputStickerSet
     archived?: boolean
-} = {}) => tgUserApiRequest(dependencies)<MessagesStickerSetInstallResult>('messages.installStickerSet', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesStickerSetInstallResult>('messages.installStickerSet', params, ...args);
 
 export const messagesUninstallStickerSet = (dependencies: TgUserApiDependencies) => async (params: {
     stickerset?: InputStickerSet
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.uninstallStickerSet', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.uninstallStickerSet', params, ...args);
 
 export const messagesStartBot = (dependencies: TgUserApiDependencies) => async (params: {
     bot?: InputUser
     peer?: InputPeer
     random_id?: number
     start_param?: string
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.startBot', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.startBot', params, ...args);
 
 export const helpGetAppChangelog = (dependencies: TgUserApiDependencies) => async (params: {
     prev_app_version?: string
-} = {}) => tgUserApiRequest(dependencies)<Updates>('help.getAppChangelog', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('help.getAppChangelog', params, ...args);
 
 export const messagesGetMessagesViews = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     id?: number[]
     increment?: boolean
-} = {}) => tgUserApiRequest(dependencies)<MessagesMessageViews>('messages.getMessagesViews', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessageViews>('messages.getMessagesViews', params, ...args);
 
 export const channelsReadHistory = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     max_id?: number
-} = {}) => tgUserApiRequest(dependencies)<boolean>('channels.readHistory', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('channels.readHistory', params, ...args);
 
 export const channelsDeleteMessages = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     id?: number[]
-} = {}) => tgUserApiRequest(dependencies)<MessagesAffectedMessages>('channels.deleteMessages', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAffectedMessages>('channels.deleteMessages', params, ...args);
 
 export const channelsReportSpam = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     participant?: InputPeer
     id?: number[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('channels.reportSpam', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('channels.reportSpam', params, ...args);
 
 export const channelsGetMessages = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     id?: InputMessage[]
-} = {}) => tgUserApiRequest(dependencies)<MessagesMessages>('channels.getMessages', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('channels.getMessages', params, ...args);
 
 export const channelsGetParticipants = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
@@ -7802,20 +7802,20 @@ export const channelsGetParticipants = (dependencies: TgUserApiDependencies) => 
     offset?: number
     limit?: number
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<ChannelsChannelParticipants>('channels.getParticipants', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ChannelsChannelParticipants>('channels.getParticipants', params, ...args);
 
 export const channelsGetParticipant = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     participant?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<ChannelsChannelParticipant>('channels.getParticipant', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ChannelsChannelParticipant>('channels.getParticipant', params, ...args);
 
 export const channelsGetChannels = (dependencies: TgUserApiDependencies) => async (params: {
     id?: InputChannel[]
-} = {}) => tgUserApiRequest(dependencies)<MessagesChats>('channels.getChannels', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChats>('channels.getChannels', params, ...args);
 
 export const channelsGetFullChannel = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
-} = {}) => tgUserApiRequest(dependencies)<MessagesChatFull>('channels.getFullChannel', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChatFull>('channels.getFullChannel', params, ...args);
 
 export const channelsCreateChannel = (dependencies: TgUserApiDependencies) => async (params: {
     broadcast?: true
@@ -7825,51 +7825,51 @@ export const channelsCreateChannel = (dependencies: TgUserApiDependencies) => as
     about?: string
     geo_point?: InputGeoPoint
     address?: string
-} = {}) => tgUserApiRequest(dependencies)<Updates>('channels.createChannel', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.createChannel', params, ...args);
 
 export const channelsEditAdmin = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     user_id?: InputUser
     admin_rights?: ChatAdminRights
     rank?: string
-} = {}) => tgUserApiRequest(dependencies)<Updates>('channels.editAdmin', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.editAdmin', params, ...args);
 
 export const channelsEditTitle = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     title?: string
-} = {}) => tgUserApiRequest(dependencies)<Updates>('channels.editTitle', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.editTitle', params, ...args);
 
 export const channelsEditPhoto = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     photo?: InputChatPhoto
-} = {}) => tgUserApiRequest(dependencies)<Updates>('channels.editPhoto', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.editPhoto', params, ...args);
 
 export const channelsCheckUsername = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     username?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('channels.checkUsername', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('channels.checkUsername', params, ...args);
 
 export const channelsUpdateUsername = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     username?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('channels.updateUsername', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('channels.updateUsername', params, ...args);
 
 export const channelsJoinChannel = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
-} = {}) => tgUserApiRequest(dependencies)<Updates>('channels.joinChannel', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.joinChannel', params, ...args);
 
 export const channelsLeaveChannel = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
-} = {}) => tgUserApiRequest(dependencies)<Updates>('channels.leaveChannel', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.leaveChannel', params, ...args);
 
 export const channelsInviteToChannel = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     users?: InputUser[]
-} = {}) => tgUserApiRequest(dependencies)<Updates>('channels.inviteToChannel', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.inviteToChannel', params, ...args);
 
 export const channelsDeleteChannel = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
-} = {}) => tgUserApiRequest(dependencies)<Updates>('channels.deleteChannel', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.deleteChannel', params, ...args);
 
 export const updatesGetChannelDifference = (dependencies: TgUserApiDependencies) => async (params: {
     force?: true
@@ -7877,17 +7877,17 @@ export const updatesGetChannelDifference = (dependencies: TgUserApiDependencies)
     filter?: ChannelMessagesFilter
     pts?: number
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<UpdatesChannelDifference>('updates.getChannelDifference', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<UpdatesChannelDifference>('updates.getChannelDifference', params, ...args);
 
 export const messagesEditChatAdmin = (dependencies: TgUserApiDependencies) => async (params: {
     chat_id?: number
     user_id?: InputUser
     is_admin?: boolean
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.editChatAdmin', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.editChatAdmin', params, ...args);
 
 export const messagesMigrateChat = (dependencies: TgUserApiDependencies) => async (params: {
     chat_id?: number
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.migrateChat', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.migrateChat', params, ...args);
 
 export const messagesSearchGlobal = (dependencies: TgUserApiDependencies) => async (params: {
     folder_id?: number
@@ -7899,28 +7899,28 @@ export const messagesSearchGlobal = (dependencies: TgUserApiDependencies) => asy
     offset_peer?: InputPeer
     offset_id?: number
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.searchGlobal', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.searchGlobal', params, ...args);
 
 export const messagesReorderStickerSets = (dependencies: TgUserApiDependencies) => async (params: {
     masks?: true
     emojis?: true
     order?: number[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.reorderStickerSets', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.reorderStickerSets', params, ...args);
 
 export const messagesGetDocumentByHash = (dependencies: TgUserApiDependencies) => async (params: {
     sha256?: Uint8Array
     size?: number
     mime_type?: string
-} = {}) => tgUserApiRequest(dependencies)<Document>('messages.getDocumentByHash', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Document>('messages.getDocumentByHash', params, ...args);
 
 export const messagesGetSavedGifs = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesSavedGifs>('messages.getSavedGifs', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesSavedGifs>('messages.getSavedGifs', params, ...args);
 
 export const messagesSaveGif = (dependencies: TgUserApiDependencies) => async (params: {
     id?: InputDocument
     unsave?: boolean
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.saveGif', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.saveGif', params, ...args);
 
 export const messagesGetInlineBotResults = (dependencies: TgUserApiDependencies) => async (params: {
     bot?: InputUser
@@ -7928,7 +7928,7 @@ export const messagesGetInlineBotResults = (dependencies: TgUserApiDependencies)
     geo_point?: InputGeoPoint
     query?: string
     offset?: string
-} = {}) => tgUserApiRequest(dependencies)<MessagesBotResults>('messages.getInlineBotResults', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesBotResults>('messages.getInlineBotResults', params, ...args);
 
 export const messagesSetInlineBotResults = (dependencies: TgUserApiDependencies) => async (params: {
     gallery?: true
@@ -7938,7 +7938,7 @@ export const messagesSetInlineBotResults = (dependencies: TgUserApiDependencies)
     cache_time?: number
     next_offset?: string
     switch_pm?: InlineBotSwitchPM
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.setInlineBotResults', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.setInlineBotResults', params, ...args);
 
 export const messagesSendInlineBotResult = (dependencies: TgUserApiDependencies) => async (params: {
     silent?: true
@@ -7952,34 +7952,34 @@ export const messagesSendInlineBotResult = (dependencies: TgUserApiDependencies)
     id?: string
     schedule_date?: number
     send_as?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.sendInlineBotResult', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.sendInlineBotResult', params, ...args);
 
 export const channelsExportMessageLink = (dependencies: TgUserApiDependencies) => async (params: {
     grouped?: true
     thread?: true
     channel?: InputChannel
     id?: number
-} = {}) => tgUserApiRequest(dependencies)<ExportedMessageLink>('channels.exportMessageLink', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ExportedMessageLink>('channels.exportMessageLink', params, ...args);
 
 export const channelsToggleSignatures = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     enabled?: boolean
-} = {}) => tgUserApiRequest(dependencies)<Updates>('channels.toggleSignatures', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.toggleSignatures', params, ...args);
 
 export const authResendCode = (dependencies: TgUserApiDependencies) => async (params: {
     phone_number?: string
     phone_code_hash?: string
-} = {}) => tgUserApiRequest(dependencies)<AuthSentCode>('auth.resendCode', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthSentCode>('auth.resendCode', params, ...args);
 
 export const authCancelCode = (dependencies: TgUserApiDependencies) => async (params: {
     phone_number?: string
     phone_code_hash?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('auth.cancelCode', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('auth.cancelCode', params, ...args);
 
 export const messagesGetMessageEditData = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     id?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesMessageEditData>('messages.getMessageEditData', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessageEditData>('messages.getMessageEditData', params, ...args);
 
 export const messagesEditMessage = (dependencies: TgUserApiDependencies) => async (params: {
     no_webpage?: true
@@ -7990,7 +7990,7 @@ export const messagesEditMessage = (dependencies: TgUserApiDependencies) => asyn
     reply_markup?: ReplyMarkup
     entities?: MessageEntity[]
     schedule_date?: number
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.editMessage', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.editMessage', params, ...args);
 
 export const messagesEditInlineBotMessage = (dependencies: TgUserApiDependencies) => async (params: {
     no_webpage?: true
@@ -7999,7 +7999,7 @@ export const messagesEditInlineBotMessage = (dependencies: TgUserApiDependencies
     media?: InputMedia
     reply_markup?: ReplyMarkup
     entities?: MessageEntity[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.editInlineBotMessage', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.editInlineBotMessage', params, ...args);
 
 export const messagesGetBotCallbackAnswer = (dependencies: TgUserApiDependencies) => async (params: {
     game?: true
@@ -8007,7 +8007,7 @@ export const messagesGetBotCallbackAnswer = (dependencies: TgUserApiDependencies
     msg_id?: number
     data?: Uint8Array
     password?: InputCheckPasswordSRP
-} = {}) => tgUserApiRequest(dependencies)<MessagesBotCallbackAnswer>('messages.getBotCallbackAnswer', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesBotCallbackAnswer>('messages.getBotCallbackAnswer', params, ...args);
 
 export const messagesSetBotCallbackAnswer = (dependencies: TgUserApiDependencies) => async (params: {
     alert?: true
@@ -8015,7 +8015,7 @@ export const messagesSetBotCallbackAnswer = (dependencies: TgUserApiDependencies
     message?: string
     url?: string
     cache_time?: number
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.setBotCallbackAnswer', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.setBotCallbackAnswer', params, ...args);
 
 export const contactsGetTopPeers = (dependencies: TgUserApiDependencies) => async (params: {
     correspondents?: true
@@ -8029,16 +8029,16 @@ export const contactsGetTopPeers = (dependencies: TgUserApiDependencies) => asyn
     offset?: number
     limit?: number
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<ContactsTopPeers>('contacts.getTopPeers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ContactsTopPeers>('contacts.getTopPeers', params, ...args);
 
 export const contactsResetTopPeerRating = (dependencies: TgUserApiDependencies) => async (params: {
     category?: TopPeerCategory
     peer?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<boolean>('contacts.resetTopPeerRating', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('contacts.resetTopPeerRating', params, ...args);
 
 export const messagesGetPeerDialogs = (dependencies: TgUserApiDependencies) => async (params: {
     peers?: InputDialogPeer[]
-} = {}) => tgUserApiRequest(dependencies)<MessagesPeerDialogs>('messages.getPeerDialogs', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesPeerDialogs>('messages.getPeerDialogs', params, ...args);
 
 export const messagesSaveDraft = (dependencies: TgUserApiDependencies) => async (params: {
     no_webpage?: true
@@ -8046,68 +8046,68 @@ export const messagesSaveDraft = (dependencies: TgUserApiDependencies) => async 
     peer?: InputPeer
     message?: string
     entities?: MessageEntity[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.saveDraft', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.saveDraft', params, ...args);
 
 export const messagesGetAllDrafts = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.getAllDrafts', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.getAllDrafts', params, ...args);
 
 export const messagesGetFeaturedStickers = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesFeaturedStickers>('messages.getFeaturedStickers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesFeaturedStickers>('messages.getFeaturedStickers', params, ...args);
 
 export const messagesReadFeaturedStickers = (dependencies: TgUserApiDependencies) => async (params: {
     id?: number[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.readFeaturedStickers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.readFeaturedStickers', params, ...args);
 
 export const messagesGetRecentStickers = (dependencies: TgUserApiDependencies) => async (params: {
     attached?: true
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesRecentStickers>('messages.getRecentStickers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesRecentStickers>('messages.getRecentStickers', params, ...args);
 
 export const messagesSaveRecentSticker = (dependencies: TgUserApiDependencies) => async (params: {
     attached?: true
     id?: InputDocument
     unsave?: boolean
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.saveRecentSticker', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.saveRecentSticker', params, ...args);
 
 export const messagesClearRecentStickers = (dependencies: TgUserApiDependencies) => async (params: {
     attached?: true
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.clearRecentStickers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.clearRecentStickers', params, ...args);
 
 export const messagesGetArchivedStickers = (dependencies: TgUserApiDependencies) => async (params: {
     masks?: true
     emojis?: true
     offset_id?: number
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesArchivedStickers>('messages.getArchivedStickers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesArchivedStickers>('messages.getArchivedStickers', params, ...args);
 
 export const accountSendConfirmPhoneCode = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: string
     settings?: CodeSettings
-} = {}) => tgUserApiRequest(dependencies)<AuthSentCode>('account.sendConfirmPhoneCode', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthSentCode>('account.sendConfirmPhoneCode', params, ...args);
 
 export const accountConfirmPhone = (dependencies: TgUserApiDependencies) => async (params: {
     phone_code_hash?: string
     phone_code?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.confirmPhone', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.confirmPhone', params, ...args);
 
 export const channelsGetAdminedPublicChannels = (dependencies: TgUserApiDependencies) => async (params: {
     by_location?: true
     check_limit?: true
-} = {}) => tgUserApiRequest(dependencies)<MessagesChats>('channels.getAdminedPublicChannels', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChats>('channels.getAdminedPublicChannels', params, ...args);
 
 export const messagesGetMaskStickers = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesAllStickers>('messages.getMaskStickers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAllStickers>('messages.getMaskStickers', params, ...args);
 
 export const messagesGetAttachedStickers = (dependencies: TgUserApiDependencies) => async (params: {
     media?: InputStickeredMedia
-} = {}) => tgUserApiRequest(dependencies)<StickerSetCovered[]>('messages.getAttachedStickers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<StickerSetCovered[]>('messages.getAttachedStickers', params, ...args);
 
 export const authDropTempAuthKeys = (dependencies: TgUserApiDependencies) => async (params: {
     except_auth_keys?: number[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('auth.dropTempAuthKeys', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('auth.dropTempAuthKeys', params, ...args);
 
 export const messagesSetGameScore = (dependencies: TgUserApiDependencies) => async (params: {
     edit_message?: true
@@ -8116,7 +8116,7 @@ export const messagesSetGameScore = (dependencies: TgUserApiDependencies) => asy
     id?: number
     user_id?: InputUser
     score?: number
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.setGameScore', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.setGameScore', params, ...args);
 
 export const messagesSetInlineGameScore = (dependencies: TgUserApiDependencies) => async (params: {
     edit_message?: true
@@ -8124,87 +8124,87 @@ export const messagesSetInlineGameScore = (dependencies: TgUserApiDependencies) 
     id?: InputBotInlineMessageID
     user_id?: InputUser
     score?: number
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.setInlineGameScore', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.setInlineGameScore', params, ...args);
 
 export const messagesGetGameHighScores = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     id?: number
     user_id?: InputUser
-} = {}) => tgUserApiRequest(dependencies)<MessagesHighScores>('messages.getGameHighScores', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesHighScores>('messages.getGameHighScores', params, ...args);
 
 export const messagesGetInlineGameHighScores = (dependencies: TgUserApiDependencies) => async (params: {
     id?: InputBotInlineMessageID
     user_id?: InputUser
-} = {}) => tgUserApiRequest(dependencies)<MessagesHighScores>('messages.getInlineGameHighScores', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesHighScores>('messages.getInlineGameHighScores', params, ...args);
 
 export const messagesGetCommonChats = (dependencies: TgUserApiDependencies) => async (params: {
     user_id?: InputUser
     max_id?: number
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesChats>('messages.getCommonChats', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChats>('messages.getCommonChats', params, ...args);
 
 export const messagesGetAllChats = (dependencies: TgUserApiDependencies) => async (params: {
     except_ids?: number[]
-} = {}) => tgUserApiRequest(dependencies)<MessagesChats>('messages.getAllChats', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChats>('messages.getAllChats', params, ...args);
 
 export const helpSetBotUpdatesStatus = (dependencies: TgUserApiDependencies) => async (params: {
     pending_updates_count?: number
     message?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('help.setBotUpdatesStatus', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('help.setBotUpdatesStatus', params, ...args);
 
 export const messagesGetWebPage = (dependencies: TgUserApiDependencies) => async (params: {
     url?: string
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<WebPage>('messages.getWebPage', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<WebPage>('messages.getWebPage', params, ...args);
 
 export const messagesToggleDialogPin = (dependencies: TgUserApiDependencies) => async (params: {
     pinned?: true
     peer?: InputDialogPeer
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.toggleDialogPin', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.toggleDialogPin', params, ...args);
 
 export const messagesReorderPinnedDialogs = (dependencies: TgUserApiDependencies) => async (params: {
     force?: true
     folder_id?: number
     order?: InputDialogPeer[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.reorderPinnedDialogs', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.reorderPinnedDialogs', params, ...args);
 
 export const messagesGetPinnedDialogs = (dependencies: TgUserApiDependencies) => async (params: {
     folder_id?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesPeerDialogs>('messages.getPinnedDialogs', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesPeerDialogs>('messages.getPinnedDialogs', params, ...args);
 
 export const botsSendCustomRequest = (dependencies: TgUserApiDependencies) => async (params: {
     custom_method?: string
     params?: DataJSON
-} = {}) => tgUserApiRequest(dependencies)<DataJSON>('bots.sendCustomRequest', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<DataJSON>('bots.sendCustomRequest', params, ...args);
 
 export const botsAnswerWebhookJSONQuery = (dependencies: TgUserApiDependencies) => async (params: {
     query_id?: number
     data?: DataJSON
-} = {}) => tgUserApiRequest(dependencies)<boolean>('bots.answerWebhookJSONQuery', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('bots.answerWebhookJSONQuery', params, ...args);
 
 export const uploadGetWebFile = (dependencies: TgUserApiDependencies) => async (params: {
     location?: InputWebFileLocation
     offset?: number
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<UploadWebFile>('upload.getWebFile', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<UploadWebFile>('upload.getWebFile', params, ...args);
 
 export const paymentsGetPaymentForm = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     msg_id?: number
     theme_params?: DataJSON
-} = {}) => tgUserApiRequest(dependencies)<PaymentsPaymentForm>('payments.getPaymentForm', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PaymentsPaymentForm>('payments.getPaymentForm', params, ...args);
 
 export const paymentsGetPaymentReceipt = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     msg_id?: number
-} = {}) => tgUserApiRequest(dependencies)<PaymentsPaymentReceipt>('payments.getPaymentReceipt', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PaymentsPaymentReceipt>('payments.getPaymentReceipt', params, ...args);
 
 export const paymentsValidateRequestedInfo = (dependencies: TgUserApiDependencies) => async (params: {
     save?: true
     peer?: InputPeer
     msg_id?: number
     info?: PaymentRequestedInfo
-} = {}) => tgUserApiRequest(dependencies)<PaymentsValidatedRequestedInfo>('payments.validateRequestedInfo', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PaymentsValidatedRequestedInfo>('payments.validateRequestedInfo', params, ...args);
 
 export const paymentsSendPaymentForm = (dependencies: TgUserApiDependencies) => async (params: {
     form_id?: number
@@ -8214,33 +8214,33 @@ export const paymentsSendPaymentForm = (dependencies: TgUserApiDependencies) => 
     shipping_option_id?: string
     credentials?: InputPaymentCredentials
     tip_amount?: number
-} = {}) => tgUserApiRequest(dependencies)<PaymentsPaymentResult>('payments.sendPaymentForm', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PaymentsPaymentResult>('payments.sendPaymentForm', params, ...args);
 
 export const accountGetTmpPassword = (dependencies: TgUserApiDependencies) => async (params: {
     password?: InputCheckPasswordSRP
     period?: number
-} = {}) => tgUserApiRequest(dependencies)<AccountTmpPassword>('account.getTmpPassword', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountTmpPassword>('account.getTmpPassword', params, ...args);
 
 export const paymentsGetSavedInfo = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<PaymentsSavedInfo>('payments.getSavedInfo', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PaymentsSavedInfo>('payments.getSavedInfo', params, ...args);
 
 export const paymentsClearSavedInfo = (dependencies: TgUserApiDependencies) => async (params: {
     credentials?: true
     info?: true
-} = {}) => tgUserApiRequest(dependencies)<boolean>('payments.clearSavedInfo', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('payments.clearSavedInfo', params, ...args);
 
 export const messagesSetBotShippingResults = (dependencies: TgUserApiDependencies) => async (params: {
     query_id?: number
     error?: string
     shipping_options?: ShippingOption[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.setBotShippingResults', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.setBotShippingResults', params, ...args);
 
 export const messagesSetBotPrecheckoutResults = (dependencies: TgUserApiDependencies) => async (params: {
     success?: true
     query_id?: number
     error?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.setBotPrecheckoutResults', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.setBotPrecheckoutResults', params, ...args);
 
 export const stickersCreateStickerSet = (dependencies: TgUserApiDependencies) => async (params: {
     masks?: true
@@ -8252,30 +8252,30 @@ export const stickersCreateStickerSet = (dependencies: TgUserApiDependencies) =>
     thumb?: InputDocument
     stickers?: InputStickerSetItem[]
     software?: string
-} = {}) => tgUserApiRequest(dependencies)<MessagesStickerSet>('stickers.createStickerSet', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesStickerSet>('stickers.createStickerSet', params, ...args);
 
 export const stickersRemoveStickerFromSet = (dependencies: TgUserApiDependencies) => async (params: {
     sticker?: InputDocument
-} = {}) => tgUserApiRequest(dependencies)<MessagesStickerSet>('stickers.removeStickerFromSet', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesStickerSet>('stickers.removeStickerFromSet', params, ...args);
 
 export const stickersChangeStickerPosition = (dependencies: TgUserApiDependencies) => async (params: {
     sticker?: InputDocument
     position?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesStickerSet>('stickers.changeStickerPosition', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesStickerSet>('stickers.changeStickerPosition', params, ...args);
 
 export const stickersAddStickerToSet = (dependencies: TgUserApiDependencies) => async (params: {
     stickerset?: InputStickerSet
     sticker?: InputStickerSetItem
-} = {}) => tgUserApiRequest(dependencies)<MessagesStickerSet>('stickers.addStickerToSet', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesStickerSet>('stickers.addStickerToSet', params, ...args);
 
 export const messagesUploadMedia = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     media?: InputMedia
-} = {}) => tgUserApiRequest(dependencies)<MessageMedia>('messages.uploadMedia', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessageMedia>('messages.uploadMedia', params, ...args);
 
 export const phoneGetCallConfig = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<DataJSON>('phone.getCallConfig', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<DataJSON>('phone.getCallConfig', params, ...args);
 
 export const phoneRequestCall = (dependencies: TgUserApiDependencies) => async (params: {
     video?: true
@@ -8283,24 +8283,24 @@ export const phoneRequestCall = (dependencies: TgUserApiDependencies) => async (
     random_id?: number
     g_a_hash?: Uint8Array
     protocol?: PhoneCallProtocol
-} = {}) => tgUserApiRequest(dependencies)<PhonePhoneCall>('phone.requestCall', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhonePhoneCall>('phone.requestCall', params, ...args);
 
 export const phoneAcceptCall = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPhoneCall
     g_b?: Uint8Array
     protocol?: PhoneCallProtocol
-} = {}) => tgUserApiRequest(dependencies)<PhonePhoneCall>('phone.acceptCall', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhonePhoneCall>('phone.acceptCall', params, ...args);
 
 export const phoneConfirmCall = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPhoneCall
     g_a?: Uint8Array
     key_fingerprint?: number
     protocol?: PhoneCallProtocol
-} = {}) => tgUserApiRequest(dependencies)<PhonePhoneCall>('phone.confirmCall', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhonePhoneCall>('phone.confirmCall', params, ...args);
 
 export const phoneReceivedCall = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPhoneCall
-} = {}) => tgUserApiRequest(dependencies)<boolean>('phone.receivedCall', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('phone.receivedCall', params, ...args);
 
 export const phoneDiscardCall = (dependencies: TgUserApiDependencies) => async (params: {
     video?: true
@@ -8308,61 +8308,61 @@ export const phoneDiscardCall = (dependencies: TgUserApiDependencies) => async (
     duration?: number
     reason?: PhoneCallDiscardReason
     connection_id?: number
-} = {}) => tgUserApiRequest(dependencies)<Updates>('phone.discardCall', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('phone.discardCall', params, ...args);
 
 export const phoneSetCallRating = (dependencies: TgUserApiDependencies) => async (params: {
     user_initiative?: true
     peer?: InputPhoneCall
     rating?: number
     comment?: string
-} = {}) => tgUserApiRequest(dependencies)<Updates>('phone.setCallRating', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('phone.setCallRating', params, ...args);
 
 export const phoneSaveCallDebug = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPhoneCall
     debug?: DataJSON
-} = {}) => tgUserApiRequest(dependencies)<boolean>('phone.saveCallDebug', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('phone.saveCallDebug', params, ...args);
 
 export const uploadGetCdnFile = (dependencies: TgUserApiDependencies) => async (params: {
     file_token?: Uint8Array
     offset?: number
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<UploadCdnFile>('upload.getCdnFile', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<UploadCdnFile>('upload.getCdnFile', params, ...args);
 
 export const uploadReuploadCdnFile = (dependencies: TgUserApiDependencies) => async (params: {
     file_token?: Uint8Array
     request_token?: Uint8Array
-} = {}) => tgUserApiRequest(dependencies)<FileHash[]>('upload.reuploadCdnFile', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<FileHash[]>('upload.reuploadCdnFile', params, ...args);
 
 export const helpGetCdnConfig = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<CdnConfig>('help.getCdnConfig', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<CdnConfig>('help.getCdnConfig', params, ...args);
 
 export const langpackGetLangPack = (dependencies: TgUserApiDependencies) => async (params: {
     lang_pack?: string
     lang_code?: string
-} = {}) => tgUserApiRequest(dependencies)<LangPackDifference>('langpack.getLangPack', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<LangPackDifference>('langpack.getLangPack', params, ...args);
 
 export const langpackGetStrings = (dependencies: TgUserApiDependencies) => async (params: {
     lang_pack?: string
     lang_code?: string
     keys?: string[]
-} = {}) => tgUserApiRequest(dependencies)<LangPackString[]>('langpack.getStrings', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<LangPackString[]>('langpack.getStrings', params, ...args);
 
 export const langpackGetDifference = (dependencies: TgUserApiDependencies) => async (params: {
     lang_pack?: string
     lang_code?: string
     from_version?: number
-} = {}) => tgUserApiRequest(dependencies)<LangPackDifference>('langpack.getDifference', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<LangPackDifference>('langpack.getDifference', params, ...args);
 
 export const langpackGetLanguages = (dependencies: TgUserApiDependencies) => async (params: {
     lang_pack?: string
-} = {}) => tgUserApiRequest(dependencies)<LangPackLanguage[]>('langpack.getLanguages', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<LangPackLanguage[]>('langpack.getLanguages', params, ...args);
 
 export const channelsEditBanned = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     participant?: InputPeer
     banned_rights?: ChatBannedRights
-} = {}) => tgUserApiRequest(dependencies)<Updates>('channels.editBanned', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.editBanned', params, ...args);
 
 export const channelsGetAdminLog = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
@@ -8372,41 +8372,41 @@ export const channelsGetAdminLog = (dependencies: TgUserApiDependencies) => asyn
     max_id?: number
     min_id?: number
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<ChannelsAdminLogResults>('channels.getAdminLog', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ChannelsAdminLogResults>('channels.getAdminLog', params, ...args);
 
 export const uploadGetCdnFileHashes = (dependencies: TgUserApiDependencies) => async (params: {
     file_token?: Uint8Array
     offset?: number
-} = {}) => tgUserApiRequest(dependencies)<FileHash[]>('upload.getCdnFileHashes', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<FileHash[]>('upload.getCdnFileHashes', params, ...args);
 
 export const messagesSendScreenshotNotification = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     reply_to_msg_id?: number
     random_id?: number
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.sendScreenshotNotification', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.sendScreenshotNotification', params, ...args);
 
 export const channelsSetStickers = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     stickerset?: InputStickerSet
-} = {}) => tgUserApiRequest(dependencies)<boolean>('channels.setStickers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('channels.setStickers', params, ...args);
 
 export const messagesGetFavedStickers = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesFavedStickers>('messages.getFavedStickers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesFavedStickers>('messages.getFavedStickers', params, ...args);
 
 export const messagesFaveSticker = (dependencies: TgUserApiDependencies) => async (params: {
     id?: InputDocument
     unfave?: boolean
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.faveSticker', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.faveSticker', params, ...args);
 
 export const channelsReadMessageContents = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     id?: number[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('channels.readMessageContents', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('channels.readMessageContents', params, ...args);
 
 export const contactsResetSaved = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<boolean>('contacts.resetSaved', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('contacts.resetSaved', params, ...args);
 
 export const messagesGetUnreadMentions = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
@@ -8415,31 +8415,31 @@ export const messagesGetUnreadMentions = (dependencies: TgUserApiDependencies) =
     limit?: number
     max_id?: number
     min_id?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getUnreadMentions', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getUnreadMentions', params, ...args);
 
 export const channelsDeleteHistory = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     max_id?: number
-} = {}) => tgUserApiRequest(dependencies)<boolean>('channels.deleteHistory', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('channels.deleteHistory', params, ...args);
 
 export const helpGetRecentMeUrls = (dependencies: TgUserApiDependencies) => async (params: {
     referer?: string
-} = {}) => tgUserApiRequest(dependencies)<HelpRecentMeUrls>('help.getRecentMeUrls', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<HelpRecentMeUrls>('help.getRecentMeUrls', params, ...args);
 
 export const channelsTogglePreHistoryHidden = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     enabled?: boolean
-} = {}) => tgUserApiRequest(dependencies)<Updates>('channels.togglePreHistoryHidden', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.togglePreHistoryHidden', params, ...args);
 
 export const messagesReadMentions = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<MessagesAffectedHistory>('messages.readMentions', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAffectedHistory>('messages.readMentions', params, ...args);
 
 export const messagesGetRecentLocations = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     limit?: number
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getRecentLocations', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getRecentLocations', params, ...args);
 
 export const messagesSendMultiMedia = (dependencies: TgUserApiDependencies) => async (params: {
     silent?: true
@@ -8451,71 +8451,71 @@ export const messagesSendMultiMedia = (dependencies: TgUserApiDependencies) => a
     multi_media?: InputSingleMedia[]
     schedule_date?: number
     send_as?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.sendMultiMedia', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.sendMultiMedia', params, ...args);
 
 export const messagesUploadEncryptedFile = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputEncryptedChat
     file?: InputEncryptedFile
-} = {}) => tgUserApiRequest(dependencies)<EncryptedFile>('messages.uploadEncryptedFile', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<EncryptedFile>('messages.uploadEncryptedFile', params, ...args);
 
 export const accountGetWebAuthorizations = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<AccountWebAuthorizations>('account.getWebAuthorizations', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountWebAuthorizations>('account.getWebAuthorizations', params, ...args);
 
 export const accountResetWebAuthorization = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.resetWebAuthorization', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.resetWebAuthorization', params, ...args);
 
 export const accountResetWebAuthorizations = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.resetWebAuthorizations', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.resetWebAuthorizations', params, ...args);
 
 export const messagesSearchStickerSets = (dependencies: TgUserApiDependencies) => async (params: {
     exclude_featured?: true
     q?: string
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesFoundStickerSets>('messages.searchStickerSets', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesFoundStickerSets>('messages.searchStickerSets', params, ...args);
 
 export const uploadGetFileHashes = (dependencies: TgUserApiDependencies) => async (params: {
     location?: InputFileLocation
     offset?: number
-} = {}) => tgUserApiRequest(dependencies)<FileHash[]>('upload.getFileHashes', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<FileHash[]>('upload.getFileHashes', params, ...args);
 
 export const helpGetTermsOfServiceUpdate = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<HelpTermsOfServiceUpdate>('help.getTermsOfServiceUpdate', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<HelpTermsOfServiceUpdate>('help.getTermsOfServiceUpdate', params, ...args);
 
 export const helpAcceptTermsOfService = (dependencies: TgUserApiDependencies) => async (params: {
     id?: DataJSON
-} = {}) => tgUserApiRequest(dependencies)<boolean>('help.acceptTermsOfService', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('help.acceptTermsOfService', params, ...args);
 
 export const accountGetAllSecureValues = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<SecureValue[]>('account.getAllSecureValues', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<SecureValue[]>('account.getAllSecureValues', params, ...args);
 
 export const accountGetSecureValue = (dependencies: TgUserApiDependencies) => async (params: {
     types?: SecureValueType[]
-} = {}) => tgUserApiRequest(dependencies)<SecureValue[]>('account.getSecureValue', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<SecureValue[]>('account.getSecureValue', params, ...args);
 
 export const accountSaveSecureValue = (dependencies: TgUserApiDependencies) => async (params: {
     value?: InputSecureValue
     secure_secret_id?: number
-} = {}) => tgUserApiRequest(dependencies)<SecureValue>('account.saveSecureValue', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<SecureValue>('account.saveSecureValue', params, ...args);
 
 export const accountDeleteSecureValue = (dependencies: TgUserApiDependencies) => async (params: {
     types?: SecureValueType[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.deleteSecureValue', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.deleteSecureValue', params, ...args);
 
 export const usersSetSecureValueErrors = (dependencies: TgUserApiDependencies) => async (params: {
     id?: InputUser
     errors?: SecureValueError[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('users.setSecureValueErrors', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('users.setSecureValueErrors', params, ...args);
 
 export const accountGetAuthorizationForm = (dependencies: TgUserApiDependencies) => async (params: {
     bot_id?: number
     scope?: string
     public_key?: string
-} = {}) => tgUserApiRequest(dependencies)<AccountAuthorizationForm>('account.getAuthorizationForm', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountAuthorizationForm>('account.getAuthorizationForm', params, ...args);
 
 export const accountAcceptAuthorization = (dependencies: TgUserApiDependencies) => async (params: {
     bot_id?: number
@@ -8523,39 +8523,39 @@ export const accountAcceptAuthorization = (dependencies: TgUserApiDependencies) 
     public_key?: string
     value_hashes?: SecureValueHash[]
     credentials?: SecureCredentialsEncrypted
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.acceptAuthorization', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.acceptAuthorization', params, ...args);
 
 export const accountSendVerifyPhoneCode = (dependencies: TgUserApiDependencies) => async (params: {
     phone_number?: string
     settings?: CodeSettings
-} = {}) => tgUserApiRequest(dependencies)<AuthSentCode>('account.sendVerifyPhoneCode', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthSentCode>('account.sendVerifyPhoneCode', params, ...args);
 
 export const accountVerifyPhone = (dependencies: TgUserApiDependencies) => async (params: {
     phone_number?: string
     phone_code_hash?: string
     phone_code?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.verifyPhone', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.verifyPhone', params, ...args);
 
 export const accountSendVerifyEmailCode = (dependencies: TgUserApiDependencies) => async (params: {
     email?: string
-} = {}) => tgUserApiRequest(dependencies)<AccountSentEmailCode>('account.sendVerifyEmailCode', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountSentEmailCode>('account.sendVerifyEmailCode', params, ...args);
 
 export const accountVerifyEmail = (dependencies: TgUserApiDependencies) => async (params: {
     email?: string
     code?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.verifyEmail', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.verifyEmail', params, ...args);
 
 export const helpGetDeepLinkInfo = (dependencies: TgUserApiDependencies) => async (params: {
     path?: string
-} = {}) => tgUserApiRequest(dependencies)<HelpDeepLinkInfo>('help.getDeepLinkInfo', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<HelpDeepLinkInfo>('help.getDeepLinkInfo', params, ...args);
 
 export const contactsGetSaved = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<SavedContact[]>('contacts.getSaved', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<SavedContact[]>('contacts.getSaved', params, ...args);
 
 export const channelsGetLeftChannels = (dependencies: TgUserApiDependencies) => async (params: {
     offset?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesChats>('channels.getLeftChannels', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChats>('channels.getLeftChannels', params, ...args);
 
 export const accountInitTakeoutSession = (dependencies: TgUserApiDependencies) => async (params: {
     contacts?: true
@@ -8565,59 +8565,59 @@ export const accountInitTakeoutSession = (dependencies: TgUserApiDependencies) =
     message_channels?: true
     files?: true
     file_max_size?: number
-} = {}) => tgUserApiRequest(dependencies)<AccountTakeout>('account.initTakeoutSession', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountTakeout>('account.initTakeoutSession', params, ...args);
 
 export const accountFinishTakeoutSession = (dependencies: TgUserApiDependencies) => async (params: {
     success?: true
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.finishTakeoutSession', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.finishTakeoutSession', params, ...args);
 
 export const messagesGetSplitRanges = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<MessageRange[]>('messages.getSplitRanges', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessageRange[]>('messages.getSplitRanges', params, ...args);
 
 export const invokeWithMessagesRange = (dependencies: TgUserApiDependencies) => async (params: {
     range?: MessageRange
     query?: any
-} = {}) => tgUserApiRequest(dependencies)<any>('invokeWithMessagesRange', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<any>('invokeWithMessagesRange', params, ...args);
 
 export const invokeWithTakeout = (dependencies: TgUserApiDependencies) => async (params: {
     takeout_id?: number
     query?: any
-} = {}) => tgUserApiRequest(dependencies)<any>('invokeWithTakeout', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<any>('invokeWithTakeout', params, ...args);
 
 export const messagesMarkDialogUnread = (dependencies: TgUserApiDependencies) => async (params: {
     unread?: true
     peer?: InputDialogPeer
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.markDialogUnread', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.markDialogUnread', params, ...args);
 
 export const messagesGetDialogUnreadMarks = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<DialogPeer[]>('messages.getDialogUnreadMarks', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<DialogPeer[]>('messages.getDialogUnreadMarks', params, ...args);
 
 export const contactsToggleTopPeers = (dependencies: TgUserApiDependencies) => async (params: {
     enabled?: boolean
-} = {}) => tgUserApiRequest(dependencies)<boolean>('contacts.toggleTopPeers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('contacts.toggleTopPeers', params, ...args);
 
 export const messagesClearAllDrafts = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.clearAllDrafts', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.clearAllDrafts', params, ...args);
 
 export const helpGetAppConfig = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<JSONValue>('help.getAppConfig', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<JSONValue>('help.getAppConfig', params, ...args);
 
 export const helpSaveAppLog = (dependencies: TgUserApiDependencies) => async (params: {
     events?: InputAppEvent[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('help.saveAppLog', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('help.saveAppLog', params, ...args);
 
 export const helpGetPassportConfig = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<HelpPassportConfig>('help.getPassportConfig', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<HelpPassportConfig>('help.getPassportConfig', params, ...args);
 
 export const langpackGetLanguage = (dependencies: TgUserApiDependencies) => async (params: {
     lang_pack?: string
     lang_code?: string
-} = {}) => tgUserApiRequest(dependencies)<LangPackLanguage>('langpack.getLanguage', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<LangPackLanguage>('langpack.getLanguage', params, ...args);
 
 export const messagesUpdatePinnedMessage = (dependencies: TgUserApiDependencies) => async (params: {
     silent?: true
@@ -8625,152 +8625,152 @@ export const messagesUpdatePinnedMessage = (dependencies: TgUserApiDependencies)
     pm_oneside?: true
     peer?: InputPeer
     id?: number
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.updatePinnedMessage', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.updatePinnedMessage', params, ...args);
 
 export const accountConfirmPasswordEmail = (dependencies: TgUserApiDependencies) => async (params: {
     code?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.confirmPasswordEmail', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.confirmPasswordEmail', params, ...args);
 
 export const accountResendPasswordEmail = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.resendPasswordEmail', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.resendPasswordEmail', params, ...args);
 
 export const accountCancelPasswordEmail = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.cancelPasswordEmail', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.cancelPasswordEmail', params, ...args);
 
 export const helpGetSupportName = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<HelpSupportName>('help.getSupportName', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<HelpSupportName>('help.getSupportName', params, ...args);
 
 export const helpGetUserInfo = (dependencies: TgUserApiDependencies) => async (params: {
     user_id?: InputUser
-} = {}) => tgUserApiRequest(dependencies)<HelpUserInfo>('help.getUserInfo', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<HelpUserInfo>('help.getUserInfo', params, ...args);
 
 export const helpEditUserInfo = (dependencies: TgUserApiDependencies) => async (params: {
     user_id?: InputUser
     message?: string
     entities?: MessageEntity[]
-} = {}) => tgUserApiRequest(dependencies)<HelpUserInfo>('help.editUserInfo', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<HelpUserInfo>('help.editUserInfo', params, ...args);
 
 export const accountGetContactSignUpNotification = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.getContactSignUpNotification', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.getContactSignUpNotification', params, ...args);
 
 export const accountSetContactSignUpNotification = (dependencies: TgUserApiDependencies) => async (params: {
     silent?: boolean
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.setContactSignUpNotification', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.setContactSignUpNotification', params, ...args);
 
 export const accountGetNotifyExceptions = (dependencies: TgUserApiDependencies) => async (params: {
     compare_sound?: true
     peer?: InputNotifyPeer
-} = {}) => tgUserApiRequest(dependencies)<Updates>('account.getNotifyExceptions', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('account.getNotifyExceptions', params, ...args);
 
 export const messagesSendVote = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     msg_id?: number
     options?: Uint8Array[]
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.sendVote', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.sendVote', params, ...args);
 
 export const messagesGetPollResults = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     msg_id?: number
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.getPollResults', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.getPollResults', params, ...args);
 
 export const messagesGetOnlines = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<ChatOnlines>('messages.getOnlines', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ChatOnlines>('messages.getOnlines', params, ...args);
 
 export const messagesEditChatAbout = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     about?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.editChatAbout', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.editChatAbout', params, ...args);
 
 export const messagesEditChatDefaultBannedRights = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     banned_rights?: ChatBannedRights
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.editChatDefaultBannedRights', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.editChatDefaultBannedRights', params, ...args);
 
 export const accountGetWallPaper = (dependencies: TgUserApiDependencies) => async (params: {
     wallpaper?: InputWallPaper
-} = {}) => tgUserApiRequest(dependencies)<WallPaper>('account.getWallPaper', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<WallPaper>('account.getWallPaper', params, ...args);
 
 export const accountUploadWallPaper = (dependencies: TgUserApiDependencies) => async (params: {
     file?: InputFile
     mime_type?: string
     settings?: WallPaperSettings
-} = {}) => tgUserApiRequest(dependencies)<WallPaper>('account.uploadWallPaper', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<WallPaper>('account.uploadWallPaper', params, ...args);
 
 export const accountSaveWallPaper = (dependencies: TgUserApiDependencies) => async (params: {
     wallpaper?: InputWallPaper
     unsave?: boolean
     settings?: WallPaperSettings
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.saveWallPaper', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.saveWallPaper', params, ...args);
 
 export const accountInstallWallPaper = (dependencies: TgUserApiDependencies) => async (params: {
     wallpaper?: InputWallPaper
     settings?: WallPaperSettings
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.installWallPaper', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.installWallPaper', params, ...args);
 
 export const accountResetWallPapers = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.resetWallPapers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.resetWallPapers', params, ...args);
 
 export const accountGetAutoDownloadSettings = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<AccountAutoDownloadSettings>('account.getAutoDownloadSettings', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountAutoDownloadSettings>('account.getAutoDownloadSettings', params, ...args);
 
 export const accountSaveAutoDownloadSettings = (dependencies: TgUserApiDependencies) => async (params: {
     low?: true
     high?: true
     settings?: AutoDownloadSettings
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.saveAutoDownloadSettings', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.saveAutoDownloadSettings', params, ...args);
 
 export const messagesGetEmojiKeywords = (dependencies: TgUserApiDependencies) => async (params: {
     lang_code?: string
-} = {}) => tgUserApiRequest(dependencies)<EmojiKeywordsDifference>('messages.getEmojiKeywords', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<EmojiKeywordsDifference>('messages.getEmojiKeywords', params, ...args);
 
 export const messagesGetEmojiKeywordsDifference = (dependencies: TgUserApiDependencies) => async (params: {
     lang_code?: string
     from_version?: number
-} = {}) => tgUserApiRequest(dependencies)<EmojiKeywordsDifference>('messages.getEmojiKeywordsDifference', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<EmojiKeywordsDifference>('messages.getEmojiKeywordsDifference', params, ...args);
 
 export const messagesGetEmojiKeywordsLanguages = (dependencies: TgUserApiDependencies) => async (params: {
     lang_codes?: string[]
-} = {}) => tgUserApiRequest(dependencies)<EmojiLanguage[]>('messages.getEmojiKeywordsLanguages', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<EmojiLanguage[]>('messages.getEmojiKeywordsLanguages', params, ...args);
 
 export const messagesGetEmojiURL = (dependencies: TgUserApiDependencies) => async (params: {
     lang_code?: string
-} = {}) => tgUserApiRequest(dependencies)<EmojiURL>('messages.getEmojiURL', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<EmojiURL>('messages.getEmojiURL', params, ...args);
 
 export const foldersEditPeerFolders = (dependencies: TgUserApiDependencies) => async (params: {
     folder_peers?: InputFolderPeer[]
-} = {}) => tgUserApiRequest(dependencies)<Updates>('folders.editPeerFolders', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('folders.editPeerFolders', params, ...args);
 
 export const foldersDeleteFolder = (dependencies: TgUserApiDependencies) => async (params: {
     folder_id?: number
-} = {}) => tgUserApiRequest(dependencies)<Updates>('folders.deleteFolder', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('folders.deleteFolder', params, ...args);
 
 export const messagesGetSearchCounters = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     filters?: MessagesFilter[]
-} = {}) => tgUserApiRequest(dependencies)<MessagesSearchCounter[]>('messages.getSearchCounters', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesSearchCounter[]>('messages.getSearchCounters', params, ...args);
 
 export const channelsGetGroupsForDiscussion = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<MessagesChats>('channels.getGroupsForDiscussion', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChats>('channels.getGroupsForDiscussion', params, ...args);
 
 export const channelsSetDiscussionGroup = (dependencies: TgUserApiDependencies) => async (params: {
     broadcast?: InputChannel
     group?: InputChannel
-} = {}) => tgUserApiRequest(dependencies)<boolean>('channels.setDiscussionGroup', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('channels.setDiscussionGroup', params, ...args);
 
 export const messagesRequestUrlAuth = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     msg_id?: number
     button_id?: number
     url?: string
-} = {}) => tgUserApiRequest(dependencies)<UrlAuthResult>('messages.requestUrlAuth', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<UrlAuthResult>('messages.requestUrlAuth', params, ...args);
 
 export const messagesAcceptUrlAuth = (dependencies: TgUserApiDependencies) => async (params: {
     write_allowed?: true
@@ -8778,11 +8778,11 @@ export const messagesAcceptUrlAuth = (dependencies: TgUserApiDependencies) => as
     msg_id?: number
     button_id?: number
     url?: string
-} = {}) => tgUserApiRequest(dependencies)<UrlAuthResult>('messages.acceptUrlAuth', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<UrlAuthResult>('messages.acceptUrlAuth', params, ...args);
 
 export const messagesHidePeerSettingsBar = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.hidePeerSettingsBar', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.hidePeerSettingsBar', params, ...args);
 
 export const contactsAddContact = (dependencies: TgUserApiDependencies) => async (params: {
     add_phone_privacy_exception?: true
@@ -8790,68 +8790,68 @@ export const contactsAddContact = (dependencies: TgUserApiDependencies) => async
     first_name?: string
     last_name?: string
     phone?: string
-} = {}) => tgUserApiRequest(dependencies)<Updates>('contacts.addContact', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('contacts.addContact', params, ...args);
 
 export const contactsAcceptContact = (dependencies: TgUserApiDependencies) => async (params: {
     id?: InputUser
-} = {}) => tgUserApiRequest(dependencies)<Updates>('contacts.acceptContact', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('contacts.acceptContact', params, ...args);
 
 export const channelsEditCreator = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     user_id?: InputUser
     password?: InputCheckPasswordSRP
-} = {}) => tgUserApiRequest(dependencies)<Updates>('channels.editCreator', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.editCreator', params, ...args);
 
 export const contactsGetLocated = (dependencies: TgUserApiDependencies) => async (params: {
     background?: true
     geo_point?: InputGeoPoint
     self_expires?: number
-} = {}) => tgUserApiRequest(dependencies)<Updates>('contacts.getLocated', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('contacts.getLocated', params, ...args);
 
 export const channelsEditLocation = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     geo_point?: InputGeoPoint
     address?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('channels.editLocation', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('channels.editLocation', params, ...args);
 
 export const channelsToggleSlowMode = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     seconds?: number
-} = {}) => tgUserApiRequest(dependencies)<Updates>('channels.toggleSlowMode', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.toggleSlowMode', params, ...args);
 
 export const messagesGetScheduledHistory = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getScheduledHistory', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getScheduledHistory', params, ...args);
 
 export const messagesGetScheduledMessages = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     id?: number[]
-} = {}) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getScheduledMessages', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getScheduledMessages', params, ...args);
 
 export const messagesSendScheduledMessages = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     id?: number[]
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.sendScheduledMessages', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.sendScheduledMessages', params, ...args);
 
 export const messagesDeleteScheduledMessages = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     id?: number[]
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.deleteScheduledMessages', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.deleteScheduledMessages', params, ...args);
 
 export const accountUploadTheme = (dependencies: TgUserApiDependencies) => async (params: {
     file?: InputFile
     thumb?: InputFile
     file_name?: string
     mime_type?: string
-} = {}) => tgUserApiRequest(dependencies)<Document>('account.uploadTheme', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Document>('account.uploadTheme', params, ...args);
 
 export const accountCreateTheme = (dependencies: TgUserApiDependencies) => async (params: {
     slug?: string
     title?: string
     document?: InputDocument
     settings?: InputThemeSettings[]
-} = {}) => tgUserApiRequest(dependencies)<Theme>('account.createTheme', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Theme>('account.createTheme', params, ...args);
 
 export const accountUpdateTheme = (dependencies: TgUserApiDependencies) => async (params: {
     format?: string
@@ -8860,60 +8860,60 @@ export const accountUpdateTheme = (dependencies: TgUserApiDependencies) => async
     title?: string
     document?: InputDocument
     settings?: InputThemeSettings[]
-} = {}) => tgUserApiRequest(dependencies)<Theme>('account.updateTheme', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Theme>('account.updateTheme', params, ...args);
 
 export const accountSaveTheme = (dependencies: TgUserApiDependencies) => async (params: {
     theme?: InputTheme
     unsave?: boolean
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.saveTheme', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.saveTheme', params, ...args);
 
 export const accountInstallTheme = (dependencies: TgUserApiDependencies) => async (params: {
     dark?: true
     theme?: InputTheme
     format?: string
     base_theme?: BaseTheme
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.installTheme', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.installTheme', params, ...args);
 
 export const accountGetTheme = (dependencies: TgUserApiDependencies) => async (params: {
     format?: string
     theme?: InputTheme
     document_id?: number
-} = {}) => tgUserApiRequest(dependencies)<Theme>('account.getTheme', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Theme>('account.getTheme', params, ...args);
 
 export const accountGetThemes = (dependencies: TgUserApiDependencies) => async (params: {
     format?: string
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<AccountThemes>('account.getThemes', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountThemes>('account.getThemes', params, ...args);
 
 export const authExportLoginToken = (dependencies: TgUserApiDependencies) => async (params: {
     api_id?: number
     api_hash?: string
     except_ids?: number[]
-} = {}) => tgUserApiRequest(dependencies)<AuthLoginToken>('auth.exportLoginToken', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthLoginToken>('auth.exportLoginToken', params, ...args);
 
 export const authImportLoginToken = (dependencies: TgUserApiDependencies) => async (params: {
     token?: Uint8Array
-} = {}) => tgUserApiRequest(dependencies)<AuthLoginToken>('auth.importLoginToken', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthLoginToken>('auth.importLoginToken', params, ...args);
 
 export const authAcceptLoginToken = (dependencies: TgUserApiDependencies) => async (params: {
     token?: Uint8Array
-} = {}) => tgUserApiRequest(dependencies)<Authorization>('auth.acceptLoginToken', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Authorization>('auth.acceptLoginToken', params, ...args);
 
 export const accountSetContentSettings = (dependencies: TgUserApiDependencies) => async (params: {
     sensitive_enabled?: true
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.setContentSettings', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.setContentSettings', params, ...args);
 
 export const accountGetContentSettings = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<AccountContentSettings>('account.getContentSettings', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountContentSettings>('account.getContentSettings', params, ...args);
 
 export const channelsGetInactiveChannels = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<MessagesInactiveChats>('channels.getInactiveChannels', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesInactiveChats>('channels.getInactiveChannels', params, ...args);
 
 export const accountGetMultiWallPapers = (dependencies: TgUserApiDependencies) => async (params: {
     wallpapers?: InputWallPaper[]
-} = {}) => tgUserApiRequest(dependencies)<WallPaper[]>('account.getMultiWallPapers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<WallPaper[]>('account.getMultiWallPapers', params, ...args);
 
 export const messagesGetPollVotes = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
@@ -8921,98 +8921,98 @@ export const messagesGetPollVotes = (dependencies: TgUserApiDependencies) => asy
     option?: Uint8Array
     offset?: string
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesVotesList>('messages.getPollVotes', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesVotesList>('messages.getPollVotes', params, ...args);
 
 export const messagesToggleStickerSets = (dependencies: TgUserApiDependencies) => async (params: {
     uninstall?: true
     archive?: true
     unarchive?: true
     stickersets?: InputStickerSet[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.toggleStickerSets', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.toggleStickerSets', params, ...args);
 
 export const paymentsGetBankCardData = (dependencies: TgUserApiDependencies) => async (params: {
     number?: string
-} = {}) => tgUserApiRequest(dependencies)<PaymentsBankCardData>('payments.getBankCardData', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PaymentsBankCardData>('payments.getBankCardData', params, ...args);
 
 export const messagesGetDialogFilters = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<DialogFilter[]>('messages.getDialogFilters', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<DialogFilter[]>('messages.getDialogFilters', params, ...args);
 
 export const messagesGetSuggestedDialogFilters = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<DialogFilterSuggested[]>('messages.getSuggestedDialogFilters', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<DialogFilterSuggested[]>('messages.getSuggestedDialogFilters', params, ...args);
 
 export const messagesUpdateDialogFilter = (dependencies: TgUserApiDependencies) => async (params: {
     id?: number
     filter?: DialogFilter
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.updateDialogFilter', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.updateDialogFilter', params, ...args);
 
 export const messagesUpdateDialogFiltersOrder = (dependencies: TgUserApiDependencies) => async (params: {
     order?: number[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.updateDialogFiltersOrder', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.updateDialogFiltersOrder', params, ...args);
 
 export const statsGetBroadcastStats = (dependencies: TgUserApiDependencies) => async (params: {
     dark?: true
     channel?: InputChannel
-} = {}) => tgUserApiRequest(dependencies)<StatsBroadcastStats>('stats.getBroadcastStats', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<StatsBroadcastStats>('stats.getBroadcastStats', params, ...args);
 
 export const statsLoadAsyncGraph = (dependencies: TgUserApiDependencies) => async (params: {
     token?: string
     x?: number
-} = {}) => tgUserApiRequest(dependencies)<StatsGraph>('stats.loadAsyncGraph', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<StatsGraph>('stats.loadAsyncGraph', params, ...args);
 
 export const stickersSetStickerSetThumb = (dependencies: TgUserApiDependencies) => async (params: {
     stickerset?: InputStickerSet
     thumb?: InputDocument
-} = {}) => tgUserApiRequest(dependencies)<MessagesStickerSet>('stickers.setStickerSetThumb', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesStickerSet>('stickers.setStickerSetThumb', params, ...args);
 
 export const botsSetBotCommands = (dependencies: TgUserApiDependencies) => async (params: {
     scope?: BotCommandScope
     lang_code?: string
     commands?: BotCommand[]
-} = {}) => tgUserApiRequest(dependencies)<boolean>('bots.setBotCommands', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('bots.setBotCommands', params, ...args);
 
 export const messagesGetOldFeaturedStickers = (dependencies: TgUserApiDependencies) => async (params: {
     offset?: number
     limit?: number
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesFeaturedStickers>('messages.getOldFeaturedStickers', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesFeaturedStickers>('messages.getOldFeaturedStickers', params, ...args);
 
 export const helpGetPromoData = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<HelpPromoData>('help.getPromoData', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<HelpPromoData>('help.getPromoData', params, ...args);
 
 export const helpHidePromoData = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<boolean>('help.hidePromoData', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('help.hidePromoData', params, ...args);
 
 export const phoneSendSignalingData = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPhoneCall
     data?: Uint8Array
-} = {}) => tgUserApiRequest(dependencies)<boolean>('phone.sendSignalingData', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('phone.sendSignalingData', params, ...args);
 
 export const statsGetMegagroupStats = (dependencies: TgUserApiDependencies) => async (params: {
     dark?: true
     channel?: InputChannel
-} = {}) => tgUserApiRequest(dependencies)<StatsMegagroupStats>('stats.getMegagroupStats', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<StatsMegagroupStats>('stats.getMegagroupStats', params, ...args);
 
 export const accountGetGlobalPrivacySettings = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<GlobalPrivacySettings>('account.getGlobalPrivacySettings', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<GlobalPrivacySettings>('account.getGlobalPrivacySettings', params, ...args);
 
 export const accountSetGlobalPrivacySettings = (dependencies: TgUserApiDependencies) => async (params: {
     settings?: GlobalPrivacySettings
-} = {}) => tgUserApiRequest(dependencies)<GlobalPrivacySettings>('account.setGlobalPrivacySettings', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<GlobalPrivacySettings>('account.setGlobalPrivacySettings', params, ...args);
 
 export const helpDismissSuggestion = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     suggestion?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('help.dismissSuggestion', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('help.dismissSuggestion', params, ...args);
 
 export const helpGetCountriesList = (dependencies: TgUserApiDependencies) => async (params: {
     lang_code?: string
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<HelpCountriesList>('help.getCountriesList', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<HelpCountriesList>('help.getCountriesList', params, ...args);
 
 export const messagesGetReplies = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
@@ -9024,25 +9024,25 @@ export const messagesGetReplies = (dependencies: TgUserApiDependencies) => async
     max_id?: number
     min_id?: number
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getReplies', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getReplies', params, ...args);
 
 export const messagesGetDiscussionMessage = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     msg_id?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesDiscussionMessage>('messages.getDiscussionMessage', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesDiscussionMessage>('messages.getDiscussionMessage', params, ...args);
 
 export const messagesReadDiscussion = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     msg_id?: number
     read_max_id?: number
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.readDiscussion', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.readDiscussion', params, ...args);
 
 export const contactsBlockFromReplies = (dependencies: TgUserApiDependencies) => async (params: {
     delete_message?: true
     delete_history?: true
     report_spam?: true
     msg_id?: number
-} = {}) => tgUserApiRequest(dependencies)<Updates>('contacts.blockFromReplies', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('contacts.blockFromReplies', params, ...args);
 
 export const statsGetMessagePublicForwards = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
@@ -9051,17 +9051,17 @@ export const statsGetMessagePublicForwards = (dependencies: TgUserApiDependencie
     offset_peer?: InputPeer
     offset_id?: number
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesMessages>('stats.getMessagePublicForwards', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('stats.getMessagePublicForwards', params, ...args);
 
 export const statsGetMessageStats = (dependencies: TgUserApiDependencies) => async (params: {
     dark?: true
     channel?: InputChannel
     msg_id?: number
-} = {}) => tgUserApiRequest(dependencies)<StatsMessageStats>('stats.getMessageStats', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<StatsMessageStats>('stats.getMessageStats', params, ...args);
 
 export const messagesUnpinAllMessages = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<MessagesAffectedHistory>('messages.unpinAllMessages', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAffectedHistory>('messages.unpinAllMessages', params, ...args);
 
 export const phoneCreateGroupCall = (dependencies: TgUserApiDependencies) => async (params: {
     rtmp_stream?: true
@@ -9069,7 +9069,7 @@ export const phoneCreateGroupCall = (dependencies: TgUserApiDependencies) => asy
     random_id?: number
     title?: string
     schedule_date?: number
-} = {}) => tgUserApiRequest(dependencies)<Updates>('phone.createGroupCall', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('phone.createGroupCall', params, ...args);
 
 export const phoneJoinGroupCall = (dependencies: TgUserApiDependencies) => async (params: {
     muted?: true
@@ -9078,32 +9078,32 @@ export const phoneJoinGroupCall = (dependencies: TgUserApiDependencies) => async
     join_as?: InputPeer
     invite_hash?: string
     params?: DataJSON
-} = {}) => tgUserApiRequest(dependencies)<Updates>('phone.joinGroupCall', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('phone.joinGroupCall', params, ...args);
 
 export const phoneLeaveGroupCall = (dependencies: TgUserApiDependencies) => async (params: {
     call?: InputGroupCall
     source?: number
-} = {}) => tgUserApiRequest(dependencies)<Updates>('phone.leaveGroupCall', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('phone.leaveGroupCall', params, ...args);
 
 export const phoneInviteToGroupCall = (dependencies: TgUserApiDependencies) => async (params: {
     call?: InputGroupCall
     users?: InputUser[]
-} = {}) => tgUserApiRequest(dependencies)<Updates>('phone.inviteToGroupCall', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('phone.inviteToGroupCall', params, ...args);
 
 export const phoneDiscardGroupCall = (dependencies: TgUserApiDependencies) => async (params: {
     call?: InputGroupCall
-} = {}) => tgUserApiRequest(dependencies)<Updates>('phone.discardGroupCall', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('phone.discardGroupCall', params, ...args);
 
 export const phoneToggleGroupCallSettings = (dependencies: TgUserApiDependencies) => async (params: {
     reset_invite_hash?: true
     call?: InputGroupCall
     join_muted?: boolean
-} = {}) => tgUserApiRequest(dependencies)<Updates>('phone.toggleGroupCallSettings', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('phone.toggleGroupCallSettings', params, ...args);
 
 export const phoneGetGroupCall = (dependencies: TgUserApiDependencies) => async (params: {
     call?: InputGroupCall
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<PhoneGroupCall>('phone.getGroupCall', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhoneGroupCall>('phone.getGroupCall', params, ...args);
 
 export const phoneGetGroupParticipants = (dependencies: TgUserApiDependencies) => async (params: {
     call?: InputGroupCall
@@ -9111,42 +9111,42 @@ export const phoneGetGroupParticipants = (dependencies: TgUserApiDependencies) =
     sources?: number[]
     offset?: string
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<PhoneGroupParticipants>('phone.getGroupParticipants', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhoneGroupParticipants>('phone.getGroupParticipants', params, ...args);
 
 export const phoneCheckGroupCall = (dependencies: TgUserApiDependencies) => async (params: {
     call?: InputGroupCall
     sources?: number[]
-} = {}) => tgUserApiRequest(dependencies)<number[]>('phone.checkGroupCall', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<number[]>('phone.checkGroupCall', params, ...args);
 
 export const messagesDeleteChat = (dependencies: TgUserApiDependencies) => async (params: {
     chat_id?: number
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.deleteChat', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.deleteChat', params, ...args);
 
 export const messagesDeletePhoneCallHistory = (dependencies: TgUserApiDependencies) => async (params: {
     revoke?: true
-} = {}) => tgUserApiRequest(dependencies)<MessagesAffectedFoundMessages>('messages.deletePhoneCallHistory', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAffectedFoundMessages>('messages.deletePhoneCallHistory', params, ...args);
 
 export const messagesCheckHistoryImport = (dependencies: TgUserApiDependencies) => async (params: {
     import_head?: string
-} = {}) => tgUserApiRequest(dependencies)<MessagesHistoryImportParsed>('messages.checkHistoryImport', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesHistoryImportParsed>('messages.checkHistoryImport', params, ...args);
 
 export const messagesInitHistoryImport = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     file?: InputFile
     media_count?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesHistoryImport>('messages.initHistoryImport', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesHistoryImport>('messages.initHistoryImport', params, ...args);
 
 export const messagesUploadImportedMedia = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     import_id?: number
     file_name?: string
     media?: InputMedia
-} = {}) => tgUserApiRequest(dependencies)<MessageMedia>('messages.uploadImportedMedia', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessageMedia>('messages.uploadImportedMedia', params, ...args);
 
 export const messagesStartHistoryImport = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     import_id?: number
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.startHistoryImport', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.startHistoryImport', params, ...args);
 
 export const messagesGetExportedChatInvites = (dependencies: TgUserApiDependencies) => async (params: {
     revoked?: true
@@ -9155,12 +9155,12 @@ export const messagesGetExportedChatInvites = (dependencies: TgUserApiDependenci
     offset_date?: number
     offset_link?: string
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesExportedChatInvites>('messages.getExportedChatInvites', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesExportedChatInvites>('messages.getExportedChatInvites', params, ...args);
 
 export const messagesGetExportedChatInvite = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     link?: string
-} = {}) => tgUserApiRequest(dependencies)<MessagesExportedChatInvite>('messages.getExportedChatInvite', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesExportedChatInvite>('messages.getExportedChatInvite', params, ...args);
 
 export const messagesEditExportedChatInvite = (dependencies: TgUserApiDependencies) => async (params: {
     revoked?: true
@@ -9170,21 +9170,21 @@ export const messagesEditExportedChatInvite = (dependencies: TgUserApiDependenci
     usage_limit?: number
     request_needed?: boolean
     title?: string
-} = {}) => tgUserApiRequest(dependencies)<MessagesExportedChatInvite>('messages.editExportedChatInvite', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesExportedChatInvite>('messages.editExportedChatInvite', params, ...args);
 
 export const messagesDeleteRevokedExportedChatInvites = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     admin_id?: InputUser
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.deleteRevokedExportedChatInvites', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.deleteRevokedExportedChatInvites', params, ...args);
 
 export const messagesDeleteExportedChatInvite = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     link?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.deleteExportedChatInvite', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.deleteExportedChatInvite', params, ...args);
 
 export const messagesGetAdminsWithInvites = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<MessagesChatAdminsWithInvites>('messages.getAdminsWithInvites', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChatAdminsWithInvites>('messages.getAdminsWithInvites', params, ...args);
 
 export const messagesGetChatInviteImporters = (dependencies: TgUserApiDependencies) => async (params: {
     requested?: true
@@ -9194,27 +9194,27 @@ export const messagesGetChatInviteImporters = (dependencies: TgUserApiDependenci
     offset_date?: number
     offset_user?: InputUser
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesChatInviteImporters>('messages.getChatInviteImporters', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChatInviteImporters>('messages.getChatInviteImporters', params, ...args);
 
 export const messagesSetHistoryTTL = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     period?: number
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.setHistoryTTL', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.setHistoryTTL', params, ...args);
 
 export const accountReportProfilePhoto = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     photo_id?: InputPhoto
     reason?: ReportReason
     message?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.reportProfilePhoto', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.reportProfilePhoto', params, ...args);
 
 export const channelsConvertToGigagroup = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
-} = {}) => tgUserApiRequest(dependencies)<Updates>('channels.convertToGigagroup', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.convertToGigagroup', params, ...args);
 
 export const messagesCheckHistoryImportPeer = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<MessagesCheckedHistoryImportPeer>('messages.checkHistoryImportPeer', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesCheckedHistoryImportPeer>('messages.checkHistoryImportPeer', params, ...args);
 
 export const phoneToggleGroupCallRecord = (dependencies: TgUserApiDependencies) => async (params: {
     start?: true
@@ -9222,7 +9222,7 @@ export const phoneToggleGroupCallRecord = (dependencies: TgUserApiDependencies) 
     call?: InputGroupCall
     title?: string
     video_portrait?: boolean
-} = {}) => tgUserApiRequest(dependencies)<Updates>('phone.toggleGroupCallRecord', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('phone.toggleGroupCallRecord', params, ...args);
 
 export const phoneEditGroupCallParticipant = (dependencies: TgUserApiDependencies) => async (params: {
     call?: InputGroupCall
@@ -9233,164 +9233,164 @@ export const phoneEditGroupCallParticipant = (dependencies: TgUserApiDependencie
     video_stopped?: boolean
     video_paused?: boolean
     presentation_paused?: boolean
-} = {}) => tgUserApiRequest(dependencies)<Updates>('phone.editGroupCallParticipant', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('phone.editGroupCallParticipant', params, ...args);
 
 export const phoneEditGroupCallTitle = (dependencies: TgUserApiDependencies) => async (params: {
     call?: InputGroupCall
     title?: string
-} = {}) => tgUserApiRequest(dependencies)<Updates>('phone.editGroupCallTitle', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('phone.editGroupCallTitle', params, ...args);
 
 export const phoneGetGroupCallJoinAs = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<PhoneJoinAsPeers>('phone.getGroupCallJoinAs', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhoneJoinAsPeers>('phone.getGroupCallJoinAs', params, ...args);
 
 export const phoneExportGroupCallInvite = (dependencies: TgUserApiDependencies) => async (params: {
     can_self_unmute?: true
     call?: InputGroupCall
-} = {}) => tgUserApiRequest(dependencies)<PhoneExportedGroupCallInvite>('phone.exportGroupCallInvite', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhoneExportedGroupCallInvite>('phone.exportGroupCallInvite', params, ...args);
 
 export const phoneToggleGroupCallStartSubscription = (dependencies: TgUserApiDependencies) => async (params: {
     call?: InputGroupCall
     subscribed?: boolean
-} = {}) => tgUserApiRequest(dependencies)<Updates>('phone.toggleGroupCallStartSubscription', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('phone.toggleGroupCallStartSubscription', params, ...args);
 
 export const phoneStartScheduledGroupCall = (dependencies: TgUserApiDependencies) => async (params: {
     call?: InputGroupCall
-} = {}) => tgUserApiRequest(dependencies)<Updates>('phone.startScheduledGroupCall', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('phone.startScheduledGroupCall', params, ...args);
 
 export const phoneSaveDefaultGroupCallJoinAs = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     join_as?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<boolean>('phone.saveDefaultGroupCallJoinAs', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('phone.saveDefaultGroupCallJoinAs', params, ...args);
 
 export const phoneJoinGroupCallPresentation = (dependencies: TgUserApiDependencies) => async (params: {
     call?: InputGroupCall
     params?: DataJSON
-} = {}) => tgUserApiRequest(dependencies)<Updates>('phone.joinGroupCallPresentation', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('phone.joinGroupCallPresentation', params, ...args);
 
 export const phoneLeaveGroupCallPresentation = (dependencies: TgUserApiDependencies) => async (params: {
     call?: InputGroupCall
-} = {}) => tgUserApiRequest(dependencies)<Updates>('phone.leaveGroupCallPresentation', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('phone.leaveGroupCallPresentation', params, ...args);
 
 export const stickersCheckShortName = (dependencies: TgUserApiDependencies) => async (params: {
     short_name?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('stickers.checkShortName', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('stickers.checkShortName', params, ...args);
 
 export const stickersSuggestShortName = (dependencies: TgUserApiDependencies) => async (params: {
     title?: string
-} = {}) => tgUserApiRequest(dependencies)<StickersSuggestedShortName>('stickers.suggestShortName', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<StickersSuggestedShortName>('stickers.suggestShortName', params, ...args);
 
 export const botsResetBotCommands = (dependencies: TgUserApiDependencies) => async (params: {
     scope?: BotCommandScope
     lang_code?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('bots.resetBotCommands', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('bots.resetBotCommands', params, ...args);
 
 export const botsGetBotCommands = (dependencies: TgUserApiDependencies) => async (params: {
     scope?: BotCommandScope
     lang_code?: string
-} = {}) => tgUserApiRequest(dependencies)<BotCommand[]>('bots.getBotCommands', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<BotCommand[]>('bots.getBotCommands', params, ...args);
 
 export const accountResetPassword = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<AccountResetPasswordResult>('account.resetPassword', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountResetPasswordResult>('account.resetPassword', params, ...args);
 
 export const accountDeclinePasswordReset = (dependencies: TgUserApiDependencies) => async (params: {
 
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.declinePasswordReset', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.declinePasswordReset', params, ...args);
 
 export const authCheckRecoveryPassword = (dependencies: TgUserApiDependencies) => async (params: {
     code?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('auth.checkRecoveryPassword', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('auth.checkRecoveryPassword', params, ...args);
 
 export const accountGetChatThemes = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<AccountThemes>('account.getChatThemes', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountThemes>('account.getChatThemes', params, ...args);
 
 export const messagesSetChatTheme = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     emoticon?: string
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.setChatTheme', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.setChatTheme', params, ...args);
 
 export const channelsViewSponsoredMessage = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     random_id?: Uint8Array
-} = {}) => tgUserApiRequest(dependencies)<boolean>('channels.viewSponsoredMessage', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('channels.viewSponsoredMessage', params, ...args);
 
 export const channelsGetSponsoredMessages = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
-} = {}) => tgUserApiRequest(dependencies)<MessagesSponsoredMessages>('channels.getSponsoredMessages', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesSponsoredMessages>('channels.getSponsoredMessages', params, ...args);
 
 export const messagesGetMessageReadParticipants = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     msg_id?: number
-} = {}) => tgUserApiRequest(dependencies)<number[]>('messages.getMessageReadParticipants', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<number[]>('messages.getMessageReadParticipants', params, ...args);
 
 export const messagesGetSearchResultsCalendar = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     filter?: MessagesFilter
     offset_id?: number
     offset_date?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesSearchResultsCalendar>('messages.getSearchResultsCalendar', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesSearchResultsCalendar>('messages.getSearchResultsCalendar', params, ...args);
 
 export const messagesGetSearchResultsPositions = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     filter?: MessagesFilter
     offset_id?: number
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesSearchResultsPositions>('messages.getSearchResultsPositions', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesSearchResultsPositions>('messages.getSearchResultsPositions', params, ...args);
 
 export const messagesHideChatJoinRequest = (dependencies: TgUserApiDependencies) => async (params: {
     approved?: true
     peer?: InputPeer
     user_id?: InputUser
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.hideChatJoinRequest', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.hideChatJoinRequest', params, ...args);
 
 export const messagesHideAllChatJoinRequests = (dependencies: TgUserApiDependencies) => async (params: {
     approved?: true
     peer?: InputPeer
     link?: string
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.hideAllChatJoinRequests', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.hideAllChatJoinRequests', params, ...args);
 
 export const messagesToggleNoForwards = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     enabled?: boolean
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.toggleNoForwards', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.toggleNoForwards', params, ...args);
 
 export const messagesSaveDefaultSendAs = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     send_as?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.saveDefaultSendAs', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.saveDefaultSendAs', params, ...args);
 
 export const channelsGetSendAs = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<ChannelsSendAsPeers>('channels.getSendAs', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ChannelsSendAsPeers>('channels.getSendAs', params, ...args);
 
 export const accountSetAuthorizationTTL = (dependencies: TgUserApiDependencies) => async (params: {
     authorization_ttl_days?: number
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.setAuthorizationTTL', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.setAuthorizationTTL', params, ...args);
 
 export const accountChangeAuthorizationSettings = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: number
     encrypted_requests_disabled?: boolean
     call_requests_disabled?: boolean
-} = {}) => tgUserApiRequest(dependencies)<boolean>('account.changeAuthorizationSettings', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.changeAuthorizationSettings', params, ...args);
 
 export const channelsDeleteParticipantHistory = (dependencies: TgUserApiDependencies) => async (params: {
     channel?: InputChannel
     participant?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<MessagesAffectedHistory>('channels.deleteParticipantHistory', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAffectedHistory>('channels.deleteParticipantHistory', params, ...args);
 
 export const messagesSendReaction = (dependencies: TgUserApiDependencies) => async (params: {
     big?: true
     peer?: InputPeer
     msg_id?: number
     reaction?: string
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.sendReaction', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.sendReaction', params, ...args);
 
 export const messagesGetMessagesReactions = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     id?: number[]
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.getMessagesReactions', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.getMessagesReactions', params, ...args);
 
 export const messagesGetMessageReactionsList = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
@@ -9398,20 +9398,20 @@ export const messagesGetMessageReactionsList = (dependencies: TgUserApiDependenc
     reaction?: string
     offset?: string
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesMessageReactionsList>('messages.getMessageReactionsList', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessageReactionsList>('messages.getMessageReactionsList', params, ...args);
 
 export const messagesSetChatAvailableReactions = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     available_reactions?: string[]
-} = {}) => tgUserApiRequest(dependencies)<Updates>('messages.setChatAvailableReactions', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.setChatAvailableReactions', params, ...args);
 
 export const messagesGetAvailableReactions = (dependencies: TgUserApiDependencies) => async (params: {
     hash?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesAvailableReactions>('messages.getAvailableReactions', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAvailableReactions>('messages.getAvailableReactions', params, ...args);
 
 export const messagesSetDefaultReaction = (dependencies: TgUserApiDependencies) => async (params: {
     reaction?: string
-} = {}) => tgUserApiRequest(dependencies)<boolean>('messages.setDefaultReaction', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.setDefaultReaction', params, ...args);
 
 export const messagesTranslateText = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
@@ -9419,7 +9419,7 @@ export const messagesTranslateText = (dependencies: TgUserApiDependencies) => as
     text?: string
     from_lang?: string
     to_lang?: string
-} = {}) => tgUserApiRequest(dependencies)<MessagesTranslatedText>('messages.translateText', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesTranslatedText>('messages.translateText', params, ...args);
 
 export const messagesGetUnreadReactions = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
@@ -9428,30 +9428,30 @@ export const messagesGetUnreadReactions = (dependencies: TgUserApiDependencies) 
     limit?: number
     max_id?: number
     min_id?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getUnreadReactions', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getUnreadReactions', params, ...args);
 
 export const messagesReadReactions = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-} = {}) => tgUserApiRequest(dependencies)<MessagesAffectedHistory>('messages.readReactions', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAffectedHistory>('messages.readReactions', params, ...args);
 
 export const contactsResolvePhone = (dependencies: TgUserApiDependencies) => async (params: {
     phone?: string
-} = {}) => tgUserApiRequest(dependencies)<ContactsResolvedPeer>('contacts.resolvePhone', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ContactsResolvedPeer>('contacts.resolvePhone', params, ...args);
 
 export const phoneGetGroupCallStreamChannels = (dependencies: TgUserApiDependencies) => async (params: {
     call?: InputGroupCall
-} = {}) => tgUserApiRequest(dependencies)<PhoneGroupCallStreamChannels>('phone.getGroupCallStreamChannels', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhoneGroupCallStreamChannels>('phone.getGroupCallStreamChannels', params, ...args);
 
 export const phoneGetGroupCallStreamRtmpUrl = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     revoke?: boolean
-} = {}) => tgUserApiRequest(dependencies)<PhoneGroupCallStreamRtmpUrl>('phone.getGroupCallStreamRtmpUrl', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhoneGroupCallStreamRtmpUrl>('phone.getGroupCallStreamRtmpUrl', params, ...args);
 
 export const messagesSearchSentMedia = (dependencies: TgUserApiDependencies) => async (params: {
     q?: string
     filter?: MessagesFilter
     limit?: number
-} = {}) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.searchSentMedia', params);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.searchSentMedia', params, ...args);
 
 export const makeTgUserApiMethods = (dependencies: TgUserApiDependencies) => ({
     invokeAfterMsg: invokeAfterMsg(dependencies),

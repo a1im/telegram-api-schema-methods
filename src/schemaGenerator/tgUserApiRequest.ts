@@ -13,14 +13,14 @@ export interface TgUserApiRequestResponseError {
 export type TgUserApiRequestResponse<Data = any> = TgUserApiRequestResponseSuccess<Data> | TgUserApiRequestResponseError;
 
 export interface TgUserApiRequest {
-    (method: string, params: any): Promise<any>
+    (method: string, params: any, ...args: any[]): Promise<any>
 }
 
 export interface TgUserApiDependencies {
     request: TgUserApiRequest
 }
 
-export const tgUserApiRequest = (dependencies: TgUserApiDependencies) => async <Data = any>(method: string, params: any): Promise<TgUserApiRequestResponse<Data>> => dependencies.request(method, params)
+export const tgUserApiRequest = (dependencies: TgUserApiDependencies) => async <Data = any>(method: string, params: any, ...args: any[]): Promise<TgUserApiRequestResponse<Data>> => dependencies.request(method, params, ...args)
     .then((data: any) => ({
         success: true,
         data,

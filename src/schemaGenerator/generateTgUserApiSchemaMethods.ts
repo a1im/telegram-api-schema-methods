@@ -34,7 +34,7 @@ export const generateTgUserApiSchemaMethods = async () => {
             return [
                 `export const ${itMethod.methodName} = (dependencies: TgUserApiDependencies) => async (params: {`,
                 params,
-                `} = {}) => tgUserApiRequest(dependencies)<${itMethod.returnTypeName}>('${itMethod.method}', params);`,
+                `} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<${itMethod.returnTypeName}>('${itMethod.method}', params, ...args);`,
             ].join('\n');
         });
     const makeTgUserApiMethods = [
