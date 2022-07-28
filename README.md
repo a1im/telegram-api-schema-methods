@@ -1,7 +1,7 @@
-# tg-user-api-shcema-methods
+# telegram-api-schema-methods
 
-[![NPM](https://img.shields.io/npm/v/tg-user-api-shcema-methods.svg?style=flat-square)](https://www.npmjs.com/package/tg-user-api-shcema-methods)
-[![Downloads](https://img.shields.io/npm/dm/tg-user-api-shcema-methods?style=flat-square)](https://www.npmjs.com/package/tg-user-api-shcema-methods)
+[![NPM](https://img.shields.io/npm/v/telegram-api-schema-methods.svg?style=flat-square)](https://www.npmjs.com/package/telegram-api-schema-methods)
+[![Downloads](https://img.shields.io/npm/dm/telegram-api-schema-methods?style=flat-square)](https://www.npmjs.com/package/telegram-api-schema-methods)
 
 The library helps to type all methods for the Telegram User API (https://core.telegram.org/methods)
 
@@ -9,9 +9,9 @@ The library helps to type all methods for the Telegram User API (https://core.te
 
 ## Install
 ```
-yarn add tg-user-api-shcema-methods
+yarn add telegram-api-schema-methods
 # or
-npm i tg-user-api-shcema-methods
+npm i telegram-api-schema-methods
 ```
 
 ## Example
@@ -19,7 +19,7 @@ npm i tg-user-api-shcema-methods
 Example using the @mtproto/core library, which is optional (https://github.com/alik0211/mtproto-core)
 
 ```ts
-import { helpGetNearestDc, makeTgUserApiMethods } from 'tg-user-api-shcema-methods';
+import { makeTgUserApiMethods } from 'telegram-api-schema-methods';
 import MTProto from '@mtproto/core/envs/node';
 import path from 'path';
 
