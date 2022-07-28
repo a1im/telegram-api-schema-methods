@@ -1,6 +1,6 @@
 {
   "name": "tg-user-api-shcema-methods",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Methods for working with Telegram API",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
