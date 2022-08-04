@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "generate": "ts-node src/generate.ts",
-    "build": "yarn generate & tsc"
+    "build": "tsc"
   },
   "keywords": [
     "telegram",
