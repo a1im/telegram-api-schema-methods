@@ -1,6 +1,6 @@
 {
   "name": "telegram-api-schema-methods",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Methods for working with Telegram API",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
