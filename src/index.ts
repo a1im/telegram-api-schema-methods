@@ -14,7 +14,7 @@ export interface PredicateInputPeerSelf {
 
 export interface PredicateInputPeerChat {
     _: 'inputPeerChat'
-    chat_id: number
+    chat_id: string
 }
 
 export interface PredicateInputUserEmpty {
@@ -27,7 +27,7 @@ export interface PredicateInputUserSelf {
 
 export interface PredicateInputPhoneContact {
     _: 'inputPhoneContact'
-    client_id: number
+    client_id: string
     phone: string
     first_name: string
     last_name: string
@@ -35,7 +35,7 @@ export interface PredicateInputPhoneContact {
 
 export interface PredicateInputFile {
     _: 'inputFile'
-    id: number
+    id: string
     parts: number
     name: string
     md5_checksum: string
@@ -104,27 +104,27 @@ export interface PredicateInputPhotoEmpty {
 
 export interface PredicateInputPhoto {
     _: 'inputPhoto'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     file_reference: Uint8Array
 }
 
 export interface PredicateInputFileLocation {
     _: 'inputFileLocation'
-    volume_id: number
+    volume_id: string
     local_id: number
-    secret: number
+    secret: string
     file_reference: Uint8Array
 }
 
 export interface PredicatePeerUser {
     _: 'peerUser'
-    user_id: number
+    user_id: string
 }
 
 export interface PredicatePeerChat {
     _: 'peerChat'
-    chat_id: number
+    chat_id: string
 }
 
 export interface PredicateStorageFileUnknown {
@@ -169,7 +169,7 @@ export interface PredicateStorageFileWebp {
 
 export interface PredicateUserEmpty {
     _: 'userEmpty'
-    id: number
+    id: string
 }
 
 export interface PredicateUserProfilePhotoEmpty {
@@ -179,7 +179,7 @@ export interface PredicateUserProfilePhotoEmpty {
 export interface PredicateUserProfilePhoto {
     _: 'userProfilePhoto'
     has_video?: true
-    photo_id: number
+    photo_id: string
     stripped_thumb?: Uint8Array
     dc_id: number
 }
@@ -200,7 +200,7 @@ export interface PredicateUserStatusOffline {
 
 export interface PredicateChatEmpty {
     _: 'chatEmpty'
-    id: number
+    id: string
 }
 
 export interface PredicateChat {
@@ -211,7 +211,7 @@ export interface PredicateChat {
     call_active?: true
     call_not_empty?: true
     noforwards?: true
-    id: number
+    id: string
     title: string
     photo: ChatPhoto
     participants_count: number
@@ -224,7 +224,7 @@ export interface PredicateChat {
 
 export interface PredicateChatForbidden {
     _: 'chatForbidden'
-    id: number
+    id: string
     title: string
 }
 
@@ -232,7 +232,7 @@ export interface PredicateChatFull {
     _: 'chatFull'
     can_set_username?: true
     has_scheduled?: true
-    id: number
+    id: string
     about: string
     participants: ChatParticipants
     chat_photo?: Photo
@@ -246,26 +246,26 @@ export interface PredicateChatFull {
     groupcall_default_join_as?: Peer
     theme_emoticon?: string
     requests_pending?: number
-    recent_requesters?: number[]
+    recent_requesters?: string[]
     available_reactions?: string[]
 }
 
 export interface PredicateChatParticipant {
     _: 'chatParticipant'
-    user_id: number
-    inviter_id: number
+    user_id: string
+    inviter_id: string
     date: number
 }
 
 export interface PredicateChatParticipantsForbidden {
     _: 'chatParticipantsForbidden'
-    chat_id: number
+    chat_id: string
     self_participant?: ChatParticipant
 }
 
 export interface PredicateChatParticipants {
     _: 'chatParticipants'
-    chat_id: number
+    chat_id: string
     participants: ChatParticipant[]
     version: number
 }
@@ -277,7 +277,7 @@ export interface PredicateChatPhotoEmpty {
 export interface PredicateChatPhoto {
     _: 'chatPhoto'
     has_video?: true
-    photo_id: number
+    photo_id: string
     stripped_thumb?: Uint8Array
     dc_id: number
 }
@@ -304,7 +304,7 @@ export interface PredicateMessage {
     from_id?: Peer
     peer_id: Peer
     fwd_from?: MessageFwdHeader
-    via_bot_id?: number
+    via_bot_id?: string
     reply_to?: MessageReplyHeader
     date: number
     message: string
@@ -316,7 +316,7 @@ export interface PredicateMessage {
     replies?: MessageReplies
     edit_date?: number
     post_author?: string
-    grouped_id?: number
+    grouped_id?: string
     reactions?: MessageReactions
     restriction_reason?: RestrictionReason[]
     ttl_period?: number
@@ -360,7 +360,7 @@ export interface PredicateMessageMediaContact {
     first_name: string
     last_name: string
     vcard: string
-    user_id: number
+    user_id: string
 }
 
 export interface PredicateMessageMediaUnsupported {
@@ -374,7 +374,7 @@ export interface PredicateMessageActionEmpty {
 export interface PredicateMessageActionChatCreate {
     _: 'messageActionChatCreate'
     title: string
-    users: number[]
+    users: string[]
 }
 
 export interface PredicateMessageActionChatEditTitle {
@@ -393,12 +393,12 @@ export interface PredicateMessageActionChatDeletePhoto {
 
 export interface PredicateMessageActionChatAddUser {
     _: 'messageActionChatAddUser'
-    users: number[]
+    users: string[]
 }
 
 export interface PredicateMessageActionChatDeleteUser {
     _: 'messageActionChatDeleteUser'
-    user_id: number
+    user_id: string
 }
 
 export interface PredicateDialog {
@@ -420,14 +420,14 @@ export interface PredicateDialog {
 
 export interface PredicatePhotoEmpty {
     _: 'photoEmpty'
-    id: number
+    id: string
 }
 
 export interface PredicatePhoto {
     _: 'photo'
     has_stickers?: true
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     file_reference: Uint8Array
     date: number
     sizes: PhotoSize[]
@@ -464,7 +464,7 @@ export interface PredicateGeoPoint {
     _: 'geoPoint'
     long: number
     lat: number
-    access_hash: number
+    access_hash: string
     accuracy_radius?: number
 }
 
@@ -486,7 +486,7 @@ export interface PredicateAuthAuthorization {
 
 export interface PredicateAuthExportedAuthorization {
     _: 'auth.exportedAuthorization'
-    id: number
+    id: string
     bytes: Uint8Array
 }
 
@@ -537,12 +537,12 @@ export interface PredicatePeerSettings {
 
 export interface PredicateWallPaper {
     _: 'wallPaper'
-    id: number
+    id: string
     creator?: true
     default?: true
     pattern?: true
     dark?: true
-    access_hash: number
+    access_hash: string
     slug: string
     document: Document
     settings?: WallPaperSettings
@@ -576,7 +576,7 @@ export interface PredicateUserFull {
     can_pin_message?: true
     has_scheduled?: true
     video_calls_available?: true
-    id: number
+    id: string
     about?: string
     settings: PeerSettings
     profile_photo?: Photo
@@ -592,19 +592,19 @@ export interface PredicateUserFull {
 
 export interface PredicateContact {
     _: 'contact'
-    user_id: number
+    user_id: string
     mutual: boolean
 }
 
 export interface PredicateImportedContact {
     _: 'importedContact'
-    user_id: number
-    client_id: number
+    user_id: string
+    client_id: string
 }
 
 export interface PredicateContactStatus {
     _: 'contactStatus'
-    user_id: number
+    user_id: string
     status: UserStatus
 }
 
@@ -623,7 +623,7 @@ export interface PredicateContactsImportedContacts {
     _: 'contacts.importedContacts'
     imported: ImportedContact[]
     popular_invites: PopularContact[]
-    retry_contacts: number[]
+    retry_contacts: string[]
     users: User[]
 }
 
@@ -734,7 +734,7 @@ export interface PredicateUpdateNewMessage {
 export interface PredicateUpdateMessageID {
     _: 'updateMessageID'
     id: number
-    random_id: number
+    random_id: string
 }
 
 export interface PredicateUpdateDeleteMessages {
@@ -746,13 +746,13 @@ export interface PredicateUpdateDeleteMessages {
 
 export interface PredicateUpdateUserTyping {
     _: 'updateUserTyping'
-    user_id: number
+    user_id: string
     action: SendMessageAction
 }
 
 export interface PredicateUpdateChatUserTyping {
     _: 'updateChatUserTyping'
-    chat_id: number
+    chat_id: string
     from_id: Peer
     action: SendMessageAction
 }
@@ -764,13 +764,13 @@ export interface PredicateUpdateChatParticipants {
 
 export interface PredicateUpdateUserStatus {
     _: 'updateUserStatus'
-    user_id: number
+    user_id: string
     status: UserStatus
 }
 
 export interface PredicateUpdateUserName {
     _: 'updateUserName'
-    user_id: number
+    user_id: string
     first_name: string
     last_name: string
     username: string
@@ -778,7 +778,7 @@ export interface PredicateUpdateUserName {
 
 export interface PredicateUpdateUserPhoto {
     _: 'updateUserPhoto'
-    user_id: number
+    user_id: string
     date: number
     photo: UserProfilePhoto
     previous: boolean
@@ -830,13 +830,13 @@ export interface PredicateUpdateShortMessage {
     media_unread?: true
     silent?: true
     id: number
-    user_id: number
+    user_id: string
     message: string
     pts: number
     pts_count: number
     date: number
     fwd_from?: MessageFwdHeader
-    via_bot_id?: number
+    via_bot_id?: string
     reply_to?: MessageReplyHeader
     entities?: MessageEntity[]
     ttl_period?: number
@@ -849,14 +849,14 @@ export interface PredicateUpdateShortChatMessage {
     media_unread?: true
     silent?: true
     id: number
-    from_id: number
-    chat_id: number
+    from_id: string
+    chat_id: string
     message: string
     pts: number
     pts_count: number
     date: number
     fwd_from?: MessageFwdHeader
-    via_bot_id?: number
+    via_bot_id?: string
     reply_to?: MessageReplyHeader
     entities?: MessageEntity[]
     ttl_period?: number
@@ -1043,32 +1043,32 @@ export interface PredicateEncryptedChatEmpty {
 export interface PredicateEncryptedChatWaiting {
     _: 'encryptedChatWaiting'
     id: number
-    access_hash: number
+    access_hash: string
     date: number
-    admin_id: number
-    participant_id: number
+    admin_id: string
+    participant_id: string
 }
 
 export interface PredicateEncryptedChatRequested {
     _: 'encryptedChatRequested'
     folder_id?: number
     id: number
-    access_hash: number
+    access_hash: string
     date: number
-    admin_id: number
-    participant_id: number
+    admin_id: string
+    participant_id: string
     g_a: Uint8Array
 }
 
 export interface PredicateEncryptedChat {
     _: 'encryptedChat'
     id: number
-    access_hash: number
+    access_hash: string
     date: number
-    admin_id: number
-    participant_id: number
+    admin_id: string
+    participant_id: string
     g_a_or_b: Uint8Array
-    key_fingerprint: number
+    key_fingerprint: string
 }
 
 export interface PredicateEncryptedChatDiscarded {
@@ -1080,7 +1080,7 @@ export interface PredicateEncryptedChatDiscarded {
 export interface PredicateInputEncryptedChat {
     _: 'inputEncryptedChat'
     chat_id: number
-    access_hash: number
+    access_hash: string
 }
 
 export interface PredicateEncryptedFileEmpty {
@@ -1089,8 +1089,8 @@ export interface PredicateEncryptedFileEmpty {
 
 export interface PredicateEncryptedFile {
     _: 'encryptedFile'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     size: number
     dc_id: number
     key_fingerprint: number
@@ -1102,7 +1102,7 @@ export interface PredicateInputEncryptedFileEmpty {
 
 export interface PredicateInputEncryptedFileUploaded {
     _: 'inputEncryptedFileUploaded'
-    id: number
+    id: string
     parts: number
     md5_checksum: string
     key_fingerprint: number
@@ -1110,19 +1110,19 @@ export interface PredicateInputEncryptedFileUploaded {
 
 export interface PredicateInputEncryptedFile {
     _: 'inputEncryptedFile'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
 }
 
 export interface PredicateInputEncryptedFileLocation {
     _: 'inputEncryptedFileLocation'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
 }
 
 export interface PredicateEncryptedMessage {
     _: 'encryptedMessage'
-    random_id: number
+    random_id: string
     chat_id: number
     date: number
     bytes: Uint8Array
@@ -1131,7 +1131,7 @@ export interface PredicateEncryptedMessage {
 
 export interface PredicateEncryptedMessageService {
     _: 'encryptedMessageService'
-    random_id: number
+    random_id: string
     chat_id: number
     date: number
     bytes: Uint8Array
@@ -1163,31 +1163,31 @@ export interface PredicateMessagesSentEncryptedFile {
 
 export interface PredicateInputFileBig {
     _: 'inputFileBig'
-    id: number
+    id: string
     parts: number
     name: string
 }
 
 export interface PredicateInputEncryptedFileBigUploaded {
     _: 'inputEncryptedFileBigUploaded'
-    id: number
+    id: string
     parts: number
     key_fingerprint: number
 }
 
 export interface PredicateUpdateChatParticipantAdd {
     _: 'updateChatParticipantAdd'
-    chat_id: number
-    user_id: number
-    inviter_id: number
+    chat_id: string
+    user_id: string
+    inviter_id: string
     date: number
     version: number
 }
 
 export interface PredicateUpdateChatParticipantDelete {
     _: 'updateChatParticipantDelete'
-    chat_id: number
-    user_id: number
+    chat_id: string
+    user_id: string
     version: number
 }
 
@@ -1227,28 +1227,28 @@ export interface PredicateInputDocumentEmpty {
 
 export interface PredicateInputDocument {
     _: 'inputDocument'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     file_reference: Uint8Array
 }
 
 export interface PredicateInputDocumentFileLocation {
     _: 'inputDocumentFileLocation'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     file_reference: Uint8Array
     thumb_size: string
 }
 
 export interface PredicateDocumentEmpty {
     _: 'documentEmpty'
-    id: number
+    id: string
 }
 
 export interface PredicateDocument {
     _: 'document'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     file_reference: Uint8Array
     date: number
     mime_type: string
@@ -1408,7 +1408,7 @@ export interface PredicatePrivacyValueAllowAll {
 
 export interface PredicatePrivacyValueAllowUsers {
     _: 'privacyValueAllowUsers'
-    users: number[]
+    users: string[]
 }
 
 export interface PredicatePrivacyValueDisallowContacts {
@@ -1421,7 +1421,7 @@ export interface PredicatePrivacyValueDisallowAll {
 
 export interface PredicatePrivacyValueDisallowUsers {
     _: 'privacyValueDisallowUsers'
-    users: number[]
+    users: string[]
 }
 
 export interface PredicateAccountPrivacyRules {
@@ -1438,7 +1438,7 @@ export interface PredicateAccountDaysTTL {
 
 export interface PredicateUpdateUserPhone {
     _: 'updateUserPhone'
-    user_id: number
+    user_id: string
     phone: string
 }
 
@@ -1489,14 +1489,14 @@ export interface PredicateMessagesStickersNotModified {
 
 export interface PredicateMessagesStickers {
     _: 'messages.stickers'
-    hash: number
+    hash: string
     stickers: Document[]
 }
 
 export interface PredicateStickerPack {
     _: 'stickerPack'
     emoticon: string
-    documents: number[]
+    documents: string[]
 }
 
 export interface PredicateMessagesAllStickersNotModified {
@@ -1505,7 +1505,7 @@ export interface PredicateMessagesAllStickersNotModified {
 
 export interface PredicateMessagesAllStickers {
     _: 'messages.allStickers'
-    hash: number
+    hash: string
     sets: StickerSet[]
 }
 
@@ -1542,18 +1542,18 @@ export interface PredicateUpdateWebPage {
 
 export interface PredicateWebPageEmpty {
     _: 'webPageEmpty'
-    id: number
+    id: string
 }
 
 export interface PredicateWebPagePending {
     _: 'webPagePending'
-    id: number
+    id: string
     date: number
 }
 
 export interface PredicateWebPage {
     _: 'webPage'
-    id: number
+    id: string
     url: string
     display_url: string
     hash: number
@@ -1585,7 +1585,7 @@ export interface PredicateAuthorization {
     password_pending?: true
     encrypted_requests_disabled?: true
     call_requests_disabled?: true
-    hash: number
+    hash: string
     device_model: string
     platform: string
     system_version: string
@@ -1612,7 +1612,7 @@ export interface PredicateAccountPassword {
     has_password?: true
     current_algo?: PasswordKdfAlgo
     srp_B?: Uint8Array
-    srp_id?: number
+    srp_id?: string
     hint?: string
     email_unconfirmed_pattern?: string
     new_algo: PasswordKdfAlgo
@@ -1673,7 +1673,7 @@ export interface PredicateChatInviteExported {
     permanent?: true
     request_needed?: true
     link: string
-    admin_id: number
+    admin_id: string
     date: number
     start_date?: number
     expire_date?: number
@@ -1704,7 +1704,7 @@ export interface PredicateChatInvite {
 
 export interface PredicateMessageActionChatJoinedByLink {
     _: 'messageActionChatJoinedByLink'
-    inviter_id: number
+    inviter_id: string
 }
 
 export interface PredicateUpdateReadMessagesContents {
@@ -1720,8 +1720,8 @@ export interface PredicateInputStickerSetEmpty {
 
 export interface PredicateInputStickerSetID {
     _: 'inputStickerSetID'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
 }
 
 export interface PredicateInputStickerSetShortName {
@@ -1738,8 +1738,8 @@ export interface PredicateStickerSet {
     videos?: true
     emojis?: true
     installed_date?: number
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     title: string
     short_name: string
     thumbs?: PhotoSize[]
@@ -1773,8 +1773,8 @@ export interface PredicateUser {
     scam?: true
     apply_min_photo?: true
     fake?: true
-    id: number
-    access_hash?: number
+    id: string
+    access_hash?: string
     first_name?: string
     last_name?: string
     username?: string
@@ -1795,7 +1795,7 @@ export interface PredicateBotCommand {
 
 export interface PredicateBotInfo {
     _: 'botInfo'
-    user_id: number
+    user_id: string
     description: string
     commands: BotCommand[]
 }
@@ -1833,14 +1833,14 @@ export interface PredicateReplyKeyboardMarkup {
 
 export interface PredicateInputPeerUser {
     _: 'inputPeerUser'
-    user_id: number
-    access_hash: number
+    user_id: string
+    access_hash: string
 }
 
 export interface PredicateInputUser {
     _: 'inputUser'
-    user_id: number
-    access_hash: number
+    user_id: string
+    access_hash: string
 }
 
 export interface PredicateMessageEntityUnknown {
@@ -1929,19 +1929,19 @@ export interface PredicateInputChannelEmpty {
 
 export interface PredicateInputChannel {
     _: 'inputChannel'
-    channel_id: number
-    access_hash: number
+    channel_id: string
+    access_hash: string
 }
 
 export interface PredicatePeerChannel {
     _: 'peerChannel'
-    channel_id: number
+    channel_id: string
 }
 
 export interface PredicateInputPeerChannel {
     _: 'inputPeerChannel'
-    channel_id: number
-    access_hash: number
+    channel_id: string
+    access_hash: string
 }
 
 export interface PredicateChannel {
@@ -1965,8 +1965,8 @@ export interface PredicateChannel {
     noforwards?: true
     join_to_send?: true
     join_request?: true
-    id: number
-    access_hash?: number
+    id: string
+    access_hash?: string
     title: string
     username?: string
     photo: ChatPhoto
@@ -1982,8 +1982,8 @@ export interface PredicateChannelForbidden {
     _: 'channelForbidden'
     broadcast?: true
     megagroup?: true
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     title: string
     until_date?: number
 }
@@ -2005,7 +2005,7 @@ export interface PredicateChannelFull {
     has_scheduled?: true
     can_view_stats?: true
     blocked?: true
-    id: number
+    id: string
     about: string
     participants_count?: number
     admins_count?: number
@@ -2019,13 +2019,13 @@ export interface PredicateChannelFull {
     notify_settings: PeerNotifySettings
     exported_invite?: ExportedChatInvite
     bot_info: BotInfo[]
-    migrated_from_chat_id?: number
+    migrated_from_chat_id?: string
     migrated_from_max_id?: number
     pinned_msg_id?: number
     stickerset?: StickerSet
     available_min_id?: number
     folder_id?: number
-    linked_chat_id?: number
+    linked_chat_id?: string
     location?: ChannelLocation
     slowmode_seconds?: number
     slowmode_next_send_date?: number
@@ -2037,7 +2037,7 @@ export interface PredicateChannelFull {
     groupcall_default_join_as?: Peer
     theme_emoticon?: string
     requests_pending?: number
-    recent_requesters?: number[]
+    recent_requesters?: string[]
     default_send_as?: Peer
     available_reactions?: string[]
 }
@@ -2066,13 +2066,13 @@ export interface PredicateMessageActionChannelCreate {
 
 export interface PredicateUpdateChannelTooLong {
     _: 'updateChannelTooLong'
-    channel_id: number
+    channel_id: string
     pts?: number
 }
 
 export interface PredicateUpdateChannel {
     _: 'updateChannel'
-    channel_id: number
+    channel_id: string
 }
 
 export interface PredicateUpdateNewChannelMessage {
@@ -2085,7 +2085,7 @@ export interface PredicateUpdateNewChannelMessage {
 export interface PredicateUpdateReadChannelInbox {
     _: 'updateReadChannelInbox'
     folder_id?: number
-    channel_id: number
+    channel_id: string
     max_id: number
     still_unread_count: number
     pts: number
@@ -2093,7 +2093,7 @@ export interface PredicateUpdateReadChannelInbox {
 
 export interface PredicateUpdateDeleteChannelMessages {
     _: 'updateDeleteChannelMessages'
-    channel_id: number
+    channel_id: string
     messages: number[]
     pts: number
     pts_count: number
@@ -2101,7 +2101,7 @@ export interface PredicateUpdateDeleteChannelMessages {
 
 export interface PredicateUpdateChannelMessageViews {
     _: 'updateChannelMessageViews'
-    channel_id: number
+    channel_id: string
     id: number
     views: number
 }
@@ -2146,21 +2146,21 @@ export interface PredicateChannelMessagesFilter {
 
 export interface PredicateChannelParticipant {
     _: 'channelParticipant'
-    user_id: number
+    user_id: string
     date: number
 }
 
 export interface PredicateChannelParticipantSelf {
     _: 'channelParticipantSelf'
     via_request?: true
-    user_id: number
-    inviter_id: number
+    user_id: string
+    inviter_id: string
     date: number
 }
 
 export interface PredicateChannelParticipantCreator {
     _: 'channelParticipantCreator'
-    user_id: number
+    user_id: string
     admin_rights: ChatAdminRights
     rank?: string
 }
@@ -2195,33 +2195,33 @@ export interface PredicateChannelsChannelParticipant {
 
 export interface PredicateChatParticipantCreator {
     _: 'chatParticipantCreator'
-    user_id: number
+    user_id: string
 }
 
 export interface PredicateChatParticipantAdmin {
     _: 'chatParticipantAdmin'
-    user_id: number
-    inviter_id: number
+    user_id: string
+    inviter_id: string
     date: number
 }
 
 export interface PredicateUpdateChatParticipantAdmin {
     _: 'updateChatParticipantAdmin'
-    chat_id: number
-    user_id: number
+    chat_id: string
+    user_id: string
     is_admin: boolean
     version: number
 }
 
 export interface PredicateMessageActionChatMigrateTo {
     _: 'messageActionChatMigrateTo'
-    channel_id: number
+    channel_id: string
 }
 
 export interface PredicateMessageActionChannelMigrateFrom {
     _: 'messageActionChannelMigrateFrom'
     title: string
-    chat_id: number
+    chat_id: string
 }
 
 export interface PredicateChannelParticipantsBots {
@@ -2246,7 +2246,7 @@ export interface PredicateUpdateStickerSetsOrder {
     _: 'updateStickerSetsOrder'
     masks?: true
     emojis?: true
-    order: number[]
+    order: string[]
 }
 
 export interface PredicateUpdateStickerSets {
@@ -2259,7 +2259,7 @@ export interface PredicateMessagesSavedGifsNotModified {
 
 export interface PredicateMessagesSavedGifs {
     _: 'messages.savedGifs'
-    hash: number
+    hash: string
     gifs: Document[]
 }
 
@@ -2324,7 +2324,7 @@ export interface PredicateBotInlineResult {
 export interface PredicateMessagesBotResults {
     _: 'messages.botResults'
     gallery?: true
-    query_id: number
+    query_id: string
     next_offset?: string
     switch_pm?: InlineBotSwitchPM
     results: BotInlineResult[]
@@ -2334,8 +2334,8 @@ export interface PredicateMessagesBotResults {
 
 export interface PredicateUpdateBotInlineQuery {
     _: 'updateBotInlineQuery'
-    query_id: number
-    user_id: number
+    query_id: string
+    user_id: string
     query: string
     geo?: GeoPoint
     peer_type?: InlineQueryPeerType
@@ -2344,7 +2344,7 @@ export interface PredicateUpdateBotInlineQuery {
 
 export interface PredicateUpdateBotInlineSend {
     _: 'updateBotInlineSend'
-    user_id: number
+    user_id: string
     query: string
     geo?: GeoPoint
     id: string
@@ -2476,11 +2476,11 @@ export interface PredicateMessagesBotCallbackAnswer {
 
 export interface PredicateUpdateBotCallbackQuery {
     _: 'updateBotCallbackQuery'
-    query_id: number
-    user_id: number
+    query_id: string
+    user_id: string
     peer: Peer
     msg_id: number
-    chat_instance: number
+    chat_instance: string
     data?: Uint8Array
     game_short_name?: string
 }
@@ -2587,16 +2587,16 @@ export interface PredicateBotInlineMediaResult {
 export interface PredicateInputBotInlineMessageID {
     _: 'inputBotInlineMessageID'
     dc_id: number
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
 }
 
 export interface PredicateUpdateInlineBotCallbackQuery {
     _: 'updateInlineBotCallbackQuery'
-    query_id: number
-    user_id: number
+    query_id: string
+    user_id: string
     msg_id: InputBotInlineMessageID
-    chat_instance: number
+    chat_instance: string
     data?: Uint8Array
     game_short_name?: string
 }
@@ -2664,7 +2664,7 @@ export interface PredicateMessageEntityMentionName {
     _: 'messageEntityMentionName'
     offset: number
     length: number
-    user_id: number
+    user_id: string
 }
 
 export interface PredicateInputMessageEntityMentionName {
@@ -2680,7 +2680,7 @@ export interface PredicateInputMessagesFilterChatPhotos {
 
 export interface PredicateUpdateReadChannelOutbox {
     _: 'updateReadChannelOutbox'
-    channel_id: number
+    channel_id: string
     max_id: number
 }
 
@@ -2715,10 +2715,10 @@ export interface PredicateMessagesFeaturedStickersNotModified {
 
 export interface PredicateMessagesFeaturedStickers {
     _: 'messages.featuredStickers'
-    hash: number
+    hash: string
     count: number
     sets: StickerSetCovered[]
-    unread: number[]
+    unread: string[]
 }
 
 export interface PredicateUpdateReadFeaturedStickers {
@@ -2731,7 +2731,7 @@ export interface PredicateMessagesRecentStickersNotModified {
 
 export interface PredicateMessagesRecentStickers {
     _: 'messages.recentStickers'
-    hash: number
+    hash: string
     packs: StickerPack[]
     stickers: Document[]
     dates: number[]
@@ -2812,8 +2812,8 @@ export interface PredicateInputStickeredMediaDocument {
 
 export interface PredicateGame {
     _: 'game'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     short_name: string
     title: string
     description: string
@@ -2845,8 +2845,8 @@ export interface PredicateInputMediaGame {
 
 export interface PredicateInputGameID {
     _: 'inputGameID'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
 }
 
 export interface PredicateInputGameShortName {
@@ -2862,14 +2862,14 @@ export interface PredicateKeyboardButtonGame {
 
 export interface PredicateMessageActionGameScore {
     _: 'messageActionGameScore'
-    game_id: number
+    game_id: string
     score: number
 }
 
 export interface PredicateHighScore {
     _: 'highScore'
     pos: number
-    user_id: number
+    user_id: string
     score: number
 }
 
@@ -2886,7 +2886,7 @@ export interface PredicateUpdatesDifferenceTooLong {
 
 export interface PredicateUpdateChannelWebPage {
     _: 'updateChannelWebPage'
-    channel_id: number
+    channel_id: string
     webpage: WebPage
     pts: number
     pts_count: number
@@ -2936,7 +2936,7 @@ export interface PredicateTextUrl {
     _: 'textUrl'
     text: RichText
     url: string
-    webpage_id: number
+    webpage_id: string
 }
 
 export interface PredicateTextEmail {
@@ -3024,17 +3024,17 @@ export interface PredicatePageBlockPullquote {
 
 export interface PredicatePageBlockPhoto {
     _: 'pageBlockPhoto'
-    photo_id: number
+    photo_id: string
     caption: PageCaption
     url?: string
-    webpage_id?: number
+    webpage_id?: string
 }
 
 export interface PredicatePageBlockVideo {
     _: 'pageBlockVideo'
     autoplay?: true
     loop?: true
-    video_id: number
+    video_id: string
     caption: PageCaption
 }
 
@@ -3049,7 +3049,7 @@ export interface PredicatePageBlockEmbed {
     allow_scrolling?: true
     url?: string
     html?: string
-    poster_photo_id?: number
+    poster_photo_id?: string
     w?: number
     h?: number
     caption: PageCaption
@@ -3058,8 +3058,8 @@ export interface PredicatePageBlockEmbed {
 export interface PredicatePageBlockEmbedPost {
     _: 'pageBlockEmbedPost'
     url: string
-    webpage_id: number
-    author_photo_id: number
+    webpage_id: string
+    author_photo_id: string
     author: string
     date: number
     blocks: PageBlock[]
@@ -3136,7 +3136,7 @@ export interface PredicateUpdateBotWebhookJSON {
 
 export interface PredicateUpdateBotWebhookJSONQuery {
     _: 'updateBotWebhookJSONQuery'
-    query_id: number
+    query_id: string
     data: DataJSON
     timeout: number
 }
@@ -3144,7 +3144,7 @@ export interface PredicateUpdateBotWebhookJSONQuery {
 export interface PredicateLabeledPrice {
     _: 'labeledPrice'
     label: string
-    amount: number
+    amount: string
 }
 
 export interface PredicateInvoice {
@@ -3159,8 +3159,8 @@ export interface PredicateInvoice {
     email_to_provider?: true
     currency: string
     prices: LabeledPrice[]
-    max_tip_amount?: number
-    suggested_tip_amounts?: number[]
+    max_tip_amount?: string
+    suggested_tip_amounts?: string[]
 }
 
 export interface PredicateInputMediaInvoice {
@@ -3184,7 +3184,7 @@ export interface PredicatePaymentCharge {
 export interface PredicateMessageActionPaymentSentMe {
     _: 'messageActionPaymentSentMe'
     currency: string
-    total_amount: number
+    total_amount: string
     payload: Uint8Array
     info?: PaymentRequestedInfo
     shipping_option_id?: string
@@ -3200,7 +3200,7 @@ export interface PredicateMessageMediaInvoice {
     photo?: WebDocument
     receipt_msg_id?: number
     currency: string
-    total_amount: number
+    total_amount: string
     start_param: string
 }
 
@@ -3230,7 +3230,7 @@ export interface PredicateKeyboardButtonBuy {
 export interface PredicateMessageActionPaymentSent {
     _: 'messageActionPaymentSent'
     currency: string
-    total_amount: number
+    total_amount: string
 }
 
 export interface PredicatePaymentSavedCredentialsCard {
@@ -3242,7 +3242,7 @@ export interface PredicatePaymentSavedCredentialsCard {
 export interface PredicateWebDocument {
     _: 'webDocument'
     url: string
-    access_hash: number
+    access_hash: string
     size: number
     mime_type: string
     attributes: DocumentAttribute[]
@@ -3259,7 +3259,7 @@ export interface PredicateInputWebDocument {
 export interface PredicateInputWebFileLocation {
     _: 'inputWebFileLocation'
     url: string
-    access_hash: number
+    access_hash: string
 }
 
 export interface PredicateUploadWebFile {
@@ -3275,10 +3275,10 @@ export interface PredicatePaymentsPaymentForm {
     _: 'payments.paymentForm'
     can_save_credentials?: true
     password_missing?: true
-    form_id: number
-    bot_id: number
+    form_id: string
+    bot_id: string
     invoice: Invoice
-    provider_id: number
+    provider_id: string
     url: string
     native_provider?: string
     native_params?: DataJSON
@@ -3301,17 +3301,17 @@ export interface PredicatePaymentsPaymentResult {
 export interface PredicatePaymentsPaymentReceipt {
     _: 'payments.paymentReceipt'
     date: number
-    bot_id: number
-    provider_id: number
+    bot_id: string
+    provider_id: string
     title: string
     description: string
     photo?: WebDocument
     invoice: Invoice
     info?: PaymentRequestedInfo
     shipping?: ShippingOption
-    tip_amount?: number
+    tip_amount?: string
     currency: string
-    total_amount: number
+    total_amount: string
     credentials_title: string
     users: User[]
 }
@@ -3349,21 +3349,21 @@ export interface PredicateShippingOption {
 
 export interface PredicateUpdateBotShippingQuery {
     _: 'updateBotShippingQuery'
-    query_id: number
-    user_id: number
+    query_id: string
+    user_id: string
     payload: Uint8Array
     shipping_address: PostAddress
 }
 
 export interface PredicateUpdateBotPrecheckoutQuery {
     _: 'updateBotPrecheckoutQuery'
-    query_id: number
-    user_id: number
+    query_id: string
+    user_id: string
     payload: Uint8Array
     info?: PaymentRequestedInfo
     shipping_option_id?: string
     currency: string
-    total_amount: number
+    total_amount: string
 }
 
 export interface PredicateInputStickerSetItem {
@@ -3380,23 +3380,23 @@ export interface PredicateUpdatePhoneCall {
 
 export interface PredicateInputPhoneCall {
     _: 'inputPhoneCall'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
 }
 
 export interface PredicatePhoneCallEmpty {
     _: 'phoneCallEmpty'
-    id: number
+    id: string
 }
 
 export interface PredicatePhoneCallWaiting {
     _: 'phoneCallWaiting'
     video?: true
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     date: number
-    admin_id: number
-    participant_id: number
+    admin_id: string
+    participant_id: string
     protocol: PhoneCallProtocol
     receive_date?: number
 }
@@ -3404,11 +3404,11 @@ export interface PredicatePhoneCallWaiting {
 export interface PredicatePhoneCallRequested {
     _: 'phoneCallRequested'
     video?: true
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     date: number
-    admin_id: number
-    participant_id: number
+    admin_id: string
+    participant_id: string
     g_a_hash: Uint8Array
     protocol: PhoneCallProtocol
 }
@@ -3416,11 +3416,11 @@ export interface PredicatePhoneCallRequested {
 export interface PredicatePhoneCallAccepted {
     _: 'phoneCallAccepted'
     video?: true
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     date: number
-    admin_id: number
-    participant_id: number
+    admin_id: string
+    participant_id: string
     g_b: Uint8Array
     protocol: PhoneCallProtocol
 }
@@ -3429,13 +3429,13 @@ export interface PredicatePhoneCall {
     _: 'phoneCall'
     p2p_allowed?: true
     video?: true
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     date: number
-    admin_id: number
-    participant_id: number
+    admin_id: string
+    participant_id: string
     g_a_or_b: Uint8Array
-    key_fingerprint: number
+    key_fingerprint: string
     protocol: PhoneCallProtocol
     connections: PhoneConnection[]
     start_date: number
@@ -3446,14 +3446,14 @@ export interface PredicatePhoneCallDiscarded {
     need_rating?: true
     need_debug?: true
     video?: true
-    id: number
+    id: string
     reason?: PhoneCallDiscardReason
     duration?: number
 }
 
 export interface PredicatePhoneConnection {
     _: 'phoneConnection'
-    id: number
+    id: string
     ip: string
     ipv6: string
     port: number
@@ -3483,7 +3483,7 @@ export interface PredicateInputMessagesFilterPhoneCalls {
 export interface PredicateMessageActionPhoneCall {
     _: 'messageActionPhoneCall'
     video?: true
-    call_id: number
+    call_id: string
     reason?: PhoneCallDiscardReason
     duration?: number
 }
@@ -3599,9 +3599,9 @@ export interface PredicateChannelParticipantAdmin {
     _: 'channelParticipantAdmin'
     can_edit?: true
     self?: true
-    user_id: number
-    inviter_id?: number
-    promoted_by: number
+    user_id: string
+    inviter_id?: string
+    promoted_by: string
     date: number
     admin_rights: ChatAdminRights
     rank?: string
@@ -3611,7 +3611,7 @@ export interface PredicateChannelParticipantBanned {
     _: 'channelParticipantBanned'
     left?: true
     peer: Peer
-    kicked_by: number
+    kicked_by: string
     date: number
     banned_rights: ChatBannedRights
 }
@@ -3703,9 +3703,9 @@ export interface PredicateChannelAdminLogEventActionParticipantToggleAdmin {
 
 export interface PredicateChannelAdminLogEvent {
     _: 'channelAdminLogEvent'
-    id: number
+    id: string
     date: number
-    user_id: number
+    user_id: string
     action: ChannelAdminLogEventAction
 }
 
@@ -3743,13 +3743,13 @@ export interface PredicateTopPeerCategoryPhoneCalls {
 
 export interface PredicatePageBlockAudio {
     _: 'pageBlockAudio'
-    audio_id: number
+    audio_id: string
     caption: PageCaption
 }
 
 export interface PredicatePopularContact {
     _: 'popularContact'
-    client_id: number
+    client_id: string
     importers: number
 }
 
@@ -3763,7 +3763,7 @@ export interface PredicateMessagesFavedStickersNotModified {
 
 export interface PredicateMessagesFavedStickers {
     _: 'messages.favedStickers'
-    hash: number
+    hash: string
     packs: StickerPack[]
     stickers: Document[]
 }
@@ -3774,7 +3774,7 @@ export interface PredicateUpdateFavedStickers {
 
 export interface PredicateUpdateChannelReadMessagesContents {
     _: 'updateChannelReadMessagesContents'
-    channel_id: number
+    channel_id: string
     messages: number[]
 }
 
@@ -3812,7 +3812,7 @@ export interface PredicateInputMessagesFilterContacts {
 
 export interface PredicateUpdateChannelAvailableMessages {
     _: 'updateChannelAvailableMessages'
-    channel_id: number
+    channel_id: string
     available_min_id: number
 }
 
@@ -3846,13 +3846,13 @@ export interface PredicateRecentMeUrlUnknown {
 export interface PredicateRecentMeUrlUser {
     _: 'recentMeUrlUser'
     url: string
-    user_id: number
+    user_id: string
 }
 
 export interface PredicateRecentMeUrlChat {
     _: 'recentMeUrlChat'
     url: string
-    chat_id: number
+    chat_id: string
 }
 
 export interface PredicateRecentMeUrlChatInvite {
@@ -3886,15 +3886,15 @@ export interface PredicateMessagesMessagesNotModified {
 export interface PredicateInputSingleMedia {
     _: 'inputSingleMedia'
     media: InputMedia
-    random_id: number
+    random_id: string
     message: string
     entities?: MessageEntity[]
 }
 
 export interface PredicateWebAuthorization {
     _: 'webAuthorization'
-    hash: number
-    bot_id: number
+    hash: string
+    bot_id: string
     domain: string
     browser: string
     platform: string
@@ -3957,7 +3957,7 @@ export interface PredicateMessagesFoundStickerSetsNotModified {
 
 export interface PredicateMessagesFoundStickerSets {
     _: 'messages.foundStickerSets'
-    hash: number
+    hash: string
     sets: StickerSetCovered[]
 }
 
@@ -3995,7 +3995,7 @@ export interface PredicateHelpTermsOfServiceUpdate {
 
 export interface PredicateInputSecureFileUploaded {
     _: 'inputSecureFileUploaded'
-    id: number
+    id: string
     parts: number
     md5_checksum: string
     file_hash: Uint8Array
@@ -4004,14 +4004,14 @@ export interface PredicateInputSecureFileUploaded {
 
 export interface PredicateInputSecureFile {
     _: 'inputSecureFile'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
 }
 
 export interface PredicateInputSecureFileLocation {
     _: 'inputSecureFileLocation'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
 }
 
 export interface PredicateSecureFileEmpty {
@@ -4020,8 +4020,8 @@ export interface PredicateSecureFileEmpty {
 
 export interface PredicateSecureFile {
     _: 'secureFile'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     size: number
     dc_id: number
     date: number
@@ -4226,7 +4226,7 @@ export interface PredicateSavedPhoneContact {
 
 export interface PredicateAccountTakeout {
     _: 'account.takeout'
-    id: number
+    id: string
 }
 
 export interface PredicateInputTakeoutFileLocation {
@@ -4247,7 +4247,7 @@ export interface PredicateMessagesDialogsNotModified {
 export interface PredicateInputWebFileGeoPointLocation {
     _: 'inputWebFileGeoPointLocation'
     geo_point: InputGeoPoint
-    access_hash: number
+    access_hash: string
     w: number
     h: number
     zoom: number
@@ -4284,7 +4284,7 @@ export interface PredicateSecureSecretSettings {
     _: 'secureSecretSettings'
     secure_algo: SecurePasswordKdfAlgo
     secure_secret: Uint8Array
-    secure_secret_id: number
+    secure_secret_id: string
 }
 
 export interface PredicatePasswordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow {
@@ -4301,7 +4301,7 @@ export interface PredicateInputCheckPasswordEmpty {
 
 export interface PredicateInputCheckPasswordSRP {
     _: 'inputCheckPasswordSRP'
-    srp_id: number
+    srp_id: string
     A: Uint8Array
     M1: Uint8Array
 }
@@ -4354,7 +4354,7 @@ export interface PredicateInputAppEvent {
     _: 'inputAppEvent'
     time: number
     type: string
-    peer: number
+    peer: string
     data: JSONValue
 }
 
@@ -4424,7 +4424,7 @@ export interface PredicateTextPhone {
 
 export interface PredicateTextImage {
     _: 'textImage'
-    document_id: number
+    document_id: string
     w: number
     h: number
 }
@@ -4502,10 +4502,10 @@ export interface PredicatePageBlockDetails {
 export interface PredicatePageRelatedArticle {
     _: 'pageRelatedArticle'
     url: string
-    webpage_id: number
+    webpage_id: string
     title?: string
     description?: string
-    photo_id?: number
+    photo_id?: string
     author?: string
     published_date?: number
 }
@@ -4574,7 +4574,7 @@ export interface PredicateMessageActionContactSignUp {
 
 export interface PredicateUpdateMessagePoll {
     _: 'updateMessagePoll'
-    poll_id: number
+    poll_id: string
     poll?: Poll
     results: PollResults
 }
@@ -4587,7 +4587,7 @@ export interface PredicatePollAnswer {
 
 export interface PredicatePoll {
     _: 'poll'
-    id: number
+    id: string
     closed?: true
     public_voters?: true
     multiple_choice?: true
@@ -4611,7 +4611,7 @@ export interface PredicatePollResults {
     min?: true
     results?: PollAnswerVoters[]
     total_voters?: number
-    recent_voters?: number[]
+    recent_voters?: string[]
     solution?: string
     solution_entities?: MessageEntity[]
 }
@@ -4687,8 +4687,8 @@ export interface PredicateUpdateChatDefaultBannedRights {
 
 export interface PredicateInputWallPaper {
     _: 'inputWallPaper'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
 }
 
 export interface PredicateInputWallPaperSlug {
@@ -4718,7 +4718,7 @@ export interface PredicateAccountWallPapersNotModified {
 
 export interface PredicateAccountWallPapers {
     _: 'account.wallPapers'
-    hash: number
+    hash: string
     wallpapers: WallPaper[]
 }
 
@@ -4810,27 +4810,27 @@ export interface PredicatePrivacyKeyProfilePhoto {
 
 export interface PredicateInputPhotoFileLocation {
     _: 'inputPhotoFileLocation'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     file_reference: Uint8Array
     thumb_size: string
 }
 
 export interface PredicateInputPhotoLegacyFileLocation {
     _: 'inputPhotoLegacyFileLocation'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     file_reference: Uint8Array
-    volume_id: number
+    volume_id: string
     local_id: number
-    secret: number
+    secret: string
 }
 
 export interface PredicateInputPeerPhotoFileLocation {
     _: 'inputPeerPhotoFileLocation'
     big?: true
     peer: InputPeer
-    photo_id: number
+    photo_id: string
 }
 
 export interface PredicateInputStickerSetThumb {
@@ -4894,28 +4894,28 @@ export interface PredicateInputUserFromMessage {
     _: 'inputUserFromMessage'
     peer: InputPeer
     msg_id: number
-    user_id: number
+    user_id: string
 }
 
 export interface PredicateInputChannelFromMessage {
     _: 'inputChannelFromMessage'
     peer: InputPeer
     msg_id: number
-    channel_id: number
+    channel_id: string
 }
 
 export interface PredicateInputPeerUserFromMessage {
     _: 'inputPeerUserFromMessage'
     peer: InputPeer
     msg_id: number
-    user_id: number
+    user_id: string
 }
 
 export interface PredicateInputPeerChannelFromMessage {
     _: 'inputPeerChannelFromMessage'
     peer: InputPeer
     msg_id: number
-    channel_id: number
+    channel_id: string
 }
 
 export interface PredicateInputPrivacyKeyPhoneNumber {
@@ -4936,8 +4936,8 @@ export interface PredicateTopPeerCategoryForwardChats {
 
 export interface PredicateChannelAdminLogEventActionChangeLinkedChat {
     _: 'channelAdminLogEventActionChangeLinkedChat'
-    prev_value: number
-    new_value: number
+    prev_value: string
+    new_value: string
 }
 
 export interface PredicateMessagesSearchCounter {
@@ -4982,22 +4982,22 @@ export interface PredicateUrlAuthResultDefault {
 
 export interface PredicateInputPrivacyValueAllowChatParticipants {
     _: 'inputPrivacyValueAllowChatParticipants'
-    chats: number[]
+    chats: string[]
 }
 
 export interface PredicateInputPrivacyValueDisallowChatParticipants {
     _: 'inputPrivacyValueDisallowChatParticipants'
-    chats: number[]
+    chats: string[]
 }
 
 export interface PredicatePrivacyValueAllowChatParticipants {
     _: 'privacyValueAllowChatParticipants'
-    chats: number[]
+    chats: string[]
 }
 
 export interface PredicatePrivacyValueDisallowChatParticipants {
     _: 'privacyValueDisallowChatParticipants'
-    chats: number[]
+    chats: string[]
 }
 
 export interface PredicateMessageEntityUnderline {
@@ -5096,8 +5096,8 @@ export interface PredicateRestrictionReason {
 
 export interface PredicateInputTheme {
     _: 'inputTheme'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
 }
 
 export interface PredicateInputThemeSlug {
@@ -5110,8 +5110,8 @@ export interface PredicateTheme {
     creator?: true
     default?: true
     for_chat?: true
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     slug: string
     title: string
     document?: Document
@@ -5126,7 +5126,7 @@ export interface PredicateAccountThemesNotModified {
 
 export interface PredicateAccountThemes {
     _: 'account.themes'
-    hash: number
+    hash: string
     themes: Theme[]
 }
 
@@ -5205,12 +5205,12 @@ export interface PredicateBaseThemeArctic {
 
 export interface PredicateInputWallPaperNoFile {
     _: 'inputWallPaperNoFile'
-    id: number
+    id: string
 }
 
 export interface PredicateWallPaperNoFile {
     _: 'wallPaperNoFile'
-    id: number
+    id: string
     default?: true
     dark?: true
     settings?: WallPaperSettings
@@ -5245,28 +5245,28 @@ export interface PredicateWebPageAttributeTheme {
 
 export interface PredicateUpdateMessagePollVote {
     _: 'updateMessagePollVote'
-    poll_id: number
-    user_id: number
+    poll_id: string
+    user_id: string
     options: Uint8Array[]
     qts: number
 }
 
 export interface PredicateMessageUserVote {
     _: 'messageUserVote'
-    user_id: number
+    user_id: string
     option: Uint8Array
     date: number
 }
 
 export interface PredicateMessageUserVoteInputOption {
     _: 'messageUserVoteInputOption'
-    user_id: number
+    user_id: string
     date: number
 }
 
 export interface PredicateMessageUserVoteMultiple {
     _: 'messageUserVoteMultiple'
-    user_id: number
+    user_id: string
     options: Uint8Array[]
     date: number
 }
@@ -5450,7 +5450,7 @@ export interface PredicateVideoSize {
 
 export interface PredicateUpdatePhoneCallSignalingData {
     _: 'updatePhoneCallSignalingData'
-    phone_call_id: number
+    phone_call_id: string
     data: Uint8Array
 }
 
@@ -5462,14 +5462,14 @@ export interface PredicateChatInvitePeek {
 
 export interface PredicateStatsGroupTopPoster {
     _: 'statsGroupTopPoster'
-    user_id: number
+    user_id: string
     messages: number
     avg_chars: number
 }
 
 export interface PredicateStatsGroupTopAdmin {
     _: 'statsGroupTopAdmin'
-    user_id: number
+    user_id: string
     deleted: number
     kicked: number
     banned: number
@@ -5477,7 +5477,7 @@ export interface PredicateStatsGroupTopAdmin {
 
 export interface PredicateStatsGroupTopInviter {
     _: 'statsGroupTopInviter'
-    user_id: number
+    user_id: string
     invitations: number
 }
 
@@ -5511,7 +5511,7 @@ export interface PredicatePhoneConnectionWebrtc {
     _: 'phoneConnectionWebrtc'
     turn?: true
     stun?: true
-    id: number
+    id: string
     ip: string
     ipv6: string
     port: number
@@ -5554,7 +5554,7 @@ export interface PredicateMessageViews {
 
 export interface PredicateUpdateChannelMessageForwards {
     _: 'updateChannelMessageForwards'
-    channel_id: number
+    channel_id: string
     id: number
     forwards: number
 }
@@ -5576,16 +5576,16 @@ export interface PredicateMessagesMessageViews {
 
 export interface PredicateUpdateReadChannelDiscussionInbox {
     _: 'updateReadChannelDiscussionInbox'
-    channel_id: number
+    channel_id: string
     top_msg_id: number
     read_max_id: number
-    broadcast_id?: number
+    broadcast_id?: string
     broadcast_post?: number
 }
 
 export interface PredicateUpdateReadChannelDiscussionOutbox {
     _: 'updateReadChannelDiscussionOutbox'
-    channel_id: number
+    channel_id: string
     top_msg_id: number
     read_max_id: number
 }
@@ -5615,7 +5615,7 @@ export interface PredicateMessageReplies {
     replies: number
     replies_pts: number
     recent_repliers?: Peer[]
-    channel_id?: number
+    channel_id?: string
     max_id?: number
     read_max_id?: number
 }
@@ -5634,7 +5634,7 @@ export interface PredicatePeerBlocked {
 
 export interface PredicateUpdateChannelUserTyping {
     _: 'updateChannelUserTyping'
-    channel_id: number
+    channel_id: string
     top_msg_id?: number
     from_id: Peer
     action: SendMessageAction
@@ -5643,7 +5643,7 @@ export interface PredicateUpdateChannelUserTyping {
 export interface PredicateInputMessageCallbackQuery {
     _: 'inputMessageCallbackQuery'
     id: number
-    query_id: number
+    query_id: string
 }
 
 export interface PredicateChannelParticipantLeft {
@@ -5669,7 +5669,7 @@ export interface PredicateUpdatePinnedMessages {
 export interface PredicateUpdatePinnedChannelMessages {
     _: 'updatePinnedChannelMessages'
     pinned?: true
-    channel_id: number
+    channel_id: string
     messages: number[]
     pts: number
     pts_count: number
@@ -5703,8 +5703,8 @@ export interface PredicateSpeakingInGroupCallAction {
 
 export interface PredicateGroupCallDiscarded {
     _: 'groupCallDiscarded'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     duration: number
 }
 
@@ -5718,8 +5718,8 @@ export interface PredicateGroupCall {
     record_video_active?: true
     rtmp_stream?: true
     listeners_hidden?: true
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
     participants_count: number
     title?: string
     stream_dc_id?: number
@@ -5732,8 +5732,8 @@ export interface PredicateGroupCall {
 
 export interface PredicateInputGroupCall {
     _: 'inputGroupCall'
-    id: number
-    access_hash: number
+    id: string
+    access_hash: string
 }
 
 export interface PredicateMessageActionGroupCall {
@@ -5745,7 +5745,7 @@ export interface PredicateMessageActionGroupCall {
 export interface PredicateMessageActionInviteToGroupCall {
     _: 'messageActionInviteToGroupCall'
     call: InputGroupCall
-    users: number[]
+    users: string[]
 }
 
 export interface PredicateGroupCallParticipant {
@@ -5766,14 +5766,14 @@ export interface PredicateGroupCallParticipant {
     source: number
     volume?: number
     about?: string
-    raise_hand_rating?: number
+    raise_hand_rating?: string
     video?: GroupCallParticipantVideo
     presentation?: GroupCallParticipantVideo
 }
 
 export interface PredicateUpdateChat {
     _: 'updateChat'
-    chat_id: number
+    chat_id: string
 }
 
 export interface PredicateUpdateGroupCallParticipants {
@@ -5785,7 +5785,7 @@ export interface PredicateUpdateGroupCallParticipants {
 
 export interface PredicateUpdateGroupCall {
     _: 'updateGroupCall'
-    chat_id: number
+    chat_id: string
     call: GroupCall
 }
 
@@ -5860,7 +5860,7 @@ export interface PredicateInputPaymentCredentialsGooglePay {
 
 export interface PredicateMessagesHistoryImport {
     _: 'messages.historyImport'
-    id: number
+    id: string
 }
 
 export interface PredicateSendMessageHistoryImportAction {
@@ -5900,10 +5900,10 @@ export interface PredicateUpdatePeerHistoryTTL {
 
 export interface PredicateUpdateChatParticipant {
     _: 'updateChatParticipant'
-    chat_id: number
+    chat_id: string
     date: number
-    actor_id: number
-    user_id: number
+    actor_id: string
+    user_id: string
     prev_participant?: ChatParticipant
     new_participant?: ChatParticipant
     invite?: ExportedChatInvite
@@ -5912,10 +5912,10 @@ export interface PredicateUpdateChatParticipant {
 
 export interface PredicateUpdateChannelParticipant {
     _: 'updateChannelParticipant'
-    channel_id: number
+    channel_id: string
     date: number
-    actor_id: number
-    user_id: number
+    actor_id: string
+    user_id: string
     prev_participant?: ChannelParticipant
     new_participant?: ChannelParticipant
     invite?: ExportedChatInvite
@@ -5924,7 +5924,7 @@ export interface PredicateUpdateChannelParticipant {
 
 export interface PredicateUpdateBotStopped {
     _: 'updateBotStopped'
-    user_id: number
+    user_id: string
     date: number
     stopped: boolean
     qts: number
@@ -5933,10 +5933,10 @@ export interface PredicateUpdateBotStopped {
 export interface PredicateChatInviteImporter {
     _: 'chatInviteImporter'
     requested?: true
-    user_id: number
+    user_id: string
     date: number
     about?: string
-    approved_by?: number
+    approved_by?: string
 }
 
 export interface PredicateMessagesExportedChatInvites {
@@ -5968,7 +5968,7 @@ export interface PredicateMessagesChatInviteImporters {
 
 export interface PredicateChatAdminWithInvites {
     _: 'chatAdminWithInvites'
-    admin_id: number
+    admin_id: string
     invites_count: number
     revoked_invites_count: number
 }
@@ -6019,7 +6019,7 @@ export interface PredicateMessagesCheckedHistoryImportPeer {
 export interface PredicateInputGroupCallStream {
     _: 'inputGroupCallStream'
     call: InputGroupCall
-    time_ms: number
+    time_ms: string
     scale: number
     video_channel?: number
     video_quality?: number
@@ -6057,7 +6057,7 @@ export interface PredicateBotInlineMessageMediaInvoice {
     description: string
     photo?: WebDocument
     currency: string
-    total_amount: number
+    total_amount: string
     reply_markup?: ReplyMarkup
 }
 
@@ -6141,7 +6141,7 @@ export interface PredicateAccountResetPasswordOk {
 export interface PredicateUpdateBotCommands {
     _: 'updateBotCommands'
     peer: Peer
-    bot_id: number
+    bot_id: string
     commands: BotCommand[]
 }
 
@@ -6193,9 +6193,9 @@ export interface PredicateSendMessageEmojiInteractionSeen {
 export interface PredicateInputBotInlineMessageID64 {
     _: 'inputBotInlineMessageID64'
     dc_id: number
-    owner_id: number
+    owner_id: string
     id: number
-    access_hash: number
+    access_hash: string
 }
 
 export interface PredicateSearchResultsCalendarPeriod {
@@ -6240,14 +6240,14 @@ export interface PredicateUpdatePendingJoinRequests {
     _: 'updatePendingJoinRequests'
     peer: Peer
     requests_pending: number
-    recent_requesters: number[]
+    recent_requesters: string[]
 }
 
 export interface PredicateUpdateBotChatInviteRequester {
     _: 'updateBotChatInviteRequester'
     peer: Peer
     date: number
-    user_id: number
+    user_id: string
     about: string
     invite: ExportedChatInvite
     qts: number
@@ -6256,7 +6256,7 @@ export interface PredicateUpdateBotChatInviteRequester {
 export interface PredicateChannelAdminLogEventActionParticipantJoinByRequest {
     _: 'channelAdminLogEventActionParticipantJoinByRequest'
     invite: ExportedChatInvite
-    approved_by: number
+    approved_by: string
 }
 
 export interface PredicateInputKeyboardButtonUserProfile {
@@ -6268,7 +6268,7 @@ export interface PredicateInputKeyboardButtonUserProfile {
 export interface PredicateKeyboardButtonUserProfile {
     _: 'keyboardButtonUserProfile'
     text: string
-    user_id: number
+    user_id: string
 }
 
 export interface PredicateChannelsSendAsPeers {
@@ -6409,7 +6409,7 @@ export interface PredicateGroupCallStreamChannel {
     _: 'groupCallStreamChannel'
     channel: number
     scale: number
-    last_timestamp_ms: number
+    last_timestamp_ms: string
 }
 
 export interface PredicatePhoneGroupCallStreamChannels {
@@ -7146,12 +7146,12 @@ export const tgUserApiRequest = (dependencies: TgUserApiDependencies) => async <
     });
 
 export const invokeAfterMsg = (dependencies: TgUserApiDependencies) => async (params: {
-    msg_id?: number
+    msg_id?: string
     query?: any
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<any>('invokeAfterMsg', params, ...args);
 
 export const invokeAfterMsgs = (dependencies: TgUserApiDependencies) => async (params: {
-    msg_ids?: number[]
+    msg_ids?: string[]
     query?: any
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<any>('invokeAfterMsgs', params, ...args);
 
@@ -7188,13 +7188,13 @@ export const authExportAuthorization = (dependencies: TgUserApiDependencies) => 
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthExportedAuthorization>('auth.exportAuthorization', params, ...args);
 
 export const authImportAuthorization = (dependencies: TgUserApiDependencies) => async (params: {
-    id?: number
+    id?: string
     bytes?: Uint8Array
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthAuthorization>('auth.importAuthorization', params, ...args);
 
 export const authBindTempAuthKey = (dependencies: TgUserApiDependencies) => async (params: {
-    perm_auth_key_id?: number
-    nonce?: number
+    perm_auth_key_id?: string
+    nonce?: string
     expires_at?: number
     encrypted_message?: Uint8Array
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('auth.bindTempAuthKey', params, ...args);
@@ -7205,13 +7205,13 @@ export const accountRegisterDevice = (dependencies: TgUserApiDependencies) => as
     token?: string
     app_sandbox?: boolean
     secret?: Uint8Array
-    other_uids?: number[]
+    other_uids?: string[]
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.registerDevice', params, ...args);
 
 export const accountUnregisterDevice = (dependencies: TgUserApiDependencies) => async (params: {
     token_type?: number
     token?: string
-    other_uids?: number[]
+    other_uids?: string[]
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.unregisterDevice', params, ...args);
 
 export const accountUpdateNotifySettings = (dependencies: TgUserApiDependencies) => async (params: {
@@ -7238,7 +7238,7 @@ export const accountUpdateStatus = (dependencies: TgUserApiDependencies) => asyn
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.updateStatus', params, ...args);
 
 export const accountGetWallPapers = (dependencies: TgUserApiDependencies) => async (params: {
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountWallPapers>('account.getWallPapers', params, ...args);
 
 export const accountReportPeer = (dependencies: TgUserApiDependencies) => async (params: {
@@ -7256,7 +7256,7 @@ export const usersGetFullUser = (dependencies: TgUserApiDependencies) => async (
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<UsersUserFull>('users.getFullUser', params, ...args);
 
 export const contactsGetContactIDs = (dependencies: TgUserApiDependencies) => async (params: {
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<number[]>('contacts.getContactIDs', params, ...args);
 
 export const contactsGetStatuses = (dependencies: TgUserApiDependencies) => async (params: {
@@ -7264,7 +7264,7 @@ export const contactsGetStatuses = (dependencies: TgUserApiDependencies) => asyn
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ContactStatus[]>('contacts.getStatuses', params, ...args);
 
 export const contactsGetContacts = (dependencies: TgUserApiDependencies) => async (params: {
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ContactsContacts>('contacts.getContacts', params, ...args);
 
 export const contactsImportContacts = (dependencies: TgUserApiDependencies) => async (params: {
@@ -7303,7 +7303,7 @@ export const messagesGetDialogs = (dependencies: TgUserApiDependencies) => async
     offset_id?: number
     offset_peer?: InputPeer
     limit?: number
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesDialogs>('messages.getDialogs', params, ...args);
 
 export const messagesGetHistory = (dependencies: TgUserApiDependencies) => async (params: {
@@ -7314,7 +7314,7 @@ export const messagesGetHistory = (dependencies: TgUserApiDependencies) => async
     limit?: number
     max_id?: number
     min_id?: number
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getHistory', params, ...args);
 
 export const messagesSearch = (dependencies: TgUserApiDependencies) => async (params: {
@@ -7330,7 +7330,7 @@ export const messagesSearch = (dependencies: TgUserApiDependencies) => async (pa
     limit?: number
     max_id?: number
     min_id?: number
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.search', params, ...args);
 
 export const messagesReadHistory = (dependencies: TgUserApiDependencies) => async (params: {
@@ -7371,7 +7371,7 @@ export const messagesSendMessage = (dependencies: TgUserApiDependencies) => asyn
     peer?: InputPeer
     reply_to_msg_id?: number
     message?: string
-    random_id?: number
+    random_id?: string
     reply_markup?: ReplyMarkup
     entities?: MessageEntity[]
     schedule_date?: number
@@ -7387,7 +7387,7 @@ export const messagesSendMedia = (dependencies: TgUserApiDependencies) => async 
     reply_to_msg_id?: number
     media?: InputMedia
     message?: string
-    random_id?: number
+    random_id?: string
     reply_markup?: ReplyMarkup
     entities?: MessageEntity[]
     schedule_date?: number
@@ -7403,7 +7403,7 @@ export const messagesForwardMessages = (dependencies: TgUserApiDependencies) => 
     noforwards?: true
     from_peer?: InputPeer
     id?: number[]
-    random_id?: number[]
+    random_id?: string[]
     to_peer?: InputPeer
     schedule_date?: number
     send_as?: InputPeer
@@ -7425,32 +7425,32 @@ export const messagesReport = (dependencies: TgUserApiDependencies) => async (pa
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.report', params, ...args);
 
 export const messagesGetChats = (dependencies: TgUserApiDependencies) => async (params: {
-    id?: number[]
+    id?: string[]
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChats>('messages.getChats', params, ...args);
 
 export const messagesGetFullChat = (dependencies: TgUserApiDependencies) => async (params: {
-    chat_id?: number
+    chat_id?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChatFull>('messages.getFullChat', params, ...args);
 
 export const messagesEditChatTitle = (dependencies: TgUserApiDependencies) => async (params: {
-    chat_id?: number
+    chat_id?: string
     title?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.editChatTitle', params, ...args);
 
 export const messagesEditChatPhoto = (dependencies: TgUserApiDependencies) => async (params: {
-    chat_id?: number
+    chat_id?: string
     photo?: InputChatPhoto
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.editChatPhoto', params, ...args);
 
 export const messagesAddChatUser = (dependencies: TgUserApiDependencies) => async (params: {
-    chat_id?: number
+    chat_id?: string
     user_id?: InputUser
     fwd_limit?: number
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.addChatUser', params, ...args);
 
 export const messagesDeleteChatUser = (dependencies: TgUserApiDependencies) => async (params: {
     revoke_history?: true
-    chat_id?: number
+    chat_id?: string
     user_id?: InputUser
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.deleteChatUser', params, ...args);
 
@@ -7482,10 +7482,10 @@ export const photosUploadProfilePhoto = (dependencies: TgUserApiDependencies) =>
 
 export const photosDeletePhotos = (dependencies: TgUserApiDependencies) => async (params: {
     id?: InputPhoto[]
-} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<number[]>('photos.deletePhotos', params, ...args);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<string[]>('photos.deletePhotos', params, ...args);
 
 export const uploadSaveFilePart = (dependencies: TgUserApiDependencies) => async (params: {
-    file_id?: number
+    file_id?: string
     file_part?: number
     bytes?: Uint8Array
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('upload.saveFilePart', params, ...args);
@@ -7517,7 +7517,7 @@ export const helpGetInviteText = (dependencies: TgUserApiDependencies) => async 
 export const photosGetUserPhotos = (dependencies: TgUserApiDependencies) => async (params: {
     user_id?: InputUser
     offset?: number
-    max_id?: number
+    max_id?: string
     limit?: number
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhotosPhotos>('photos.getUserPhotos', params, ...args);
 
@@ -7535,7 +7535,7 @@ export const messagesRequestEncryption = (dependencies: TgUserApiDependencies) =
 export const messagesAcceptEncryption = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputEncryptedChat
     g_b?: Uint8Array
-    key_fingerprint?: number
+    key_fingerprint?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<EncryptedChat>('messages.acceptEncryption', params, ...args);
 
 export const messagesDiscardEncryption = (dependencies: TgUserApiDependencies) => async (params: {
@@ -7556,34 +7556,34 @@ export const messagesReadEncryptedHistory = (dependencies: TgUserApiDependencies
 export const messagesSendEncrypted = (dependencies: TgUserApiDependencies) => async (params: {
     silent?: true
     peer?: InputEncryptedChat
-    random_id?: number
+    random_id?: string
     data?: Uint8Array
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesSentEncryptedMessage>('messages.sendEncrypted', params, ...args);
 
 export const messagesSendEncryptedFile = (dependencies: TgUserApiDependencies) => async (params: {
     silent?: true
     peer?: InputEncryptedChat
-    random_id?: number
+    random_id?: string
     data?: Uint8Array
     file?: InputEncryptedFile
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesSentEncryptedMessage>('messages.sendEncryptedFile', params, ...args);
 
 export const messagesSendEncryptedService = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputEncryptedChat
-    random_id?: number
+    random_id?: string
     data?: Uint8Array
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesSentEncryptedMessage>('messages.sendEncryptedService', params, ...args);
 
 export const messagesReceivedQueue = (dependencies: TgUserApiDependencies) => async (params: {
     max_qts?: number
-} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<number[]>('messages.receivedQueue', params, ...args);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<string[]>('messages.receivedQueue', params, ...args);
 
 export const messagesReportEncryptedSpam = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputEncryptedChat
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.reportEncryptedSpam', params, ...args);
 
 export const uploadSaveBigFilePart = (dependencies: TgUserApiDependencies) => async (params: {
-    file_id?: number
+    file_id?: string
     file_part?: number
     file_total_parts?: number
     bytes?: Uint8Array
@@ -7666,11 +7666,11 @@ export const accountChangePhone = (dependencies: TgUserApiDependencies) => async
 
 export const messagesGetStickers = (dependencies: TgUserApiDependencies) => async (params: {
     emoticon?: string
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesStickers>('messages.getStickers', params, ...args);
 
 export const messagesGetAllStickers = (dependencies: TgUserApiDependencies) => async (params: {
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAllStickers>('messages.getAllStickers', params, ...args);
 
 export const accountUpdateDeviceLocked = (dependencies: TgUserApiDependencies) => async (params: {
@@ -7694,7 +7694,7 @@ export const accountGetAuthorizations = (dependencies: TgUserApiDependencies) =>
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountAuthorizations>('account.getAuthorizations', params, ...args);
 
 export const accountResetAuthorization = (dependencies: TgUserApiDependencies) => async (params: {
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.resetAuthorization', params, ...args);
 
 export const accountGetPassword = (dependencies: TgUserApiDependencies) => async (params: {
@@ -7761,7 +7761,7 @@ export const messagesUninstallStickerSet = (dependencies: TgUserApiDependencies)
 export const messagesStartBot = (dependencies: TgUserApiDependencies) => async (params: {
     bot?: InputUser
     peer?: InputPeer
-    random_id?: number
+    random_id?: string
     start_param?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.startBot', params, ...args);
 
@@ -7801,7 +7801,7 @@ export const channelsGetParticipants = (dependencies: TgUserApiDependencies) => 
     filter?: ChannelParticipantsFilter
     offset?: number
     limit?: number
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ChannelsChannelParticipants>('channels.getParticipants', params, ...args);
 
 export const channelsGetParticipant = (dependencies: TgUserApiDependencies) => async (params: {
@@ -7880,13 +7880,13 @@ export const updatesGetChannelDifference = (dependencies: TgUserApiDependencies)
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<UpdatesChannelDifference>('updates.getChannelDifference', params, ...args);
 
 export const messagesEditChatAdmin = (dependencies: TgUserApiDependencies) => async (params: {
-    chat_id?: number
+    chat_id?: string
     user_id?: InputUser
     is_admin?: boolean
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.editChatAdmin', params, ...args);
 
 export const messagesMigrateChat = (dependencies: TgUserApiDependencies) => async (params: {
-    chat_id?: number
+    chat_id?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.migrateChat', params, ...args);
 
 export const messagesSearchGlobal = (dependencies: TgUserApiDependencies) => async (params: {
@@ -7904,7 +7904,7 @@ export const messagesSearchGlobal = (dependencies: TgUserApiDependencies) => asy
 export const messagesReorderStickerSets = (dependencies: TgUserApiDependencies) => async (params: {
     masks?: true
     emojis?: true
-    order?: number[]
+    order?: string[]
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.reorderStickerSets', params, ...args);
 
 export const messagesGetDocumentByHash = (dependencies: TgUserApiDependencies) => async (params: {
@@ -7914,7 +7914,7 @@ export const messagesGetDocumentByHash = (dependencies: TgUserApiDependencies) =
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Document>('messages.getDocumentByHash', params, ...args);
 
 export const messagesGetSavedGifs = (dependencies: TgUserApiDependencies) => async (params: {
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesSavedGifs>('messages.getSavedGifs', params, ...args);
 
 export const messagesSaveGif = (dependencies: TgUserApiDependencies) => async (params: {
@@ -7933,7 +7933,7 @@ export const messagesGetInlineBotResults = (dependencies: TgUserApiDependencies)
 export const messagesSetInlineBotResults = (dependencies: TgUserApiDependencies) => async (params: {
     gallery?: true
     private?: true
-    query_id?: number
+    query_id?: string
     results?: InputBotInlineResult[]
     cache_time?: number
     next_offset?: string
@@ -7947,8 +7947,8 @@ export const messagesSendInlineBotResult = (dependencies: TgUserApiDependencies)
     hide_via?: true
     peer?: InputPeer
     reply_to_msg_id?: number
-    random_id?: number
-    query_id?: number
+    random_id?: string
+    query_id?: string
     id?: string
     schedule_date?: number
     send_as?: InputPeer
@@ -8011,7 +8011,7 @@ export const messagesGetBotCallbackAnswer = (dependencies: TgUserApiDependencies
 
 export const messagesSetBotCallbackAnswer = (dependencies: TgUserApiDependencies) => async (params: {
     alert?: true
-    query_id?: number
+    query_id?: string
     message?: string
     url?: string
     cache_time?: number
@@ -8028,7 +8028,7 @@ export const contactsGetTopPeers = (dependencies: TgUserApiDependencies) => asyn
     channels?: true
     offset?: number
     limit?: number
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ContactsTopPeers>('contacts.getTopPeers', params, ...args);
 
 export const contactsResetTopPeerRating = (dependencies: TgUserApiDependencies) => async (params: {
@@ -8053,16 +8053,16 @@ export const messagesGetAllDrafts = (dependencies: TgUserApiDependencies) => asy
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.getAllDrafts', params, ...args);
 
 export const messagesGetFeaturedStickers = (dependencies: TgUserApiDependencies) => async (params: {
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesFeaturedStickers>('messages.getFeaturedStickers', params, ...args);
 
 export const messagesReadFeaturedStickers = (dependencies: TgUserApiDependencies) => async (params: {
-    id?: number[]
+    id?: string[]
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.readFeaturedStickers', params, ...args);
 
 export const messagesGetRecentStickers = (dependencies: TgUserApiDependencies) => async (params: {
     attached?: true
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesRecentStickers>('messages.getRecentStickers', params, ...args);
 
 export const messagesSaveRecentSticker = (dependencies: TgUserApiDependencies) => async (params: {
@@ -8078,7 +8078,7 @@ export const messagesClearRecentStickers = (dependencies: TgUserApiDependencies)
 export const messagesGetArchivedStickers = (dependencies: TgUserApiDependencies) => async (params: {
     masks?: true
     emojis?: true
-    offset_id?: number
+    offset_id?: string
     limit?: number
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesArchivedStickers>('messages.getArchivedStickers', params, ...args);
 
@@ -8098,7 +8098,7 @@ export const channelsGetAdminedPublicChannels = (dependencies: TgUserApiDependen
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChats>('channels.getAdminedPublicChannels', params, ...args);
 
 export const messagesGetMaskStickers = (dependencies: TgUserApiDependencies) => async (params: {
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAllStickers>('messages.getMaskStickers', params, ...args);
 
 export const messagesGetAttachedStickers = (dependencies: TgUserApiDependencies) => async (params: {
@@ -8106,7 +8106,7 @@ export const messagesGetAttachedStickers = (dependencies: TgUserApiDependencies)
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<StickerSetCovered[]>('messages.getAttachedStickers', params, ...args);
 
 export const authDropTempAuthKeys = (dependencies: TgUserApiDependencies) => async (params: {
-    except_auth_keys?: number[]
+    except_auth_keys?: string[]
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('auth.dropTempAuthKeys', params, ...args);
 
 export const messagesSetGameScore = (dependencies: TgUserApiDependencies) => async (params: {
@@ -8139,12 +8139,12 @@ export const messagesGetInlineGameHighScores = (dependencies: TgUserApiDependenc
 
 export const messagesGetCommonChats = (dependencies: TgUserApiDependencies) => async (params: {
     user_id?: InputUser
-    max_id?: number
+    max_id?: string
     limit?: number
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChats>('messages.getCommonChats', params, ...args);
 
 export const messagesGetAllChats = (dependencies: TgUserApiDependencies) => async (params: {
-    except_ids?: number[]
+    except_ids?: string[]
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChats>('messages.getAllChats', params, ...args);
 
 export const helpSetBotUpdatesStatus = (dependencies: TgUserApiDependencies) => async (params: {
@@ -8178,7 +8178,7 @@ export const botsSendCustomRequest = (dependencies: TgUserApiDependencies) => as
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<DataJSON>('bots.sendCustomRequest', params, ...args);
 
 export const botsAnswerWebhookJSONQuery = (dependencies: TgUserApiDependencies) => async (params: {
-    query_id?: number
+    query_id?: string
     data?: DataJSON
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('bots.answerWebhookJSONQuery', params, ...args);
 
@@ -8207,13 +8207,13 @@ export const paymentsValidateRequestedInfo = (dependencies: TgUserApiDependencie
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PaymentsValidatedRequestedInfo>('payments.validateRequestedInfo', params, ...args);
 
 export const paymentsSendPaymentForm = (dependencies: TgUserApiDependencies) => async (params: {
-    form_id?: number
+    form_id?: string
     peer?: InputPeer
     msg_id?: number
     requested_info_id?: string
     shipping_option_id?: string
     credentials?: InputPaymentCredentials
-    tip_amount?: number
+    tip_amount?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PaymentsPaymentResult>('payments.sendPaymentForm', params, ...args);
 
 export const accountGetTmpPassword = (dependencies: TgUserApiDependencies) => async (params: {
@@ -8231,14 +8231,14 @@ export const paymentsClearSavedInfo = (dependencies: TgUserApiDependencies) => a
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('payments.clearSavedInfo', params, ...args);
 
 export const messagesSetBotShippingResults = (dependencies: TgUserApiDependencies) => async (params: {
-    query_id?: number
+    query_id?: string
     error?: string
     shipping_options?: ShippingOption[]
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.setBotShippingResults', params, ...args);
 
 export const messagesSetBotPrecheckoutResults = (dependencies: TgUserApiDependencies) => async (params: {
     success?: true
-    query_id?: number
+    query_id?: string
     error?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.setBotPrecheckoutResults', params, ...args);
 
@@ -8294,7 +8294,7 @@ export const phoneAcceptCall = (dependencies: TgUserApiDependencies) => async (p
 export const phoneConfirmCall = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPhoneCall
     g_a?: Uint8Array
-    key_fingerprint?: number
+    key_fingerprint?: string
     protocol?: PhoneCallProtocol
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhonePhoneCall>('phone.confirmCall', params, ...args);
 
@@ -8307,7 +8307,7 @@ export const phoneDiscardCall = (dependencies: TgUserApiDependencies) => async (
     peer?: InputPhoneCall
     duration?: number
     reason?: PhoneCallDiscardReason
-    connection_id?: number
+    connection_id?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('phone.discardCall', params, ...args);
 
 export const phoneSetCallRating = (dependencies: TgUserApiDependencies) => async (params: {
@@ -8369,8 +8369,8 @@ export const channelsGetAdminLog = (dependencies: TgUserApiDependencies) => asyn
     q?: string
     events_filter?: ChannelAdminLogEventsFilter
     admins?: InputUser[]
-    max_id?: number
-    min_id?: number
+    max_id?: string
+    min_id?: string
     limit?: number
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ChannelsAdminLogResults>('channels.getAdminLog', params, ...args);
 
@@ -8382,7 +8382,7 @@ export const uploadGetCdnFileHashes = (dependencies: TgUserApiDependencies) => a
 export const messagesSendScreenshotNotification = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     reply_to_msg_id?: number
-    random_id?: number
+    random_id?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.sendScreenshotNotification', params, ...args);
 
 export const channelsSetStickers = (dependencies: TgUserApiDependencies) => async (params: {
@@ -8391,7 +8391,7 @@ export const channelsSetStickers = (dependencies: TgUserApiDependencies) => asyn
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('channels.setStickers', params, ...args);
 
 export const messagesGetFavedStickers = (dependencies: TgUserApiDependencies) => async (params: {
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesFavedStickers>('messages.getFavedStickers', params, ...args);
 
 export const messagesFaveSticker = (dependencies: TgUserApiDependencies) => async (params: {
@@ -8438,7 +8438,7 @@ export const messagesReadMentions = (dependencies: TgUserApiDependencies) => asy
 export const messagesGetRecentLocations = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     limit?: number
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getRecentLocations', params, ...args);
 
 export const messagesSendMultiMedia = (dependencies: TgUserApiDependencies) => async (params: {
@@ -8463,7 +8463,7 @@ export const accountGetWebAuthorizations = (dependencies: TgUserApiDependencies)
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountWebAuthorizations>('account.getWebAuthorizations', params, ...args);
 
 export const accountResetWebAuthorization = (dependencies: TgUserApiDependencies) => async (params: {
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.resetWebAuthorization', params, ...args);
 
 export const accountResetWebAuthorizations = (dependencies: TgUserApiDependencies) => async (params: {
@@ -8473,7 +8473,7 @@ export const accountResetWebAuthorizations = (dependencies: TgUserApiDependencie
 export const messagesSearchStickerSets = (dependencies: TgUserApiDependencies) => async (params: {
     exclude_featured?: true
     q?: string
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesFoundStickerSets>('messages.searchStickerSets', params, ...args);
 
 export const uploadGetFileHashes = (dependencies: TgUserApiDependencies) => async (params: {
@@ -8499,7 +8499,7 @@ export const accountGetSecureValue = (dependencies: TgUserApiDependencies) => as
 
 export const accountSaveSecureValue = (dependencies: TgUserApiDependencies) => async (params: {
     value?: InputSecureValue
-    secure_secret_id?: number
+    secure_secret_id?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<SecureValue>('account.saveSecureValue', params, ...args);
 
 export const accountDeleteSecureValue = (dependencies: TgUserApiDependencies) => async (params: {
@@ -8512,13 +8512,13 @@ export const usersSetSecureValueErrors = (dependencies: TgUserApiDependencies) =
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('users.setSecureValueErrors', params, ...args);
 
 export const accountGetAuthorizationForm = (dependencies: TgUserApiDependencies) => async (params: {
-    bot_id?: number
+    bot_id?: string
     scope?: string
     public_key?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountAuthorizationForm>('account.getAuthorizationForm', params, ...args);
 
 export const accountAcceptAuthorization = (dependencies: TgUserApiDependencies) => async (params: {
-    bot_id?: number
+    bot_id?: string
     scope?: string
     public_key?: string
     value_hashes?: SecureValueHash[]
@@ -8581,7 +8581,7 @@ export const invokeWithMessagesRange = (dependencies: TgUserApiDependencies) => 
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<any>('invokeWithMessagesRange', params, ...args);
 
 export const invokeWithTakeout = (dependencies: TgUserApiDependencies) => async (params: {
-    takeout_id?: number
+    takeout_id?: string
     query?: any
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<any>('invokeWithTakeout', params, ...args);
 
@@ -8821,7 +8821,7 @@ export const channelsToggleSlowMode = (dependencies: TgUserApiDependencies) => a
 
 export const messagesGetScheduledHistory = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getScheduledHistory', params, ...args);
 
 export const messagesGetScheduledMessages = (dependencies: TgUserApiDependencies) => async (params: {
@@ -8877,18 +8877,18 @@ export const accountInstallTheme = (dependencies: TgUserApiDependencies) => asyn
 export const accountGetTheme = (dependencies: TgUserApiDependencies) => async (params: {
     format?: string
     theme?: InputTheme
-    document_id?: number
+    document_id?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Theme>('account.getTheme', params, ...args);
 
 export const accountGetThemes = (dependencies: TgUserApiDependencies) => async (params: {
     format?: string
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountThemes>('account.getThemes', params, ...args);
 
 export const authExportLoginToken = (dependencies: TgUserApiDependencies) => async (params: {
     api_id?: number
     api_hash?: string
-    except_ids?: number[]
+    except_ids?: string[]
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthLoginToken>('auth.exportLoginToken', params, ...args);
 
 export const authImportLoginToken = (dependencies: TgUserApiDependencies) => async (params: {
@@ -8958,7 +8958,7 @@ export const statsGetBroadcastStats = (dependencies: TgUserApiDependencies) => a
 
 export const statsLoadAsyncGraph = (dependencies: TgUserApiDependencies) => async (params: {
     token?: string
-    x?: number
+    x?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<StatsGraph>('stats.loadAsyncGraph', params, ...args);
 
 export const stickersSetStickerSetThumb = (dependencies: TgUserApiDependencies) => async (params: {
@@ -8975,7 +8975,7 @@ export const botsSetBotCommands = (dependencies: TgUserApiDependencies) => async
 export const messagesGetOldFeaturedStickers = (dependencies: TgUserApiDependencies) => async (params: {
     offset?: number
     limit?: number
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesFeaturedStickers>('messages.getOldFeaturedStickers', params, ...args);
 
 export const helpGetPromoData = (dependencies: TgUserApiDependencies) => async (params: {
@@ -9023,7 +9023,7 @@ export const messagesGetReplies = (dependencies: TgUserApiDependencies) => async
     limit?: number
     max_id?: number
     min_id?: number
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getReplies', params, ...args);
 
 export const messagesGetDiscussionMessage = (dependencies: TgUserApiDependencies) => async (params: {
@@ -9119,7 +9119,7 @@ export const phoneCheckGroupCall = (dependencies: TgUserApiDependencies) => asyn
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<number[]>('phone.checkGroupCall', params, ...args);
 
 export const messagesDeleteChat = (dependencies: TgUserApiDependencies) => async (params: {
-    chat_id?: number
+    chat_id?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.deleteChat', params, ...args);
 
 export const messagesDeletePhoneCallHistory = (dependencies: TgUserApiDependencies) => async (params: {
@@ -9138,14 +9138,14 @@ export const messagesInitHistoryImport = (dependencies: TgUserApiDependencies) =
 
 export const messagesUploadImportedMedia = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-    import_id?: number
+    import_id?: string
     file_name?: string
     media?: InputMedia
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessageMedia>('messages.uploadImportedMedia', params, ...args);
 
 export const messagesStartHistoryImport = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-    import_id?: number
+    import_id?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.startHistoryImport', params, ...args);
 
 export const messagesGetExportedChatInvites = (dependencies: TgUserApiDependencies) => async (params: {
@@ -9303,7 +9303,7 @@ export const authCheckRecoveryPassword = (dependencies: TgUserApiDependencies) =
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('auth.checkRecoveryPassword', params, ...args);
 
 export const accountGetChatThemes = (dependencies: TgUserApiDependencies) => async (params: {
-    hash?: number
+    hash?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountThemes>('account.getChatThemes', params, ...args);
 
 export const messagesSetChatTheme = (dependencies: TgUserApiDependencies) => async (params: {
@@ -9323,7 +9323,7 @@ export const channelsGetSponsoredMessages = (dependencies: TgUserApiDependencies
 export const messagesGetMessageReadParticipants = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     msg_id?: number
-} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<number[]>('messages.getMessageReadParticipants', params, ...args);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<string[]>('messages.getMessageReadParticipants', params, ...args);
 
 export const messagesGetSearchResultsCalendar = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
@@ -9370,7 +9370,7 @@ export const accountSetAuthorizationTTL = (dependencies: TgUserApiDependencies) 
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.setAuthorizationTTL', params, ...args);
 
 export const accountChangeAuthorizationSettings = (dependencies: TgUserApiDependencies) => async (params: {
-    hash?: number
+    hash?: string
     encrypted_requests_disabled?: boolean
     call_requests_disabled?: boolean
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.changeAuthorizationSettings', params, ...args);

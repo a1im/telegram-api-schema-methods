@@ -2,7 +2,7 @@ import { snakeToCamelCase } from '../../utils/string/snakeToCamelCase';
 
 const BaseTypeByName: Record<string, string> = {
     int: 'number',
-    long: 'number',
+    long: 'string',
     double: 'number',
     bytes: 'Uint8Array',
     string: 'string',
