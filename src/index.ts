@@ -1,210 +1,360 @@
-export interface PredicateError {
-    _: 'error'
+export class PredicateError {
+    _ = 'error' as const
     code: number
     text: string
+    constructor(options: {
+        code: number
+        text: string
+    }) {
+        this.code = options.code;
+        this.text = options.text;
+    }
 }
 
-export interface PredicateInputPeerEmpty {
-    _: 'inputPeerEmpty'
+export class PredicateInputPeerEmpty {
+    _ = 'inputPeerEmpty' as const
 }
 
-export interface PredicateInputPeerSelf {
-    _: 'inputPeerSelf'
+export class PredicateInputPeerSelf {
+    _ = 'inputPeerSelf' as const
 }
 
-export interface PredicateInputPeerChat {
-    _: 'inputPeerChat'
+export class PredicateInputPeerChat {
+    _ = 'inputPeerChat' as const
     chat_id: string
+    constructor(options: {
+        chat_id: string
+    }) {
+        this.chat_id = options.chat_id;
+    }
 }
 
-export interface PredicateInputUserEmpty {
-    _: 'inputUserEmpty'
+export class PredicateInputUserEmpty {
+    _ = 'inputUserEmpty' as const
 }
 
-export interface PredicateInputUserSelf {
-    _: 'inputUserSelf'
+export class PredicateInputUserSelf {
+    _ = 'inputUserSelf' as const
 }
 
-export interface PredicateInputPhoneContact {
-    _: 'inputPhoneContact'
+export class PredicateInputPhoneContact {
+    _ = 'inputPhoneContact' as const
     client_id: string
     phone: string
     first_name: string
     last_name: string
+    constructor(options: {
+        client_id: string
+        phone: string
+        first_name: string
+        last_name: string
+    }) {
+        this.client_id = options.client_id;
+        this.phone = options.phone;
+        this.first_name = options.first_name;
+        this.last_name = options.last_name;
+    }
 }
 
-export interface PredicateInputFile {
-    _: 'inputFile'
+export class PredicateInputFile {
+    _ = 'inputFile' as const
     id: string
     parts: number
     name: string
     md5_checksum: string
+    constructor(options: {
+        id: string
+        parts: number
+        name: string
+        md5_checksum: string
+    }) {
+        this.id = options.id;
+        this.parts = options.parts;
+        this.name = options.name;
+        this.md5_checksum = options.md5_checksum;
+    }
 }
 
-export interface PredicateInputMediaEmpty {
-    _: 'inputMediaEmpty'
+export class PredicateInputMediaEmpty {
+    _ = 'inputMediaEmpty' as const
 }
 
-export interface PredicateInputMediaUploadedPhoto {
-    _: 'inputMediaUploadedPhoto'
+export class PredicateInputMediaUploadedPhoto {
+    _ = 'inputMediaUploadedPhoto' as const
     file: InputFile
     stickers?: InputDocument[]
     ttl_seconds?: number
+    constructor(options: {
+        file: InputFile
+        stickers?: InputDocument[]
+        ttl_seconds?: number
+    }) {
+        this.file = options.file;
+        this.stickers = options.stickers;
+        this.ttl_seconds = options.ttl_seconds;
+    }
 }
 
-export interface PredicateInputMediaPhoto {
-    _: 'inputMediaPhoto'
+export class PredicateInputMediaPhoto {
+    _ = 'inputMediaPhoto' as const
     id: InputPhoto
     ttl_seconds?: number
+    constructor(options: {
+        id: InputPhoto
+        ttl_seconds?: number
+    }) {
+        this.id = options.id;
+        this.ttl_seconds = options.ttl_seconds;
+    }
 }
 
-export interface PredicateInputMediaGeoPoint {
-    _: 'inputMediaGeoPoint'
+export class PredicateInputMediaGeoPoint {
+    _ = 'inputMediaGeoPoint' as const
     geo_point: InputGeoPoint
+    constructor(options: {
+        geo_point: InputGeoPoint
+    }) {
+        this.geo_point = options.geo_point;
+    }
 }
 
-export interface PredicateInputMediaContact {
-    _: 'inputMediaContact'
+export class PredicateInputMediaContact {
+    _ = 'inputMediaContact' as const
     phone_number: string
     first_name: string
     last_name: string
     vcard: string
+    constructor(options: {
+        phone_number: string
+        first_name: string
+        last_name: string
+        vcard: string
+    }) {
+        this.phone_number = options.phone_number;
+        this.first_name = options.first_name;
+        this.last_name = options.last_name;
+        this.vcard = options.vcard;
+    }
 }
 
-export interface PredicateInputChatPhotoEmpty {
-    _: 'inputChatPhotoEmpty'
+export class PredicateInputChatPhotoEmpty {
+    _ = 'inputChatPhotoEmpty' as const
 }
 
-export interface PredicateInputChatUploadedPhoto {
-    _: 'inputChatUploadedPhoto'
+export class PredicateInputChatUploadedPhoto {
+    _ = 'inputChatUploadedPhoto' as const
     file?: InputFile
     video?: InputFile
     video_start_ts?: number
+    constructor(options: {
+        file?: InputFile
+        video?: InputFile
+        video_start_ts?: number
+    } = {}) {
+        this.file = options.file;
+        this.video = options.video;
+        this.video_start_ts = options.video_start_ts;
+    }
 }
 
-export interface PredicateInputChatPhoto {
-    _: 'inputChatPhoto'
+export class PredicateInputChatPhoto {
+    _ = 'inputChatPhoto' as const
     id: InputPhoto
+    constructor(options: {
+        id: InputPhoto
+    }) {
+        this.id = options.id;
+    }
 }
 
-export interface PredicateInputGeoPointEmpty {
-    _: 'inputGeoPointEmpty'
+export class PredicateInputGeoPointEmpty {
+    _ = 'inputGeoPointEmpty' as const
 }
 
-export interface PredicateInputGeoPoint {
-    _: 'inputGeoPoint'
+export class PredicateInputGeoPoint {
+    _ = 'inputGeoPoint' as const
     lat: number
     long: number
     accuracy_radius?: number
+    constructor(options: {
+        lat: number
+        long: number
+        accuracy_radius?: number
+    }) {
+        this.lat = options.lat;
+        this.long = options.long;
+        this.accuracy_radius = options.accuracy_radius;
+    }
 }
 
-export interface PredicateInputPhotoEmpty {
-    _: 'inputPhotoEmpty'
+export class PredicateInputPhotoEmpty {
+    _ = 'inputPhotoEmpty' as const
 }
 
-export interface PredicateInputPhoto {
-    _: 'inputPhoto'
+export class PredicateInputPhoto {
+    _ = 'inputPhoto' as const
     id: string
     access_hash: string
     file_reference: Uint8Array
+    constructor(options: {
+        id: string
+        access_hash: string
+        file_reference: Uint8Array
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.file_reference = options.file_reference;
+    }
 }
 
-export interface PredicateInputFileLocation {
-    _: 'inputFileLocation'
+export class PredicateInputFileLocation {
+    _ = 'inputFileLocation' as const
     volume_id: string
     local_id: number
     secret: string
     file_reference: Uint8Array
+    constructor(options: {
+        volume_id: string
+        local_id: number
+        secret: string
+        file_reference: Uint8Array
+    }) {
+        this.volume_id = options.volume_id;
+        this.local_id = options.local_id;
+        this.secret = options.secret;
+        this.file_reference = options.file_reference;
+    }
 }
 
-export interface PredicatePeerUser {
-    _: 'peerUser'
+export class PredicatePeerUser {
+    _ = 'peerUser' as const
     user_id: string
+    constructor(options: {
+        user_id: string
+    }) {
+        this.user_id = options.user_id;
+    }
 }
 
-export interface PredicatePeerChat {
-    _: 'peerChat'
+export class PredicatePeerChat {
+    _ = 'peerChat' as const
     chat_id: string
+    constructor(options: {
+        chat_id: string
+    }) {
+        this.chat_id = options.chat_id;
+    }
 }
 
-export interface PredicateStorageFileUnknown {
-    _: 'storage.fileUnknown'
+export class PredicateStorageFileUnknown {
+    _ = 'storage.fileUnknown' as const
 }
 
-export interface PredicateStorageFilePartial {
-    _: 'storage.filePartial'
+export class PredicateStorageFilePartial {
+    _ = 'storage.filePartial' as const
 }
 
-export interface PredicateStorageFileJpeg {
-    _: 'storage.fileJpeg'
+export class PredicateStorageFileJpeg {
+    _ = 'storage.fileJpeg' as const
 }
 
-export interface PredicateStorageFileGif {
-    _: 'storage.fileGif'
+export class PredicateStorageFileGif {
+    _ = 'storage.fileGif' as const
 }
 
-export interface PredicateStorageFilePng {
-    _: 'storage.filePng'
+export class PredicateStorageFilePng {
+    _ = 'storage.filePng' as const
 }
 
-export interface PredicateStorageFilePdf {
-    _: 'storage.filePdf'
+export class PredicateStorageFilePdf {
+    _ = 'storage.filePdf' as const
 }
 
-export interface PredicateStorageFileMp3 {
-    _: 'storage.fileMp3'
+export class PredicateStorageFileMp3 {
+    _ = 'storage.fileMp3' as const
 }
 
-export interface PredicateStorageFileMov {
-    _: 'storage.fileMov'
+export class PredicateStorageFileMov {
+    _ = 'storage.fileMov' as const
 }
 
-export interface PredicateStorageFileMp4 {
-    _: 'storage.fileMp4'
+export class PredicateStorageFileMp4 {
+    _ = 'storage.fileMp4' as const
 }
 
-export interface PredicateStorageFileWebp {
-    _: 'storage.fileWebp'
+export class PredicateStorageFileWebp {
+    _ = 'storage.fileWebp' as const
 }
 
-export interface PredicateUserEmpty {
-    _: 'userEmpty'
+export class PredicateUserEmpty {
+    _ = 'userEmpty' as const
     id: string
+    constructor(options: {
+        id: string
+    }) {
+        this.id = options.id;
+    }
 }
 
-export interface PredicateUserProfilePhotoEmpty {
-    _: 'userProfilePhotoEmpty'
+export class PredicateUserProfilePhotoEmpty {
+    _ = 'userProfilePhotoEmpty' as const
 }
 
-export interface PredicateUserProfilePhoto {
-    _: 'userProfilePhoto'
+export class PredicateUserProfilePhoto {
+    _ = 'userProfilePhoto' as const
     has_video?: true
     photo_id: string
     stripped_thumb?: Uint8Array
     dc_id: number
+    constructor(options: {
+        has_video?: true
+        photo_id: string
+        stripped_thumb?: Uint8Array
+        dc_id: number
+    }) {
+        this.has_video = options.has_video;
+        this.photo_id = options.photo_id;
+        this.stripped_thumb = options.stripped_thumb;
+        this.dc_id = options.dc_id;
+    }
 }
 
-export interface PredicateUserStatusEmpty {
-    _: 'userStatusEmpty'
+export class PredicateUserStatusEmpty {
+    _ = 'userStatusEmpty' as const
 }
 
-export interface PredicateUserStatusOnline {
-    _: 'userStatusOnline'
+export class PredicateUserStatusOnline {
+    _ = 'userStatusOnline' as const
     expires: number
+    constructor(options: {
+        expires: number
+    }) {
+        this.expires = options.expires;
+    }
 }
 
-export interface PredicateUserStatusOffline {
-    _: 'userStatusOffline'
+export class PredicateUserStatusOffline {
+    _ = 'userStatusOffline' as const
     was_online: number
+    constructor(options: {
+        was_online: number
+    }) {
+        this.was_online = options.was_online;
+    }
 }
 
-export interface PredicateChatEmpty {
-    _: 'chatEmpty'
+export class PredicateChatEmpty {
+    _ = 'chatEmpty' as const
     id: string
+    constructor(options: {
+        id: string
+    }) {
+        this.id = options.id;
+    }
 }
 
-export interface PredicateChat {
-    _: 'chat'
+export class PredicateChat {
+    _ = 'chat' as const
     creator?: true
     left?: true
     deactivated?: true
@@ -220,16 +370,56 @@ export interface PredicateChat {
     migrated_to?: InputChannel
     admin_rights?: ChatAdminRights
     default_banned_rights?: ChatBannedRights
+    constructor(options: {
+        creator?: true
+        left?: true
+        deactivated?: true
+        call_active?: true
+        call_not_empty?: true
+        noforwards?: true
+        id: string
+        title: string
+        photo: ChatPhoto
+        participants_count: number
+        date: number
+        version: number
+        migrated_to?: InputChannel
+        admin_rights?: ChatAdminRights
+        default_banned_rights?: ChatBannedRights
+    }) {
+        this.creator = options.creator;
+        this.left = options.left;
+        this.deactivated = options.deactivated;
+        this.call_active = options.call_active;
+        this.call_not_empty = options.call_not_empty;
+        this.noforwards = options.noforwards;
+        this.id = options.id;
+        this.title = options.title;
+        this.photo = options.photo;
+        this.participants_count = options.participants_count;
+        this.date = options.date;
+        this.version = options.version;
+        this.migrated_to = options.migrated_to;
+        this.admin_rights = options.admin_rights;
+        this.default_banned_rights = options.default_banned_rights;
+    }
 }
 
-export interface PredicateChatForbidden {
-    _: 'chatForbidden'
+export class PredicateChatForbidden {
+    _ = 'chatForbidden' as const
     id: string
     title: string
+    constructor(options: {
+        id: string
+        title: string
+    }) {
+        this.id = options.id;
+        this.title = options.title;
+    }
 }
 
-export interface PredicateChatFull {
-    _: 'chatFull'
+export class PredicateChatFull {
+    _ = 'chatFull' as const
     can_set_username?: true
     has_scheduled?: true
     id: string
@@ -248,48 +438,130 @@ export interface PredicateChatFull {
     requests_pending?: number
     recent_requesters?: string[]
     available_reactions?: string[]
+    constructor(options: {
+        can_set_username?: true
+        has_scheduled?: true
+        id: string
+        about: string
+        participants: ChatParticipants
+        chat_photo?: Photo
+        notify_settings: PeerNotifySettings
+        exported_invite?: ExportedChatInvite
+        bot_info?: BotInfo[]
+        pinned_msg_id?: number
+        folder_id?: number
+        call?: InputGroupCall
+        ttl_period?: number
+        groupcall_default_join_as?: Peer
+        theme_emoticon?: string
+        requests_pending?: number
+        recent_requesters?: string[]
+        available_reactions?: string[]
+    }) {
+        this.can_set_username = options.can_set_username;
+        this.has_scheduled = options.has_scheduled;
+        this.id = options.id;
+        this.about = options.about;
+        this.participants = options.participants;
+        this.chat_photo = options.chat_photo;
+        this.notify_settings = options.notify_settings;
+        this.exported_invite = options.exported_invite;
+        this.bot_info = options.bot_info;
+        this.pinned_msg_id = options.pinned_msg_id;
+        this.folder_id = options.folder_id;
+        this.call = options.call;
+        this.ttl_period = options.ttl_period;
+        this.groupcall_default_join_as = options.groupcall_default_join_as;
+        this.theme_emoticon = options.theme_emoticon;
+        this.requests_pending = options.requests_pending;
+        this.recent_requesters = options.recent_requesters;
+        this.available_reactions = options.available_reactions;
+    }
 }
 
-export interface PredicateChatParticipant {
-    _: 'chatParticipant'
+export class PredicateChatParticipant {
+    _ = 'chatParticipant' as const
     user_id: string
     inviter_id: string
     date: number
+    constructor(options: {
+        user_id: string
+        inviter_id: string
+        date: number
+    }) {
+        this.user_id = options.user_id;
+        this.inviter_id = options.inviter_id;
+        this.date = options.date;
+    }
 }
 
-export interface PredicateChatParticipantsForbidden {
-    _: 'chatParticipantsForbidden'
+export class PredicateChatParticipantsForbidden {
+    _ = 'chatParticipantsForbidden' as const
     chat_id: string
     self_participant?: ChatParticipant
+    constructor(options: {
+        chat_id: string
+        self_participant?: ChatParticipant
+    }) {
+        this.chat_id = options.chat_id;
+        this.self_participant = options.self_participant;
+    }
 }
 
-export interface PredicateChatParticipants {
-    _: 'chatParticipants'
+export class PredicateChatParticipants {
+    _ = 'chatParticipants' as const
     chat_id: string
     participants: ChatParticipant[]
     version: number
+    constructor(options: {
+        chat_id: string
+        participants: ChatParticipant[]
+        version: number
+    }) {
+        this.chat_id = options.chat_id;
+        this.participants = options.participants;
+        this.version = options.version;
+    }
 }
 
-export interface PredicateChatPhotoEmpty {
-    _: 'chatPhotoEmpty'
+export class PredicateChatPhotoEmpty {
+    _ = 'chatPhotoEmpty' as const
 }
 
-export interface PredicateChatPhoto {
-    _: 'chatPhoto'
+export class PredicateChatPhoto {
+    _ = 'chatPhoto' as const
     has_video?: true
     photo_id: string
     stripped_thumb?: Uint8Array
     dc_id: number
+    constructor(options: {
+        has_video?: true
+        photo_id: string
+        stripped_thumb?: Uint8Array
+        dc_id: number
+    }) {
+        this.has_video = options.has_video;
+        this.photo_id = options.photo_id;
+        this.stripped_thumb = options.stripped_thumb;
+        this.dc_id = options.dc_id;
+    }
 }
 
-export interface PredicateMessageEmpty {
-    _: 'messageEmpty'
+export class PredicateMessageEmpty {
+    _ = 'messageEmpty' as const
     id: number
     peer_id?: Peer
+    constructor(options: {
+        id: number
+        peer_id?: Peer
+    }) {
+        this.id = options.id;
+        this.peer_id = options.peer_id;
+    }
 }
 
-export interface PredicateMessage {
-    _: 'message'
+export class PredicateMessage {
+    _ = 'message' as const
     out?: true
     mentioned?: true
     media_unread?: true
@@ -320,10 +592,73 @@ export interface PredicateMessage {
     reactions?: MessageReactions
     restriction_reason?: RestrictionReason[]
     ttl_period?: number
+    constructor(options: {
+        out?: true
+        mentioned?: true
+        media_unread?: true
+        silent?: true
+        post?: true
+        from_scheduled?: true
+        legacy?: true
+        edit_hide?: true
+        pinned?: true
+        noforwards?: true
+        id: number
+        from_id?: Peer
+        peer_id: Peer
+        fwd_from?: MessageFwdHeader
+        via_bot_id?: string
+        reply_to?: MessageReplyHeader
+        date: number
+        message: string
+        media?: MessageMedia
+        reply_markup?: ReplyMarkup
+        entities?: MessageEntity[]
+        views?: number
+        forwards?: number
+        replies?: MessageReplies
+        edit_date?: number
+        post_author?: string
+        grouped_id?: string
+        reactions?: MessageReactions
+        restriction_reason?: RestrictionReason[]
+        ttl_period?: number
+    }) {
+        this.out = options.out;
+        this.mentioned = options.mentioned;
+        this.media_unread = options.media_unread;
+        this.silent = options.silent;
+        this.post = options.post;
+        this.from_scheduled = options.from_scheduled;
+        this.legacy = options.legacy;
+        this.edit_hide = options.edit_hide;
+        this.pinned = options.pinned;
+        this.noforwards = options.noforwards;
+        this.id = options.id;
+        this.from_id = options.from_id;
+        this.peer_id = options.peer_id;
+        this.fwd_from = options.fwd_from;
+        this.via_bot_id = options.via_bot_id;
+        this.reply_to = options.reply_to;
+        this.date = options.date;
+        this.message = options.message;
+        this.media = options.media;
+        this.reply_markup = options.reply_markup;
+        this.entities = options.entities;
+        this.views = options.views;
+        this.forwards = options.forwards;
+        this.replies = options.replies;
+        this.edit_date = options.edit_date;
+        this.post_author = options.post_author;
+        this.grouped_id = options.grouped_id;
+        this.reactions = options.reactions;
+        this.restriction_reason = options.restriction_reason;
+        this.ttl_period = options.ttl_period;
+    }
 }
 
-export interface PredicateMessageService {
-    _: 'messageService'
+export class PredicateMessageService {
+    _ = 'messageService' as const
     out?: true
     mentioned?: true
     media_unread?: true
@@ -337,72 +672,153 @@ export interface PredicateMessageService {
     date: number
     action: MessageAction
     ttl_period?: number
+    constructor(options: {
+        out?: true
+        mentioned?: true
+        media_unread?: true
+        silent?: true
+        post?: true
+        legacy?: true
+        id: number
+        from_id?: Peer
+        peer_id: Peer
+        reply_to?: MessageReplyHeader
+        date: number
+        action: MessageAction
+        ttl_period?: number
+    }) {
+        this.out = options.out;
+        this.mentioned = options.mentioned;
+        this.media_unread = options.media_unread;
+        this.silent = options.silent;
+        this.post = options.post;
+        this.legacy = options.legacy;
+        this.id = options.id;
+        this.from_id = options.from_id;
+        this.peer_id = options.peer_id;
+        this.reply_to = options.reply_to;
+        this.date = options.date;
+        this.action = options.action;
+        this.ttl_period = options.ttl_period;
+    }
 }
 
-export interface PredicateMessageMediaEmpty {
-    _: 'messageMediaEmpty'
+export class PredicateMessageMediaEmpty {
+    _ = 'messageMediaEmpty' as const
 }
 
-export interface PredicateMessageMediaPhoto {
-    _: 'messageMediaPhoto'
+export class PredicateMessageMediaPhoto {
+    _ = 'messageMediaPhoto' as const
     photo?: Photo
     ttl_seconds?: number
+    constructor(options: {
+        photo?: Photo
+        ttl_seconds?: number
+    } = {}) {
+        this.photo = options.photo;
+        this.ttl_seconds = options.ttl_seconds;
+    }
 }
 
-export interface PredicateMessageMediaGeo {
-    _: 'messageMediaGeo'
+export class PredicateMessageMediaGeo {
+    _ = 'messageMediaGeo' as const
     geo: GeoPoint
+    constructor(options: {
+        geo: GeoPoint
+    }) {
+        this.geo = options.geo;
+    }
 }
 
-export interface PredicateMessageMediaContact {
-    _: 'messageMediaContact'
+export class PredicateMessageMediaContact {
+    _ = 'messageMediaContact' as const
     phone_number: string
     first_name: string
     last_name: string
     vcard: string
     user_id: string
+    constructor(options: {
+        phone_number: string
+        first_name: string
+        last_name: string
+        vcard: string
+        user_id: string
+    }) {
+        this.phone_number = options.phone_number;
+        this.first_name = options.first_name;
+        this.last_name = options.last_name;
+        this.vcard = options.vcard;
+        this.user_id = options.user_id;
+    }
 }
 
-export interface PredicateMessageMediaUnsupported {
-    _: 'messageMediaUnsupported'
+export class PredicateMessageMediaUnsupported {
+    _ = 'messageMediaUnsupported' as const
 }
 
-export interface PredicateMessageActionEmpty {
-    _: 'messageActionEmpty'
+export class PredicateMessageActionEmpty {
+    _ = 'messageActionEmpty' as const
 }
 
-export interface PredicateMessageActionChatCreate {
-    _: 'messageActionChatCreate'
+export class PredicateMessageActionChatCreate {
+    _ = 'messageActionChatCreate' as const
     title: string
     users: string[]
+    constructor(options: {
+        title: string
+        users: string[]
+    }) {
+        this.title = options.title;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateMessageActionChatEditTitle {
-    _: 'messageActionChatEditTitle'
+export class PredicateMessageActionChatEditTitle {
+    _ = 'messageActionChatEditTitle' as const
     title: string
+    constructor(options: {
+        title: string
+    }) {
+        this.title = options.title;
+    }
 }
 
-export interface PredicateMessageActionChatEditPhoto {
-    _: 'messageActionChatEditPhoto'
+export class PredicateMessageActionChatEditPhoto {
+    _ = 'messageActionChatEditPhoto' as const
     photo: Photo
+    constructor(options: {
+        photo: Photo
+    }) {
+        this.photo = options.photo;
+    }
 }
 
-export interface PredicateMessageActionChatDeletePhoto {
-    _: 'messageActionChatDeletePhoto'
+export class PredicateMessageActionChatDeletePhoto {
+    _ = 'messageActionChatDeletePhoto' as const
 }
 
-export interface PredicateMessageActionChatAddUser {
-    _: 'messageActionChatAddUser'
+export class PredicateMessageActionChatAddUser {
+    _ = 'messageActionChatAddUser' as const
     users: string[]
+    constructor(options: {
+        users: string[]
+    }) {
+        this.users = options.users;
+    }
 }
 
-export interface PredicateMessageActionChatDeleteUser {
-    _: 'messageActionChatDeleteUser'
+export class PredicateMessageActionChatDeleteUser {
+    _ = 'messageActionChatDeleteUser' as const
     user_id: string
+    constructor(options: {
+        user_id: string
+    }) {
+        this.user_id = options.user_id;
+    }
 }
 
-export interface PredicateDialog {
-    _: 'dialog'
+export class PredicateDialog {
+    _ = 'dialog' as const
     pinned?: true
     unread_mark?: true
     peer: Peer
@@ -416,15 +832,49 @@ export interface PredicateDialog {
     pts?: number
     draft?: DraftMessage
     folder_id?: number
+    constructor(options: {
+        pinned?: true
+        unread_mark?: true
+        peer: Peer
+        top_message: number
+        read_inbox_max_id: number
+        read_outbox_max_id: number
+        unread_count: number
+        unread_mentions_count: number
+        unread_reactions_count: number
+        notify_settings: PeerNotifySettings
+        pts?: number
+        draft?: DraftMessage
+        folder_id?: number
+    }) {
+        this.pinned = options.pinned;
+        this.unread_mark = options.unread_mark;
+        this.peer = options.peer;
+        this.top_message = options.top_message;
+        this.read_inbox_max_id = options.read_inbox_max_id;
+        this.read_outbox_max_id = options.read_outbox_max_id;
+        this.unread_count = options.unread_count;
+        this.unread_mentions_count = options.unread_mentions_count;
+        this.unread_reactions_count = options.unread_reactions_count;
+        this.notify_settings = options.notify_settings;
+        this.pts = options.pts;
+        this.draft = options.draft;
+        this.folder_id = options.folder_id;
+    }
 }
 
-export interface PredicatePhotoEmpty {
-    _: 'photoEmpty'
+export class PredicatePhotoEmpty {
+    _ = 'photoEmpty' as const
     id: string
+    constructor(options: {
+        id: string
+    }) {
+        this.id = options.id;
+    }
 }
 
-export interface PredicatePhoto {
-    _: 'photo'
+export class PredicatePhoto {
+    _ = 'photo' as const
     has_stickers?: true
     id: string
     access_hash: string
@@ -433,94 +883,207 @@ export interface PredicatePhoto {
     sizes: PhotoSize[]
     video_sizes?: VideoSize[]
     dc_id: number
+    constructor(options: {
+        has_stickers?: true
+        id: string
+        access_hash: string
+        file_reference: Uint8Array
+        date: number
+        sizes: PhotoSize[]
+        video_sizes?: VideoSize[]
+        dc_id: number
+    }) {
+        this.has_stickers = options.has_stickers;
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.file_reference = options.file_reference;
+        this.date = options.date;
+        this.sizes = options.sizes;
+        this.video_sizes = options.video_sizes;
+        this.dc_id = options.dc_id;
+    }
 }
 
-export interface PredicatePhotoSizeEmpty {
-    _: 'photoSizeEmpty'
+export class PredicatePhotoSizeEmpty {
+    _ = 'photoSizeEmpty' as const
     type: string
+    constructor(options: {
+        type: string
+    }) {
+        this.type = options.type;
+    }
 }
 
-export interface PredicatePhotoSize {
-    _: 'photoSize'
+export class PredicatePhotoSize {
+    _ = 'photoSize' as const
     type: string
     w: number
     h: number
     size: number
+    constructor(options: {
+        type: string
+        w: number
+        h: number
+        size: number
+    }) {
+        this.type = options.type;
+        this.w = options.w;
+        this.h = options.h;
+        this.size = options.size;
+    }
 }
 
-export interface PredicatePhotoCachedSize {
-    _: 'photoCachedSize'
+export class PredicatePhotoCachedSize {
+    _ = 'photoCachedSize' as const
     type: string
     w: number
     h: number
     bytes: Uint8Array
+    constructor(options: {
+        type: string
+        w: number
+        h: number
+        bytes: Uint8Array
+    }) {
+        this.type = options.type;
+        this.w = options.w;
+        this.h = options.h;
+        this.bytes = options.bytes;
+    }
 }
 
-export interface PredicateGeoPointEmpty {
-    _: 'geoPointEmpty'
+export class PredicateGeoPointEmpty {
+    _ = 'geoPointEmpty' as const
 }
 
-export interface PredicateGeoPoint {
-    _: 'geoPoint'
+export class PredicateGeoPoint {
+    _ = 'geoPoint' as const
     long: number
     lat: number
     access_hash: string
     accuracy_radius?: number
+    constructor(options: {
+        long: number
+        lat: number
+        access_hash: string
+        accuracy_radius?: number
+    }) {
+        this.long = options.long;
+        this.lat = options.lat;
+        this.access_hash = options.access_hash;
+        this.accuracy_radius = options.accuracy_radius;
+    }
 }
 
-export interface PredicateAuthSentCode {
-    _: 'auth.sentCode'
+export class PredicateAuthSentCode {
+    _ = 'auth.sentCode' as const
     type: AuthSentCodeType
     phone_code_hash: string
     next_type?: AuthCodeType
     timeout?: number
+    constructor(options: {
+        type: AuthSentCodeType
+        phone_code_hash: string
+        next_type?: AuthCodeType
+        timeout?: number
+    }) {
+        this.type = options.type;
+        this.phone_code_hash = options.phone_code_hash;
+        this.next_type = options.next_type;
+        this.timeout = options.timeout;
+    }
 }
 
-export interface PredicateAuthAuthorization {
-    _: 'auth.authorization'
+export class PredicateAuthAuthorization {
+    _ = 'auth.authorization' as const
     setup_password_required?: true
     otherwise_relogin_days?: number
     tmp_sessions?: number
     user: User
+    constructor(options: {
+        setup_password_required?: true
+        otherwise_relogin_days?: number
+        tmp_sessions?: number
+        user: User
+    }) {
+        this.setup_password_required = options.setup_password_required;
+        this.otherwise_relogin_days = options.otherwise_relogin_days;
+        this.tmp_sessions = options.tmp_sessions;
+        this.user = options.user;
+    }
 }
 
-export interface PredicateAuthExportedAuthorization {
-    _: 'auth.exportedAuthorization'
+export class PredicateAuthExportedAuthorization {
+    _ = 'auth.exportedAuthorization' as const
     id: string
     bytes: Uint8Array
+    constructor(options: {
+        id: string
+        bytes: Uint8Array
+    }) {
+        this.id = options.id;
+        this.bytes = options.bytes;
+    }
 }
 
-export interface PredicateInputNotifyPeer {
-    _: 'inputNotifyPeer'
+export class PredicateInputNotifyPeer {
+    _ = 'inputNotifyPeer' as const
     peer: InputPeer
+    constructor(options: {
+        peer: InputPeer
+    }) {
+        this.peer = options.peer;
+    }
 }
 
-export interface PredicateInputNotifyUsers {
-    _: 'inputNotifyUsers'
+export class PredicateInputNotifyUsers {
+    _ = 'inputNotifyUsers' as const
 }
 
-export interface PredicateInputNotifyChats {
-    _: 'inputNotifyChats'
+export class PredicateInputNotifyChats {
+    _ = 'inputNotifyChats' as const
 }
 
-export interface PredicateInputPeerNotifySettings {
-    _: 'inputPeerNotifySettings'
+export class PredicateInputPeerNotifySettings {
+    _ = 'inputPeerNotifySettings' as const
     show_previews?: boolean
     silent?: boolean
     mute_until?: number
     sound?: string
+    constructor(options: {
+        show_previews?: boolean
+        silent?: boolean
+        mute_until?: number
+        sound?: string
+    } = {}) {
+        this.show_previews = options.show_previews;
+        this.silent = options.silent;
+        this.mute_until = options.mute_until;
+        this.sound = options.sound;
+    }
 }
 
-export interface PredicatePeerNotifySettings {
-    _: 'peerNotifySettings'
+export class PredicatePeerNotifySettings {
+    _ = 'peerNotifySettings' as const
     show_previews?: boolean
     silent?: boolean
     mute_until?: number
     sound?: string
+    constructor(options: {
+        show_previews?: boolean
+        silent?: boolean
+        mute_until?: number
+        sound?: string
+    } = {}) {
+        this.show_previews = options.show_previews;
+        this.silent = options.silent;
+        this.mute_until = options.mute_until;
+        this.sound = options.sound;
+    }
 }
 
-export interface PredicatePeerSettings {
-    _: 'peerSettings'
+export class PredicatePeerSettings {
+    _ = 'peerSettings' as const
     report_spam?: true
     add_contact?: true
     block_contact?: true
@@ -533,10 +1096,37 @@ export interface PredicatePeerSettings {
     geo_distance?: number
     request_chat_title?: string
     request_chat_date?: number
+    constructor(options: {
+        report_spam?: true
+        add_contact?: true
+        block_contact?: true
+        share_contact?: true
+        need_contacts_exception?: true
+        report_geo?: true
+        autoarchived?: true
+        invite_members?: true
+        request_chat_broadcast?: true
+        geo_distance?: number
+        request_chat_title?: string
+        request_chat_date?: number
+    } = {}) {
+        this.report_spam = options.report_spam;
+        this.add_contact = options.add_contact;
+        this.block_contact = options.block_contact;
+        this.share_contact = options.share_contact;
+        this.need_contacts_exception = options.need_contacts_exception;
+        this.report_geo = options.report_geo;
+        this.autoarchived = options.autoarchived;
+        this.invite_members = options.invite_members;
+        this.request_chat_broadcast = options.request_chat_broadcast;
+        this.geo_distance = options.geo_distance;
+        this.request_chat_title = options.request_chat_title;
+        this.request_chat_date = options.request_chat_date;
+    }
 }
 
-export interface PredicateWallPaper {
-    _: 'wallPaper'
+export class PredicateWallPaper {
+    _ = 'wallPaper' as const
     id: string
     creator?: true
     default?: true
@@ -546,30 +1136,51 @@ export interface PredicateWallPaper {
     slug: string
     document: Document
     settings?: WallPaperSettings
+    constructor(options: {
+        id: string
+        creator?: true
+        default?: true
+        pattern?: true
+        dark?: true
+        access_hash: string
+        slug: string
+        document: Document
+        settings?: WallPaperSettings
+    }) {
+        this.id = options.id;
+        this.creator = options.creator;
+        this.default = options.default;
+        this.pattern = options.pattern;
+        this.dark = options.dark;
+        this.access_hash = options.access_hash;
+        this.slug = options.slug;
+        this.document = options.document;
+        this.settings = options.settings;
+    }
 }
 
-export interface PredicateInputReportReasonSpam {
-    _: 'inputReportReasonSpam'
+export class PredicateInputReportReasonSpam {
+    _ = 'inputReportReasonSpam' as const
 }
 
-export interface PredicateInputReportReasonViolence {
-    _: 'inputReportReasonViolence'
+export class PredicateInputReportReasonViolence {
+    _ = 'inputReportReasonViolence' as const
 }
 
-export interface PredicateInputReportReasonPornography {
-    _: 'inputReportReasonPornography'
+export class PredicateInputReportReasonPornography {
+    _ = 'inputReportReasonPornography' as const
 }
 
-export interface PredicateInputReportReasonChildAbuse {
-    _: 'inputReportReasonChildAbuse'
+export class PredicateInputReportReasonChildAbuse {
+    _ = 'inputReportReasonChildAbuse' as const
 }
 
-export interface PredicateInputReportReasonOther {
-    _: 'inputReportReasonOther'
+export class PredicateInputReportReasonOther {
+    _ = 'inputReportReasonOther' as const
 }
 
-export interface PredicateUserFull {
-    _: 'userFull'
+export class PredicateUserFull {
+    _ = 'userFull' as const
     blocked?: true
     phone_calls_available?: true
     phone_calls_private?: true
@@ -588,86 +1199,219 @@ export interface PredicateUserFull {
     ttl_period?: number
     theme_emoticon?: string
     private_forward_name?: string
+    constructor(options: {
+        blocked?: true
+        phone_calls_available?: true
+        phone_calls_private?: true
+        can_pin_message?: true
+        has_scheduled?: true
+        video_calls_available?: true
+        id: string
+        about?: string
+        settings: PeerSettings
+        profile_photo?: Photo
+        notify_settings: PeerNotifySettings
+        bot_info?: BotInfo
+        pinned_msg_id?: number
+        common_chats_count: number
+        folder_id?: number
+        ttl_period?: number
+        theme_emoticon?: string
+        private_forward_name?: string
+    }) {
+        this.blocked = options.blocked;
+        this.phone_calls_available = options.phone_calls_available;
+        this.phone_calls_private = options.phone_calls_private;
+        this.can_pin_message = options.can_pin_message;
+        this.has_scheduled = options.has_scheduled;
+        this.video_calls_available = options.video_calls_available;
+        this.id = options.id;
+        this.about = options.about;
+        this.settings = options.settings;
+        this.profile_photo = options.profile_photo;
+        this.notify_settings = options.notify_settings;
+        this.bot_info = options.bot_info;
+        this.pinned_msg_id = options.pinned_msg_id;
+        this.common_chats_count = options.common_chats_count;
+        this.folder_id = options.folder_id;
+        this.ttl_period = options.ttl_period;
+        this.theme_emoticon = options.theme_emoticon;
+        this.private_forward_name = options.private_forward_name;
+    }
 }
 
-export interface PredicateContact {
-    _: 'contact'
+export class PredicateContact {
+    _ = 'contact' as const
     user_id: string
     mutual: boolean
+    constructor(options: {
+        user_id: string
+        mutual: boolean
+    }) {
+        this.user_id = options.user_id;
+        this.mutual = options.mutual;
+    }
 }
 
-export interface PredicateImportedContact {
-    _: 'importedContact'
+export class PredicateImportedContact {
+    _ = 'importedContact' as const
     user_id: string
     client_id: string
+    constructor(options: {
+        user_id: string
+        client_id: string
+    }) {
+        this.user_id = options.user_id;
+        this.client_id = options.client_id;
+    }
 }
 
-export interface PredicateContactStatus {
-    _: 'contactStatus'
+export class PredicateContactStatus {
+    _ = 'contactStatus' as const
     user_id: string
     status: UserStatus
+    constructor(options: {
+        user_id: string
+        status: UserStatus
+    }) {
+        this.user_id = options.user_id;
+        this.status = options.status;
+    }
 }
 
-export interface PredicateContactsContactsNotModified {
-    _: 'contacts.contactsNotModified'
+export class PredicateContactsContactsNotModified {
+    _ = 'contacts.contactsNotModified' as const
 }
 
-export interface PredicateContactsContacts {
-    _: 'contacts.contacts'
+export class PredicateContactsContacts {
+    _ = 'contacts.contacts' as const
     contacts: Contact[]
     saved_count: number
     users: User[]
+    constructor(options: {
+        contacts: Contact[]
+        saved_count: number
+        users: User[]
+    }) {
+        this.contacts = options.contacts;
+        this.saved_count = options.saved_count;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateContactsImportedContacts {
-    _: 'contacts.importedContacts'
+export class PredicateContactsImportedContacts {
+    _ = 'contacts.importedContacts' as const
     imported: ImportedContact[]
     popular_invites: PopularContact[]
     retry_contacts: string[]
     users: User[]
+    constructor(options: {
+        imported: ImportedContact[]
+        popular_invites: PopularContact[]
+        retry_contacts: string[]
+        users: User[]
+    }) {
+        this.imported = options.imported;
+        this.popular_invites = options.popular_invites;
+        this.retry_contacts = options.retry_contacts;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateContactsBlocked {
-    _: 'contacts.blocked'
+export class PredicateContactsBlocked {
+    _ = 'contacts.blocked' as const
     blocked: PeerBlocked[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        blocked: PeerBlocked[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.blocked = options.blocked;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateContactsBlockedSlice {
-    _: 'contacts.blockedSlice'
+export class PredicateContactsBlockedSlice {
+    _ = 'contacts.blockedSlice' as const
     count: number
     blocked: PeerBlocked[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        count: number
+        blocked: PeerBlocked[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.count = options.count;
+        this.blocked = options.blocked;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateMessagesDialogs {
-    _: 'messages.dialogs'
+export class PredicateMessagesDialogs {
+    _ = 'messages.dialogs' as const
     dialogs: Dialog[]
     messages: Message[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        dialogs: Dialog[]
+        messages: Message[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.dialogs = options.dialogs;
+        this.messages = options.messages;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateMessagesDialogsSlice {
-    _: 'messages.dialogsSlice'
+export class PredicateMessagesDialogsSlice {
+    _ = 'messages.dialogsSlice' as const
     count: number
     dialogs: Dialog[]
     messages: Message[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        count: number
+        dialogs: Dialog[]
+        messages: Message[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.count = options.count;
+        this.dialogs = options.dialogs;
+        this.messages = options.messages;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateMessagesMessages {
-    _: 'messages.messages'
+export class PredicateMessagesMessages {
+    _ = 'messages.messages' as const
     messages: Message[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        messages: Message[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.messages = options.messages;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateMessagesMessagesSlice {
-    _: 'messages.messagesSlice'
+export class PredicateMessagesMessagesSlice {
+    _ = 'messages.messagesSlice' as const
     inexact?: true
     count: number
     next_rate?: number
@@ -675,156 +1419,321 @@ export interface PredicateMessagesMessagesSlice {
     messages: Message[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        inexact?: true
+        count: number
+        next_rate?: number
+        offset_id_offset?: number
+        messages: Message[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.inexact = options.inexact;
+        this.count = options.count;
+        this.next_rate = options.next_rate;
+        this.offset_id_offset = options.offset_id_offset;
+        this.messages = options.messages;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateMessagesChats {
-    _: 'messages.chats'
+export class PredicateMessagesChats {
+    _ = 'messages.chats' as const
     chats: Chat[]
+    constructor(options: {
+        chats: Chat[]
+    }) {
+        this.chats = options.chats;
+    }
 }
 
-export interface PredicateMessagesChatFull {
-    _: 'messages.chatFull'
+export class PredicateMessagesChatFull {
+    _ = 'messages.chatFull' as const
     full_chat: ChatFull
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        full_chat: ChatFull
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.full_chat = options.full_chat;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateMessagesAffectedHistory {
-    _: 'messages.affectedHistory'
+export class PredicateMessagesAffectedHistory {
+    _ = 'messages.affectedHistory' as const
     pts: number
     pts_count: number
     offset: number
+    constructor(options: {
+        pts: number
+        pts_count: number
+        offset: number
+    }) {
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+        this.offset = options.offset;
+    }
 }
 
-export interface PredicateInputMessagesFilterEmpty {
-    _: 'inputMessagesFilterEmpty'
+export class PredicateInputMessagesFilterEmpty {
+    _ = 'inputMessagesFilterEmpty' as const
 }
 
-export interface PredicateInputMessagesFilterPhotos {
-    _: 'inputMessagesFilterPhotos'
+export class PredicateInputMessagesFilterPhotos {
+    _ = 'inputMessagesFilterPhotos' as const
 }
 
-export interface PredicateInputMessagesFilterVideo {
-    _: 'inputMessagesFilterVideo'
+export class PredicateInputMessagesFilterVideo {
+    _ = 'inputMessagesFilterVideo' as const
 }
 
-export interface PredicateInputMessagesFilterPhotoVideo {
-    _: 'inputMessagesFilterPhotoVideo'
+export class PredicateInputMessagesFilterPhotoVideo {
+    _ = 'inputMessagesFilterPhotoVideo' as const
 }
 
-export interface PredicateInputMessagesFilterDocument {
-    _: 'inputMessagesFilterDocument'
+export class PredicateInputMessagesFilterDocument {
+    _ = 'inputMessagesFilterDocument' as const
 }
 
-export interface PredicateInputMessagesFilterUrl {
-    _: 'inputMessagesFilterUrl'
+export class PredicateInputMessagesFilterUrl {
+    _ = 'inputMessagesFilterUrl' as const
 }
 
-export interface PredicateInputMessagesFilterGif {
-    _: 'inputMessagesFilterGif'
+export class PredicateInputMessagesFilterGif {
+    _ = 'inputMessagesFilterGif' as const
 }
 
-export interface PredicateUpdateNewMessage {
-    _: 'updateNewMessage'
+export class PredicateUpdateNewMessage {
+    _ = 'updateNewMessage' as const
     message: Message
     pts: number
     pts_count: number
+    constructor(options: {
+        message: Message
+        pts: number
+        pts_count: number
+    }) {
+        this.message = options.message;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+    }
 }
 
-export interface PredicateUpdateMessageID {
-    _: 'updateMessageID'
+export class PredicateUpdateMessageID {
+    _ = 'updateMessageID' as const
     id: number
     random_id: string
+    constructor(options: {
+        id: number
+        random_id: string
+    }) {
+        this.id = options.id;
+        this.random_id = options.random_id;
+    }
 }
 
-export interface PredicateUpdateDeleteMessages {
-    _: 'updateDeleteMessages'
+export class PredicateUpdateDeleteMessages {
+    _ = 'updateDeleteMessages' as const
     messages: number[]
     pts: number
     pts_count: number
+    constructor(options: {
+        messages: number[]
+        pts: number
+        pts_count: number
+    }) {
+        this.messages = options.messages;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+    }
 }
 
-export interface PredicateUpdateUserTyping {
-    _: 'updateUserTyping'
+export class PredicateUpdateUserTyping {
+    _ = 'updateUserTyping' as const
     user_id: string
     action: SendMessageAction
+    constructor(options: {
+        user_id: string
+        action: SendMessageAction
+    }) {
+        this.user_id = options.user_id;
+        this.action = options.action;
+    }
 }
 
-export interface PredicateUpdateChatUserTyping {
-    _: 'updateChatUserTyping'
+export class PredicateUpdateChatUserTyping {
+    _ = 'updateChatUserTyping' as const
     chat_id: string
     from_id: Peer
     action: SendMessageAction
+    constructor(options: {
+        chat_id: string
+        from_id: Peer
+        action: SendMessageAction
+    }) {
+        this.chat_id = options.chat_id;
+        this.from_id = options.from_id;
+        this.action = options.action;
+    }
 }
 
-export interface PredicateUpdateChatParticipants {
-    _: 'updateChatParticipants'
+export class PredicateUpdateChatParticipants {
+    _ = 'updateChatParticipants' as const
     participants: ChatParticipants
+    constructor(options: {
+        participants: ChatParticipants
+    }) {
+        this.participants = options.participants;
+    }
 }
 
-export interface PredicateUpdateUserStatus {
-    _: 'updateUserStatus'
+export class PredicateUpdateUserStatus {
+    _ = 'updateUserStatus' as const
     user_id: string
     status: UserStatus
+    constructor(options: {
+        user_id: string
+        status: UserStatus
+    }) {
+        this.user_id = options.user_id;
+        this.status = options.status;
+    }
 }
 
-export interface PredicateUpdateUserName {
-    _: 'updateUserName'
+export class PredicateUpdateUserName {
+    _ = 'updateUserName' as const
     user_id: string
     first_name: string
     last_name: string
     username: string
+    constructor(options: {
+        user_id: string
+        first_name: string
+        last_name: string
+        username: string
+    }) {
+        this.user_id = options.user_id;
+        this.first_name = options.first_name;
+        this.last_name = options.last_name;
+        this.username = options.username;
+    }
 }
 
-export interface PredicateUpdateUserPhoto {
-    _: 'updateUserPhoto'
+export class PredicateUpdateUserPhoto {
+    _ = 'updateUserPhoto' as const
     user_id: string
     date: number
     photo: UserProfilePhoto
     previous: boolean
+    constructor(options: {
+        user_id: string
+        date: number
+        photo: UserProfilePhoto
+        previous: boolean
+    }) {
+        this.user_id = options.user_id;
+        this.date = options.date;
+        this.photo = options.photo;
+        this.previous = options.previous;
+    }
 }
 
-export interface PredicateUpdatesState {
-    _: 'updates.state'
+export class PredicateUpdatesState {
+    _ = 'updates.state' as const
     pts: number
     qts: number
     date: number
     seq: number
     unread_count: number
+    constructor(options: {
+        pts: number
+        qts: number
+        date: number
+        seq: number
+        unread_count: number
+    }) {
+        this.pts = options.pts;
+        this.qts = options.qts;
+        this.date = options.date;
+        this.seq = options.seq;
+        this.unread_count = options.unread_count;
+    }
 }
 
-export interface PredicateUpdatesDifferenceEmpty {
-    _: 'updates.differenceEmpty'
+export class PredicateUpdatesDifferenceEmpty {
+    _ = 'updates.differenceEmpty' as const
     date: number
     seq: number
+    constructor(options: {
+        date: number
+        seq: number
+    }) {
+        this.date = options.date;
+        this.seq = options.seq;
+    }
 }
 
-export interface PredicateUpdatesDifference {
-    _: 'updates.difference'
+export class PredicateUpdatesDifference {
+    _ = 'updates.difference' as const
     new_messages: Message[]
     new_encrypted_messages: EncryptedMessage[]
     other_updates: Update[]
     chats: Chat[]
     users: User[]
     state: UpdatesState
+    constructor(options: {
+        new_messages: Message[]
+        new_encrypted_messages: EncryptedMessage[]
+        other_updates: Update[]
+        chats: Chat[]
+        users: User[]
+        state: UpdatesState
+    }) {
+        this.new_messages = options.new_messages;
+        this.new_encrypted_messages = options.new_encrypted_messages;
+        this.other_updates = options.other_updates;
+        this.chats = options.chats;
+        this.users = options.users;
+        this.state = options.state;
+    }
 }
 
-export interface PredicateUpdatesDifferenceSlice {
-    _: 'updates.differenceSlice'
+export class PredicateUpdatesDifferenceSlice {
+    _ = 'updates.differenceSlice' as const
     new_messages: Message[]
     new_encrypted_messages: EncryptedMessage[]
     other_updates: Update[]
     chats: Chat[]
     users: User[]
     intermediate_state: UpdatesState
+    constructor(options: {
+        new_messages: Message[]
+        new_encrypted_messages: EncryptedMessage[]
+        other_updates: Update[]
+        chats: Chat[]
+        users: User[]
+        intermediate_state: UpdatesState
+    }) {
+        this.new_messages = options.new_messages;
+        this.new_encrypted_messages = options.new_encrypted_messages;
+        this.other_updates = options.other_updates;
+        this.chats = options.chats;
+        this.users = options.users;
+        this.intermediate_state = options.intermediate_state;
+    }
 }
 
-export interface PredicateUpdatesTooLong {
-    _: 'updatesTooLong'
+export class PredicateUpdatesTooLong {
+    _ = 'updatesTooLong' as const
 }
 
-export interface PredicateUpdateShortMessage {
-    _: 'updateShortMessage'
+export class PredicateUpdateShortMessage {
+    _ = 'updateShortMessage' as const
     out?: true
     mentioned?: true
     media_unread?: true
@@ -840,10 +1749,43 @@ export interface PredicateUpdateShortMessage {
     reply_to?: MessageReplyHeader
     entities?: MessageEntity[]
     ttl_period?: number
+    constructor(options: {
+        out?: true
+        mentioned?: true
+        media_unread?: true
+        silent?: true
+        id: number
+        user_id: string
+        message: string
+        pts: number
+        pts_count: number
+        date: number
+        fwd_from?: MessageFwdHeader
+        via_bot_id?: string
+        reply_to?: MessageReplyHeader
+        entities?: MessageEntity[]
+        ttl_period?: number
+    }) {
+        this.out = options.out;
+        this.mentioned = options.mentioned;
+        this.media_unread = options.media_unread;
+        this.silent = options.silent;
+        this.id = options.id;
+        this.user_id = options.user_id;
+        this.message = options.message;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+        this.date = options.date;
+        this.fwd_from = options.fwd_from;
+        this.via_bot_id = options.via_bot_id;
+        this.reply_to = options.reply_to;
+        this.entities = options.entities;
+        this.ttl_period = options.ttl_period;
+    }
 }
 
-export interface PredicateUpdateShortChatMessage {
-    _: 'updateShortChatMessage'
+export class PredicateUpdateShortChatMessage {
+    _ = 'updateShortChatMessage' as const
     out?: true
     mentioned?: true
     media_unread?: true
@@ -860,61 +1802,163 @@ export interface PredicateUpdateShortChatMessage {
     reply_to?: MessageReplyHeader
     entities?: MessageEntity[]
     ttl_period?: number
+    constructor(options: {
+        out?: true
+        mentioned?: true
+        media_unread?: true
+        silent?: true
+        id: number
+        from_id: string
+        chat_id: string
+        message: string
+        pts: number
+        pts_count: number
+        date: number
+        fwd_from?: MessageFwdHeader
+        via_bot_id?: string
+        reply_to?: MessageReplyHeader
+        entities?: MessageEntity[]
+        ttl_period?: number
+    }) {
+        this.out = options.out;
+        this.mentioned = options.mentioned;
+        this.media_unread = options.media_unread;
+        this.silent = options.silent;
+        this.id = options.id;
+        this.from_id = options.from_id;
+        this.chat_id = options.chat_id;
+        this.message = options.message;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+        this.date = options.date;
+        this.fwd_from = options.fwd_from;
+        this.via_bot_id = options.via_bot_id;
+        this.reply_to = options.reply_to;
+        this.entities = options.entities;
+        this.ttl_period = options.ttl_period;
+    }
 }
 
-export interface PredicateUpdateShort {
-    _: 'updateShort'
+export class PredicateUpdateShort {
+    _ = 'updateShort' as const
     update: Update
     date: number
+    constructor(options: {
+        update: Update
+        date: number
+    }) {
+        this.update = options.update;
+        this.date = options.date;
+    }
 }
 
-export interface PredicateUpdatesCombined {
-    _: 'updatesCombined'
+export class PredicateUpdatesCombined {
+    _ = 'updatesCombined' as const
     updates: Update[]
     users: User[]
     chats: Chat[]
     date: number
     seq_start: number
     seq: number
+    constructor(options: {
+        updates: Update[]
+        users: User[]
+        chats: Chat[]
+        date: number
+        seq_start: number
+        seq: number
+    }) {
+        this.updates = options.updates;
+        this.users = options.users;
+        this.chats = options.chats;
+        this.date = options.date;
+        this.seq_start = options.seq_start;
+        this.seq = options.seq;
+    }
 }
 
-export interface PredicateUpdates {
-    _: 'updates'
+export class PredicateUpdates {
+    _ = 'updates' as const
     updates: Update[]
     users: User[]
     chats: Chat[]
     date: number
     seq: number
+    constructor(options: {
+        updates: Update[]
+        users: User[]
+        chats: Chat[]
+        date: number
+        seq: number
+    }) {
+        this.updates = options.updates;
+        this.users = options.users;
+        this.chats = options.chats;
+        this.date = options.date;
+        this.seq = options.seq;
+    }
 }
 
-export interface PredicatePhotosPhotos {
-    _: 'photos.photos'
+export class PredicatePhotosPhotos {
+    _ = 'photos.photos' as const
     photos: Photo[]
     users: User[]
+    constructor(options: {
+        photos: Photo[]
+        users: User[]
+    }) {
+        this.photos = options.photos;
+        this.users = options.users;
+    }
 }
 
-export interface PredicatePhotosPhotosSlice {
-    _: 'photos.photosSlice'
+export class PredicatePhotosPhotosSlice {
+    _ = 'photos.photosSlice' as const
     count: number
     photos: Photo[]
     users: User[]
+    constructor(options: {
+        count: number
+        photos: Photo[]
+        users: User[]
+    }) {
+        this.count = options.count;
+        this.photos = options.photos;
+        this.users = options.users;
+    }
 }
 
-export interface PredicatePhotosPhoto {
-    _: 'photos.photo'
+export class PredicatePhotosPhoto {
+    _ = 'photos.photo' as const
     photo: Photo
     users: User[]
+    constructor(options: {
+        photo: Photo
+        users: User[]
+    }) {
+        this.photo = options.photo;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateUploadFile {
-    _: 'upload.file'
+export class PredicateUploadFile {
+    _ = 'upload.file' as const
     type: StorageFileType
     mtime: number
     bytes: Uint8Array
+    constructor(options: {
+        type: StorageFileType
+        mtime: number
+        bytes: Uint8Array
+    }) {
+        this.type = options.type;
+        this.mtime = options.mtime;
+        this.bytes = options.bytes;
+    }
 }
 
-export interface PredicateDcOption {
-    _: 'dcOption'
+export class PredicateDcOption {
+    _ = 'dcOption' as const
     ipv6?: true
     media_only?: true
     tcpo_only?: true
@@ -925,10 +1969,33 @@ export interface PredicateDcOption {
     ip_address: string
     port: number
     secret?: Uint8Array
+    constructor(options: {
+        ipv6?: true
+        media_only?: true
+        tcpo_only?: true
+        cdn?: true
+        static?: true
+        this_port_only?: true
+        id: number
+        ip_address: string
+        port: number
+        secret?: Uint8Array
+    }) {
+        this.ipv6 = options.ipv6;
+        this.media_only = options.media_only;
+        this.tcpo_only = options.tcpo_only;
+        this.cdn = options.cdn;
+        this.static = options.static;
+        this.this_port_only = options.this_port_only;
+        this.id = options.id;
+        this.ip_address = options.ip_address;
+        this.port = options.port;
+        this.secret = options.secret;
+    }
 }
 
-export interface PredicateConfig {
-    _: 'config'
+export class PredicateConfig {
+    _ = 'config' as const
     phonecalls_enabled?: true
     default_p2p_contacts?: true
     preload_featured_stickers?: true
@@ -981,17 +2048,133 @@ export interface PredicateConfig {
     suggested_lang_code?: string
     lang_pack_version?: number
     base_lang_pack_version?: number
+    constructor(options: {
+        phonecalls_enabled?: true
+        default_p2p_contacts?: true
+        preload_featured_stickers?: true
+        ignore_phone_entities?: true
+        revoke_pm_inbox?: true
+        blocked_mode?: true
+        pfs_enabled?: true
+        force_try_ipv6?: true
+        date: number
+        expires: number
+        test_mode: boolean
+        this_dc: number
+        dc_options: DcOption[]
+        dc_txt_domain_name: string
+        chat_size_max: number
+        megagroup_size_max: number
+        forwarded_count_max: number
+        online_update_period_ms: number
+        offline_blur_timeout_ms: number
+        offline_idle_timeout_ms: number
+        online_cloud_timeout_ms: number
+        notify_cloud_delay_ms: number
+        notify_default_delay_ms: number
+        push_chat_period_ms: number
+        push_chat_limit: number
+        saved_gifs_limit: number
+        edit_time_limit: number
+        revoke_time_limit: number
+        revoke_pm_time_limit: number
+        rating_e_decay: number
+        stickers_recent_limit: number
+        stickers_faved_limit: number
+        channels_read_media_period: number
+        tmp_sessions?: number
+        pinned_dialogs_count_max: number
+        pinned_infolder_count_max: number
+        call_receive_timeout_ms: number
+        call_ring_timeout_ms: number
+        call_connect_timeout_ms: number
+        call_packet_timeout_ms: number
+        me_url_prefix: string
+        autoupdate_url_prefix?: string
+        gif_search_username?: string
+        venue_search_username?: string
+        img_search_username?: string
+        static_maps_provider?: string
+        caption_length_max: number
+        message_length_max: number
+        webfile_dc_id: number
+        suggested_lang_code?: string
+        lang_pack_version?: number
+        base_lang_pack_version?: number
+    }) {
+        this.phonecalls_enabled = options.phonecalls_enabled;
+        this.default_p2p_contacts = options.default_p2p_contacts;
+        this.preload_featured_stickers = options.preload_featured_stickers;
+        this.ignore_phone_entities = options.ignore_phone_entities;
+        this.revoke_pm_inbox = options.revoke_pm_inbox;
+        this.blocked_mode = options.blocked_mode;
+        this.pfs_enabled = options.pfs_enabled;
+        this.force_try_ipv6 = options.force_try_ipv6;
+        this.date = options.date;
+        this.expires = options.expires;
+        this.test_mode = options.test_mode;
+        this.this_dc = options.this_dc;
+        this.dc_options = options.dc_options;
+        this.dc_txt_domain_name = options.dc_txt_domain_name;
+        this.chat_size_max = options.chat_size_max;
+        this.megagroup_size_max = options.megagroup_size_max;
+        this.forwarded_count_max = options.forwarded_count_max;
+        this.online_update_period_ms = options.online_update_period_ms;
+        this.offline_blur_timeout_ms = options.offline_blur_timeout_ms;
+        this.offline_idle_timeout_ms = options.offline_idle_timeout_ms;
+        this.online_cloud_timeout_ms = options.online_cloud_timeout_ms;
+        this.notify_cloud_delay_ms = options.notify_cloud_delay_ms;
+        this.notify_default_delay_ms = options.notify_default_delay_ms;
+        this.push_chat_period_ms = options.push_chat_period_ms;
+        this.push_chat_limit = options.push_chat_limit;
+        this.saved_gifs_limit = options.saved_gifs_limit;
+        this.edit_time_limit = options.edit_time_limit;
+        this.revoke_time_limit = options.revoke_time_limit;
+        this.revoke_pm_time_limit = options.revoke_pm_time_limit;
+        this.rating_e_decay = options.rating_e_decay;
+        this.stickers_recent_limit = options.stickers_recent_limit;
+        this.stickers_faved_limit = options.stickers_faved_limit;
+        this.channels_read_media_period = options.channels_read_media_period;
+        this.tmp_sessions = options.tmp_sessions;
+        this.pinned_dialogs_count_max = options.pinned_dialogs_count_max;
+        this.pinned_infolder_count_max = options.pinned_infolder_count_max;
+        this.call_receive_timeout_ms = options.call_receive_timeout_ms;
+        this.call_ring_timeout_ms = options.call_ring_timeout_ms;
+        this.call_connect_timeout_ms = options.call_connect_timeout_ms;
+        this.call_packet_timeout_ms = options.call_packet_timeout_ms;
+        this.me_url_prefix = options.me_url_prefix;
+        this.autoupdate_url_prefix = options.autoupdate_url_prefix;
+        this.gif_search_username = options.gif_search_username;
+        this.venue_search_username = options.venue_search_username;
+        this.img_search_username = options.img_search_username;
+        this.static_maps_provider = options.static_maps_provider;
+        this.caption_length_max = options.caption_length_max;
+        this.message_length_max = options.message_length_max;
+        this.webfile_dc_id = options.webfile_dc_id;
+        this.suggested_lang_code = options.suggested_lang_code;
+        this.lang_pack_version = options.lang_pack_version;
+        this.base_lang_pack_version = options.base_lang_pack_version;
+    }
 }
 
-export interface PredicateNearestDc {
-    _: 'nearestDc'
+export class PredicateNearestDc {
+    _ = 'nearestDc' as const
     country: string
     this_dc: number
     nearest_dc: number
+    constructor(options: {
+        country: string
+        this_dc: number
+        nearest_dc: number
+    }) {
+        this.country = options.country;
+        this.this_dc = options.this_dc;
+        this.nearest_dc = options.nearest_dc;
+    }
 }
 
-export interface PredicateHelpAppUpdate {
-    _: 'help.appUpdate'
+export class PredicateHelpAppUpdate {
+    _ = 'help.appUpdate' as const
     can_not_skip?: true
     id: number
     version: string
@@ -1000,57 +2183,127 @@ export interface PredicateHelpAppUpdate {
     document?: Document
     url?: string
     sticker?: Document
+    constructor(options: {
+        can_not_skip?: true
+        id: number
+        version: string
+        text: string
+        entities: MessageEntity[]
+        document?: Document
+        url?: string
+        sticker?: Document
+    }) {
+        this.can_not_skip = options.can_not_skip;
+        this.id = options.id;
+        this.version = options.version;
+        this.text = options.text;
+        this.entities = options.entities;
+        this.document = options.document;
+        this.url = options.url;
+        this.sticker = options.sticker;
+    }
 }
 
-export interface PredicateHelpNoAppUpdate {
-    _: 'help.noAppUpdate'
+export class PredicateHelpNoAppUpdate {
+    _ = 'help.noAppUpdate' as const
 }
 
-export interface PredicateHelpInviteText {
-    _: 'help.inviteText'
+export class PredicateHelpInviteText {
+    _ = 'help.inviteText' as const
     message: string
+    constructor(options: {
+        message: string
+    }) {
+        this.message = options.message;
+    }
 }
 
-export interface PredicateUpdateNewEncryptedMessage {
-    _: 'updateNewEncryptedMessage'
+export class PredicateUpdateNewEncryptedMessage {
+    _ = 'updateNewEncryptedMessage' as const
     message: EncryptedMessage
     qts: number
+    constructor(options: {
+        message: EncryptedMessage
+        qts: number
+    }) {
+        this.message = options.message;
+        this.qts = options.qts;
+    }
 }
 
-export interface PredicateUpdateEncryptedChatTyping {
-    _: 'updateEncryptedChatTyping'
+export class PredicateUpdateEncryptedChatTyping {
+    _ = 'updateEncryptedChatTyping' as const
     chat_id: number
+    constructor(options: {
+        chat_id: number
+    }) {
+        this.chat_id = options.chat_id;
+    }
 }
 
-export interface PredicateUpdateEncryption {
-    _: 'updateEncryption'
+export class PredicateUpdateEncryption {
+    _ = 'updateEncryption' as const
     chat: EncryptedChat
     date: number
+    constructor(options: {
+        chat: EncryptedChat
+        date: number
+    }) {
+        this.chat = options.chat;
+        this.date = options.date;
+    }
 }
 
-export interface PredicateUpdateEncryptedMessagesRead {
-    _: 'updateEncryptedMessagesRead'
+export class PredicateUpdateEncryptedMessagesRead {
+    _ = 'updateEncryptedMessagesRead' as const
     chat_id: number
     max_date: number
     date: number
+    constructor(options: {
+        chat_id: number
+        max_date: number
+        date: number
+    }) {
+        this.chat_id = options.chat_id;
+        this.max_date = options.max_date;
+        this.date = options.date;
+    }
 }
 
-export interface PredicateEncryptedChatEmpty {
-    _: 'encryptedChatEmpty'
+export class PredicateEncryptedChatEmpty {
+    _ = 'encryptedChatEmpty' as const
     id: number
+    constructor(options: {
+        id: number
+    }) {
+        this.id = options.id;
+    }
 }
 
-export interface PredicateEncryptedChatWaiting {
-    _: 'encryptedChatWaiting'
+export class PredicateEncryptedChatWaiting {
+    _ = 'encryptedChatWaiting' as const
     id: number
     access_hash: string
     date: number
     admin_id: string
     participant_id: string
+    constructor(options: {
+        id: number
+        access_hash: string
+        date: number
+        admin_id: string
+        participant_id: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.date = options.date;
+        this.admin_id = options.admin_id;
+        this.participant_id = options.participant_id;
+    }
 }
 
-export interface PredicateEncryptedChatRequested {
-    _: 'encryptedChatRequested'
+export class PredicateEncryptedChatRequested {
+    _ = 'encryptedChatRequested' as const
     folder_id?: number
     id: number
     access_hash: string
@@ -1058,10 +2311,27 @@ export interface PredicateEncryptedChatRequested {
     admin_id: string
     participant_id: string
     g_a: Uint8Array
+    constructor(options: {
+        folder_id?: number
+        id: number
+        access_hash: string
+        date: number
+        admin_id: string
+        participant_id: string
+        g_a: Uint8Array
+    }) {
+        this.folder_id = options.folder_id;
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.date = options.date;
+        this.admin_id = options.admin_id;
+        this.participant_id = options.participant_id;
+        this.g_a = options.g_a;
+    }
 }
 
-export interface PredicateEncryptedChat {
-    _: 'encryptedChat'
+export class PredicateEncryptedChat {
+    _ = 'encryptedChat' as const
     id: number
     access_hash: string
     date: number
@@ -1069,135 +2339,301 @@ export interface PredicateEncryptedChat {
     participant_id: string
     g_a_or_b: Uint8Array
     key_fingerprint: string
+    constructor(options: {
+        id: number
+        access_hash: string
+        date: number
+        admin_id: string
+        participant_id: string
+        g_a_or_b: Uint8Array
+        key_fingerprint: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.date = options.date;
+        this.admin_id = options.admin_id;
+        this.participant_id = options.participant_id;
+        this.g_a_or_b = options.g_a_or_b;
+        this.key_fingerprint = options.key_fingerprint;
+    }
 }
 
-export interface PredicateEncryptedChatDiscarded {
-    _: 'encryptedChatDiscarded'
+export class PredicateEncryptedChatDiscarded {
+    _ = 'encryptedChatDiscarded' as const
     history_deleted?: true
     id: number
+    constructor(options: {
+        history_deleted?: true
+        id: number
+    }) {
+        this.history_deleted = options.history_deleted;
+        this.id = options.id;
+    }
 }
 
-export interface PredicateInputEncryptedChat {
-    _: 'inputEncryptedChat'
+export class PredicateInputEncryptedChat {
+    _ = 'inputEncryptedChat' as const
     chat_id: number
     access_hash: string
+    constructor(options: {
+        chat_id: number
+        access_hash: string
+    }) {
+        this.chat_id = options.chat_id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicateEncryptedFileEmpty {
-    _: 'encryptedFileEmpty'
+export class PredicateEncryptedFileEmpty {
+    _ = 'encryptedFileEmpty' as const
 }
 
-export interface PredicateEncryptedFile {
-    _: 'encryptedFile'
+export class PredicateEncryptedFile {
+    _ = 'encryptedFile' as const
     id: string
     access_hash: string
     size: number
     dc_id: number
     key_fingerprint: number
+    constructor(options: {
+        id: string
+        access_hash: string
+        size: number
+        dc_id: number
+        key_fingerprint: number
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.size = options.size;
+        this.dc_id = options.dc_id;
+        this.key_fingerprint = options.key_fingerprint;
+    }
 }
 
-export interface PredicateInputEncryptedFileEmpty {
-    _: 'inputEncryptedFileEmpty'
+export class PredicateInputEncryptedFileEmpty {
+    _ = 'inputEncryptedFileEmpty' as const
 }
 
-export interface PredicateInputEncryptedFileUploaded {
-    _: 'inputEncryptedFileUploaded'
+export class PredicateInputEncryptedFileUploaded {
+    _ = 'inputEncryptedFileUploaded' as const
     id: string
     parts: number
     md5_checksum: string
     key_fingerprint: number
+    constructor(options: {
+        id: string
+        parts: number
+        md5_checksum: string
+        key_fingerprint: number
+    }) {
+        this.id = options.id;
+        this.parts = options.parts;
+        this.md5_checksum = options.md5_checksum;
+        this.key_fingerprint = options.key_fingerprint;
+    }
 }
 
-export interface PredicateInputEncryptedFile {
-    _: 'inputEncryptedFile'
+export class PredicateInputEncryptedFile {
+    _ = 'inputEncryptedFile' as const
     id: string
     access_hash: string
+    constructor(options: {
+        id: string
+        access_hash: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicateInputEncryptedFileLocation {
-    _: 'inputEncryptedFileLocation'
+export class PredicateInputEncryptedFileLocation {
+    _ = 'inputEncryptedFileLocation' as const
     id: string
     access_hash: string
+    constructor(options: {
+        id: string
+        access_hash: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicateEncryptedMessage {
-    _: 'encryptedMessage'
+export class PredicateEncryptedMessage {
+    _ = 'encryptedMessage' as const
     random_id: string
     chat_id: number
     date: number
     bytes: Uint8Array
     file: EncryptedFile
+    constructor(options: {
+        random_id: string
+        chat_id: number
+        date: number
+        bytes: Uint8Array
+        file: EncryptedFile
+    }) {
+        this.random_id = options.random_id;
+        this.chat_id = options.chat_id;
+        this.date = options.date;
+        this.bytes = options.bytes;
+        this.file = options.file;
+    }
 }
 
-export interface PredicateEncryptedMessageService {
-    _: 'encryptedMessageService'
+export class PredicateEncryptedMessageService {
+    _ = 'encryptedMessageService' as const
     random_id: string
     chat_id: number
     date: number
     bytes: Uint8Array
+    constructor(options: {
+        random_id: string
+        chat_id: number
+        date: number
+        bytes: Uint8Array
+    }) {
+        this.random_id = options.random_id;
+        this.chat_id = options.chat_id;
+        this.date = options.date;
+        this.bytes = options.bytes;
+    }
 }
 
-export interface PredicateMessagesDhConfigNotModified {
-    _: 'messages.dhConfigNotModified'
+export class PredicateMessagesDhConfigNotModified {
+    _ = 'messages.dhConfigNotModified' as const
     random: Uint8Array
+    constructor(options: {
+        random: Uint8Array
+    }) {
+        this.random = options.random;
+    }
 }
 
-export interface PredicateMessagesDhConfig {
-    _: 'messages.dhConfig'
+export class PredicateMessagesDhConfig {
+    _ = 'messages.dhConfig' as const
     g: number
     p: Uint8Array
     version: number
     random: Uint8Array
+    constructor(options: {
+        g: number
+        p: Uint8Array
+        version: number
+        random: Uint8Array
+    }) {
+        this.g = options.g;
+        this.p = options.p;
+        this.version = options.version;
+        this.random = options.random;
+    }
 }
 
-export interface PredicateMessagesSentEncryptedMessage {
-    _: 'messages.sentEncryptedMessage'
+export class PredicateMessagesSentEncryptedMessage {
+    _ = 'messages.sentEncryptedMessage' as const
     date: number
+    constructor(options: {
+        date: number
+    }) {
+        this.date = options.date;
+    }
 }
 
-export interface PredicateMessagesSentEncryptedFile {
-    _: 'messages.sentEncryptedFile'
+export class PredicateMessagesSentEncryptedFile {
+    _ = 'messages.sentEncryptedFile' as const
     date: number
     file: EncryptedFile
+    constructor(options: {
+        date: number
+        file: EncryptedFile
+    }) {
+        this.date = options.date;
+        this.file = options.file;
+    }
 }
 
-export interface PredicateInputFileBig {
-    _: 'inputFileBig'
+export class PredicateInputFileBig {
+    _ = 'inputFileBig' as const
     id: string
     parts: number
     name: string
+    constructor(options: {
+        id: string
+        parts: number
+        name: string
+    }) {
+        this.id = options.id;
+        this.parts = options.parts;
+        this.name = options.name;
+    }
 }
 
-export interface PredicateInputEncryptedFileBigUploaded {
-    _: 'inputEncryptedFileBigUploaded'
+export class PredicateInputEncryptedFileBigUploaded {
+    _ = 'inputEncryptedFileBigUploaded' as const
     id: string
     parts: number
     key_fingerprint: number
+    constructor(options: {
+        id: string
+        parts: number
+        key_fingerprint: number
+    }) {
+        this.id = options.id;
+        this.parts = options.parts;
+        this.key_fingerprint = options.key_fingerprint;
+    }
 }
 
-export interface PredicateUpdateChatParticipantAdd {
-    _: 'updateChatParticipantAdd'
+export class PredicateUpdateChatParticipantAdd {
+    _ = 'updateChatParticipantAdd' as const
     chat_id: string
     user_id: string
     inviter_id: string
     date: number
     version: number
+    constructor(options: {
+        chat_id: string
+        user_id: string
+        inviter_id: string
+        date: number
+        version: number
+    }) {
+        this.chat_id = options.chat_id;
+        this.user_id = options.user_id;
+        this.inviter_id = options.inviter_id;
+        this.date = options.date;
+        this.version = options.version;
+    }
 }
 
-export interface PredicateUpdateChatParticipantDelete {
-    _: 'updateChatParticipantDelete'
+export class PredicateUpdateChatParticipantDelete {
+    _ = 'updateChatParticipantDelete' as const
     chat_id: string
     user_id: string
     version: number
+    constructor(options: {
+        chat_id: string
+        user_id: string
+        version: number
+    }) {
+        this.chat_id = options.chat_id;
+        this.user_id = options.user_id;
+        this.version = options.version;
+    }
 }
 
-export interface PredicateUpdateDcOptions {
-    _: 'updateDcOptions'
+export class PredicateUpdateDcOptions {
+    _ = 'updateDcOptions' as const
     dc_options: DcOption[]
+    constructor(options: {
+        dc_options: DcOption[]
+    }) {
+        this.dc_options = options.dc_options;
+    }
 }
 
-export interface PredicateInputMediaUploadedDocument {
-    _: 'inputMediaUploadedDocument'
+export class PredicateInputMediaUploadedDocument {
+    _ = 'inputMediaUploadedDocument' as const
     nosound_video?: true
     force_file?: true
     file: InputFile
@@ -1206,47 +2642,107 @@ export interface PredicateInputMediaUploadedDocument {
     attributes: DocumentAttribute[]
     stickers?: InputDocument[]
     ttl_seconds?: number
+    constructor(options: {
+        nosound_video?: true
+        force_file?: true
+        file: InputFile
+        thumb?: InputFile
+        mime_type: string
+        attributes: DocumentAttribute[]
+        stickers?: InputDocument[]
+        ttl_seconds?: number
+    }) {
+        this.nosound_video = options.nosound_video;
+        this.force_file = options.force_file;
+        this.file = options.file;
+        this.thumb = options.thumb;
+        this.mime_type = options.mime_type;
+        this.attributes = options.attributes;
+        this.stickers = options.stickers;
+        this.ttl_seconds = options.ttl_seconds;
+    }
 }
 
-export interface PredicateInputMediaDocument {
-    _: 'inputMediaDocument'
+export class PredicateInputMediaDocument {
+    _ = 'inputMediaDocument' as const
     id: InputDocument
     ttl_seconds?: number
     query?: string
+    constructor(options: {
+        id: InputDocument
+        ttl_seconds?: number
+        query?: string
+    }) {
+        this.id = options.id;
+        this.ttl_seconds = options.ttl_seconds;
+        this.query = options.query;
+    }
 }
 
-export interface PredicateMessageMediaDocument {
-    _: 'messageMediaDocument'
+export class PredicateMessageMediaDocument {
+    _ = 'messageMediaDocument' as const
     document?: Document
     ttl_seconds?: number
+    constructor(options: {
+        document?: Document
+        ttl_seconds?: number
+    } = {}) {
+        this.document = options.document;
+        this.ttl_seconds = options.ttl_seconds;
+    }
 }
 
-export interface PredicateInputDocumentEmpty {
-    _: 'inputDocumentEmpty'
+export class PredicateInputDocumentEmpty {
+    _ = 'inputDocumentEmpty' as const
 }
 
-export interface PredicateInputDocument {
-    _: 'inputDocument'
+export class PredicateInputDocument {
+    _ = 'inputDocument' as const
     id: string
     access_hash: string
     file_reference: Uint8Array
+    constructor(options: {
+        id: string
+        access_hash: string
+        file_reference: Uint8Array
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.file_reference = options.file_reference;
+    }
 }
 
-export interface PredicateInputDocumentFileLocation {
-    _: 'inputDocumentFileLocation'
+export class PredicateInputDocumentFileLocation {
+    _ = 'inputDocumentFileLocation' as const
     id: string
     access_hash: string
     file_reference: Uint8Array
     thumb_size: string
+    constructor(options: {
+        id: string
+        access_hash: string
+        file_reference: Uint8Array
+        thumb_size: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.file_reference = options.file_reference;
+        this.thumb_size = options.thumb_size;
+    }
 }
 
-export interface PredicateDocumentEmpty {
-    _: 'documentEmpty'
+export class PredicateDocumentEmpty {
+    _ = 'documentEmpty' as const
     id: string
+    constructor(options: {
+        id: string
+    }) {
+        this.id = options.id;
+    }
 }
 
-export interface PredicateDocument {
-    _: 'document'
+export class PredicateDocument {
+    _ = 'document' as const
     id: string
     access_hash: string
     file_reference: Uint8Array
@@ -1257,302 +2753,562 @@ export interface PredicateDocument {
     video_thumbs?: VideoSize[]
     dc_id: number
     attributes: DocumentAttribute[]
+    constructor(options: {
+        id: string
+        access_hash: string
+        file_reference: Uint8Array
+        date: number
+        mime_type: string
+        size: number
+        thumbs?: PhotoSize[]
+        video_thumbs?: VideoSize[]
+        dc_id: number
+        attributes: DocumentAttribute[]
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.file_reference = options.file_reference;
+        this.date = options.date;
+        this.mime_type = options.mime_type;
+        this.size = options.size;
+        this.thumbs = options.thumbs;
+        this.video_thumbs = options.video_thumbs;
+        this.dc_id = options.dc_id;
+        this.attributes = options.attributes;
+    }
 }
 
-export interface PredicateHelpSupport {
-    _: 'help.support'
+export class PredicateHelpSupport {
+    _ = 'help.support' as const
     phone_number: string
     user: User
+    constructor(options: {
+        phone_number: string
+        user: User
+    }) {
+        this.phone_number = options.phone_number;
+        this.user = options.user;
+    }
 }
 
-export interface PredicateNotifyPeer {
-    _: 'notifyPeer'
+export class PredicateNotifyPeer {
+    _ = 'notifyPeer' as const
     peer: Peer
+    constructor(options: {
+        peer: Peer
+    }) {
+        this.peer = options.peer;
+    }
 }
 
-export interface PredicateNotifyUsers {
-    _: 'notifyUsers'
+export class PredicateNotifyUsers {
+    _ = 'notifyUsers' as const
 }
 
-export interface PredicateNotifyChats {
-    _: 'notifyChats'
+export class PredicateNotifyChats {
+    _ = 'notifyChats' as const
 }
 
-export interface PredicateUpdateNotifySettings {
-    _: 'updateNotifySettings'
+export class PredicateUpdateNotifySettings {
+    _ = 'updateNotifySettings' as const
     peer: NotifyPeer
     notify_settings: PeerNotifySettings
+    constructor(options: {
+        peer: NotifyPeer
+        notify_settings: PeerNotifySettings
+    }) {
+        this.peer = options.peer;
+        this.notify_settings = options.notify_settings;
+    }
 }
 
-export interface PredicateSendMessageTypingAction {
-    _: 'sendMessageTypingAction'
+export class PredicateSendMessageTypingAction {
+    _ = 'sendMessageTypingAction' as const
 }
 
-export interface PredicateSendMessageCancelAction {
-    _: 'sendMessageCancelAction'
+export class PredicateSendMessageCancelAction {
+    _ = 'sendMessageCancelAction' as const
 }
 
-export interface PredicateSendMessageRecordVideoAction {
-    _: 'sendMessageRecordVideoAction'
+export class PredicateSendMessageRecordVideoAction {
+    _ = 'sendMessageRecordVideoAction' as const
 }
 
-export interface PredicateSendMessageUploadVideoAction {
-    _: 'sendMessageUploadVideoAction'
+export class PredicateSendMessageUploadVideoAction {
+    _ = 'sendMessageUploadVideoAction' as const
     progress: number
+    constructor(options: {
+        progress: number
+    }) {
+        this.progress = options.progress;
+    }
 }
 
-export interface PredicateSendMessageRecordAudioAction {
-    _: 'sendMessageRecordAudioAction'
+export class PredicateSendMessageRecordAudioAction {
+    _ = 'sendMessageRecordAudioAction' as const
 }
 
-export interface PredicateSendMessageUploadAudioAction {
-    _: 'sendMessageUploadAudioAction'
+export class PredicateSendMessageUploadAudioAction {
+    _ = 'sendMessageUploadAudioAction' as const
     progress: number
+    constructor(options: {
+        progress: number
+    }) {
+        this.progress = options.progress;
+    }
 }
 
-export interface PredicateSendMessageUploadPhotoAction {
-    _: 'sendMessageUploadPhotoAction'
+export class PredicateSendMessageUploadPhotoAction {
+    _ = 'sendMessageUploadPhotoAction' as const
     progress: number
+    constructor(options: {
+        progress: number
+    }) {
+        this.progress = options.progress;
+    }
 }
 
-export interface PredicateSendMessageUploadDocumentAction {
-    _: 'sendMessageUploadDocumentAction'
+export class PredicateSendMessageUploadDocumentAction {
+    _ = 'sendMessageUploadDocumentAction' as const
     progress: number
+    constructor(options: {
+        progress: number
+    }) {
+        this.progress = options.progress;
+    }
 }
 
-export interface PredicateSendMessageGeoLocationAction {
-    _: 'sendMessageGeoLocationAction'
+export class PredicateSendMessageGeoLocationAction {
+    _ = 'sendMessageGeoLocationAction' as const
 }
 
-export interface PredicateSendMessageChooseContactAction {
-    _: 'sendMessageChooseContactAction'
+export class PredicateSendMessageChooseContactAction {
+    _ = 'sendMessageChooseContactAction' as const
 }
 
-export interface PredicateContactsFound {
-    _: 'contacts.found'
+export class PredicateContactsFound {
+    _ = 'contacts.found' as const
     my_results: Peer[]
     results: Peer[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        my_results: Peer[]
+        results: Peer[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.my_results = options.my_results;
+        this.results = options.results;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateUpdateServiceNotification {
-    _: 'updateServiceNotification'
+export class PredicateUpdateServiceNotification {
+    _ = 'updateServiceNotification' as const
     popup?: true
     inbox_date?: number
     type: string
     message: string
     media: MessageMedia
     entities: MessageEntity[]
+    constructor(options: {
+        popup?: true
+        inbox_date?: number
+        type: string
+        message: string
+        media: MessageMedia
+        entities: MessageEntity[]
+    }) {
+        this.popup = options.popup;
+        this.inbox_date = options.inbox_date;
+        this.type = options.type;
+        this.message = options.message;
+        this.media = options.media;
+        this.entities = options.entities;
+    }
 }
 
-export interface PredicateUserStatusRecently {
-    _: 'userStatusRecently'
+export class PredicateUserStatusRecently {
+    _ = 'userStatusRecently' as const
 }
 
-export interface PredicateUserStatusLastWeek {
-    _: 'userStatusLastWeek'
+export class PredicateUserStatusLastWeek {
+    _ = 'userStatusLastWeek' as const
 }
 
-export interface PredicateUserStatusLastMonth {
-    _: 'userStatusLastMonth'
+export class PredicateUserStatusLastMonth {
+    _ = 'userStatusLastMonth' as const
 }
 
-export interface PredicateUpdatePrivacy {
-    _: 'updatePrivacy'
+export class PredicateUpdatePrivacy {
+    _ = 'updatePrivacy' as const
     key: PrivacyKey
     rules: PrivacyRule[]
+    constructor(options: {
+        key: PrivacyKey
+        rules: PrivacyRule[]
+    }) {
+        this.key = options.key;
+        this.rules = options.rules;
+    }
 }
 
-export interface PredicateInputPrivacyKeyStatusTimestamp {
-    _: 'inputPrivacyKeyStatusTimestamp'
+export class PredicateInputPrivacyKeyStatusTimestamp {
+    _ = 'inputPrivacyKeyStatusTimestamp' as const
 }
 
-export interface PredicatePrivacyKeyStatusTimestamp {
-    _: 'privacyKeyStatusTimestamp'
+export class PredicatePrivacyKeyStatusTimestamp {
+    _ = 'privacyKeyStatusTimestamp' as const
 }
 
-export interface PredicateInputPrivacyValueAllowContacts {
-    _: 'inputPrivacyValueAllowContacts'
+export class PredicateInputPrivacyValueAllowContacts {
+    _ = 'inputPrivacyValueAllowContacts' as const
 }
 
-export interface PredicateInputPrivacyValueAllowAll {
-    _: 'inputPrivacyValueAllowAll'
+export class PredicateInputPrivacyValueAllowAll {
+    _ = 'inputPrivacyValueAllowAll' as const
 }
 
-export interface PredicateInputPrivacyValueAllowUsers {
-    _: 'inputPrivacyValueAllowUsers'
+export class PredicateInputPrivacyValueAllowUsers {
+    _ = 'inputPrivacyValueAllowUsers' as const
     users: InputUser[]
+    constructor(options: {
+        users: InputUser[]
+    }) {
+        this.users = options.users;
+    }
 }
 
-export interface PredicateInputPrivacyValueDisallowContacts {
-    _: 'inputPrivacyValueDisallowContacts'
+export class PredicateInputPrivacyValueDisallowContacts {
+    _ = 'inputPrivacyValueDisallowContacts' as const
 }
 
-export interface PredicateInputPrivacyValueDisallowAll {
-    _: 'inputPrivacyValueDisallowAll'
+export class PredicateInputPrivacyValueDisallowAll {
+    _ = 'inputPrivacyValueDisallowAll' as const
 }
 
-export interface PredicateInputPrivacyValueDisallowUsers {
-    _: 'inputPrivacyValueDisallowUsers'
+export class PredicateInputPrivacyValueDisallowUsers {
+    _ = 'inputPrivacyValueDisallowUsers' as const
     users: InputUser[]
+    constructor(options: {
+        users: InputUser[]
+    }) {
+        this.users = options.users;
+    }
 }
 
-export interface PredicatePrivacyValueAllowContacts {
-    _: 'privacyValueAllowContacts'
+export class PredicatePrivacyValueAllowContacts {
+    _ = 'privacyValueAllowContacts' as const
 }
 
-export interface PredicatePrivacyValueAllowAll {
-    _: 'privacyValueAllowAll'
+export class PredicatePrivacyValueAllowAll {
+    _ = 'privacyValueAllowAll' as const
 }
 
-export interface PredicatePrivacyValueAllowUsers {
-    _: 'privacyValueAllowUsers'
+export class PredicatePrivacyValueAllowUsers {
+    _ = 'privacyValueAllowUsers' as const
     users: string[]
+    constructor(options: {
+        users: string[]
+    }) {
+        this.users = options.users;
+    }
 }
 
-export interface PredicatePrivacyValueDisallowContacts {
-    _: 'privacyValueDisallowContacts'
+export class PredicatePrivacyValueDisallowContacts {
+    _ = 'privacyValueDisallowContacts' as const
 }
 
-export interface PredicatePrivacyValueDisallowAll {
-    _: 'privacyValueDisallowAll'
+export class PredicatePrivacyValueDisallowAll {
+    _ = 'privacyValueDisallowAll' as const
 }
 
-export interface PredicatePrivacyValueDisallowUsers {
-    _: 'privacyValueDisallowUsers'
+export class PredicatePrivacyValueDisallowUsers {
+    _ = 'privacyValueDisallowUsers' as const
     users: string[]
+    constructor(options: {
+        users: string[]
+    }) {
+        this.users = options.users;
+    }
 }
 
-export interface PredicateAccountPrivacyRules {
-    _: 'account.privacyRules'
+export class PredicateAccountPrivacyRules {
+    _ = 'account.privacyRules' as const
     rules: PrivacyRule[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        rules: PrivacyRule[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.rules = options.rules;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateAccountDaysTTL {
-    _: 'accountDaysTTL'
+export class PredicateAccountDaysTTL {
+    _ = 'accountDaysTTL' as const
     days: number
+    constructor(options: {
+        days: number
+    }) {
+        this.days = options.days;
+    }
 }
 
-export interface PredicateUpdateUserPhone {
-    _: 'updateUserPhone'
+export class PredicateUpdateUserPhone {
+    _ = 'updateUserPhone' as const
     user_id: string
     phone: string
+    constructor(options: {
+        user_id: string
+        phone: string
+    }) {
+        this.user_id = options.user_id;
+        this.phone = options.phone;
+    }
 }
 
-export interface PredicateDocumentAttributeImageSize {
-    _: 'documentAttributeImageSize'
+export class PredicateDocumentAttributeImageSize {
+    _ = 'documentAttributeImageSize' as const
     w: number
     h: number
+    constructor(options: {
+        w: number
+        h: number
+    }) {
+        this.w = options.w;
+        this.h = options.h;
+    }
 }
 
-export interface PredicateDocumentAttributeAnimated {
-    _: 'documentAttributeAnimated'
+export class PredicateDocumentAttributeAnimated {
+    _ = 'documentAttributeAnimated' as const
 }
 
-export interface PredicateDocumentAttributeSticker {
-    _: 'documentAttributeSticker'
+export class PredicateDocumentAttributeSticker {
+    _ = 'documentAttributeSticker' as const
     mask?: true
     alt: string
     stickerset: InputStickerSet
     mask_coords?: MaskCoords
+    constructor(options: {
+        mask?: true
+        alt: string
+        stickerset: InputStickerSet
+        mask_coords?: MaskCoords
+    }) {
+        this.mask = options.mask;
+        this.alt = options.alt;
+        this.stickerset = options.stickerset;
+        this.mask_coords = options.mask_coords;
+    }
 }
 
-export interface PredicateDocumentAttributeVideo {
-    _: 'documentAttributeVideo'
+export class PredicateDocumentAttributeVideo {
+    _ = 'documentAttributeVideo' as const
     round_message?: true
     supports_streaming?: true
     duration: number
     w: number
     h: number
+    constructor(options: {
+        round_message?: true
+        supports_streaming?: true
+        duration: number
+        w: number
+        h: number
+    }) {
+        this.round_message = options.round_message;
+        this.supports_streaming = options.supports_streaming;
+        this.duration = options.duration;
+        this.w = options.w;
+        this.h = options.h;
+    }
 }
 
-export interface PredicateDocumentAttributeAudio {
-    _: 'documentAttributeAudio'
+export class PredicateDocumentAttributeAudio {
+    _ = 'documentAttributeAudio' as const
     voice?: true
     duration: number
     title?: string
     performer?: string
     waveform?: Uint8Array
+    constructor(options: {
+        voice?: true
+        duration: number
+        title?: string
+        performer?: string
+        waveform?: Uint8Array
+    }) {
+        this.voice = options.voice;
+        this.duration = options.duration;
+        this.title = options.title;
+        this.performer = options.performer;
+        this.waveform = options.waveform;
+    }
 }
 
-export interface PredicateDocumentAttributeFilename {
-    _: 'documentAttributeFilename'
+export class PredicateDocumentAttributeFilename {
+    _ = 'documentAttributeFilename' as const
     file_name: string
+    constructor(options: {
+        file_name: string
+    }) {
+        this.file_name = options.file_name;
+    }
 }
 
-export interface PredicateMessagesStickersNotModified {
-    _: 'messages.stickersNotModified'
+export class PredicateMessagesStickersNotModified {
+    _ = 'messages.stickersNotModified' as const
 }
 
-export interface PredicateMessagesStickers {
-    _: 'messages.stickers'
+export class PredicateMessagesStickers {
+    _ = 'messages.stickers' as const
     hash: string
     stickers: Document[]
+    constructor(options: {
+        hash: string
+        stickers: Document[]
+    }) {
+        this.hash = options.hash;
+        this.stickers = options.stickers;
+    }
 }
 
-export interface PredicateStickerPack {
-    _: 'stickerPack'
+export class PredicateStickerPack {
+    _ = 'stickerPack' as const
     emoticon: string
     documents: string[]
+    constructor(options: {
+        emoticon: string
+        documents: string[]
+    }) {
+        this.emoticon = options.emoticon;
+        this.documents = options.documents;
+    }
 }
 
-export interface PredicateMessagesAllStickersNotModified {
-    _: 'messages.allStickersNotModified'
+export class PredicateMessagesAllStickersNotModified {
+    _ = 'messages.allStickersNotModified' as const
 }
 
-export interface PredicateMessagesAllStickers {
-    _: 'messages.allStickers'
+export class PredicateMessagesAllStickers {
+    _ = 'messages.allStickers' as const
     hash: string
     sets: StickerSet[]
+    constructor(options: {
+        hash: string
+        sets: StickerSet[]
+    }) {
+        this.hash = options.hash;
+        this.sets = options.sets;
+    }
 }
 
-export interface PredicateUpdateReadHistoryInbox {
-    _: 'updateReadHistoryInbox'
+export class PredicateUpdateReadHistoryInbox {
+    _ = 'updateReadHistoryInbox' as const
     folder_id?: number
     peer: Peer
     max_id: number
     still_unread_count: number
     pts: number
     pts_count: number
+    constructor(options: {
+        folder_id?: number
+        peer: Peer
+        max_id: number
+        still_unread_count: number
+        pts: number
+        pts_count: number
+    }) {
+        this.folder_id = options.folder_id;
+        this.peer = options.peer;
+        this.max_id = options.max_id;
+        this.still_unread_count = options.still_unread_count;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+    }
 }
 
-export interface PredicateUpdateReadHistoryOutbox {
-    _: 'updateReadHistoryOutbox'
+export class PredicateUpdateReadHistoryOutbox {
+    _ = 'updateReadHistoryOutbox' as const
     peer: Peer
     max_id: number
     pts: number
     pts_count: number
+    constructor(options: {
+        peer: Peer
+        max_id: number
+        pts: number
+        pts_count: number
+    }) {
+        this.peer = options.peer;
+        this.max_id = options.max_id;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+    }
 }
 
-export interface PredicateMessagesAffectedMessages {
-    _: 'messages.affectedMessages'
+export class PredicateMessagesAffectedMessages {
+    _ = 'messages.affectedMessages' as const
     pts: number
     pts_count: number
+    constructor(options: {
+        pts: number
+        pts_count: number
+    }) {
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+    }
 }
 
-export interface PredicateUpdateWebPage {
-    _: 'updateWebPage'
+export class PredicateUpdateWebPage {
+    _ = 'updateWebPage' as const
     webpage: WebPage
     pts: number
     pts_count: number
+    constructor(options: {
+        webpage: WebPage
+        pts: number
+        pts_count: number
+    }) {
+        this.webpage = options.webpage;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+    }
 }
 
-export interface PredicateWebPageEmpty {
-    _: 'webPageEmpty'
+export class PredicateWebPageEmpty {
+    _ = 'webPageEmpty' as const
     id: string
+    constructor(options: {
+        id: string
+    }) {
+        this.id = options.id;
+    }
 }
 
-export interface PredicateWebPagePending {
-    _: 'webPagePending'
+export class PredicateWebPagePending {
+    _ = 'webPagePending' as const
     id: string
     date: number
+    constructor(options: {
+        id: string
+        date: number
+    }) {
+        this.id = options.id;
+        this.date = options.date;
+    }
 }
 
-export interface PredicateWebPage {
-    _: 'webPage'
+export class PredicateWebPage {
+    _ = 'webPage' as const
     id: string
     url: string
     display_url: string
@@ -1571,15 +3327,59 @@ export interface PredicateWebPage {
     document?: Document
     cached_page?: Page
     attributes?: WebPageAttribute[]
+    constructor(options: {
+        id: string
+        url: string
+        display_url: string
+        hash: number
+        type?: string
+        site_name?: string
+        title?: string
+        description?: string
+        photo?: Photo
+        embed_url?: string
+        embed_type?: string
+        embed_width?: number
+        embed_height?: number
+        duration?: number
+        author?: string
+        document?: Document
+        cached_page?: Page
+        attributes?: WebPageAttribute[]
+    }) {
+        this.id = options.id;
+        this.url = options.url;
+        this.display_url = options.display_url;
+        this.hash = options.hash;
+        this.type = options.type;
+        this.site_name = options.site_name;
+        this.title = options.title;
+        this.description = options.description;
+        this.photo = options.photo;
+        this.embed_url = options.embed_url;
+        this.embed_type = options.embed_type;
+        this.embed_width = options.embed_width;
+        this.embed_height = options.embed_height;
+        this.duration = options.duration;
+        this.author = options.author;
+        this.document = options.document;
+        this.cached_page = options.cached_page;
+        this.attributes = options.attributes;
+    }
 }
 
-export interface PredicateMessageMediaWebPage {
-    _: 'messageMediaWebPage'
+export class PredicateMessageMediaWebPage {
+    _ = 'messageMediaWebPage' as const
     webpage: WebPage
+    constructor(options: {
+        webpage: WebPage
+    }) {
+        this.webpage = options.webpage;
+    }
 }
 
-export interface PredicateAuthorization {
-    _: 'authorization'
+export class PredicateAuthorization {
+    _ = 'authorization' as const
     current?: true
     official_app?: true
     password_pending?: true
@@ -1597,16 +3397,60 @@ export interface PredicateAuthorization {
     ip: string
     country: string
     region: string
+    constructor(options: {
+        current?: true
+        official_app?: true
+        password_pending?: true
+        encrypted_requests_disabled?: true
+        call_requests_disabled?: true
+        hash: string
+        device_model: string
+        platform: string
+        system_version: string
+        api_id: number
+        app_name: string
+        app_version: string
+        date_created: number
+        date_active: number
+        ip: string
+        country: string
+        region: string
+    }) {
+        this.current = options.current;
+        this.official_app = options.official_app;
+        this.password_pending = options.password_pending;
+        this.encrypted_requests_disabled = options.encrypted_requests_disabled;
+        this.call_requests_disabled = options.call_requests_disabled;
+        this.hash = options.hash;
+        this.device_model = options.device_model;
+        this.platform = options.platform;
+        this.system_version = options.system_version;
+        this.api_id = options.api_id;
+        this.app_name = options.app_name;
+        this.app_version = options.app_version;
+        this.date_created = options.date_created;
+        this.date_active = options.date_active;
+        this.ip = options.ip;
+        this.country = options.country;
+        this.region = options.region;
+    }
 }
 
-export interface PredicateAccountAuthorizations {
-    _: 'account.authorizations'
+export class PredicateAccountAuthorizations {
+    _ = 'account.authorizations' as const
     authorization_ttl_days: number
     authorizations: Authorization[]
+    constructor(options: {
+        authorization_ttl_days: number
+        authorizations: Authorization[]
+    }) {
+        this.authorization_ttl_days = options.authorization_ttl_days;
+        this.authorizations = options.authorizations;
+    }
 }
 
-export interface PredicateAccountPassword {
-    _: 'account.password'
+export class PredicateAccountPassword {
+    _ = 'account.password' as const
     has_recovery?: true
     has_secure_values?: true
     has_password?: true
@@ -1619,56 +3463,145 @@ export interface PredicateAccountPassword {
     new_secure_algo: SecurePasswordKdfAlgo
     secure_random: Uint8Array
     pending_reset_date?: number
+    constructor(options: {
+        has_recovery?: true
+        has_secure_values?: true
+        has_password?: true
+        current_algo?: PasswordKdfAlgo
+        srp_B?: Uint8Array
+        srp_id?: string
+        hint?: string
+        email_unconfirmed_pattern?: string
+        new_algo: PasswordKdfAlgo
+        new_secure_algo: SecurePasswordKdfAlgo
+        secure_random: Uint8Array
+        pending_reset_date?: number
+    }) {
+        this.has_recovery = options.has_recovery;
+        this.has_secure_values = options.has_secure_values;
+        this.has_password = options.has_password;
+        this.current_algo = options.current_algo;
+        this.srp_B = options.srp_B;
+        this.srp_id = options.srp_id;
+        this.hint = options.hint;
+        this.email_unconfirmed_pattern = options.email_unconfirmed_pattern;
+        this.new_algo = options.new_algo;
+        this.new_secure_algo = options.new_secure_algo;
+        this.secure_random = options.secure_random;
+        this.pending_reset_date = options.pending_reset_date;
+    }
 }
 
-export interface PredicateAccountPasswordSettings {
-    _: 'account.passwordSettings'
+export class PredicateAccountPasswordSettings {
+    _ = 'account.passwordSettings' as const
     email?: string
     secure_settings?: SecureSecretSettings
+    constructor(options: {
+        email?: string
+        secure_settings?: SecureSecretSettings
+    } = {}) {
+        this.email = options.email;
+        this.secure_settings = options.secure_settings;
+    }
 }
 
-export interface PredicateAccountPasswordInputSettings {
-    _: 'account.passwordInputSettings'
+export class PredicateAccountPasswordInputSettings {
+    _ = 'account.passwordInputSettings' as const
     new_algo?: PasswordKdfAlgo
     new_password_hash?: Uint8Array
     hint?: string
     email?: string
     new_secure_settings?: SecureSecretSettings
+    constructor(options: {
+        new_algo?: PasswordKdfAlgo
+        new_password_hash?: Uint8Array
+        hint?: string
+        email?: string
+        new_secure_settings?: SecureSecretSettings
+    } = {}) {
+        this.new_algo = options.new_algo;
+        this.new_password_hash = options.new_password_hash;
+        this.hint = options.hint;
+        this.email = options.email;
+        this.new_secure_settings = options.new_secure_settings;
+    }
 }
 
-export interface PredicateAuthPasswordRecovery {
-    _: 'auth.passwordRecovery'
+export class PredicateAuthPasswordRecovery {
+    _ = 'auth.passwordRecovery' as const
     email_pattern: string
+    constructor(options: {
+        email_pattern: string
+    }) {
+        this.email_pattern = options.email_pattern;
+    }
 }
 
-export interface PredicateInputMediaVenue {
-    _: 'inputMediaVenue'
+export class PredicateInputMediaVenue {
+    _ = 'inputMediaVenue' as const
     geo_point: InputGeoPoint
     title: string
     address: string
     provider: string
     venue_id: string
     venue_type: string
+    constructor(options: {
+        geo_point: InputGeoPoint
+        title: string
+        address: string
+        provider: string
+        venue_id: string
+        venue_type: string
+    }) {
+        this.geo_point = options.geo_point;
+        this.title = options.title;
+        this.address = options.address;
+        this.provider = options.provider;
+        this.venue_id = options.venue_id;
+        this.venue_type = options.venue_type;
+    }
 }
 
-export interface PredicateMessageMediaVenue {
-    _: 'messageMediaVenue'
+export class PredicateMessageMediaVenue {
+    _ = 'messageMediaVenue' as const
     geo: GeoPoint
     title: string
     address: string
     provider: string
     venue_id: string
     venue_type: string
+    constructor(options: {
+        geo: GeoPoint
+        title: string
+        address: string
+        provider: string
+        venue_id: string
+        venue_type: string
+    }) {
+        this.geo = options.geo;
+        this.title = options.title;
+        this.address = options.address;
+        this.provider = options.provider;
+        this.venue_id = options.venue_id;
+        this.venue_type = options.venue_type;
+    }
 }
 
-export interface PredicateReceivedNotifyMessage {
-    _: 'receivedNotifyMessage'
+export class PredicateReceivedNotifyMessage {
+    _ = 'receivedNotifyMessage' as const
     id: number
     flags: number
+    constructor(options: {
+        id: number
+        flags: number
+    }) {
+        this.id = options.id;
+        this.flags = options.flags;
+    }
 }
 
-export interface PredicateChatInviteExported {
-    _: 'chatInviteExported'
+export class PredicateChatInviteExported {
+    _ = 'chatInviteExported' as const
     revoked?: true
     permanent?: true
     request_needed?: true
@@ -1681,15 +3614,47 @@ export interface PredicateChatInviteExported {
     usage?: number
     requested?: number
     title?: string
+    constructor(options: {
+        revoked?: true
+        permanent?: true
+        request_needed?: true
+        link: string
+        admin_id: string
+        date: number
+        start_date?: number
+        expire_date?: number
+        usage_limit?: number
+        usage?: number
+        requested?: number
+        title?: string
+    }) {
+        this.revoked = options.revoked;
+        this.permanent = options.permanent;
+        this.request_needed = options.request_needed;
+        this.link = options.link;
+        this.admin_id = options.admin_id;
+        this.date = options.date;
+        this.start_date = options.start_date;
+        this.expire_date = options.expire_date;
+        this.usage_limit = options.usage_limit;
+        this.usage = options.usage;
+        this.requested = options.requested;
+        this.title = options.title;
+    }
 }
 
-export interface PredicateChatInviteAlready {
-    _: 'chatInviteAlready'
+export class PredicateChatInviteAlready {
+    _ = 'chatInviteAlready' as const
     chat: Chat
+    constructor(options: {
+        chat: Chat
+    }) {
+        this.chat = options.chat;
+    }
 }
 
-export interface PredicateChatInvite {
-    _: 'chatInvite'
+export class PredicateChatInvite {
+    _ = 'chatInvite' as const
     channel?: true
     broadcast?: true
     public?: true
@@ -1700,37 +3665,86 @@ export interface PredicateChatInvite {
     photo: Photo
     participants_count: number
     participants?: User[]
+    constructor(options: {
+        channel?: true
+        broadcast?: true
+        public?: true
+        megagroup?: true
+        request_needed?: true
+        title: string
+        about?: string
+        photo: Photo
+        participants_count: number
+        participants?: User[]
+    }) {
+        this.channel = options.channel;
+        this.broadcast = options.broadcast;
+        this.public = options.public;
+        this.megagroup = options.megagroup;
+        this.request_needed = options.request_needed;
+        this.title = options.title;
+        this.about = options.about;
+        this.photo = options.photo;
+        this.participants_count = options.participants_count;
+        this.participants = options.participants;
+    }
 }
 
-export interface PredicateMessageActionChatJoinedByLink {
-    _: 'messageActionChatJoinedByLink'
+export class PredicateMessageActionChatJoinedByLink {
+    _ = 'messageActionChatJoinedByLink' as const
     inviter_id: string
+    constructor(options: {
+        inviter_id: string
+    }) {
+        this.inviter_id = options.inviter_id;
+    }
 }
 
-export interface PredicateUpdateReadMessagesContents {
-    _: 'updateReadMessagesContents'
+export class PredicateUpdateReadMessagesContents {
+    _ = 'updateReadMessagesContents' as const
     messages: number[]
     pts: number
     pts_count: number
+    constructor(options: {
+        messages: number[]
+        pts: number
+        pts_count: number
+    }) {
+        this.messages = options.messages;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+    }
 }
 
-export interface PredicateInputStickerSetEmpty {
-    _: 'inputStickerSetEmpty'
+export class PredicateInputStickerSetEmpty {
+    _ = 'inputStickerSetEmpty' as const
 }
 
-export interface PredicateInputStickerSetID {
-    _: 'inputStickerSetID'
+export class PredicateInputStickerSetID {
+    _ = 'inputStickerSetID' as const
     id: string
     access_hash: string
+    constructor(options: {
+        id: string
+        access_hash: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicateInputStickerSetShortName {
-    _: 'inputStickerSetShortName'
+export class PredicateInputStickerSetShortName {
+    _ = 'inputStickerSetShortName' as const
     short_name: string
+    constructor(options: {
+        short_name: string
+    }) {
+        this.short_name = options.short_name;
+    }
 }
 
-export interface PredicateStickerSet {
-    _: 'stickerSet'
+export class PredicateStickerSet {
+    _ = 'stickerSet' as const
     archived?: true
     official?: true
     masks?: true
@@ -1747,17 +3761,61 @@ export interface PredicateStickerSet {
     thumb_version?: number
     count: number
     hash: number
+    constructor(options: {
+        archived?: true
+        official?: true
+        masks?: true
+        animated?: true
+        videos?: true
+        emojis?: true
+        installed_date?: number
+        id: string
+        access_hash: string
+        title: string
+        short_name: string
+        thumbs?: PhotoSize[]
+        thumb_dc_id?: number
+        thumb_version?: number
+        count: number
+        hash: number
+    }) {
+        this.archived = options.archived;
+        this.official = options.official;
+        this.masks = options.masks;
+        this.animated = options.animated;
+        this.videos = options.videos;
+        this.emojis = options.emojis;
+        this.installed_date = options.installed_date;
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.title = options.title;
+        this.short_name = options.short_name;
+        this.thumbs = options.thumbs;
+        this.thumb_dc_id = options.thumb_dc_id;
+        this.thumb_version = options.thumb_version;
+        this.count = options.count;
+        this.hash = options.hash;
+    }
 }
 
-export interface PredicateMessagesStickerSet {
-    _: 'messages.stickerSet'
+export class PredicateMessagesStickerSet {
+    _ = 'messages.stickerSet' as const
     set: StickerSet
     packs: StickerPack[]
     documents: Document[]
+    constructor(options: {
+        set: StickerSet
+        packs: StickerPack[]
+        documents: Document[]
+    }) {
+        this.set = options.set;
+        this.packs = options.packs;
+        this.documents = options.documents;
+    }
 }
 
-export interface PredicateUser {
-    _: 'user'
+export class PredicateUser {
+    _ = 'user' as const
     self?: true
     contact?: true
     mutual_contact?: true
@@ -1785,134 +3843,339 @@ export interface PredicateUser {
     restriction_reason?: RestrictionReason[]
     bot_inline_placeholder?: string
     lang_code?: string
+    constructor(options: {
+        self?: true
+        contact?: true
+        mutual_contact?: true
+        deleted?: true
+        bot?: true
+        bot_chat_history?: true
+        bot_nochats?: true
+        verified?: true
+        restricted?: true
+        min?: true
+        bot_inline_geo?: true
+        support?: true
+        scam?: true
+        apply_min_photo?: true
+        fake?: true
+        id: string
+        access_hash?: string
+        first_name?: string
+        last_name?: string
+        username?: string
+        phone?: string
+        photo?: UserProfilePhoto
+        status?: UserStatus
+        bot_info_version?: number
+        restriction_reason?: RestrictionReason[]
+        bot_inline_placeholder?: string
+        lang_code?: string
+    }) {
+        this.self = options.self;
+        this.contact = options.contact;
+        this.mutual_contact = options.mutual_contact;
+        this.deleted = options.deleted;
+        this.bot = options.bot;
+        this.bot_chat_history = options.bot_chat_history;
+        this.bot_nochats = options.bot_nochats;
+        this.verified = options.verified;
+        this.restricted = options.restricted;
+        this.min = options.min;
+        this.bot_inline_geo = options.bot_inline_geo;
+        this.support = options.support;
+        this.scam = options.scam;
+        this.apply_min_photo = options.apply_min_photo;
+        this.fake = options.fake;
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.first_name = options.first_name;
+        this.last_name = options.last_name;
+        this.username = options.username;
+        this.phone = options.phone;
+        this.photo = options.photo;
+        this.status = options.status;
+        this.bot_info_version = options.bot_info_version;
+        this.restriction_reason = options.restriction_reason;
+        this.bot_inline_placeholder = options.bot_inline_placeholder;
+        this.lang_code = options.lang_code;
+    }
 }
 
-export interface PredicateBotCommand {
-    _: 'botCommand'
+export class PredicateBotCommand {
+    _ = 'botCommand' as const
     command: string
     description: string
+    constructor(options: {
+        command: string
+        description: string
+    }) {
+        this.command = options.command;
+        this.description = options.description;
+    }
 }
 
-export interface PredicateBotInfo {
-    _: 'botInfo'
+export class PredicateBotInfo {
+    _ = 'botInfo' as const
     user_id: string
     description: string
     commands: BotCommand[]
+    constructor(options: {
+        user_id: string
+        description: string
+        commands: BotCommand[]
+    }) {
+        this.user_id = options.user_id;
+        this.description = options.description;
+        this.commands = options.commands;
+    }
 }
 
-export interface PredicateKeyboardButton {
-    _: 'keyboardButton'
+export class PredicateKeyboardButton {
+    _ = 'keyboardButton' as const
     text: string
+    constructor(options: {
+        text: string
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicateKeyboardButtonRow {
-    _: 'keyboardButtonRow'
+export class PredicateKeyboardButtonRow {
+    _ = 'keyboardButtonRow' as const
     buttons: KeyboardButton[]
+    constructor(options: {
+        buttons: KeyboardButton[]
+    }) {
+        this.buttons = options.buttons;
+    }
 }
 
-export interface PredicateReplyKeyboardHide {
-    _: 'replyKeyboardHide'
+export class PredicateReplyKeyboardHide {
+    _ = 'replyKeyboardHide' as const
     selective?: true
+    constructor(options: {
+        selective?: true
+    } = {}) {
+        this.selective = options.selective;
+    }
 }
 
-export interface PredicateReplyKeyboardForceReply {
-    _: 'replyKeyboardForceReply'
+export class PredicateReplyKeyboardForceReply {
+    _ = 'replyKeyboardForceReply' as const
     single_use?: true
     selective?: true
     placeholder?: string
+    constructor(options: {
+        single_use?: true
+        selective?: true
+        placeholder?: string
+    } = {}) {
+        this.single_use = options.single_use;
+        this.selective = options.selective;
+        this.placeholder = options.placeholder;
+    }
 }
 
-export interface PredicateReplyKeyboardMarkup {
-    _: 'replyKeyboardMarkup'
+export class PredicateReplyKeyboardMarkup {
+    _ = 'replyKeyboardMarkup' as const
     resize?: true
     single_use?: true
     selective?: true
     rows: KeyboardButtonRow[]
     placeholder?: string
+    constructor(options: {
+        resize?: true
+        single_use?: true
+        selective?: true
+        rows: KeyboardButtonRow[]
+        placeholder?: string
+    }) {
+        this.resize = options.resize;
+        this.single_use = options.single_use;
+        this.selective = options.selective;
+        this.rows = options.rows;
+        this.placeholder = options.placeholder;
+    }
 }
 
-export interface PredicateInputPeerUser {
-    _: 'inputPeerUser'
+export class PredicateInputPeerUser {
+    _ = 'inputPeerUser' as const
     user_id: string
     access_hash: string
+    constructor(options: {
+        user_id: string
+        access_hash: string
+    }) {
+        this.user_id = options.user_id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicateInputUser {
-    _: 'inputUser'
+export class PredicateInputUser {
+    _ = 'inputUser' as const
     user_id: string
     access_hash: string
+    constructor(options: {
+        user_id: string
+        access_hash: string
+    }) {
+        this.user_id = options.user_id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicateMessageEntityUnknown {
-    _: 'messageEntityUnknown'
+export class PredicateMessageEntityUnknown {
+    _ = 'messageEntityUnknown' as const
     offset: number
     length: number
+    constructor(options: {
+        offset: number
+        length: number
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateMessageEntityMention {
-    _: 'messageEntityMention'
+export class PredicateMessageEntityMention {
+    _ = 'messageEntityMention' as const
     offset: number
     length: number
+    constructor(options: {
+        offset: number
+        length: number
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateMessageEntityHashtag {
-    _: 'messageEntityHashtag'
+export class PredicateMessageEntityHashtag {
+    _ = 'messageEntityHashtag' as const
     offset: number
     length: number
+    constructor(options: {
+        offset: number
+        length: number
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateMessageEntityBotCommand {
-    _: 'messageEntityBotCommand'
+export class PredicateMessageEntityBotCommand {
+    _ = 'messageEntityBotCommand' as const
     offset: number
     length: number
+    constructor(options: {
+        offset: number
+        length: number
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateMessageEntityUrl {
-    _: 'messageEntityUrl'
+export class PredicateMessageEntityUrl {
+    _ = 'messageEntityUrl' as const
     offset: number
     length: number
+    constructor(options: {
+        offset: number
+        length: number
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateMessageEntityEmail {
-    _: 'messageEntityEmail'
+export class PredicateMessageEntityEmail {
+    _ = 'messageEntityEmail' as const
     offset: number
     length: number
+    constructor(options: {
+        offset: number
+        length: number
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateMessageEntityBold {
-    _: 'messageEntityBold'
+export class PredicateMessageEntityBold {
+    _ = 'messageEntityBold' as const
     offset: number
     length: number
+    constructor(options: {
+        offset: number
+        length: number
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateMessageEntityItalic {
-    _: 'messageEntityItalic'
+export class PredicateMessageEntityItalic {
+    _ = 'messageEntityItalic' as const
     offset: number
     length: number
+    constructor(options: {
+        offset: number
+        length: number
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateMessageEntityCode {
-    _: 'messageEntityCode'
+export class PredicateMessageEntityCode {
+    _ = 'messageEntityCode' as const
     offset: number
     length: number
+    constructor(options: {
+        offset: number
+        length: number
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateMessageEntityPre {
-    _: 'messageEntityPre'
+export class PredicateMessageEntityPre {
+    _ = 'messageEntityPre' as const
     offset: number
     length: number
     language: string
+    constructor(options: {
+        offset: number
+        length: number
+        language: string
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+        this.language = options.language;
+    }
 }
 
-export interface PredicateMessageEntityTextUrl {
-    _: 'messageEntityTextUrl'
+export class PredicateMessageEntityTextUrl {
+    _ = 'messageEntityTextUrl' as const
     offset: number
     length: number
     url: string
+    constructor(options: {
+        offset: number
+        length: number
+        url: string
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+        this.url = options.url;
+    }
 }
 
-export interface PredicateUpdateShortSentMessage {
-    _: 'updateShortSentMessage'
+export class PredicateUpdateShortSentMessage {
+    _ = 'updateShortSentMessage' as const
     out?: true
     id: number
     pts: number
@@ -1921,31 +4184,69 @@ export interface PredicateUpdateShortSentMessage {
     media?: MessageMedia
     entities?: MessageEntity[]
     ttl_period?: number
+    constructor(options: {
+        out?: true
+        id: number
+        pts: number
+        pts_count: number
+        date: number
+        media?: MessageMedia
+        entities?: MessageEntity[]
+        ttl_period?: number
+    }) {
+        this.out = options.out;
+        this.id = options.id;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+        this.date = options.date;
+        this.media = options.media;
+        this.entities = options.entities;
+        this.ttl_period = options.ttl_period;
+    }
 }
 
-export interface PredicateInputChannelEmpty {
-    _: 'inputChannelEmpty'
+export class PredicateInputChannelEmpty {
+    _ = 'inputChannelEmpty' as const
 }
 
-export interface PredicateInputChannel {
-    _: 'inputChannel'
+export class PredicateInputChannel {
+    _ = 'inputChannel' as const
     channel_id: string
     access_hash: string
+    constructor(options: {
+        channel_id: string
+        access_hash: string
+    }) {
+        this.channel_id = options.channel_id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicatePeerChannel {
-    _: 'peerChannel'
+export class PredicatePeerChannel {
+    _ = 'peerChannel' as const
     channel_id: string
+    constructor(options: {
+        channel_id: string
+    }) {
+        this.channel_id = options.channel_id;
+    }
 }
 
-export interface PredicateInputPeerChannel {
-    _: 'inputPeerChannel'
+export class PredicateInputPeerChannel {
+    _ = 'inputPeerChannel' as const
     channel_id: string
     access_hash: string
+    constructor(options: {
+        channel_id: string
+        access_hash: string
+    }) {
+        this.channel_id = options.channel_id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicateChannel {
-    _: 'channel'
+export class PredicateChannel {
+    _ = 'channel' as const
     creator?: true
     left?: true
     broadcast?: true
@@ -1976,27 +4277,114 @@ export interface PredicateChannel {
     banned_rights?: ChatBannedRights
     default_banned_rights?: ChatBannedRights
     participants_count?: number
+    constructor(options: {
+        creator?: true
+        left?: true
+        broadcast?: true
+        verified?: true
+        megagroup?: true
+        restricted?: true
+        signatures?: true
+        min?: true
+        scam?: true
+        has_link?: true
+        has_geo?: true
+        slowmode_enabled?: true
+        call_active?: true
+        call_not_empty?: true
+        fake?: true
+        gigagroup?: true
+        noforwards?: true
+        join_to_send?: true
+        join_request?: true
+        id: string
+        access_hash?: string
+        title: string
+        username?: string
+        photo: ChatPhoto
+        date: number
+        restriction_reason?: RestrictionReason[]
+        admin_rights?: ChatAdminRights
+        banned_rights?: ChatBannedRights
+        default_banned_rights?: ChatBannedRights
+        participants_count?: number
+    }) {
+        this.creator = options.creator;
+        this.left = options.left;
+        this.broadcast = options.broadcast;
+        this.verified = options.verified;
+        this.megagroup = options.megagroup;
+        this.restricted = options.restricted;
+        this.signatures = options.signatures;
+        this.min = options.min;
+        this.scam = options.scam;
+        this.has_link = options.has_link;
+        this.has_geo = options.has_geo;
+        this.slowmode_enabled = options.slowmode_enabled;
+        this.call_active = options.call_active;
+        this.call_not_empty = options.call_not_empty;
+        this.fake = options.fake;
+        this.gigagroup = options.gigagroup;
+        this.noforwards = options.noforwards;
+        this.join_to_send = options.join_to_send;
+        this.join_request = options.join_request;
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.title = options.title;
+        this.username = options.username;
+        this.photo = options.photo;
+        this.date = options.date;
+        this.restriction_reason = options.restriction_reason;
+        this.admin_rights = options.admin_rights;
+        this.banned_rights = options.banned_rights;
+        this.default_banned_rights = options.default_banned_rights;
+        this.participants_count = options.participants_count;
+    }
 }
 
-export interface PredicateChannelForbidden {
-    _: 'channelForbidden'
+export class PredicateChannelForbidden {
+    _ = 'channelForbidden' as const
     broadcast?: true
     megagroup?: true
     id: string
     access_hash: string
     title: string
     until_date?: number
+    constructor(options: {
+        broadcast?: true
+        megagroup?: true
+        id: string
+        access_hash: string
+        title: string
+        until_date?: number
+    }) {
+        this.broadcast = options.broadcast;
+        this.megagroup = options.megagroup;
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.title = options.title;
+        this.until_date = options.until_date;
+    }
 }
 
-export interface PredicateContactsResolvedPeer {
-    _: 'contacts.resolvedPeer'
+export class PredicateContactsResolvedPeer {
+    _ = 'contacts.resolvedPeer' as const
     peer: Peer
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        peer: Peer
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.peer = options.peer;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateChannelFull {
-    _: 'channelFull'
+export class PredicateChannelFull {
+    _ = 'channelFull' as const
     can_view_participants?: true
     can_set_username?: true
     can_set_stickers?: true
@@ -2040,16 +4428,112 @@ export interface PredicateChannelFull {
     recent_requesters?: string[]
     default_send_as?: Peer
     available_reactions?: string[]
+    constructor(options: {
+        can_view_participants?: true
+        can_set_username?: true
+        can_set_stickers?: true
+        hidden_prehistory?: true
+        can_set_location?: true
+        has_scheduled?: true
+        can_view_stats?: true
+        blocked?: true
+        id: string
+        about: string
+        participants_count?: number
+        admins_count?: number
+        kicked_count?: number
+        banned_count?: number
+        online_count?: number
+        read_inbox_max_id: number
+        read_outbox_max_id: number
+        unread_count: number
+        chat_photo: Photo
+        notify_settings: PeerNotifySettings
+        exported_invite?: ExportedChatInvite
+        bot_info: BotInfo[]
+        migrated_from_chat_id?: string
+        migrated_from_max_id?: number
+        pinned_msg_id?: number
+        stickerset?: StickerSet
+        available_min_id?: number
+        folder_id?: number
+        linked_chat_id?: string
+        location?: ChannelLocation
+        slowmode_seconds?: number
+        slowmode_next_send_date?: number
+        stats_dc?: number
+        pts: number
+        call?: InputGroupCall
+        ttl_period?: number
+        pending_suggestions?: string[]
+        groupcall_default_join_as?: Peer
+        theme_emoticon?: string
+        requests_pending?: number
+        recent_requesters?: string[]
+        default_send_as?: Peer
+        available_reactions?: string[]
+    }) {
+        this.can_view_participants = options.can_view_participants;
+        this.can_set_username = options.can_set_username;
+        this.can_set_stickers = options.can_set_stickers;
+        this.hidden_prehistory = options.hidden_prehistory;
+        this.can_set_location = options.can_set_location;
+        this.has_scheduled = options.has_scheduled;
+        this.can_view_stats = options.can_view_stats;
+        this.blocked = options.blocked;
+        this.id = options.id;
+        this.about = options.about;
+        this.participants_count = options.participants_count;
+        this.admins_count = options.admins_count;
+        this.kicked_count = options.kicked_count;
+        this.banned_count = options.banned_count;
+        this.online_count = options.online_count;
+        this.read_inbox_max_id = options.read_inbox_max_id;
+        this.read_outbox_max_id = options.read_outbox_max_id;
+        this.unread_count = options.unread_count;
+        this.chat_photo = options.chat_photo;
+        this.notify_settings = options.notify_settings;
+        this.exported_invite = options.exported_invite;
+        this.bot_info = options.bot_info;
+        this.migrated_from_chat_id = options.migrated_from_chat_id;
+        this.migrated_from_max_id = options.migrated_from_max_id;
+        this.pinned_msg_id = options.pinned_msg_id;
+        this.stickerset = options.stickerset;
+        this.available_min_id = options.available_min_id;
+        this.folder_id = options.folder_id;
+        this.linked_chat_id = options.linked_chat_id;
+        this.location = options.location;
+        this.slowmode_seconds = options.slowmode_seconds;
+        this.slowmode_next_send_date = options.slowmode_next_send_date;
+        this.stats_dc = options.stats_dc;
+        this.pts = options.pts;
+        this.call = options.call;
+        this.ttl_period = options.ttl_period;
+        this.pending_suggestions = options.pending_suggestions;
+        this.groupcall_default_join_as = options.groupcall_default_join_as;
+        this.theme_emoticon = options.theme_emoticon;
+        this.requests_pending = options.requests_pending;
+        this.recent_requesters = options.recent_requesters;
+        this.default_send_as = options.default_send_as;
+        this.available_reactions = options.available_reactions;
+    }
 }
 
-export interface PredicateMessageRange {
-    _: 'messageRange'
+export class PredicateMessageRange {
+    _ = 'messageRange' as const
     min_id: number
     max_id: number
+    constructor(options: {
+        min_id: number
+        max_id: number
+    }) {
+        this.min_id = options.min_id;
+        this.max_id = options.max_id;
+    }
 }
 
-export interface PredicateMessagesChannelMessages {
-    _: 'messages.channelMessages'
+export class PredicateMessagesChannelMessages {
+    _ = 'messages.channelMessages' as const
     inexact?: true
     pts: number
     count: number
@@ -2057,74 +4541,174 @@ export interface PredicateMessagesChannelMessages {
     messages: Message[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        inexact?: true
+        pts: number
+        count: number
+        offset_id_offset?: number
+        messages: Message[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.inexact = options.inexact;
+        this.pts = options.pts;
+        this.count = options.count;
+        this.offset_id_offset = options.offset_id_offset;
+        this.messages = options.messages;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateMessageActionChannelCreate {
-    _: 'messageActionChannelCreate'
+export class PredicateMessageActionChannelCreate {
+    _ = 'messageActionChannelCreate' as const
     title: string
+    constructor(options: {
+        title: string
+    }) {
+        this.title = options.title;
+    }
 }
 
-export interface PredicateUpdateChannelTooLong {
-    _: 'updateChannelTooLong'
+export class PredicateUpdateChannelTooLong {
+    _ = 'updateChannelTooLong' as const
     channel_id: string
     pts?: number
+    constructor(options: {
+        channel_id: string
+        pts?: number
+    }) {
+        this.channel_id = options.channel_id;
+        this.pts = options.pts;
+    }
 }
 
-export interface PredicateUpdateChannel {
-    _: 'updateChannel'
+export class PredicateUpdateChannel {
+    _ = 'updateChannel' as const
     channel_id: string
+    constructor(options: {
+        channel_id: string
+    }) {
+        this.channel_id = options.channel_id;
+    }
 }
 
-export interface PredicateUpdateNewChannelMessage {
-    _: 'updateNewChannelMessage'
+export class PredicateUpdateNewChannelMessage {
+    _ = 'updateNewChannelMessage' as const
     message: Message
     pts: number
     pts_count: number
+    constructor(options: {
+        message: Message
+        pts: number
+        pts_count: number
+    }) {
+        this.message = options.message;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+    }
 }
 
-export interface PredicateUpdateReadChannelInbox {
-    _: 'updateReadChannelInbox'
+export class PredicateUpdateReadChannelInbox {
+    _ = 'updateReadChannelInbox' as const
     folder_id?: number
     channel_id: string
     max_id: number
     still_unread_count: number
     pts: number
+    constructor(options: {
+        folder_id?: number
+        channel_id: string
+        max_id: number
+        still_unread_count: number
+        pts: number
+    }) {
+        this.folder_id = options.folder_id;
+        this.channel_id = options.channel_id;
+        this.max_id = options.max_id;
+        this.still_unread_count = options.still_unread_count;
+        this.pts = options.pts;
+    }
 }
 
-export interface PredicateUpdateDeleteChannelMessages {
-    _: 'updateDeleteChannelMessages'
+export class PredicateUpdateDeleteChannelMessages {
+    _ = 'updateDeleteChannelMessages' as const
     channel_id: string
     messages: number[]
     pts: number
     pts_count: number
+    constructor(options: {
+        channel_id: string
+        messages: number[]
+        pts: number
+        pts_count: number
+    }) {
+        this.channel_id = options.channel_id;
+        this.messages = options.messages;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+    }
 }
 
-export interface PredicateUpdateChannelMessageViews {
-    _: 'updateChannelMessageViews'
+export class PredicateUpdateChannelMessageViews {
+    _ = 'updateChannelMessageViews' as const
     channel_id: string
     id: number
     views: number
+    constructor(options: {
+        channel_id: string
+        id: number
+        views: number
+    }) {
+        this.channel_id = options.channel_id;
+        this.id = options.id;
+        this.views = options.views;
+    }
 }
 
-export interface PredicateUpdatesChannelDifferenceEmpty {
-    _: 'updates.channelDifferenceEmpty'
+export class PredicateUpdatesChannelDifferenceEmpty {
+    _ = 'updates.channelDifferenceEmpty' as const
     final?: true
     pts: number
     timeout?: number
+    constructor(options: {
+        final?: true
+        pts: number
+        timeout?: number
+    }) {
+        this.final = options.final;
+        this.pts = options.pts;
+        this.timeout = options.timeout;
+    }
 }
 
-export interface PredicateUpdatesChannelDifferenceTooLong {
-    _: 'updates.channelDifferenceTooLong'
+export class PredicateUpdatesChannelDifferenceTooLong {
+    _ = 'updates.channelDifferenceTooLong' as const
     final?: true
     timeout?: number
     dialog: Dialog
     messages: Message[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        final?: true
+        timeout?: number
+        dialog: Dialog
+        messages: Message[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.final = options.final;
+        this.timeout = options.timeout;
+        this.dialog = options.dialog;
+        this.messages = options.messages;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateUpdatesChannelDifference {
-    _: 'updates.channelDifference'
+export class PredicateUpdatesChannelDifference {
+    _ = 'updates.channelDifference' as const
     final?: true
     pts: number
     timeout?: number
@@ -2132,158 +4716,325 @@ export interface PredicateUpdatesChannelDifference {
     other_updates: Update[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        final?: true
+        pts: number
+        timeout?: number
+        new_messages: Message[]
+        other_updates: Update[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.final = options.final;
+        this.pts = options.pts;
+        this.timeout = options.timeout;
+        this.new_messages = options.new_messages;
+        this.other_updates = options.other_updates;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateChannelMessagesFilterEmpty {
-    _: 'channelMessagesFilterEmpty'
+export class PredicateChannelMessagesFilterEmpty {
+    _ = 'channelMessagesFilterEmpty' as const
 }
 
-export interface PredicateChannelMessagesFilter {
-    _: 'channelMessagesFilter'
+export class PredicateChannelMessagesFilter {
+    _ = 'channelMessagesFilter' as const
     exclude_new_messages?: true
     ranges: MessageRange[]
+    constructor(options: {
+        exclude_new_messages?: true
+        ranges: MessageRange[]
+    }) {
+        this.exclude_new_messages = options.exclude_new_messages;
+        this.ranges = options.ranges;
+    }
 }
 
-export interface PredicateChannelParticipant {
-    _: 'channelParticipant'
+export class PredicateChannelParticipant {
+    _ = 'channelParticipant' as const
     user_id: string
     date: number
+    constructor(options: {
+        user_id: string
+        date: number
+    }) {
+        this.user_id = options.user_id;
+        this.date = options.date;
+    }
 }
 
-export interface PredicateChannelParticipantSelf {
-    _: 'channelParticipantSelf'
+export class PredicateChannelParticipantSelf {
+    _ = 'channelParticipantSelf' as const
     via_request?: true
     user_id: string
     inviter_id: string
     date: number
+    constructor(options: {
+        via_request?: true
+        user_id: string
+        inviter_id: string
+        date: number
+    }) {
+        this.via_request = options.via_request;
+        this.user_id = options.user_id;
+        this.inviter_id = options.inviter_id;
+        this.date = options.date;
+    }
 }
 
-export interface PredicateChannelParticipantCreator {
-    _: 'channelParticipantCreator'
+export class PredicateChannelParticipantCreator {
+    _ = 'channelParticipantCreator' as const
     user_id: string
     admin_rights: ChatAdminRights
     rank?: string
+    constructor(options: {
+        user_id: string
+        admin_rights: ChatAdminRights
+        rank?: string
+    }) {
+        this.user_id = options.user_id;
+        this.admin_rights = options.admin_rights;
+        this.rank = options.rank;
+    }
 }
 
-export interface PredicateChannelParticipantsRecent {
-    _: 'channelParticipantsRecent'
+export class PredicateChannelParticipantsRecent {
+    _ = 'channelParticipantsRecent' as const
 }
 
-export interface PredicateChannelParticipantsAdmins {
-    _: 'channelParticipantsAdmins'
+export class PredicateChannelParticipantsAdmins {
+    _ = 'channelParticipantsAdmins' as const
 }
 
-export interface PredicateChannelParticipantsKicked {
-    _: 'channelParticipantsKicked'
+export class PredicateChannelParticipantsKicked {
+    _ = 'channelParticipantsKicked' as const
     q: string
+    constructor(options: {
+        q: string
+    }) {
+        this.q = options.q;
+    }
 }
 
-export interface PredicateChannelsChannelParticipants {
-    _: 'channels.channelParticipants'
+export class PredicateChannelsChannelParticipants {
+    _ = 'channels.channelParticipants' as const
     count: number
     participants: ChannelParticipant[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        count: number
+        participants: ChannelParticipant[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.count = options.count;
+        this.participants = options.participants;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateChannelsChannelParticipant {
-    _: 'channels.channelParticipant'
+export class PredicateChannelsChannelParticipant {
+    _ = 'channels.channelParticipant' as const
     participant: ChannelParticipant
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        participant: ChannelParticipant
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.participant = options.participant;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateChatParticipantCreator {
-    _: 'chatParticipantCreator'
+export class PredicateChatParticipantCreator {
+    _ = 'chatParticipantCreator' as const
     user_id: string
+    constructor(options: {
+        user_id: string
+    }) {
+        this.user_id = options.user_id;
+    }
 }
 
-export interface PredicateChatParticipantAdmin {
-    _: 'chatParticipantAdmin'
+export class PredicateChatParticipantAdmin {
+    _ = 'chatParticipantAdmin' as const
     user_id: string
     inviter_id: string
     date: number
+    constructor(options: {
+        user_id: string
+        inviter_id: string
+        date: number
+    }) {
+        this.user_id = options.user_id;
+        this.inviter_id = options.inviter_id;
+        this.date = options.date;
+    }
 }
 
-export interface PredicateUpdateChatParticipantAdmin {
-    _: 'updateChatParticipantAdmin'
+export class PredicateUpdateChatParticipantAdmin {
+    _ = 'updateChatParticipantAdmin' as const
     chat_id: string
     user_id: string
     is_admin: boolean
     version: number
+    constructor(options: {
+        chat_id: string
+        user_id: string
+        is_admin: boolean
+        version: number
+    }) {
+        this.chat_id = options.chat_id;
+        this.user_id = options.user_id;
+        this.is_admin = options.is_admin;
+        this.version = options.version;
+    }
 }
 
-export interface PredicateMessageActionChatMigrateTo {
-    _: 'messageActionChatMigrateTo'
+export class PredicateMessageActionChatMigrateTo {
+    _ = 'messageActionChatMigrateTo' as const
     channel_id: string
+    constructor(options: {
+        channel_id: string
+    }) {
+        this.channel_id = options.channel_id;
+    }
 }
 
-export interface PredicateMessageActionChannelMigrateFrom {
-    _: 'messageActionChannelMigrateFrom'
+export class PredicateMessageActionChannelMigrateFrom {
+    _ = 'messageActionChannelMigrateFrom' as const
     title: string
     chat_id: string
+    constructor(options: {
+        title: string
+        chat_id: string
+    }) {
+        this.title = options.title;
+        this.chat_id = options.chat_id;
+    }
 }
 
-export interface PredicateChannelParticipantsBots {
-    _: 'channelParticipantsBots'
+export class PredicateChannelParticipantsBots {
+    _ = 'channelParticipantsBots' as const
 }
 
-export interface PredicateHelpTermsOfService {
-    _: 'help.termsOfService'
+export class PredicateHelpTermsOfService {
+    _ = 'help.termsOfService' as const
     popup?: true
     id: DataJSON
     text: string
     entities: MessageEntity[]
     min_age_confirm?: number
+    constructor(options: {
+        popup?: true
+        id: DataJSON
+        text: string
+        entities: MessageEntity[]
+        min_age_confirm?: number
+    }) {
+        this.popup = options.popup;
+        this.id = options.id;
+        this.text = options.text;
+        this.entities = options.entities;
+        this.min_age_confirm = options.min_age_confirm;
+    }
 }
 
-export interface PredicateUpdateNewStickerSet {
-    _: 'updateNewStickerSet'
+export class PredicateUpdateNewStickerSet {
+    _ = 'updateNewStickerSet' as const
     stickerset: MessagesStickerSet
+    constructor(options: {
+        stickerset: MessagesStickerSet
+    }) {
+        this.stickerset = options.stickerset;
+    }
 }
 
-export interface PredicateUpdateStickerSetsOrder {
-    _: 'updateStickerSetsOrder'
+export class PredicateUpdateStickerSetsOrder {
+    _ = 'updateStickerSetsOrder' as const
     masks?: true
     emojis?: true
     order: string[]
+    constructor(options: {
+        masks?: true
+        emojis?: true
+        order: string[]
+    }) {
+        this.masks = options.masks;
+        this.emojis = options.emojis;
+        this.order = options.order;
+    }
 }
 
-export interface PredicateUpdateStickerSets {
-    _: 'updateStickerSets'
+export class PredicateUpdateStickerSets {
+    _ = 'updateStickerSets' as const
 }
 
-export interface PredicateMessagesSavedGifsNotModified {
-    _: 'messages.savedGifsNotModified'
+export class PredicateMessagesSavedGifsNotModified {
+    _ = 'messages.savedGifsNotModified' as const
 }
 
-export interface PredicateMessagesSavedGifs {
-    _: 'messages.savedGifs'
+export class PredicateMessagesSavedGifs {
+    _ = 'messages.savedGifs' as const
     hash: string
     gifs: Document[]
+    constructor(options: {
+        hash: string
+        gifs: Document[]
+    }) {
+        this.hash = options.hash;
+        this.gifs = options.gifs;
+    }
 }
 
-export interface PredicateUpdateSavedGifs {
-    _: 'updateSavedGifs'
+export class PredicateUpdateSavedGifs {
+    _ = 'updateSavedGifs' as const
 }
 
-export interface PredicateInputBotInlineMessageMediaAuto {
-    _: 'inputBotInlineMessageMediaAuto'
+export class PredicateInputBotInlineMessageMediaAuto {
+    _ = 'inputBotInlineMessageMediaAuto' as const
     message: string
     entities?: MessageEntity[]
     reply_markup?: ReplyMarkup
+    constructor(options: {
+        message: string
+        entities?: MessageEntity[]
+        reply_markup?: ReplyMarkup
+    }) {
+        this.message = options.message;
+        this.entities = options.entities;
+        this.reply_markup = options.reply_markup;
+    }
 }
 
-export interface PredicateInputBotInlineMessageText {
-    _: 'inputBotInlineMessageText'
+export class PredicateInputBotInlineMessageText {
+    _ = 'inputBotInlineMessageText' as const
     no_webpage?: true
     message: string
     entities?: MessageEntity[]
     reply_markup?: ReplyMarkup
+    constructor(options: {
+        no_webpage?: true
+        message: string
+        entities?: MessageEntity[]
+        reply_markup?: ReplyMarkup
+    }) {
+        this.no_webpage = options.no_webpage;
+        this.message = options.message;
+        this.entities = options.entities;
+        this.reply_markup = options.reply_markup;
+    }
 }
 
-export interface PredicateInputBotInlineResult {
-    _: 'inputBotInlineResult'
+export class PredicateInputBotInlineResult {
+    _ = 'inputBotInlineResult' as const
     id: string
     type: string
     title?: string
@@ -2292,25 +5043,64 @@ export interface PredicateInputBotInlineResult {
     thumb?: InputWebDocument
     content?: InputWebDocument
     send_message: InputBotInlineMessage
+    constructor(options: {
+        id: string
+        type: string
+        title?: string
+        description?: string
+        url?: string
+        thumb?: InputWebDocument
+        content?: InputWebDocument
+        send_message: InputBotInlineMessage
+    }) {
+        this.id = options.id;
+        this.type = options.type;
+        this.title = options.title;
+        this.description = options.description;
+        this.url = options.url;
+        this.thumb = options.thumb;
+        this.content = options.content;
+        this.send_message = options.send_message;
+    }
 }
 
-export interface PredicateBotInlineMessageMediaAuto {
-    _: 'botInlineMessageMediaAuto'
+export class PredicateBotInlineMessageMediaAuto {
+    _ = 'botInlineMessageMediaAuto' as const
     message: string
     entities?: MessageEntity[]
     reply_markup?: ReplyMarkup
+    constructor(options: {
+        message: string
+        entities?: MessageEntity[]
+        reply_markup?: ReplyMarkup
+    }) {
+        this.message = options.message;
+        this.entities = options.entities;
+        this.reply_markup = options.reply_markup;
+    }
 }
 
-export interface PredicateBotInlineMessageText {
-    _: 'botInlineMessageText'
+export class PredicateBotInlineMessageText {
+    _ = 'botInlineMessageText' as const
     no_webpage?: true
     message: string
     entities?: MessageEntity[]
     reply_markup?: ReplyMarkup
+    constructor(options: {
+        no_webpage?: true
+        message: string
+        entities?: MessageEntity[]
+        reply_markup?: ReplyMarkup
+    }) {
+        this.no_webpage = options.no_webpage;
+        this.message = options.message;
+        this.entities = options.entities;
+        this.reply_markup = options.reply_markup;
+    }
 }
 
-export interface PredicateBotInlineResult {
-    _: 'botInlineResult'
+export class PredicateBotInlineResult {
+    _ = 'botInlineResult' as const
     id: string
     type: string
     title?: string
@@ -2319,10 +5109,29 @@ export interface PredicateBotInlineResult {
     thumb?: WebDocument
     content?: WebDocument
     send_message: BotInlineMessage
+    constructor(options: {
+        id: string
+        type: string
+        title?: string
+        description?: string
+        url?: string
+        thumb?: WebDocument
+        content?: WebDocument
+        send_message: BotInlineMessage
+    }) {
+        this.id = options.id;
+        this.type = options.type;
+        this.title = options.title;
+        this.description = options.description;
+        this.url = options.url;
+        this.thumb = options.thumb;
+        this.content = options.content;
+        this.send_message = options.send_message;
+    }
 }
 
-export interface PredicateMessagesBotResults {
-    _: 'messages.botResults'
+export class PredicateMessagesBotResults {
+    _ = 'messages.botResults' as const
     gallery?: true
     query_id: string
     next_offset?: string
@@ -2330,51 +5139,103 @@ export interface PredicateMessagesBotResults {
     results: BotInlineResult[]
     cache_time: number
     users: User[]
+    constructor(options: {
+        gallery?: true
+        query_id: string
+        next_offset?: string
+        switch_pm?: InlineBotSwitchPM
+        results: BotInlineResult[]
+        cache_time: number
+        users: User[]
+    }) {
+        this.gallery = options.gallery;
+        this.query_id = options.query_id;
+        this.next_offset = options.next_offset;
+        this.switch_pm = options.switch_pm;
+        this.results = options.results;
+        this.cache_time = options.cache_time;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateUpdateBotInlineQuery {
-    _: 'updateBotInlineQuery'
+export class PredicateUpdateBotInlineQuery {
+    _ = 'updateBotInlineQuery' as const
     query_id: string
     user_id: string
     query: string
     geo?: GeoPoint
     peer_type?: InlineQueryPeerType
     offset: string
+    constructor(options: {
+        query_id: string
+        user_id: string
+        query: string
+        geo?: GeoPoint
+        peer_type?: InlineQueryPeerType
+        offset: string
+    }) {
+        this.query_id = options.query_id;
+        this.user_id = options.user_id;
+        this.query = options.query;
+        this.geo = options.geo;
+        this.peer_type = options.peer_type;
+        this.offset = options.offset;
+    }
 }
 
-export interface PredicateUpdateBotInlineSend {
-    _: 'updateBotInlineSend'
+export class PredicateUpdateBotInlineSend {
+    _ = 'updateBotInlineSend' as const
     user_id: string
     query: string
     geo?: GeoPoint
     id: string
     msg_id?: InputBotInlineMessageID
+    constructor(options: {
+        user_id: string
+        query: string
+        geo?: GeoPoint
+        id: string
+        msg_id?: InputBotInlineMessageID
+    }) {
+        this.user_id = options.user_id;
+        this.query = options.query;
+        this.geo = options.geo;
+        this.id = options.id;
+        this.msg_id = options.msg_id;
+    }
 }
 
-export interface PredicateInputMessagesFilterVoice {
-    _: 'inputMessagesFilterVoice'
+export class PredicateInputMessagesFilterVoice {
+    _ = 'inputMessagesFilterVoice' as const
 }
 
-export interface PredicateInputMessagesFilterMusic {
-    _: 'inputMessagesFilterMusic'
+export class PredicateInputMessagesFilterMusic {
+    _ = 'inputMessagesFilterMusic' as const
 }
 
-export interface PredicateInputPrivacyKeyChatInvite {
-    _: 'inputPrivacyKeyChatInvite'
+export class PredicateInputPrivacyKeyChatInvite {
+    _ = 'inputPrivacyKeyChatInvite' as const
 }
 
-export interface PredicatePrivacyKeyChatInvite {
-    _: 'privacyKeyChatInvite'
+export class PredicatePrivacyKeyChatInvite {
+    _ = 'privacyKeyChatInvite' as const
 }
 
-export interface PredicateExportedMessageLink {
-    _: 'exportedMessageLink'
+export class PredicateExportedMessageLink {
+    _ = 'exportedMessageLink' as const
     link: string
     html: string
+    constructor(options: {
+        link: string
+        html: string
+    }) {
+        this.link = options.link;
+        this.html = options.html;
+    }
 }
 
-export interface PredicateMessageFwdHeader {
-    _: 'messageFwdHeader'
+export class PredicateMessageFwdHeader {
+    _ = 'messageFwdHeader' as const
     imported?: true
     from_id?: Peer
     from_name?: string
@@ -2384,98 +5245,203 @@ export interface PredicateMessageFwdHeader {
     saved_from_peer?: Peer
     saved_from_msg_id?: number
     psa_type?: string
+    constructor(options: {
+        imported?: true
+        from_id?: Peer
+        from_name?: string
+        date: number
+        channel_post?: number
+        post_author?: string
+        saved_from_peer?: Peer
+        saved_from_msg_id?: number
+        psa_type?: string
+    }) {
+        this.imported = options.imported;
+        this.from_id = options.from_id;
+        this.from_name = options.from_name;
+        this.date = options.date;
+        this.channel_post = options.channel_post;
+        this.post_author = options.post_author;
+        this.saved_from_peer = options.saved_from_peer;
+        this.saved_from_msg_id = options.saved_from_msg_id;
+        this.psa_type = options.psa_type;
+    }
 }
 
-export interface PredicateUpdateEditChannelMessage {
-    _: 'updateEditChannelMessage'
+export class PredicateUpdateEditChannelMessage {
+    _ = 'updateEditChannelMessage' as const
     message: Message
     pts: number
     pts_count: number
+    constructor(options: {
+        message: Message
+        pts: number
+        pts_count: number
+    }) {
+        this.message = options.message;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+    }
 }
 
-export interface PredicateMessageActionPinMessage {
-    _: 'messageActionPinMessage'
+export class PredicateMessageActionPinMessage {
+    _ = 'messageActionPinMessage' as const
 }
 
-export interface PredicateAuthCodeTypeSms {
-    _: 'auth.codeTypeSms'
+export class PredicateAuthCodeTypeSms {
+    _ = 'auth.codeTypeSms' as const
 }
 
-export interface PredicateAuthCodeTypeCall {
-    _: 'auth.codeTypeCall'
+export class PredicateAuthCodeTypeCall {
+    _ = 'auth.codeTypeCall' as const
 }
 
-export interface PredicateAuthCodeTypeFlashCall {
-    _: 'auth.codeTypeFlashCall'
+export class PredicateAuthCodeTypeFlashCall {
+    _ = 'auth.codeTypeFlashCall' as const
 }
 
-export interface PredicateAuthSentCodeTypeApp {
-    _: 'auth.sentCodeTypeApp'
+export class PredicateAuthSentCodeTypeApp {
+    _ = 'auth.sentCodeTypeApp' as const
     length: number
+    constructor(options: {
+        length: number
+    }) {
+        this.length = options.length;
+    }
 }
 
-export interface PredicateAuthSentCodeTypeSms {
-    _: 'auth.sentCodeTypeSms'
+export class PredicateAuthSentCodeTypeSms {
+    _ = 'auth.sentCodeTypeSms' as const
     length: number
+    constructor(options: {
+        length: number
+    }) {
+        this.length = options.length;
+    }
 }
 
-export interface PredicateAuthSentCodeTypeCall {
-    _: 'auth.sentCodeTypeCall'
+export class PredicateAuthSentCodeTypeCall {
+    _ = 'auth.sentCodeTypeCall' as const
     length: number
+    constructor(options: {
+        length: number
+    }) {
+        this.length = options.length;
+    }
 }
 
-export interface PredicateAuthSentCodeTypeFlashCall {
-    _: 'auth.sentCodeTypeFlashCall'
+export class PredicateAuthSentCodeTypeFlashCall {
+    _ = 'auth.sentCodeTypeFlashCall' as const
     pattern: string
+    constructor(options: {
+        pattern: string
+    }) {
+        this.pattern = options.pattern;
+    }
 }
 
-export interface PredicateKeyboardButtonUrl {
-    _: 'keyboardButtonUrl'
+export class PredicateKeyboardButtonUrl {
+    _ = 'keyboardButtonUrl' as const
     text: string
     url: string
+    constructor(options: {
+        text: string
+        url: string
+    }) {
+        this.text = options.text;
+        this.url = options.url;
+    }
 }
 
-export interface PredicateKeyboardButtonCallback {
-    _: 'keyboardButtonCallback'
+export class PredicateKeyboardButtonCallback {
+    _ = 'keyboardButtonCallback' as const
     requires_password?: true
     text: string
     data: Uint8Array
+    constructor(options: {
+        requires_password?: true
+        text: string
+        data: Uint8Array
+    }) {
+        this.requires_password = options.requires_password;
+        this.text = options.text;
+        this.data = options.data;
+    }
 }
 
-export interface PredicateKeyboardButtonRequestPhone {
-    _: 'keyboardButtonRequestPhone'
+export class PredicateKeyboardButtonRequestPhone {
+    _ = 'keyboardButtonRequestPhone' as const
     text: string
+    constructor(options: {
+        text: string
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicateKeyboardButtonRequestGeoLocation {
-    _: 'keyboardButtonRequestGeoLocation'
+export class PredicateKeyboardButtonRequestGeoLocation {
+    _ = 'keyboardButtonRequestGeoLocation' as const
     text: string
+    constructor(options: {
+        text: string
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicateKeyboardButtonSwitchInline {
-    _: 'keyboardButtonSwitchInline'
+export class PredicateKeyboardButtonSwitchInline {
+    _ = 'keyboardButtonSwitchInline' as const
     same_peer?: true
     text: string
     query: string
+    constructor(options: {
+        same_peer?: true
+        text: string
+        query: string
+    }) {
+        this.same_peer = options.same_peer;
+        this.text = options.text;
+        this.query = options.query;
+    }
 }
 
-export interface PredicateReplyInlineMarkup {
-    _: 'replyInlineMarkup'
+export class PredicateReplyInlineMarkup {
+    _ = 'replyInlineMarkup' as const
     rows: KeyboardButtonRow[]
+    constructor(options: {
+        rows: KeyboardButtonRow[]
+    }) {
+        this.rows = options.rows;
+    }
 }
 
-export interface PredicateMessagesBotCallbackAnswer {
-    _: 'messages.botCallbackAnswer'
+export class PredicateMessagesBotCallbackAnswer {
+    _ = 'messages.botCallbackAnswer' as const
     alert?: true
     has_url?: true
     native_ui?: true
     message?: string
     url?: string
     cache_time: number
+    constructor(options: {
+        alert?: true
+        has_url?: true
+        native_ui?: true
+        message?: string
+        url?: string
+        cache_time: number
+    }) {
+        this.alert = options.alert;
+        this.has_url = options.has_url;
+        this.native_ui = options.native_ui;
+        this.message = options.message;
+        this.url = options.url;
+        this.cache_time = options.cache_time;
+    }
 }
 
-export interface PredicateUpdateBotCallbackQuery {
-    _: 'updateBotCallbackQuery'
+export class PredicateUpdateBotCallbackQuery {
+    _ = 'updateBotCallbackQuery' as const
     query_id: string
     user_id: string
     peer: Peer
@@ -2483,31 +5449,75 @@ export interface PredicateUpdateBotCallbackQuery {
     chat_instance: string
     data?: Uint8Array
     game_short_name?: string
+    constructor(options: {
+        query_id: string
+        user_id: string
+        peer: Peer
+        msg_id: number
+        chat_instance: string
+        data?: Uint8Array
+        game_short_name?: string
+    }) {
+        this.query_id = options.query_id;
+        this.user_id = options.user_id;
+        this.peer = options.peer;
+        this.msg_id = options.msg_id;
+        this.chat_instance = options.chat_instance;
+        this.data = options.data;
+        this.game_short_name = options.game_short_name;
+    }
 }
 
-export interface PredicateMessagesMessageEditData {
-    _: 'messages.messageEditData'
+export class PredicateMessagesMessageEditData {
+    _ = 'messages.messageEditData' as const
     caption?: true
+    constructor(options: {
+        caption?: true
+    } = {}) {
+        this.caption = options.caption;
+    }
 }
 
-export interface PredicateUpdateEditMessage {
-    _: 'updateEditMessage'
+export class PredicateUpdateEditMessage {
+    _ = 'updateEditMessage' as const
     message: Message
     pts: number
     pts_count: number
+    constructor(options: {
+        message: Message
+        pts: number
+        pts_count: number
+    }) {
+        this.message = options.message;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+    }
 }
 
-export interface PredicateInputBotInlineMessageMediaGeo {
-    _: 'inputBotInlineMessageMediaGeo'
+export class PredicateInputBotInlineMessageMediaGeo {
+    _ = 'inputBotInlineMessageMediaGeo' as const
     geo_point: InputGeoPoint
     heading?: number
     period?: number
     proximity_notification_radius?: number
     reply_markup?: ReplyMarkup
+    constructor(options: {
+        geo_point: InputGeoPoint
+        heading?: number
+        period?: number
+        proximity_notification_radius?: number
+        reply_markup?: ReplyMarkup
+    }) {
+        this.geo_point = options.geo_point;
+        this.heading = options.heading;
+        this.period = options.period;
+        this.proximity_notification_radius = options.proximity_notification_radius;
+        this.reply_markup = options.reply_markup;
+    }
 }
 
-export interface PredicateInputBotInlineMessageMediaVenue {
-    _: 'inputBotInlineMessageMediaVenue'
+export class PredicateInputBotInlineMessageMediaVenue {
+    _ = 'inputBotInlineMessageMediaVenue' as const
     geo_point: InputGeoPoint
     title: string
     address: string
@@ -2515,28 +5525,71 @@ export interface PredicateInputBotInlineMessageMediaVenue {
     venue_id: string
     venue_type: string
     reply_markup?: ReplyMarkup
+    constructor(options: {
+        geo_point: InputGeoPoint
+        title: string
+        address: string
+        provider: string
+        venue_id: string
+        venue_type: string
+        reply_markup?: ReplyMarkup
+    }) {
+        this.geo_point = options.geo_point;
+        this.title = options.title;
+        this.address = options.address;
+        this.provider = options.provider;
+        this.venue_id = options.venue_id;
+        this.venue_type = options.venue_type;
+        this.reply_markup = options.reply_markup;
+    }
 }
 
-export interface PredicateInputBotInlineMessageMediaContact {
-    _: 'inputBotInlineMessageMediaContact'
+export class PredicateInputBotInlineMessageMediaContact {
+    _ = 'inputBotInlineMessageMediaContact' as const
     phone_number: string
     first_name: string
     last_name: string
     vcard: string
     reply_markup?: ReplyMarkup
+    constructor(options: {
+        phone_number: string
+        first_name: string
+        last_name: string
+        vcard: string
+        reply_markup?: ReplyMarkup
+    }) {
+        this.phone_number = options.phone_number;
+        this.first_name = options.first_name;
+        this.last_name = options.last_name;
+        this.vcard = options.vcard;
+        this.reply_markup = options.reply_markup;
+    }
 }
 
-export interface PredicateBotInlineMessageMediaGeo {
-    _: 'botInlineMessageMediaGeo'
+export class PredicateBotInlineMessageMediaGeo {
+    _ = 'botInlineMessageMediaGeo' as const
     geo: GeoPoint
     heading?: number
     period?: number
     proximity_notification_radius?: number
     reply_markup?: ReplyMarkup
+    constructor(options: {
+        geo: GeoPoint
+        heading?: number
+        period?: number
+        proximity_notification_radius?: number
+        reply_markup?: ReplyMarkup
+    }) {
+        this.geo = options.geo;
+        this.heading = options.heading;
+        this.period = options.period;
+        this.proximity_notification_radius = options.proximity_notification_radius;
+        this.reply_markup = options.reply_markup;
+    }
 }
 
-export interface PredicateBotInlineMessageMediaVenue {
-    _: 'botInlineMessageMediaVenue'
+export class PredicateBotInlineMessageMediaVenue {
+    _ = 'botInlineMessageMediaVenue' as const
     geo: GeoPoint
     title: string
     address: string
@@ -2544,37 +5597,93 @@ export interface PredicateBotInlineMessageMediaVenue {
     venue_id: string
     venue_type: string
     reply_markup?: ReplyMarkup
+    constructor(options: {
+        geo: GeoPoint
+        title: string
+        address: string
+        provider: string
+        venue_id: string
+        venue_type: string
+        reply_markup?: ReplyMarkup
+    }) {
+        this.geo = options.geo;
+        this.title = options.title;
+        this.address = options.address;
+        this.provider = options.provider;
+        this.venue_id = options.venue_id;
+        this.venue_type = options.venue_type;
+        this.reply_markup = options.reply_markup;
+    }
 }
 
-export interface PredicateBotInlineMessageMediaContact {
-    _: 'botInlineMessageMediaContact'
+export class PredicateBotInlineMessageMediaContact {
+    _ = 'botInlineMessageMediaContact' as const
     phone_number: string
     first_name: string
     last_name: string
     vcard: string
     reply_markup?: ReplyMarkup
+    constructor(options: {
+        phone_number: string
+        first_name: string
+        last_name: string
+        vcard: string
+        reply_markup?: ReplyMarkup
+    }) {
+        this.phone_number = options.phone_number;
+        this.first_name = options.first_name;
+        this.last_name = options.last_name;
+        this.vcard = options.vcard;
+        this.reply_markup = options.reply_markup;
+    }
 }
 
-export interface PredicateInputBotInlineResultPhoto {
-    _: 'inputBotInlineResultPhoto'
+export class PredicateInputBotInlineResultPhoto {
+    _ = 'inputBotInlineResultPhoto' as const
     id: string
     type: string
     photo: InputPhoto
     send_message: InputBotInlineMessage
+    constructor(options: {
+        id: string
+        type: string
+        photo: InputPhoto
+        send_message: InputBotInlineMessage
+    }) {
+        this.id = options.id;
+        this.type = options.type;
+        this.photo = options.photo;
+        this.send_message = options.send_message;
+    }
 }
 
-export interface PredicateInputBotInlineResultDocument {
-    _: 'inputBotInlineResultDocument'
+export class PredicateInputBotInlineResultDocument {
+    _ = 'inputBotInlineResultDocument' as const
     id: string
     type: string
     title?: string
     description?: string
     document: InputDocument
     send_message: InputBotInlineMessage
+    constructor(options: {
+        id: string
+        type: string
+        title?: string
+        description?: string
+        document: InputDocument
+        send_message: InputBotInlineMessage
+    }) {
+        this.id = options.id;
+        this.type = options.type;
+        this.title = options.title;
+        this.description = options.description;
+        this.document = options.document;
+        this.send_message = options.send_message;
+    }
 }
 
-export interface PredicateBotInlineMediaResult {
-    _: 'botInlineMediaResult'
+export class PredicateBotInlineMediaResult {
+    _ = 'botInlineMediaResult' as const
     id: string
     type: string
     photo?: Photo
@@ -2582,236 +5691,460 @@ export interface PredicateBotInlineMediaResult {
     title?: string
     description?: string
     send_message: BotInlineMessage
+    constructor(options: {
+        id: string
+        type: string
+        photo?: Photo
+        document?: Document
+        title?: string
+        description?: string
+        send_message: BotInlineMessage
+    }) {
+        this.id = options.id;
+        this.type = options.type;
+        this.photo = options.photo;
+        this.document = options.document;
+        this.title = options.title;
+        this.description = options.description;
+        this.send_message = options.send_message;
+    }
 }
 
-export interface PredicateInputBotInlineMessageID {
-    _: 'inputBotInlineMessageID'
+export class PredicateInputBotInlineMessageID {
+    _ = 'inputBotInlineMessageID' as const
     dc_id: number
     id: string
     access_hash: string
+    constructor(options: {
+        dc_id: number
+        id: string
+        access_hash: string
+    }) {
+        this.dc_id = options.dc_id;
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicateUpdateInlineBotCallbackQuery {
-    _: 'updateInlineBotCallbackQuery'
+export class PredicateUpdateInlineBotCallbackQuery {
+    _ = 'updateInlineBotCallbackQuery' as const
     query_id: string
     user_id: string
     msg_id: InputBotInlineMessageID
     chat_instance: string
     data?: Uint8Array
     game_short_name?: string
+    constructor(options: {
+        query_id: string
+        user_id: string
+        msg_id: InputBotInlineMessageID
+        chat_instance: string
+        data?: Uint8Array
+        game_short_name?: string
+    }) {
+        this.query_id = options.query_id;
+        this.user_id = options.user_id;
+        this.msg_id = options.msg_id;
+        this.chat_instance = options.chat_instance;
+        this.data = options.data;
+        this.game_short_name = options.game_short_name;
+    }
 }
 
-export interface PredicateInlineBotSwitchPM {
-    _: 'inlineBotSwitchPM'
+export class PredicateInlineBotSwitchPM {
+    _ = 'inlineBotSwitchPM' as const
     text: string
     start_param: string
+    constructor(options: {
+        text: string
+        start_param: string
+    }) {
+        this.text = options.text;
+        this.start_param = options.start_param;
+    }
 }
 
-export interface PredicateMessagesPeerDialogs {
-    _: 'messages.peerDialogs'
+export class PredicateMessagesPeerDialogs {
+    _ = 'messages.peerDialogs' as const
     dialogs: Dialog[]
     messages: Message[]
     chats: Chat[]
     users: User[]
     state: UpdatesState
+    constructor(options: {
+        dialogs: Dialog[]
+        messages: Message[]
+        chats: Chat[]
+        users: User[]
+        state: UpdatesState
+    }) {
+        this.dialogs = options.dialogs;
+        this.messages = options.messages;
+        this.chats = options.chats;
+        this.users = options.users;
+        this.state = options.state;
+    }
 }
 
-export interface PredicateTopPeer {
-    _: 'topPeer'
+export class PredicateTopPeer {
+    _ = 'topPeer' as const
     peer: Peer
     rating: number
+    constructor(options: {
+        peer: Peer
+        rating: number
+    }) {
+        this.peer = options.peer;
+        this.rating = options.rating;
+    }
 }
 
-export interface PredicateTopPeerCategoryBotsPM {
-    _: 'topPeerCategoryBotsPM'
+export class PredicateTopPeerCategoryBotsPM {
+    _ = 'topPeerCategoryBotsPM' as const
 }
 
-export interface PredicateTopPeerCategoryBotsInline {
-    _: 'topPeerCategoryBotsInline'
+export class PredicateTopPeerCategoryBotsInline {
+    _ = 'topPeerCategoryBotsInline' as const
 }
 
-export interface PredicateTopPeerCategoryCorrespondents {
-    _: 'topPeerCategoryCorrespondents'
+export class PredicateTopPeerCategoryCorrespondents {
+    _ = 'topPeerCategoryCorrespondents' as const
 }
 
-export interface PredicateTopPeerCategoryGroups {
-    _: 'topPeerCategoryGroups'
+export class PredicateTopPeerCategoryGroups {
+    _ = 'topPeerCategoryGroups' as const
 }
 
-export interface PredicateTopPeerCategoryChannels {
-    _: 'topPeerCategoryChannels'
+export class PredicateTopPeerCategoryChannels {
+    _ = 'topPeerCategoryChannels' as const
 }
 
-export interface PredicateTopPeerCategoryPeers {
-    _: 'topPeerCategoryPeers'
+export class PredicateTopPeerCategoryPeers {
+    _ = 'topPeerCategoryPeers' as const
     category: TopPeerCategory
     count: number
     peers: TopPeer[]
+    constructor(options: {
+        category: TopPeerCategory
+        count: number
+        peers: TopPeer[]
+    }) {
+        this.category = options.category;
+        this.count = options.count;
+        this.peers = options.peers;
+    }
 }
 
-export interface PredicateContactsTopPeersNotModified {
-    _: 'contacts.topPeersNotModified'
+export class PredicateContactsTopPeersNotModified {
+    _ = 'contacts.topPeersNotModified' as const
 }
 
-export interface PredicateContactsTopPeers {
-    _: 'contacts.topPeers'
+export class PredicateContactsTopPeers {
+    _ = 'contacts.topPeers' as const
     categories: TopPeerCategoryPeers[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        categories: TopPeerCategoryPeers[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.categories = options.categories;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateMessageEntityMentionName {
-    _: 'messageEntityMentionName'
+export class PredicateMessageEntityMentionName {
+    _ = 'messageEntityMentionName' as const
     offset: number
     length: number
     user_id: string
+    constructor(options: {
+        offset: number
+        length: number
+        user_id: string
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+        this.user_id = options.user_id;
+    }
 }
 
-export interface PredicateInputMessageEntityMentionName {
-    _: 'inputMessageEntityMentionName'
+export class PredicateInputMessageEntityMentionName {
+    _ = 'inputMessageEntityMentionName' as const
     offset: number
     length: number
     user_id: InputUser
+    constructor(options: {
+        offset: number
+        length: number
+        user_id: InputUser
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+        this.user_id = options.user_id;
+    }
 }
 
-export interface PredicateInputMessagesFilterChatPhotos {
-    _: 'inputMessagesFilterChatPhotos'
+export class PredicateInputMessagesFilterChatPhotos {
+    _ = 'inputMessagesFilterChatPhotos' as const
 }
 
-export interface PredicateUpdateReadChannelOutbox {
-    _: 'updateReadChannelOutbox'
+export class PredicateUpdateReadChannelOutbox {
+    _ = 'updateReadChannelOutbox' as const
     channel_id: string
     max_id: number
+    constructor(options: {
+        channel_id: string
+        max_id: number
+    }) {
+        this.channel_id = options.channel_id;
+        this.max_id = options.max_id;
+    }
 }
 
-export interface PredicateUpdateDraftMessage {
-    _: 'updateDraftMessage'
+export class PredicateUpdateDraftMessage {
+    _ = 'updateDraftMessage' as const
     peer: Peer
     draft: DraftMessage
+    constructor(options: {
+        peer: Peer
+        draft: DraftMessage
+    }) {
+        this.peer = options.peer;
+        this.draft = options.draft;
+    }
 }
 
-export interface PredicateDraftMessageEmpty {
-    _: 'draftMessageEmpty'
+export class PredicateDraftMessageEmpty {
+    _ = 'draftMessageEmpty' as const
     date?: number
+    constructor(options: {
+        date?: number
+    } = {}) {
+        this.date = options.date;
+    }
 }
 
-export interface PredicateDraftMessage {
-    _: 'draftMessage'
+export class PredicateDraftMessage {
+    _ = 'draftMessage' as const
     no_webpage?: true
     reply_to_msg_id?: number
     message: string
     entities?: MessageEntity[]
     date: number
+    constructor(options: {
+        no_webpage?: true
+        reply_to_msg_id?: number
+        message: string
+        entities?: MessageEntity[]
+        date: number
+    }) {
+        this.no_webpage = options.no_webpage;
+        this.reply_to_msg_id = options.reply_to_msg_id;
+        this.message = options.message;
+        this.entities = options.entities;
+        this.date = options.date;
+    }
 }
 
-export interface PredicateMessageActionHistoryClear {
-    _: 'messageActionHistoryClear'
+export class PredicateMessageActionHistoryClear {
+    _ = 'messageActionHistoryClear' as const
 }
 
-export interface PredicateMessagesFeaturedStickersNotModified {
-    _: 'messages.featuredStickersNotModified'
+export class PredicateMessagesFeaturedStickersNotModified {
+    _ = 'messages.featuredStickersNotModified' as const
     count: number
+    constructor(options: {
+        count: number
+    }) {
+        this.count = options.count;
+    }
 }
 
-export interface PredicateMessagesFeaturedStickers {
-    _: 'messages.featuredStickers'
+export class PredicateMessagesFeaturedStickers {
+    _ = 'messages.featuredStickers' as const
     hash: string
     count: number
     sets: StickerSetCovered[]
     unread: string[]
+    constructor(options: {
+        hash: string
+        count: number
+        sets: StickerSetCovered[]
+        unread: string[]
+    }) {
+        this.hash = options.hash;
+        this.count = options.count;
+        this.sets = options.sets;
+        this.unread = options.unread;
+    }
 }
 
-export interface PredicateUpdateReadFeaturedStickers {
-    _: 'updateReadFeaturedStickers'
+export class PredicateUpdateReadFeaturedStickers {
+    _ = 'updateReadFeaturedStickers' as const
 }
 
-export interface PredicateMessagesRecentStickersNotModified {
-    _: 'messages.recentStickersNotModified'
+export class PredicateMessagesRecentStickersNotModified {
+    _ = 'messages.recentStickersNotModified' as const
 }
 
-export interface PredicateMessagesRecentStickers {
-    _: 'messages.recentStickers'
+export class PredicateMessagesRecentStickers {
+    _ = 'messages.recentStickers' as const
     hash: string
     packs: StickerPack[]
     stickers: Document[]
     dates: number[]
+    constructor(options: {
+        hash: string
+        packs: StickerPack[]
+        stickers: Document[]
+        dates: number[]
+    }) {
+        this.hash = options.hash;
+        this.packs = options.packs;
+        this.stickers = options.stickers;
+        this.dates = options.dates;
+    }
 }
 
-export interface PredicateUpdateRecentStickers {
-    _: 'updateRecentStickers'
+export class PredicateUpdateRecentStickers {
+    _ = 'updateRecentStickers' as const
 }
 
-export interface PredicateMessagesArchivedStickers {
-    _: 'messages.archivedStickers'
+export class PredicateMessagesArchivedStickers {
+    _ = 'messages.archivedStickers' as const
     count: number
     sets: StickerSetCovered[]
+    constructor(options: {
+        count: number
+        sets: StickerSetCovered[]
+    }) {
+        this.count = options.count;
+        this.sets = options.sets;
+    }
 }
 
-export interface PredicateMessagesStickerSetInstallResultSuccess {
-    _: 'messages.stickerSetInstallResultSuccess'
+export class PredicateMessagesStickerSetInstallResultSuccess {
+    _ = 'messages.stickerSetInstallResultSuccess' as const
 }
 
-export interface PredicateMessagesStickerSetInstallResultArchive {
-    _: 'messages.stickerSetInstallResultArchive'
+export class PredicateMessagesStickerSetInstallResultArchive {
+    _ = 'messages.stickerSetInstallResultArchive' as const
     sets: StickerSetCovered[]
+    constructor(options: {
+        sets: StickerSetCovered[]
+    }) {
+        this.sets = options.sets;
+    }
 }
 
-export interface PredicateStickerSetCovered {
-    _: 'stickerSetCovered'
+export class PredicateStickerSetCovered {
+    _ = 'stickerSetCovered' as const
     set: StickerSet
     cover: Document
+    constructor(options: {
+        set: StickerSet
+        cover: Document
+    }) {
+        this.set = options.set;
+        this.cover = options.cover;
+    }
 }
 
-export interface PredicateUpdateConfig {
-    _: 'updateConfig'
+export class PredicateUpdateConfig {
+    _ = 'updateConfig' as const
 }
 
-export interface PredicateUpdatePtsChanged {
-    _: 'updatePtsChanged'
+export class PredicateUpdatePtsChanged {
+    _ = 'updatePtsChanged' as const
 }
 
-export interface PredicateInputMediaPhotoExternal {
-    _: 'inputMediaPhotoExternal'
+export class PredicateInputMediaPhotoExternal {
+    _ = 'inputMediaPhotoExternal' as const
     url: string
     ttl_seconds?: number
+    constructor(options: {
+        url: string
+        ttl_seconds?: number
+    }) {
+        this.url = options.url;
+        this.ttl_seconds = options.ttl_seconds;
+    }
 }
 
-export interface PredicateInputMediaDocumentExternal {
-    _: 'inputMediaDocumentExternal'
+export class PredicateInputMediaDocumentExternal {
+    _ = 'inputMediaDocumentExternal' as const
     url: string
     ttl_seconds?: number
+    constructor(options: {
+        url: string
+        ttl_seconds?: number
+    }) {
+        this.url = options.url;
+        this.ttl_seconds = options.ttl_seconds;
+    }
 }
 
-export interface PredicateStickerSetMultiCovered {
-    _: 'stickerSetMultiCovered'
+export class PredicateStickerSetMultiCovered {
+    _ = 'stickerSetMultiCovered' as const
     set: StickerSet
     covers: Document[]
+    constructor(options: {
+        set: StickerSet
+        covers: Document[]
+    }) {
+        this.set = options.set;
+        this.covers = options.covers;
+    }
 }
 
-export interface PredicateMaskCoords {
-    _: 'maskCoords'
+export class PredicateMaskCoords {
+    _ = 'maskCoords' as const
     n: number
     x: number
     y: number
     zoom: number
+    constructor(options: {
+        n: number
+        x: number
+        y: number
+        zoom: number
+    }) {
+        this.n = options.n;
+        this.x = options.x;
+        this.y = options.y;
+        this.zoom = options.zoom;
+    }
 }
 
-export interface PredicateDocumentAttributeHasStickers {
-    _: 'documentAttributeHasStickers'
+export class PredicateDocumentAttributeHasStickers {
+    _ = 'documentAttributeHasStickers' as const
 }
 
-export interface PredicateInputStickeredMediaPhoto {
-    _: 'inputStickeredMediaPhoto'
+export class PredicateInputStickeredMediaPhoto {
+    _ = 'inputStickeredMediaPhoto' as const
     id: InputPhoto
+    constructor(options: {
+        id: InputPhoto
+    }) {
+        this.id = options.id;
+    }
 }
 
-export interface PredicateInputStickeredMediaDocument {
-    _: 'inputStickeredMediaDocument'
+export class PredicateInputStickeredMediaDocument {
+    _ = 'inputStickeredMediaDocument' as const
     id: InputDocument
+    constructor(options: {
+        id: InputDocument
+    }) {
+        this.id = options.id;
+    }
 }
 
-export interface PredicateGame {
-    _: 'game'
+export class PredicateGame {
+    _ = 'game' as const
     id: string
     access_hash: string
     short_name: string
@@ -2819,232 +6152,484 @@ export interface PredicateGame {
     description: string
     photo: Photo
     document?: Document
+    constructor(options: {
+        id: string
+        access_hash: string
+        short_name: string
+        title: string
+        description: string
+        photo: Photo
+        document?: Document
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.short_name = options.short_name;
+        this.title = options.title;
+        this.description = options.description;
+        this.photo = options.photo;
+        this.document = options.document;
+    }
 }
 
-export interface PredicateInputBotInlineResultGame {
-    _: 'inputBotInlineResultGame'
+export class PredicateInputBotInlineResultGame {
+    _ = 'inputBotInlineResultGame' as const
     id: string
     short_name: string
     send_message: InputBotInlineMessage
+    constructor(options: {
+        id: string
+        short_name: string
+        send_message: InputBotInlineMessage
+    }) {
+        this.id = options.id;
+        this.short_name = options.short_name;
+        this.send_message = options.send_message;
+    }
 }
 
-export interface PredicateInputBotInlineMessageGame {
-    _: 'inputBotInlineMessageGame'
+export class PredicateInputBotInlineMessageGame {
+    _ = 'inputBotInlineMessageGame' as const
     reply_markup?: ReplyMarkup
+    constructor(options: {
+        reply_markup?: ReplyMarkup
+    } = {}) {
+        this.reply_markup = options.reply_markup;
+    }
 }
 
-export interface PredicateMessageMediaGame {
-    _: 'messageMediaGame'
+export class PredicateMessageMediaGame {
+    _ = 'messageMediaGame' as const
     game: Game
+    constructor(options: {
+        game: Game
+    }) {
+        this.game = options.game;
+    }
 }
 
-export interface PredicateInputMediaGame {
-    _: 'inputMediaGame'
+export class PredicateInputMediaGame {
+    _ = 'inputMediaGame' as const
     id: InputGame
+    constructor(options: {
+        id: InputGame
+    }) {
+        this.id = options.id;
+    }
 }
 
-export interface PredicateInputGameID {
-    _: 'inputGameID'
+export class PredicateInputGameID {
+    _ = 'inputGameID' as const
     id: string
     access_hash: string
+    constructor(options: {
+        id: string
+        access_hash: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicateInputGameShortName {
-    _: 'inputGameShortName'
+export class PredicateInputGameShortName {
+    _ = 'inputGameShortName' as const
     bot_id: InputUser
     short_name: string
+    constructor(options: {
+        bot_id: InputUser
+        short_name: string
+    }) {
+        this.bot_id = options.bot_id;
+        this.short_name = options.short_name;
+    }
 }
 
-export interface PredicateKeyboardButtonGame {
-    _: 'keyboardButtonGame'
+export class PredicateKeyboardButtonGame {
+    _ = 'keyboardButtonGame' as const
     text: string
+    constructor(options: {
+        text: string
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicateMessageActionGameScore {
-    _: 'messageActionGameScore'
+export class PredicateMessageActionGameScore {
+    _ = 'messageActionGameScore' as const
     game_id: string
     score: number
+    constructor(options: {
+        game_id: string
+        score: number
+    }) {
+        this.game_id = options.game_id;
+        this.score = options.score;
+    }
 }
 
-export interface PredicateHighScore {
-    _: 'highScore'
+export class PredicateHighScore {
+    _ = 'highScore' as const
     pos: number
     user_id: string
     score: number
+    constructor(options: {
+        pos: number
+        user_id: string
+        score: number
+    }) {
+        this.pos = options.pos;
+        this.user_id = options.user_id;
+        this.score = options.score;
+    }
 }
 
-export interface PredicateMessagesHighScores {
-    _: 'messages.highScores'
+export class PredicateMessagesHighScores {
+    _ = 'messages.highScores' as const
     scores: HighScore[]
     users: User[]
+    constructor(options: {
+        scores: HighScore[]
+        users: User[]
+    }) {
+        this.scores = options.scores;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateUpdatesDifferenceTooLong {
-    _: 'updates.differenceTooLong'
+export class PredicateUpdatesDifferenceTooLong {
+    _ = 'updates.differenceTooLong' as const
     pts: number
+    constructor(options: {
+        pts: number
+    }) {
+        this.pts = options.pts;
+    }
 }
 
-export interface PredicateUpdateChannelWebPage {
-    _: 'updateChannelWebPage'
+export class PredicateUpdateChannelWebPage {
+    _ = 'updateChannelWebPage' as const
     channel_id: string
     webpage: WebPage
     pts: number
     pts_count: number
+    constructor(options: {
+        channel_id: string
+        webpage: WebPage
+        pts: number
+        pts_count: number
+    }) {
+        this.channel_id = options.channel_id;
+        this.webpage = options.webpage;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+    }
 }
 
-export interface PredicateMessagesChatsSlice {
-    _: 'messages.chatsSlice'
+export class PredicateMessagesChatsSlice {
+    _ = 'messages.chatsSlice' as const
     count: number
     chats: Chat[]
+    constructor(options: {
+        count: number
+        chats: Chat[]
+    }) {
+        this.count = options.count;
+        this.chats = options.chats;
+    }
 }
 
-export interface PredicateTextEmpty {
-    _: 'textEmpty'
+export class PredicateTextEmpty {
+    _ = 'textEmpty' as const
 }
 
-export interface PredicateTextPlain {
-    _: 'textPlain'
+export class PredicateTextPlain {
+    _ = 'textPlain' as const
     text: string
+    constructor(options: {
+        text: string
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicateTextBold {
-    _: 'textBold'
+export class PredicateTextBold {
+    _ = 'textBold' as const
     text: RichText
+    constructor(options: {
+        text: RichText
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicateTextItalic {
-    _: 'textItalic'
+export class PredicateTextItalic {
+    _ = 'textItalic' as const
     text: RichText
+    constructor(options: {
+        text: RichText
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicateTextUnderline {
-    _: 'textUnderline'
+export class PredicateTextUnderline {
+    _ = 'textUnderline' as const
     text: RichText
+    constructor(options: {
+        text: RichText
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicateTextStrike {
-    _: 'textStrike'
+export class PredicateTextStrike {
+    _ = 'textStrike' as const
     text: RichText
+    constructor(options: {
+        text: RichText
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicateTextFixed {
-    _: 'textFixed'
+export class PredicateTextFixed {
+    _ = 'textFixed' as const
     text: RichText
+    constructor(options: {
+        text: RichText
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicateTextUrl {
-    _: 'textUrl'
+export class PredicateTextUrl {
+    _ = 'textUrl' as const
     text: RichText
     url: string
     webpage_id: string
+    constructor(options: {
+        text: RichText
+        url: string
+        webpage_id: string
+    }) {
+        this.text = options.text;
+        this.url = options.url;
+        this.webpage_id = options.webpage_id;
+    }
 }
 
-export interface PredicateTextEmail {
-    _: 'textEmail'
+export class PredicateTextEmail {
+    _ = 'textEmail' as const
     text: RichText
     email: string
+    constructor(options: {
+        text: RichText
+        email: string
+    }) {
+        this.text = options.text;
+        this.email = options.email;
+    }
 }
 
-export interface PredicateTextConcat {
-    _: 'textConcat'
+export class PredicateTextConcat {
+    _ = 'textConcat' as const
     texts: RichText[]
+    constructor(options: {
+        texts: RichText[]
+    }) {
+        this.texts = options.texts;
+    }
 }
 
-export interface PredicatePageBlockUnsupported {
-    _: 'pageBlockUnsupported'
+export class PredicatePageBlockUnsupported {
+    _ = 'pageBlockUnsupported' as const
 }
 
-export interface PredicatePageBlockTitle {
-    _: 'pageBlockTitle'
+export class PredicatePageBlockTitle {
+    _ = 'pageBlockTitle' as const
     text: RichText
+    constructor(options: {
+        text: RichText
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicatePageBlockSubtitle {
-    _: 'pageBlockSubtitle'
+export class PredicatePageBlockSubtitle {
+    _ = 'pageBlockSubtitle' as const
     text: RichText
+    constructor(options: {
+        text: RichText
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicatePageBlockAuthorDate {
-    _: 'pageBlockAuthorDate'
+export class PredicatePageBlockAuthorDate {
+    _ = 'pageBlockAuthorDate' as const
     author: RichText
     published_date: number
+    constructor(options: {
+        author: RichText
+        published_date: number
+    }) {
+        this.author = options.author;
+        this.published_date = options.published_date;
+    }
 }
 
-export interface PredicatePageBlockHeader {
-    _: 'pageBlockHeader'
+export class PredicatePageBlockHeader {
+    _ = 'pageBlockHeader' as const
     text: RichText
+    constructor(options: {
+        text: RichText
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicatePageBlockSubheader {
-    _: 'pageBlockSubheader'
+export class PredicatePageBlockSubheader {
+    _ = 'pageBlockSubheader' as const
     text: RichText
+    constructor(options: {
+        text: RichText
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicatePageBlockParagraph {
-    _: 'pageBlockParagraph'
+export class PredicatePageBlockParagraph {
+    _ = 'pageBlockParagraph' as const
     text: RichText
+    constructor(options: {
+        text: RichText
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicatePageBlockPreformatted {
-    _: 'pageBlockPreformatted'
+export class PredicatePageBlockPreformatted {
+    _ = 'pageBlockPreformatted' as const
     text: RichText
     language: string
+    constructor(options: {
+        text: RichText
+        language: string
+    }) {
+        this.text = options.text;
+        this.language = options.language;
+    }
 }
 
-export interface PredicatePageBlockFooter {
-    _: 'pageBlockFooter'
+export class PredicatePageBlockFooter {
+    _ = 'pageBlockFooter' as const
     text: RichText
+    constructor(options: {
+        text: RichText
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicatePageBlockDivider {
-    _: 'pageBlockDivider'
+export class PredicatePageBlockDivider {
+    _ = 'pageBlockDivider' as const
 }
 
-export interface PredicatePageBlockAnchor {
-    _: 'pageBlockAnchor'
+export class PredicatePageBlockAnchor {
+    _ = 'pageBlockAnchor' as const
     name: string
+    constructor(options: {
+        name: string
+    }) {
+        this.name = options.name;
+    }
 }
 
-export interface PredicatePageBlockList {
-    _: 'pageBlockList'
+export class PredicatePageBlockList {
+    _ = 'pageBlockList' as const
     items: PageListItem[]
+    constructor(options: {
+        items: PageListItem[]
+    }) {
+        this.items = options.items;
+    }
 }
 
-export interface PredicatePageBlockBlockquote {
-    _: 'pageBlockBlockquote'
+export class PredicatePageBlockBlockquote {
+    _ = 'pageBlockBlockquote' as const
     text: RichText
     caption: RichText
+    constructor(options: {
+        text: RichText
+        caption: RichText
+    }) {
+        this.text = options.text;
+        this.caption = options.caption;
+    }
 }
 
-export interface PredicatePageBlockPullquote {
-    _: 'pageBlockPullquote'
+export class PredicatePageBlockPullquote {
+    _ = 'pageBlockPullquote' as const
     text: RichText
     caption: RichText
+    constructor(options: {
+        text: RichText
+        caption: RichText
+    }) {
+        this.text = options.text;
+        this.caption = options.caption;
+    }
 }
 
-export interface PredicatePageBlockPhoto {
-    _: 'pageBlockPhoto'
+export class PredicatePageBlockPhoto {
+    _ = 'pageBlockPhoto' as const
     photo_id: string
     caption: PageCaption
     url?: string
     webpage_id?: string
+    constructor(options: {
+        photo_id: string
+        caption: PageCaption
+        url?: string
+        webpage_id?: string
+    }) {
+        this.photo_id = options.photo_id;
+        this.caption = options.caption;
+        this.url = options.url;
+        this.webpage_id = options.webpage_id;
+    }
 }
 
-export interface PredicatePageBlockVideo {
-    _: 'pageBlockVideo'
+export class PredicatePageBlockVideo {
+    _ = 'pageBlockVideo' as const
     autoplay?: true
     loop?: true
     video_id: string
     caption: PageCaption
+    constructor(options: {
+        autoplay?: true
+        loop?: true
+        video_id: string
+        caption: PageCaption
+    }) {
+        this.autoplay = options.autoplay;
+        this.loop = options.loop;
+        this.video_id = options.video_id;
+        this.caption = options.caption;
+    }
 }
 
-export interface PredicatePageBlockCover {
-    _: 'pageBlockCover'
+export class PredicatePageBlockCover {
+    _ = 'pageBlockCover' as const
     cover: PageBlock
+    constructor(options: {
+        cover: PageBlock
+    }) {
+        this.cover = options.cover;
+    }
 }
 
-export interface PredicatePageBlockEmbed {
-    _: 'pageBlockEmbed'
+export class PredicatePageBlockEmbed {
+    _ = 'pageBlockEmbed' as const
     full_width?: true
     allow_scrolling?: true
     url?: string
@@ -3053,10 +6638,29 @@ export interface PredicatePageBlockEmbed {
     w?: number
     h?: number
     caption: PageCaption
+    constructor(options: {
+        full_width?: true
+        allow_scrolling?: true
+        url?: string
+        html?: string
+        poster_photo_id?: string
+        w?: number
+        h?: number
+        caption: PageCaption
+    }) {
+        this.full_width = options.full_width;
+        this.allow_scrolling = options.allow_scrolling;
+        this.url = options.url;
+        this.html = options.html;
+        this.poster_photo_id = options.poster_photo_id;
+        this.w = options.w;
+        this.h = options.h;
+        this.caption = options.caption;
+    }
 }
 
-export interface PredicatePageBlockEmbedPost {
-    _: 'pageBlockEmbedPost'
+export class PredicatePageBlockEmbedPost {
+    _ = 'pageBlockEmbedPost' as const
     url: string
     webpage_id: string
     author_photo_id: string
@@ -3064,91 +6668,169 @@ export interface PredicatePageBlockEmbedPost {
     date: number
     blocks: PageBlock[]
     caption: PageCaption
+    constructor(options: {
+        url: string
+        webpage_id: string
+        author_photo_id: string
+        author: string
+        date: number
+        blocks: PageBlock[]
+        caption: PageCaption
+    }) {
+        this.url = options.url;
+        this.webpage_id = options.webpage_id;
+        this.author_photo_id = options.author_photo_id;
+        this.author = options.author;
+        this.date = options.date;
+        this.blocks = options.blocks;
+        this.caption = options.caption;
+    }
 }
 
-export interface PredicatePageBlockCollage {
-    _: 'pageBlockCollage'
+export class PredicatePageBlockCollage {
+    _ = 'pageBlockCollage' as const
     items: PageBlock[]
     caption: PageCaption
+    constructor(options: {
+        items: PageBlock[]
+        caption: PageCaption
+    }) {
+        this.items = options.items;
+        this.caption = options.caption;
+    }
 }
 
-export interface PredicatePageBlockSlideshow {
-    _: 'pageBlockSlideshow'
+export class PredicatePageBlockSlideshow {
+    _ = 'pageBlockSlideshow' as const
     items: PageBlock[]
     caption: PageCaption
+    constructor(options: {
+        items: PageBlock[]
+        caption: PageCaption
+    }) {
+        this.items = options.items;
+        this.caption = options.caption;
+    }
 }
 
-export interface PredicateWebPageNotModified {
-    _: 'webPageNotModified'
+export class PredicateWebPageNotModified {
+    _ = 'webPageNotModified' as const
     cached_page_views?: number
+    constructor(options: {
+        cached_page_views?: number
+    } = {}) {
+        this.cached_page_views = options.cached_page_views;
+    }
 }
 
-export interface PredicateInputPrivacyKeyPhoneCall {
-    _: 'inputPrivacyKeyPhoneCall'
+export class PredicateInputPrivacyKeyPhoneCall {
+    _ = 'inputPrivacyKeyPhoneCall' as const
 }
 
-export interface PredicatePrivacyKeyPhoneCall {
-    _: 'privacyKeyPhoneCall'
+export class PredicatePrivacyKeyPhoneCall {
+    _ = 'privacyKeyPhoneCall' as const
 }
 
-export interface PredicateSendMessageGamePlayAction {
-    _: 'sendMessageGamePlayAction'
+export class PredicateSendMessageGamePlayAction {
+    _ = 'sendMessageGamePlayAction' as const
 }
 
-export interface PredicatePhoneCallDiscardReasonMissed {
-    _: 'phoneCallDiscardReasonMissed'
+export class PredicatePhoneCallDiscardReasonMissed {
+    _ = 'phoneCallDiscardReasonMissed' as const
 }
 
-export interface PredicatePhoneCallDiscardReasonDisconnect {
-    _: 'phoneCallDiscardReasonDisconnect'
+export class PredicatePhoneCallDiscardReasonDisconnect {
+    _ = 'phoneCallDiscardReasonDisconnect' as const
 }
 
-export interface PredicatePhoneCallDiscardReasonHangup {
-    _: 'phoneCallDiscardReasonHangup'
+export class PredicatePhoneCallDiscardReasonHangup {
+    _ = 'phoneCallDiscardReasonHangup' as const
 }
 
-export interface PredicatePhoneCallDiscardReasonBusy {
-    _: 'phoneCallDiscardReasonBusy'
+export class PredicatePhoneCallDiscardReasonBusy {
+    _ = 'phoneCallDiscardReasonBusy' as const
 }
 
-export interface PredicateUpdateDialogPinned {
-    _: 'updateDialogPinned'
+export class PredicateUpdateDialogPinned {
+    _ = 'updateDialogPinned' as const
     pinned?: true
     folder_id?: number
     peer: DialogPeer
+    constructor(options: {
+        pinned?: true
+        folder_id?: number
+        peer: DialogPeer
+    }) {
+        this.pinned = options.pinned;
+        this.folder_id = options.folder_id;
+        this.peer = options.peer;
+    }
 }
 
-export interface PredicateUpdatePinnedDialogs {
-    _: 'updatePinnedDialogs'
+export class PredicateUpdatePinnedDialogs {
+    _ = 'updatePinnedDialogs' as const
     folder_id?: number
     order?: DialogPeer[]
+    constructor(options: {
+        folder_id?: number
+        order?: DialogPeer[]
+    } = {}) {
+        this.folder_id = options.folder_id;
+        this.order = options.order;
+    }
 }
 
-export interface PredicateDataJSON {
-    _: 'dataJSON'
+export class PredicateDataJSON {
+    _ = 'dataJSON' as const
     data: string
+    constructor(options: {
+        data: string
+    }) {
+        this.data = options.data;
+    }
 }
 
-export interface PredicateUpdateBotWebhookJSON {
-    _: 'updateBotWebhookJSON'
+export class PredicateUpdateBotWebhookJSON {
+    _ = 'updateBotWebhookJSON' as const
     data: DataJSON
+    constructor(options: {
+        data: DataJSON
+    }) {
+        this.data = options.data;
+    }
 }
 
-export interface PredicateUpdateBotWebhookJSONQuery {
-    _: 'updateBotWebhookJSONQuery'
+export class PredicateUpdateBotWebhookJSONQuery {
+    _ = 'updateBotWebhookJSONQuery' as const
     query_id: string
     data: DataJSON
     timeout: number
+    constructor(options: {
+        query_id: string
+        data: DataJSON
+        timeout: number
+    }) {
+        this.query_id = options.query_id;
+        this.data = options.data;
+        this.timeout = options.timeout;
+    }
 }
 
-export interface PredicateLabeledPrice {
-    _: 'labeledPrice'
+export class PredicateLabeledPrice {
+    _ = 'labeledPrice' as const
     label: string
     amount: string
+    constructor(options: {
+        label: string
+        amount: string
+    }) {
+        this.label = options.label;
+        this.amount = options.amount;
+    }
 }
 
-export interface PredicateInvoice {
-    _: 'invoice'
+export class PredicateInvoice {
+    _ = 'invoice' as const
     test?: true
     name_requested?: true
     phone_requested?: true
@@ -3161,10 +6843,37 @@ export interface PredicateInvoice {
     prices: LabeledPrice[]
     max_tip_amount?: string
     suggested_tip_amounts?: string[]
+    constructor(options: {
+        test?: true
+        name_requested?: true
+        phone_requested?: true
+        email_requested?: true
+        shipping_address_requested?: true
+        flexible?: true
+        phone_to_provider?: true
+        email_to_provider?: true
+        currency: string
+        prices: LabeledPrice[]
+        max_tip_amount?: string
+        suggested_tip_amounts?: string[]
+    }) {
+        this.test = options.test;
+        this.name_requested = options.name_requested;
+        this.phone_requested = options.phone_requested;
+        this.email_requested = options.email_requested;
+        this.shipping_address_requested = options.shipping_address_requested;
+        this.flexible = options.flexible;
+        this.phone_to_provider = options.phone_to_provider;
+        this.email_to_provider = options.email_to_provider;
+        this.currency = options.currency;
+        this.prices = options.prices;
+        this.max_tip_amount = options.max_tip_amount;
+        this.suggested_tip_amounts = options.suggested_tip_amounts;
+    }
 }
 
-export interface PredicateInputMediaInvoice {
-    _: 'inputMediaInvoice'
+export class PredicateInputMediaInvoice {
+    _ = 'inputMediaInvoice' as const
     title: string
     description: string
     photo?: InputWebDocument
@@ -3173,26 +6882,67 @@ export interface PredicateInputMediaInvoice {
     provider: string
     provider_data: DataJSON
     start_param?: string
+    constructor(options: {
+        title: string
+        description: string
+        photo?: InputWebDocument
+        invoice: Invoice
+        payload: Uint8Array
+        provider: string
+        provider_data: DataJSON
+        start_param?: string
+    }) {
+        this.title = options.title;
+        this.description = options.description;
+        this.photo = options.photo;
+        this.invoice = options.invoice;
+        this.payload = options.payload;
+        this.provider = options.provider;
+        this.provider_data = options.provider_data;
+        this.start_param = options.start_param;
+    }
 }
 
-export interface PredicatePaymentCharge {
-    _: 'paymentCharge'
+export class PredicatePaymentCharge {
+    _ = 'paymentCharge' as const
     id: string
     provider_charge_id: string
+    constructor(options: {
+        id: string
+        provider_charge_id: string
+    }) {
+        this.id = options.id;
+        this.provider_charge_id = options.provider_charge_id;
+    }
 }
 
-export interface PredicateMessageActionPaymentSentMe {
-    _: 'messageActionPaymentSentMe'
+export class PredicateMessageActionPaymentSentMe {
+    _ = 'messageActionPaymentSentMe' as const
     currency: string
     total_amount: string
     payload: Uint8Array
     info?: PaymentRequestedInfo
     shipping_option_id?: string
     charge: PaymentCharge
+    constructor(options: {
+        currency: string
+        total_amount: string
+        payload: Uint8Array
+        info?: PaymentRequestedInfo
+        shipping_option_id?: string
+        charge: PaymentCharge
+    }) {
+        this.currency = options.currency;
+        this.total_amount = options.total_amount;
+        this.payload = options.payload;
+        this.info = options.info;
+        this.shipping_option_id = options.shipping_option_id;
+        this.charge = options.charge;
+    }
 }
 
-export interface PredicateMessageMediaInvoice {
-    _: 'messageMediaInvoice'
+export class PredicateMessageMediaInvoice {
+    _ = 'messageMediaInvoice' as const
     shipping_address_requested?: true
     test?: true
     title: string
@@ -3202,77 +6952,187 @@ export interface PredicateMessageMediaInvoice {
     currency: string
     total_amount: string
     start_param: string
+    constructor(options: {
+        shipping_address_requested?: true
+        test?: true
+        title: string
+        description: string
+        photo?: WebDocument
+        receipt_msg_id?: number
+        currency: string
+        total_amount: string
+        start_param: string
+    }) {
+        this.shipping_address_requested = options.shipping_address_requested;
+        this.test = options.test;
+        this.title = options.title;
+        this.description = options.description;
+        this.photo = options.photo;
+        this.receipt_msg_id = options.receipt_msg_id;
+        this.currency = options.currency;
+        this.total_amount = options.total_amount;
+        this.start_param = options.start_param;
+    }
 }
 
-export interface PredicatePostAddress {
-    _: 'postAddress'
+export class PredicatePostAddress {
+    _ = 'postAddress' as const
     street_line1: string
     street_line2: string
     city: string
     state: string
     country_iso2: string
     post_code: string
+    constructor(options: {
+        street_line1: string
+        street_line2: string
+        city: string
+        state: string
+        country_iso2: string
+        post_code: string
+    }) {
+        this.street_line1 = options.street_line1;
+        this.street_line2 = options.street_line2;
+        this.city = options.city;
+        this.state = options.state;
+        this.country_iso2 = options.country_iso2;
+        this.post_code = options.post_code;
+    }
 }
 
-export interface PredicatePaymentRequestedInfo {
-    _: 'paymentRequestedInfo'
+export class PredicatePaymentRequestedInfo {
+    _ = 'paymentRequestedInfo' as const
     name?: string
     phone?: string
     email?: string
     shipping_address?: PostAddress
+    constructor(options: {
+        name?: string
+        phone?: string
+        email?: string
+        shipping_address?: PostAddress
+    } = {}) {
+        this.name = options.name;
+        this.phone = options.phone;
+        this.email = options.email;
+        this.shipping_address = options.shipping_address;
+    }
 }
 
-export interface PredicateKeyboardButtonBuy {
-    _: 'keyboardButtonBuy'
+export class PredicateKeyboardButtonBuy {
+    _ = 'keyboardButtonBuy' as const
     text: string
+    constructor(options: {
+        text: string
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicateMessageActionPaymentSent {
-    _: 'messageActionPaymentSent'
+export class PredicateMessageActionPaymentSent {
+    _ = 'messageActionPaymentSent' as const
     currency: string
     total_amount: string
+    constructor(options: {
+        currency: string
+        total_amount: string
+    }) {
+        this.currency = options.currency;
+        this.total_amount = options.total_amount;
+    }
 }
 
-export interface PredicatePaymentSavedCredentialsCard {
-    _: 'paymentSavedCredentialsCard'
+export class PredicatePaymentSavedCredentialsCard {
+    _ = 'paymentSavedCredentialsCard' as const
     id: string
     title: string
+    constructor(options: {
+        id: string
+        title: string
+    }) {
+        this.id = options.id;
+        this.title = options.title;
+    }
 }
 
-export interface PredicateWebDocument {
-    _: 'webDocument'
+export class PredicateWebDocument {
+    _ = 'webDocument' as const
     url: string
     access_hash: string
     size: number
     mime_type: string
     attributes: DocumentAttribute[]
+    constructor(options: {
+        url: string
+        access_hash: string
+        size: number
+        mime_type: string
+        attributes: DocumentAttribute[]
+    }) {
+        this.url = options.url;
+        this.access_hash = options.access_hash;
+        this.size = options.size;
+        this.mime_type = options.mime_type;
+        this.attributes = options.attributes;
+    }
 }
 
-export interface PredicateInputWebDocument {
-    _: 'inputWebDocument'
+export class PredicateInputWebDocument {
+    _ = 'inputWebDocument' as const
     url: string
     size: number
     mime_type: string
     attributes: DocumentAttribute[]
+    constructor(options: {
+        url: string
+        size: number
+        mime_type: string
+        attributes: DocumentAttribute[]
+    }) {
+        this.url = options.url;
+        this.size = options.size;
+        this.mime_type = options.mime_type;
+        this.attributes = options.attributes;
+    }
 }
 
-export interface PredicateInputWebFileLocation {
-    _: 'inputWebFileLocation'
+export class PredicateInputWebFileLocation {
+    _ = 'inputWebFileLocation' as const
     url: string
     access_hash: string
+    constructor(options: {
+        url: string
+        access_hash: string
+    }) {
+        this.url = options.url;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicateUploadWebFile {
-    _: 'upload.webFile'
+export class PredicateUploadWebFile {
+    _ = 'upload.webFile' as const
     size: number
     mime_type: string
     file_type: StorageFileType
     mtime: number
     bytes: Uint8Array
+    constructor(options: {
+        size: number
+        mime_type: string
+        file_type: StorageFileType
+        mtime: number
+        bytes: Uint8Array
+    }) {
+        this.size = options.size;
+        this.mime_type = options.mime_type;
+        this.file_type = options.file_type;
+        this.mtime = options.mtime;
+        this.bytes = options.bytes;
+    }
 }
 
-export interface PredicatePaymentsPaymentForm {
-    _: 'payments.paymentForm'
+export class PredicatePaymentsPaymentForm {
+    _ = 'payments.paymentForm' as const
     can_save_credentials?: true
     password_missing?: true
     form_id: string
@@ -3285,21 +7145,60 @@ export interface PredicatePaymentsPaymentForm {
     saved_info?: PaymentRequestedInfo
     saved_credentials?: PaymentSavedCredentials
     users: User[]
+    constructor(options: {
+        can_save_credentials?: true
+        password_missing?: true
+        form_id: string
+        bot_id: string
+        invoice: Invoice
+        provider_id: string
+        url: string
+        native_provider?: string
+        native_params?: DataJSON
+        saved_info?: PaymentRequestedInfo
+        saved_credentials?: PaymentSavedCredentials
+        users: User[]
+    }) {
+        this.can_save_credentials = options.can_save_credentials;
+        this.password_missing = options.password_missing;
+        this.form_id = options.form_id;
+        this.bot_id = options.bot_id;
+        this.invoice = options.invoice;
+        this.provider_id = options.provider_id;
+        this.url = options.url;
+        this.native_provider = options.native_provider;
+        this.native_params = options.native_params;
+        this.saved_info = options.saved_info;
+        this.saved_credentials = options.saved_credentials;
+        this.users = options.users;
+    }
 }
 
-export interface PredicatePaymentsValidatedRequestedInfo {
-    _: 'payments.validatedRequestedInfo'
+export class PredicatePaymentsValidatedRequestedInfo {
+    _ = 'payments.validatedRequestedInfo' as const
     id?: string
     shipping_options?: ShippingOption[]
+    constructor(options: {
+        id?: string
+        shipping_options?: ShippingOption[]
+    } = {}) {
+        this.id = options.id;
+        this.shipping_options = options.shipping_options;
+    }
 }
 
-export interface PredicatePaymentsPaymentResult {
-    _: 'payments.paymentResult'
+export class PredicatePaymentsPaymentResult {
+    _ = 'payments.paymentResult' as const
     updates: Updates
+    constructor(options: {
+        updates: Updates
+    }) {
+        this.updates = options.updates;
+    }
 }
 
-export interface PredicatePaymentsPaymentReceipt {
-    _: 'payments.paymentReceipt'
+export class PredicatePaymentsPaymentReceipt {
+    _ = 'payments.paymentReceipt' as const
     date: number
     bot_id: string
     provider_id: string
@@ -3314,49 +7213,128 @@ export interface PredicatePaymentsPaymentReceipt {
     total_amount: string
     credentials_title: string
     users: User[]
+    constructor(options: {
+        date: number
+        bot_id: string
+        provider_id: string
+        title: string
+        description: string
+        photo?: WebDocument
+        invoice: Invoice
+        info?: PaymentRequestedInfo
+        shipping?: ShippingOption
+        tip_amount?: string
+        currency: string
+        total_amount: string
+        credentials_title: string
+        users: User[]
+    }) {
+        this.date = options.date;
+        this.bot_id = options.bot_id;
+        this.provider_id = options.provider_id;
+        this.title = options.title;
+        this.description = options.description;
+        this.photo = options.photo;
+        this.invoice = options.invoice;
+        this.info = options.info;
+        this.shipping = options.shipping;
+        this.tip_amount = options.tip_amount;
+        this.currency = options.currency;
+        this.total_amount = options.total_amount;
+        this.credentials_title = options.credentials_title;
+        this.users = options.users;
+    }
 }
 
-export interface PredicatePaymentsSavedInfo {
-    _: 'payments.savedInfo'
+export class PredicatePaymentsSavedInfo {
+    _ = 'payments.savedInfo' as const
     has_saved_credentials?: true
     saved_info?: PaymentRequestedInfo
+    constructor(options: {
+        has_saved_credentials?: true
+        saved_info?: PaymentRequestedInfo
+    } = {}) {
+        this.has_saved_credentials = options.has_saved_credentials;
+        this.saved_info = options.saved_info;
+    }
 }
 
-export interface PredicateInputPaymentCredentialsSaved {
-    _: 'inputPaymentCredentialsSaved'
+export class PredicateInputPaymentCredentialsSaved {
+    _ = 'inputPaymentCredentialsSaved' as const
     id: string
     tmp_password: Uint8Array
+    constructor(options: {
+        id: string
+        tmp_password: Uint8Array
+    }) {
+        this.id = options.id;
+        this.tmp_password = options.tmp_password;
+    }
 }
 
-export interface PredicateInputPaymentCredentials {
-    _: 'inputPaymentCredentials'
+export class PredicateInputPaymentCredentials {
+    _ = 'inputPaymentCredentials' as const
     save?: true
     data: DataJSON
+    constructor(options: {
+        save?: true
+        data: DataJSON
+    }) {
+        this.save = options.save;
+        this.data = options.data;
+    }
 }
 
-export interface PredicateAccountTmpPassword {
-    _: 'account.tmpPassword'
+export class PredicateAccountTmpPassword {
+    _ = 'account.tmpPassword' as const
     tmp_password: Uint8Array
     valid_until: number
+    constructor(options: {
+        tmp_password: Uint8Array
+        valid_until: number
+    }) {
+        this.tmp_password = options.tmp_password;
+        this.valid_until = options.valid_until;
+    }
 }
 
-export interface PredicateShippingOption {
-    _: 'shippingOption'
+export class PredicateShippingOption {
+    _ = 'shippingOption' as const
     id: string
     title: string
     prices: LabeledPrice[]
+    constructor(options: {
+        id: string
+        title: string
+        prices: LabeledPrice[]
+    }) {
+        this.id = options.id;
+        this.title = options.title;
+        this.prices = options.prices;
+    }
 }
 
-export interface PredicateUpdateBotShippingQuery {
-    _: 'updateBotShippingQuery'
+export class PredicateUpdateBotShippingQuery {
+    _ = 'updateBotShippingQuery' as const
     query_id: string
     user_id: string
     payload: Uint8Array
     shipping_address: PostAddress
+    constructor(options: {
+        query_id: string
+        user_id: string
+        payload: Uint8Array
+        shipping_address: PostAddress
+    }) {
+        this.query_id = options.query_id;
+        this.user_id = options.user_id;
+        this.payload = options.payload;
+        this.shipping_address = options.shipping_address;
+    }
 }
 
-export interface PredicateUpdateBotPrecheckoutQuery {
-    _: 'updateBotPrecheckoutQuery'
+export class PredicateUpdateBotPrecheckoutQuery {
+    _ = 'updateBotPrecheckoutQuery' as const
     query_id: string
     user_id: string
     payload: Uint8Array
@@ -3364,33 +7342,76 @@ export interface PredicateUpdateBotPrecheckoutQuery {
     shipping_option_id?: string
     currency: string
     total_amount: string
+    constructor(options: {
+        query_id: string
+        user_id: string
+        payload: Uint8Array
+        info?: PaymentRequestedInfo
+        shipping_option_id?: string
+        currency: string
+        total_amount: string
+    }) {
+        this.query_id = options.query_id;
+        this.user_id = options.user_id;
+        this.payload = options.payload;
+        this.info = options.info;
+        this.shipping_option_id = options.shipping_option_id;
+        this.currency = options.currency;
+        this.total_amount = options.total_amount;
+    }
 }
 
-export interface PredicateInputStickerSetItem {
-    _: 'inputStickerSetItem'
+export class PredicateInputStickerSetItem {
+    _ = 'inputStickerSetItem' as const
     document: InputDocument
     emoji: string
     mask_coords?: MaskCoords
+    constructor(options: {
+        document: InputDocument
+        emoji: string
+        mask_coords?: MaskCoords
+    }) {
+        this.document = options.document;
+        this.emoji = options.emoji;
+        this.mask_coords = options.mask_coords;
+    }
 }
 
-export interface PredicateUpdatePhoneCall {
-    _: 'updatePhoneCall'
+export class PredicateUpdatePhoneCall {
+    _ = 'updatePhoneCall' as const
     phone_call: PhoneCall
+    constructor(options: {
+        phone_call: PhoneCall
+    }) {
+        this.phone_call = options.phone_call;
+    }
 }
 
-export interface PredicateInputPhoneCall {
-    _: 'inputPhoneCall'
+export class PredicateInputPhoneCall {
+    _ = 'inputPhoneCall' as const
     id: string
     access_hash: string
+    constructor(options: {
+        id: string
+        access_hash: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicatePhoneCallEmpty {
-    _: 'phoneCallEmpty'
+export class PredicatePhoneCallEmpty {
+    _ = 'phoneCallEmpty' as const
     id: string
+    constructor(options: {
+        id: string
+    }) {
+        this.id = options.id;
+    }
 }
 
-export interface PredicatePhoneCallWaiting {
-    _: 'phoneCallWaiting'
+export class PredicatePhoneCallWaiting {
+    _ = 'phoneCallWaiting' as const
     video?: true
     id: string
     access_hash: string
@@ -3399,10 +7420,29 @@ export interface PredicatePhoneCallWaiting {
     participant_id: string
     protocol: PhoneCallProtocol
     receive_date?: number
+    constructor(options: {
+        video?: true
+        id: string
+        access_hash: string
+        date: number
+        admin_id: string
+        participant_id: string
+        protocol: PhoneCallProtocol
+        receive_date?: number
+    }) {
+        this.video = options.video;
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.date = options.date;
+        this.admin_id = options.admin_id;
+        this.participant_id = options.participant_id;
+        this.protocol = options.protocol;
+        this.receive_date = options.receive_date;
+    }
 }
 
-export interface PredicatePhoneCallRequested {
-    _: 'phoneCallRequested'
+export class PredicatePhoneCallRequested {
+    _ = 'phoneCallRequested' as const
     video?: true
     id: string
     access_hash: string
@@ -3411,10 +7451,29 @@ export interface PredicatePhoneCallRequested {
     participant_id: string
     g_a_hash: Uint8Array
     protocol: PhoneCallProtocol
+    constructor(options: {
+        video?: true
+        id: string
+        access_hash: string
+        date: number
+        admin_id: string
+        participant_id: string
+        g_a_hash: Uint8Array
+        protocol: PhoneCallProtocol
+    }) {
+        this.video = options.video;
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.date = options.date;
+        this.admin_id = options.admin_id;
+        this.participant_id = options.participant_id;
+        this.g_a_hash = options.g_a_hash;
+        this.protocol = options.protocol;
+    }
 }
 
-export interface PredicatePhoneCallAccepted {
-    _: 'phoneCallAccepted'
+export class PredicatePhoneCallAccepted {
+    _ = 'phoneCallAccepted' as const
     video?: true
     id: string
     access_hash: string
@@ -3423,10 +7482,29 @@ export interface PredicatePhoneCallAccepted {
     participant_id: string
     g_b: Uint8Array
     protocol: PhoneCallProtocol
+    constructor(options: {
+        video?: true
+        id: string
+        access_hash: string
+        date: number
+        admin_id: string
+        participant_id: string
+        g_b: Uint8Array
+        protocol: PhoneCallProtocol
+    }) {
+        this.video = options.video;
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.date = options.date;
+        this.admin_id = options.admin_id;
+        this.participant_id = options.participant_id;
+        this.g_b = options.g_b;
+        this.protocol = options.protocol;
+    }
 }
 
-export interface PredicatePhoneCall {
-    _: 'phoneCall'
+export class PredicatePhoneCall {
+    _ = 'phoneCall' as const
     p2p_allowed?: true
     video?: true
     id: string
@@ -3439,115 +7517,258 @@ export interface PredicatePhoneCall {
     protocol: PhoneCallProtocol
     connections: PhoneConnection[]
     start_date: number
+    constructor(options: {
+        p2p_allowed?: true
+        video?: true
+        id: string
+        access_hash: string
+        date: number
+        admin_id: string
+        participant_id: string
+        g_a_or_b: Uint8Array
+        key_fingerprint: string
+        protocol: PhoneCallProtocol
+        connections: PhoneConnection[]
+        start_date: number
+    }) {
+        this.p2p_allowed = options.p2p_allowed;
+        this.video = options.video;
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.date = options.date;
+        this.admin_id = options.admin_id;
+        this.participant_id = options.participant_id;
+        this.g_a_or_b = options.g_a_or_b;
+        this.key_fingerprint = options.key_fingerprint;
+        this.protocol = options.protocol;
+        this.connections = options.connections;
+        this.start_date = options.start_date;
+    }
 }
 
-export interface PredicatePhoneCallDiscarded {
-    _: 'phoneCallDiscarded'
+export class PredicatePhoneCallDiscarded {
+    _ = 'phoneCallDiscarded' as const
     need_rating?: true
     need_debug?: true
     video?: true
     id: string
     reason?: PhoneCallDiscardReason
     duration?: number
+    constructor(options: {
+        need_rating?: true
+        need_debug?: true
+        video?: true
+        id: string
+        reason?: PhoneCallDiscardReason
+        duration?: number
+    }) {
+        this.need_rating = options.need_rating;
+        this.need_debug = options.need_debug;
+        this.video = options.video;
+        this.id = options.id;
+        this.reason = options.reason;
+        this.duration = options.duration;
+    }
 }
 
-export interface PredicatePhoneConnection {
-    _: 'phoneConnection'
+export class PredicatePhoneConnection {
+    _ = 'phoneConnection' as const
     id: string
     ip: string
     ipv6: string
     port: number
     peer_tag: Uint8Array
+    constructor(options: {
+        id: string
+        ip: string
+        ipv6: string
+        port: number
+        peer_tag: Uint8Array
+    }) {
+        this.id = options.id;
+        this.ip = options.ip;
+        this.ipv6 = options.ipv6;
+        this.port = options.port;
+        this.peer_tag = options.peer_tag;
+    }
 }
 
-export interface PredicatePhoneCallProtocol {
-    _: 'phoneCallProtocol'
+export class PredicatePhoneCallProtocol {
+    _ = 'phoneCallProtocol' as const
     udp_p2p?: true
     udp_reflector?: true
     min_layer: number
     max_layer: number
     library_versions: string[]
+    constructor(options: {
+        udp_p2p?: true
+        udp_reflector?: true
+        min_layer: number
+        max_layer: number
+        library_versions: string[]
+    }) {
+        this.udp_p2p = options.udp_p2p;
+        this.udp_reflector = options.udp_reflector;
+        this.min_layer = options.min_layer;
+        this.max_layer = options.max_layer;
+        this.library_versions = options.library_versions;
+    }
 }
 
-export interface PredicatePhonePhoneCall {
-    _: 'phone.phoneCall'
+export class PredicatePhonePhoneCall {
+    _ = 'phone.phoneCall' as const
     phone_call: PhoneCall
     users: User[]
+    constructor(options: {
+        phone_call: PhoneCall
+        users: User[]
+    }) {
+        this.phone_call = options.phone_call;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateInputMessagesFilterPhoneCalls {
-    _: 'inputMessagesFilterPhoneCalls'
+export class PredicateInputMessagesFilterPhoneCalls {
+    _ = 'inputMessagesFilterPhoneCalls' as const
     missed?: true
+    constructor(options: {
+        missed?: true
+    } = {}) {
+        this.missed = options.missed;
+    }
 }
 
-export interface PredicateMessageActionPhoneCall {
-    _: 'messageActionPhoneCall'
+export class PredicateMessageActionPhoneCall {
+    _ = 'messageActionPhoneCall' as const
     video?: true
     call_id: string
     reason?: PhoneCallDiscardReason
     duration?: number
+    constructor(options: {
+        video?: true
+        call_id: string
+        reason?: PhoneCallDiscardReason
+        duration?: number
+    }) {
+        this.video = options.video;
+        this.call_id = options.call_id;
+        this.reason = options.reason;
+        this.duration = options.duration;
+    }
 }
 
-export interface PredicateInputMessagesFilterRoundVoice {
-    _: 'inputMessagesFilterRoundVoice'
+export class PredicateInputMessagesFilterRoundVoice {
+    _ = 'inputMessagesFilterRoundVoice' as const
 }
 
-export interface PredicateInputMessagesFilterRoundVideo {
-    _: 'inputMessagesFilterRoundVideo'
+export class PredicateInputMessagesFilterRoundVideo {
+    _ = 'inputMessagesFilterRoundVideo' as const
 }
 
-export interface PredicateSendMessageRecordRoundAction {
-    _: 'sendMessageRecordRoundAction'
+export class PredicateSendMessageRecordRoundAction {
+    _ = 'sendMessageRecordRoundAction' as const
 }
 
-export interface PredicateSendMessageUploadRoundAction {
-    _: 'sendMessageUploadRoundAction'
+export class PredicateSendMessageUploadRoundAction {
+    _ = 'sendMessageUploadRoundAction' as const
     progress: number
+    constructor(options: {
+        progress: number
+    }) {
+        this.progress = options.progress;
+    }
 }
 
-export interface PredicateUploadFileCdnRedirect {
-    _: 'upload.fileCdnRedirect'
+export class PredicateUploadFileCdnRedirect {
+    _ = 'upload.fileCdnRedirect' as const
     dc_id: number
     file_token: Uint8Array
     encryption_key: Uint8Array
     encryption_iv: Uint8Array
     file_hashes: FileHash[]
+    constructor(options: {
+        dc_id: number
+        file_token: Uint8Array
+        encryption_key: Uint8Array
+        encryption_iv: Uint8Array
+        file_hashes: FileHash[]
+    }) {
+        this.dc_id = options.dc_id;
+        this.file_token = options.file_token;
+        this.encryption_key = options.encryption_key;
+        this.encryption_iv = options.encryption_iv;
+        this.file_hashes = options.file_hashes;
+    }
 }
 
-export interface PredicateUploadCdnFileReuploadNeeded {
-    _: 'upload.cdnFileReuploadNeeded'
+export class PredicateUploadCdnFileReuploadNeeded {
+    _ = 'upload.cdnFileReuploadNeeded' as const
     request_token: Uint8Array
+    constructor(options: {
+        request_token: Uint8Array
+    }) {
+        this.request_token = options.request_token;
+    }
 }
 
-export interface PredicateUploadCdnFile {
-    _: 'upload.cdnFile'
+export class PredicateUploadCdnFile {
+    _ = 'upload.cdnFile' as const
     bytes: Uint8Array
+    constructor(options: {
+        bytes: Uint8Array
+    }) {
+        this.bytes = options.bytes;
+    }
 }
 
-export interface PredicateCdnPublicKey {
-    _: 'cdnPublicKey'
+export class PredicateCdnPublicKey {
+    _ = 'cdnPublicKey' as const
     dc_id: number
     public_key: string
+    constructor(options: {
+        dc_id: number
+        public_key: string
+    }) {
+        this.dc_id = options.dc_id;
+        this.public_key = options.public_key;
+    }
 }
 
-export interface PredicateCdnConfig {
-    _: 'cdnConfig'
+export class PredicateCdnConfig {
+    _ = 'cdnConfig' as const
     public_keys: CdnPublicKey[]
+    constructor(options: {
+        public_keys: CdnPublicKey[]
+    }) {
+        this.public_keys = options.public_keys;
+    }
 }
 
-export interface PredicatePageBlockChannel {
-    _: 'pageBlockChannel'
+export class PredicatePageBlockChannel {
+    _ = 'pageBlockChannel' as const
     channel: Chat
+    constructor(options: {
+        channel: Chat
+    }) {
+        this.channel = options.channel;
+    }
 }
 
-export interface PredicateLangPackString {
-    _: 'langPackString'
+export class PredicateLangPackString {
+    _ = 'langPackString' as const
     key: string
     value: string
+    constructor(options: {
+        key: string
+        value: string
+    }) {
+        this.key = options.key;
+        this.value = options.value;
+    }
 }
 
-export interface PredicateLangPackStringPluralized {
-    _: 'langPackStringPluralized'
+export class PredicateLangPackStringPluralized {
+    _ = 'langPackStringPluralized' as const
     key: string
     zero_value?: string
     one_value?: string
@@ -3555,23 +7776,56 @@ export interface PredicateLangPackStringPluralized {
     few_value?: string
     many_value?: string
     other_value: string
+    constructor(options: {
+        key: string
+        zero_value?: string
+        one_value?: string
+        two_value?: string
+        few_value?: string
+        many_value?: string
+        other_value: string
+    }) {
+        this.key = options.key;
+        this.zero_value = options.zero_value;
+        this.one_value = options.one_value;
+        this.two_value = options.two_value;
+        this.few_value = options.few_value;
+        this.many_value = options.many_value;
+        this.other_value = options.other_value;
+    }
 }
 
-export interface PredicateLangPackStringDeleted {
-    _: 'langPackStringDeleted'
+export class PredicateLangPackStringDeleted {
+    _ = 'langPackStringDeleted' as const
     key: string
+    constructor(options: {
+        key: string
+    }) {
+        this.key = options.key;
+    }
 }
 
-export interface PredicateLangPackDifference {
-    _: 'langPackDifference'
+export class PredicateLangPackDifference {
+    _ = 'langPackDifference' as const
     lang_code: string
     from_version: number
     version: number
     strings: LangPackString[]
+    constructor(options: {
+        lang_code: string
+        from_version: number
+        version: number
+        strings: LangPackString[]
+    }) {
+        this.lang_code = options.lang_code;
+        this.from_version = options.from_version;
+        this.version = options.version;
+        this.strings = options.strings;
+    }
 }
 
-export interface PredicateLangPackLanguage {
-    _: 'langPackLanguage'
+export class PredicateLangPackLanguage {
+    _ = 'langPackLanguage' as const
     official?: true
     rtl?: true
     beta?: true
@@ -3583,20 +7837,55 @@ export interface PredicateLangPackLanguage {
     strings_count: number
     translated_count: number
     translations_url: string
+    constructor(options: {
+        official?: true
+        rtl?: true
+        beta?: true
+        name: string
+        native_name: string
+        lang_code: string
+        base_lang_code?: string
+        plural_code: string
+        strings_count: number
+        translated_count: number
+        translations_url: string
+    }) {
+        this.official = options.official;
+        this.rtl = options.rtl;
+        this.beta = options.beta;
+        this.name = options.name;
+        this.native_name = options.native_name;
+        this.lang_code = options.lang_code;
+        this.base_lang_code = options.base_lang_code;
+        this.plural_code = options.plural_code;
+        this.strings_count = options.strings_count;
+        this.translated_count = options.translated_count;
+        this.translations_url = options.translations_url;
+    }
 }
 
-export interface PredicateUpdateLangPackTooLong {
-    _: 'updateLangPackTooLong'
+export class PredicateUpdateLangPackTooLong {
+    _ = 'updateLangPackTooLong' as const
     lang_code: string
+    constructor(options: {
+        lang_code: string
+    }) {
+        this.lang_code = options.lang_code;
+    }
 }
 
-export interface PredicateUpdateLangPack {
-    _: 'updateLangPack'
+export class PredicateUpdateLangPack {
+    _ = 'updateLangPack' as const
     difference: LangPackDifference
+    constructor(options: {
+        difference: LangPackDifference
+    }) {
+        this.difference = options.difference;
+    }
 }
 
-export interface PredicateChannelParticipantAdmin {
-    _: 'channelParticipantAdmin'
+export class PredicateChannelParticipantAdmin {
+    _ = 'channelParticipantAdmin' as const
     can_edit?: true
     self?: true
     user_id: string
@@ -3605,119 +7894,255 @@ export interface PredicateChannelParticipantAdmin {
     date: number
     admin_rights: ChatAdminRights
     rank?: string
+    constructor(options: {
+        can_edit?: true
+        self?: true
+        user_id: string
+        inviter_id?: string
+        promoted_by: string
+        date: number
+        admin_rights: ChatAdminRights
+        rank?: string
+    }) {
+        this.can_edit = options.can_edit;
+        this.self = options.self;
+        this.user_id = options.user_id;
+        this.inviter_id = options.inviter_id;
+        this.promoted_by = options.promoted_by;
+        this.date = options.date;
+        this.admin_rights = options.admin_rights;
+        this.rank = options.rank;
+    }
 }
 
-export interface PredicateChannelParticipantBanned {
-    _: 'channelParticipantBanned'
+export class PredicateChannelParticipantBanned {
+    _ = 'channelParticipantBanned' as const
     left?: true
     peer: Peer
     kicked_by: string
     date: number
     banned_rights: ChatBannedRights
+    constructor(options: {
+        left?: true
+        peer: Peer
+        kicked_by: string
+        date: number
+        banned_rights: ChatBannedRights
+    }) {
+        this.left = options.left;
+        this.peer = options.peer;
+        this.kicked_by = options.kicked_by;
+        this.date = options.date;
+        this.banned_rights = options.banned_rights;
+    }
 }
 
-export interface PredicateChannelParticipantsBanned {
-    _: 'channelParticipantsBanned'
+export class PredicateChannelParticipantsBanned {
+    _ = 'channelParticipantsBanned' as const
     q: string
+    constructor(options: {
+        q: string
+    }) {
+        this.q = options.q;
+    }
 }
 
-export interface PredicateChannelParticipantsSearch {
-    _: 'channelParticipantsSearch'
+export class PredicateChannelParticipantsSearch {
+    _ = 'channelParticipantsSearch' as const
     q: string
+    constructor(options: {
+        q: string
+    }) {
+        this.q = options.q;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionChangeTitle {
-    _: 'channelAdminLogEventActionChangeTitle'
+export class PredicateChannelAdminLogEventActionChangeTitle {
+    _ = 'channelAdminLogEventActionChangeTitle' as const
     prev_value: string
     new_value: string
+    constructor(options: {
+        prev_value: string
+        new_value: string
+    }) {
+        this.prev_value = options.prev_value;
+        this.new_value = options.new_value;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionChangeAbout {
-    _: 'channelAdminLogEventActionChangeAbout'
+export class PredicateChannelAdminLogEventActionChangeAbout {
+    _ = 'channelAdminLogEventActionChangeAbout' as const
     prev_value: string
     new_value: string
+    constructor(options: {
+        prev_value: string
+        new_value: string
+    }) {
+        this.prev_value = options.prev_value;
+        this.new_value = options.new_value;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionChangeUsername {
-    _: 'channelAdminLogEventActionChangeUsername'
+export class PredicateChannelAdminLogEventActionChangeUsername {
+    _ = 'channelAdminLogEventActionChangeUsername' as const
     prev_value: string
     new_value: string
+    constructor(options: {
+        prev_value: string
+        new_value: string
+    }) {
+        this.prev_value = options.prev_value;
+        this.new_value = options.new_value;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionChangePhoto {
-    _: 'channelAdminLogEventActionChangePhoto'
+export class PredicateChannelAdminLogEventActionChangePhoto {
+    _ = 'channelAdminLogEventActionChangePhoto' as const
     prev_photo: Photo
     new_photo: Photo
+    constructor(options: {
+        prev_photo: Photo
+        new_photo: Photo
+    }) {
+        this.prev_photo = options.prev_photo;
+        this.new_photo = options.new_photo;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionToggleInvites {
-    _: 'channelAdminLogEventActionToggleInvites'
+export class PredicateChannelAdminLogEventActionToggleInvites {
+    _ = 'channelAdminLogEventActionToggleInvites' as const
     new_value: boolean
+    constructor(options: {
+        new_value: boolean
+    }) {
+        this.new_value = options.new_value;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionToggleSignatures {
-    _: 'channelAdminLogEventActionToggleSignatures'
+export class PredicateChannelAdminLogEventActionToggleSignatures {
+    _ = 'channelAdminLogEventActionToggleSignatures' as const
     new_value: boolean
+    constructor(options: {
+        new_value: boolean
+    }) {
+        this.new_value = options.new_value;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionUpdatePinned {
-    _: 'channelAdminLogEventActionUpdatePinned'
+export class PredicateChannelAdminLogEventActionUpdatePinned {
+    _ = 'channelAdminLogEventActionUpdatePinned' as const
     message: Message
+    constructor(options: {
+        message: Message
+    }) {
+        this.message = options.message;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionEditMessage {
-    _: 'channelAdminLogEventActionEditMessage'
+export class PredicateChannelAdminLogEventActionEditMessage {
+    _ = 'channelAdminLogEventActionEditMessage' as const
     prev_message: Message
     new_message: Message
+    constructor(options: {
+        prev_message: Message
+        new_message: Message
+    }) {
+        this.prev_message = options.prev_message;
+        this.new_message = options.new_message;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionDeleteMessage {
-    _: 'channelAdminLogEventActionDeleteMessage'
+export class PredicateChannelAdminLogEventActionDeleteMessage {
+    _ = 'channelAdminLogEventActionDeleteMessage' as const
     message: Message
+    constructor(options: {
+        message: Message
+    }) {
+        this.message = options.message;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionParticipantJoin {
-    _: 'channelAdminLogEventActionParticipantJoin'
+export class PredicateChannelAdminLogEventActionParticipantJoin {
+    _ = 'channelAdminLogEventActionParticipantJoin' as const
 }
 
-export interface PredicateChannelAdminLogEventActionParticipantLeave {
-    _: 'channelAdminLogEventActionParticipantLeave'
+export class PredicateChannelAdminLogEventActionParticipantLeave {
+    _ = 'channelAdminLogEventActionParticipantLeave' as const
 }
 
-export interface PredicateChannelAdminLogEventActionParticipantInvite {
-    _: 'channelAdminLogEventActionParticipantInvite'
+export class PredicateChannelAdminLogEventActionParticipantInvite {
+    _ = 'channelAdminLogEventActionParticipantInvite' as const
     participant: ChannelParticipant
+    constructor(options: {
+        participant: ChannelParticipant
+    }) {
+        this.participant = options.participant;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionParticipantToggleBan {
-    _: 'channelAdminLogEventActionParticipantToggleBan'
+export class PredicateChannelAdminLogEventActionParticipantToggleBan {
+    _ = 'channelAdminLogEventActionParticipantToggleBan' as const
     prev_participant: ChannelParticipant
     new_participant: ChannelParticipant
+    constructor(options: {
+        prev_participant: ChannelParticipant
+        new_participant: ChannelParticipant
+    }) {
+        this.prev_participant = options.prev_participant;
+        this.new_participant = options.new_participant;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionParticipantToggleAdmin {
-    _: 'channelAdminLogEventActionParticipantToggleAdmin'
+export class PredicateChannelAdminLogEventActionParticipantToggleAdmin {
+    _ = 'channelAdminLogEventActionParticipantToggleAdmin' as const
     prev_participant: ChannelParticipant
     new_participant: ChannelParticipant
+    constructor(options: {
+        prev_participant: ChannelParticipant
+        new_participant: ChannelParticipant
+    }) {
+        this.prev_participant = options.prev_participant;
+        this.new_participant = options.new_participant;
+    }
 }
 
-export interface PredicateChannelAdminLogEvent {
-    _: 'channelAdminLogEvent'
+export class PredicateChannelAdminLogEvent {
+    _ = 'channelAdminLogEvent' as const
     id: string
     date: number
     user_id: string
     action: ChannelAdminLogEventAction
+    constructor(options: {
+        id: string
+        date: number
+        user_id: string
+        action: ChannelAdminLogEventAction
+    }) {
+        this.id = options.id;
+        this.date = options.date;
+        this.user_id = options.user_id;
+        this.action = options.action;
+    }
 }
 
-export interface PredicateChannelsAdminLogResults {
-    _: 'channels.adminLogResults'
+export class PredicateChannelsAdminLogResults {
+    _ = 'channels.adminLogResults' as const
     events: ChannelAdminLogEvent[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        events: ChannelAdminLogEvent[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.events = options.events;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateChannelAdminLogEventsFilter {
-    _: 'channelAdminLogEventsFilter'
+export class PredicateChannelAdminLogEventsFilter {
+    _ = 'channelAdminLogEventsFilter' as const
     join?: true
     leave?: true
     invite?: true
@@ -3735,164 +8160,342 @@ export interface PredicateChannelAdminLogEventsFilter {
     group_call?: true
     invites?: true
     send?: true
+    constructor(options: {
+        join?: true
+        leave?: true
+        invite?: true
+        ban?: true
+        unban?: true
+        kick?: true
+        unkick?: true
+        promote?: true
+        demote?: true
+        info?: true
+        settings?: true
+        pinned?: true
+        edit?: true
+        delete?: true
+        group_call?: true
+        invites?: true
+        send?: true
+    } = {}) {
+        this.join = options.join;
+        this.leave = options.leave;
+        this.invite = options.invite;
+        this.ban = options.ban;
+        this.unban = options.unban;
+        this.kick = options.kick;
+        this.unkick = options.unkick;
+        this.promote = options.promote;
+        this.demote = options.demote;
+        this.info = options.info;
+        this.settings = options.settings;
+        this.pinned = options.pinned;
+        this.edit = options.edit;
+        this.delete = options.delete;
+        this.group_call = options.group_call;
+        this.invites = options.invites;
+        this.send = options.send;
+    }
 }
 
-export interface PredicateTopPeerCategoryPhoneCalls {
-    _: 'topPeerCategoryPhoneCalls'
+export class PredicateTopPeerCategoryPhoneCalls {
+    _ = 'topPeerCategoryPhoneCalls' as const
 }
 
-export interface PredicatePageBlockAudio {
-    _: 'pageBlockAudio'
+export class PredicatePageBlockAudio {
+    _ = 'pageBlockAudio' as const
     audio_id: string
     caption: PageCaption
+    constructor(options: {
+        audio_id: string
+        caption: PageCaption
+    }) {
+        this.audio_id = options.audio_id;
+        this.caption = options.caption;
+    }
 }
 
-export interface PredicatePopularContact {
-    _: 'popularContact'
+export class PredicatePopularContact {
+    _ = 'popularContact' as const
     client_id: string
     importers: number
+    constructor(options: {
+        client_id: string
+        importers: number
+    }) {
+        this.client_id = options.client_id;
+        this.importers = options.importers;
+    }
 }
 
-export interface PredicateMessageActionScreenshotTaken {
-    _: 'messageActionScreenshotTaken'
+export class PredicateMessageActionScreenshotTaken {
+    _ = 'messageActionScreenshotTaken' as const
 }
 
-export interface PredicateMessagesFavedStickersNotModified {
-    _: 'messages.favedStickersNotModified'
+export class PredicateMessagesFavedStickersNotModified {
+    _ = 'messages.favedStickersNotModified' as const
 }
 
-export interface PredicateMessagesFavedStickers {
-    _: 'messages.favedStickers'
+export class PredicateMessagesFavedStickers {
+    _ = 'messages.favedStickers' as const
     hash: string
     packs: StickerPack[]
     stickers: Document[]
+    constructor(options: {
+        hash: string
+        packs: StickerPack[]
+        stickers: Document[]
+    }) {
+        this.hash = options.hash;
+        this.packs = options.packs;
+        this.stickers = options.stickers;
+    }
 }
 
-export interface PredicateUpdateFavedStickers {
-    _: 'updateFavedStickers'
+export class PredicateUpdateFavedStickers {
+    _ = 'updateFavedStickers' as const
 }
 
-export interface PredicateUpdateChannelReadMessagesContents {
-    _: 'updateChannelReadMessagesContents'
+export class PredicateUpdateChannelReadMessagesContents {
+    _ = 'updateChannelReadMessagesContents' as const
     channel_id: string
     messages: number[]
+    constructor(options: {
+        channel_id: string
+        messages: number[]
+    }) {
+        this.channel_id = options.channel_id;
+        this.messages = options.messages;
+    }
 }
 
-export interface PredicateInputMessagesFilterMyMentions {
-    _: 'inputMessagesFilterMyMentions'
+export class PredicateInputMessagesFilterMyMentions {
+    _ = 'inputMessagesFilterMyMentions' as const
 }
 
-export interface PredicateUpdateContactsReset {
-    _: 'updateContactsReset'
+export class PredicateUpdateContactsReset {
+    _ = 'updateContactsReset' as const
 }
 
-export interface PredicateChannelAdminLogEventActionChangeStickerSet {
-    _: 'channelAdminLogEventActionChangeStickerSet'
+export class PredicateChannelAdminLogEventActionChangeStickerSet {
+    _ = 'channelAdminLogEventActionChangeStickerSet' as const
     prev_stickerset: InputStickerSet
     new_stickerset: InputStickerSet
+    constructor(options: {
+        prev_stickerset: InputStickerSet
+        new_stickerset: InputStickerSet
+    }) {
+        this.prev_stickerset = options.prev_stickerset;
+        this.new_stickerset = options.new_stickerset;
+    }
 }
 
-export interface PredicateMessageActionCustomAction {
-    _: 'messageActionCustomAction'
+export class PredicateMessageActionCustomAction {
+    _ = 'messageActionCustomAction' as const
     message: string
+    constructor(options: {
+        message: string
+    }) {
+        this.message = options.message;
+    }
 }
 
-export interface PredicateInputPaymentCredentialsApplePay {
-    _: 'inputPaymentCredentialsApplePay'
+export class PredicateInputPaymentCredentialsApplePay {
+    _ = 'inputPaymentCredentialsApplePay' as const
     payment_data: DataJSON
+    constructor(options: {
+        payment_data: DataJSON
+    }) {
+        this.payment_data = options.payment_data;
+    }
 }
 
-export interface PredicateInputMessagesFilterGeo {
-    _: 'inputMessagesFilterGeo'
+export class PredicateInputMessagesFilterGeo {
+    _ = 'inputMessagesFilterGeo' as const
 }
 
-export interface PredicateInputMessagesFilterContacts {
-    _: 'inputMessagesFilterContacts'
+export class PredicateInputMessagesFilterContacts {
+    _ = 'inputMessagesFilterContacts' as const
 }
 
-export interface PredicateUpdateChannelAvailableMessages {
-    _: 'updateChannelAvailableMessages'
+export class PredicateUpdateChannelAvailableMessages {
+    _ = 'updateChannelAvailableMessages' as const
     channel_id: string
     available_min_id: number
+    constructor(options: {
+        channel_id: string
+        available_min_id: number
+    }) {
+        this.channel_id = options.channel_id;
+        this.available_min_id = options.available_min_id;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionTogglePreHistoryHidden {
-    _: 'channelAdminLogEventActionTogglePreHistoryHidden'
+export class PredicateChannelAdminLogEventActionTogglePreHistoryHidden {
+    _ = 'channelAdminLogEventActionTogglePreHistoryHidden' as const
     new_value: boolean
+    constructor(options: {
+        new_value: boolean
+    }) {
+        this.new_value = options.new_value;
+    }
 }
 
-export interface PredicateInputMediaGeoLive {
-    _: 'inputMediaGeoLive'
+export class PredicateInputMediaGeoLive {
+    _ = 'inputMediaGeoLive' as const
     stopped?: true
     geo_point: InputGeoPoint
     heading?: number
     period?: number
     proximity_notification_radius?: number
+    constructor(options: {
+        stopped?: true
+        geo_point: InputGeoPoint
+        heading?: number
+        period?: number
+        proximity_notification_radius?: number
+    }) {
+        this.stopped = options.stopped;
+        this.geo_point = options.geo_point;
+        this.heading = options.heading;
+        this.period = options.period;
+        this.proximity_notification_radius = options.proximity_notification_radius;
+    }
 }
 
-export interface PredicateMessageMediaGeoLive {
-    _: 'messageMediaGeoLive'
+export class PredicateMessageMediaGeoLive {
+    _ = 'messageMediaGeoLive' as const
     geo: GeoPoint
     heading?: number
     period: number
     proximity_notification_radius?: number
+    constructor(options: {
+        geo: GeoPoint
+        heading?: number
+        period: number
+        proximity_notification_radius?: number
+    }) {
+        this.geo = options.geo;
+        this.heading = options.heading;
+        this.period = options.period;
+        this.proximity_notification_radius = options.proximity_notification_radius;
+    }
 }
 
-export interface PredicateRecentMeUrlUnknown {
-    _: 'recentMeUrlUnknown'
+export class PredicateRecentMeUrlUnknown {
+    _ = 'recentMeUrlUnknown' as const
     url: string
+    constructor(options: {
+        url: string
+    }) {
+        this.url = options.url;
+    }
 }
 
-export interface PredicateRecentMeUrlUser {
-    _: 'recentMeUrlUser'
+export class PredicateRecentMeUrlUser {
+    _ = 'recentMeUrlUser' as const
     url: string
     user_id: string
+    constructor(options: {
+        url: string
+        user_id: string
+    }) {
+        this.url = options.url;
+        this.user_id = options.user_id;
+    }
 }
 
-export interface PredicateRecentMeUrlChat {
-    _: 'recentMeUrlChat'
+export class PredicateRecentMeUrlChat {
+    _ = 'recentMeUrlChat' as const
     url: string
     chat_id: string
+    constructor(options: {
+        url: string
+        chat_id: string
+    }) {
+        this.url = options.url;
+        this.chat_id = options.chat_id;
+    }
 }
 
-export interface PredicateRecentMeUrlChatInvite {
-    _: 'recentMeUrlChatInvite'
+export class PredicateRecentMeUrlChatInvite {
+    _ = 'recentMeUrlChatInvite' as const
     url: string
     chat_invite: ChatInvite
+    constructor(options: {
+        url: string
+        chat_invite: ChatInvite
+    }) {
+        this.url = options.url;
+        this.chat_invite = options.chat_invite;
+    }
 }
 
-export interface PredicateRecentMeUrlStickerSet {
-    _: 'recentMeUrlStickerSet'
+export class PredicateRecentMeUrlStickerSet {
+    _ = 'recentMeUrlStickerSet' as const
     url: string
     set: StickerSetCovered
+    constructor(options: {
+        url: string
+        set: StickerSetCovered
+    }) {
+        this.url = options.url;
+        this.set = options.set;
+    }
 }
 
-export interface PredicateHelpRecentMeUrls {
-    _: 'help.recentMeUrls'
+export class PredicateHelpRecentMeUrls {
+    _ = 'help.recentMeUrls' as const
     urls: RecentMeUrl[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        urls: RecentMeUrl[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.urls = options.urls;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateChannelsChannelParticipantsNotModified {
-    _: 'channels.channelParticipantsNotModified'
+export class PredicateChannelsChannelParticipantsNotModified {
+    _ = 'channels.channelParticipantsNotModified' as const
 }
 
-export interface PredicateMessagesMessagesNotModified {
-    _: 'messages.messagesNotModified'
+export class PredicateMessagesMessagesNotModified {
+    _ = 'messages.messagesNotModified' as const
     count: number
+    constructor(options: {
+        count: number
+    }) {
+        this.count = options.count;
+    }
 }
 
-export interface PredicateInputSingleMedia {
-    _: 'inputSingleMedia'
+export class PredicateInputSingleMedia {
+    _ = 'inputSingleMedia' as const
     media: InputMedia
     random_id: string
     message: string
     entities?: MessageEntity[]
+    constructor(options: {
+        media: InputMedia
+        random_id: string
+        message: string
+        entities?: MessageEntity[]
+    }) {
+        this.media = options.media;
+        this.random_id = options.random_id;
+        this.message = options.message;
+        this.entities = options.entities;
+    }
 }
 
-export interface PredicateWebAuthorization {
-    _: 'webAuthorization'
+export class PredicateWebAuthorization {
+    _ = 'webAuthorization' as const
     hash: string
     bot_id: string
     domain: string
@@ -3902,124 +8505,264 @@ export interface PredicateWebAuthorization {
     date_active: number
     ip: string
     region: string
+    constructor(options: {
+        hash: string
+        bot_id: string
+        domain: string
+        browser: string
+        platform: string
+        date_created: number
+        date_active: number
+        ip: string
+        region: string
+    }) {
+        this.hash = options.hash;
+        this.bot_id = options.bot_id;
+        this.domain = options.domain;
+        this.browser = options.browser;
+        this.platform = options.platform;
+        this.date_created = options.date_created;
+        this.date_active = options.date_active;
+        this.ip = options.ip;
+        this.region = options.region;
+    }
 }
 
-export interface PredicateAccountWebAuthorizations {
-    _: 'account.webAuthorizations'
+export class PredicateAccountWebAuthorizations {
+    _ = 'account.webAuthorizations' as const
     authorizations: WebAuthorization[]
     users: User[]
+    constructor(options: {
+        authorizations: WebAuthorization[]
+        users: User[]
+    }) {
+        this.authorizations = options.authorizations;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateInputMessageID {
-    _: 'inputMessageID'
+export class PredicateInputMessageID {
+    _ = 'inputMessageID' as const
     id: number
+    constructor(options: {
+        id: number
+    }) {
+        this.id = options.id;
+    }
 }
 
-export interface PredicateInputMessageReplyTo {
-    _: 'inputMessageReplyTo'
+export class PredicateInputMessageReplyTo {
+    _ = 'inputMessageReplyTo' as const
     id: number
+    constructor(options: {
+        id: number
+    }) {
+        this.id = options.id;
+    }
 }
 
-export interface PredicateInputMessagePinned {
-    _: 'inputMessagePinned'
+export class PredicateInputMessagePinned {
+    _ = 'inputMessagePinned' as const
 }
 
-export interface PredicateMessageEntityPhone {
-    _: 'messageEntityPhone'
+export class PredicateMessageEntityPhone {
+    _ = 'messageEntityPhone' as const
     offset: number
     length: number
+    constructor(options: {
+        offset: number
+        length: number
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateMessageEntityCashtag {
-    _: 'messageEntityCashtag'
+export class PredicateMessageEntityCashtag {
+    _ = 'messageEntityCashtag' as const
     offset: number
     length: number
+    constructor(options: {
+        offset: number
+        length: number
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateMessageActionBotAllowed {
-    _: 'messageActionBotAllowed'
+export class PredicateMessageActionBotAllowed {
+    _ = 'messageActionBotAllowed' as const
     domain: string
+    constructor(options: {
+        domain: string
+    }) {
+        this.domain = options.domain;
+    }
 }
 
-export interface PredicateInputDialogPeer {
-    _: 'inputDialogPeer'
+export class PredicateInputDialogPeer {
+    _ = 'inputDialogPeer' as const
     peer: InputPeer
+    constructor(options: {
+        peer: InputPeer
+    }) {
+        this.peer = options.peer;
+    }
 }
 
-export interface PredicateDialogPeer {
-    _: 'dialogPeer'
+export class PredicateDialogPeer {
+    _ = 'dialogPeer' as const
     peer: Peer
+    constructor(options: {
+        peer: Peer
+    }) {
+        this.peer = options.peer;
+    }
 }
 
-export interface PredicateMessagesFoundStickerSetsNotModified {
-    _: 'messages.foundStickerSetsNotModified'
+export class PredicateMessagesFoundStickerSetsNotModified {
+    _ = 'messages.foundStickerSetsNotModified' as const
 }
 
-export interface PredicateMessagesFoundStickerSets {
-    _: 'messages.foundStickerSets'
+export class PredicateMessagesFoundStickerSets {
+    _ = 'messages.foundStickerSets' as const
     hash: string
     sets: StickerSetCovered[]
+    constructor(options: {
+        hash: string
+        sets: StickerSetCovered[]
+    }) {
+        this.hash = options.hash;
+        this.sets = options.sets;
+    }
 }
 
-export interface PredicateFileHash {
-    _: 'fileHash'
+export class PredicateFileHash {
+    _ = 'fileHash' as const
     offset: number
     limit: number
     hash: Uint8Array
+    constructor(options: {
+        offset: number
+        limit: number
+        hash: Uint8Array
+    }) {
+        this.offset = options.offset;
+        this.limit = options.limit;
+        this.hash = options.hash;
+    }
 }
 
-export interface PredicateWebDocumentNoProxy {
-    _: 'webDocumentNoProxy'
+export class PredicateWebDocumentNoProxy {
+    _ = 'webDocumentNoProxy' as const
     url: string
     size: number
     mime_type: string
     attributes: DocumentAttribute[]
+    constructor(options: {
+        url: string
+        size: number
+        mime_type: string
+        attributes: DocumentAttribute[]
+    }) {
+        this.url = options.url;
+        this.size = options.size;
+        this.mime_type = options.mime_type;
+        this.attributes = options.attributes;
+    }
 }
 
-export interface PredicateInputClientProxy {
-    _: 'inputClientProxy'
+export class PredicateInputClientProxy {
+    _ = 'inputClientProxy' as const
     address: string
     port: number
+    constructor(options: {
+        address: string
+        port: number
+    }) {
+        this.address = options.address;
+        this.port = options.port;
+    }
 }
 
-export interface PredicateHelpTermsOfServiceUpdateEmpty {
-    _: 'help.termsOfServiceUpdateEmpty'
+export class PredicateHelpTermsOfServiceUpdateEmpty {
+    _ = 'help.termsOfServiceUpdateEmpty' as const
     expires: number
+    constructor(options: {
+        expires: number
+    }) {
+        this.expires = options.expires;
+    }
 }
 
-export interface PredicateHelpTermsOfServiceUpdate {
-    _: 'help.termsOfServiceUpdate'
+export class PredicateHelpTermsOfServiceUpdate {
+    _ = 'help.termsOfServiceUpdate' as const
     expires: number
     terms_of_service: HelpTermsOfService
+    constructor(options: {
+        expires: number
+        terms_of_service: HelpTermsOfService
+    }) {
+        this.expires = options.expires;
+        this.terms_of_service = options.terms_of_service;
+    }
 }
 
-export interface PredicateInputSecureFileUploaded {
-    _: 'inputSecureFileUploaded'
+export class PredicateInputSecureFileUploaded {
+    _ = 'inputSecureFileUploaded' as const
     id: string
     parts: number
     md5_checksum: string
     file_hash: Uint8Array
     secret: Uint8Array
+    constructor(options: {
+        id: string
+        parts: number
+        md5_checksum: string
+        file_hash: Uint8Array
+        secret: Uint8Array
+    }) {
+        this.id = options.id;
+        this.parts = options.parts;
+        this.md5_checksum = options.md5_checksum;
+        this.file_hash = options.file_hash;
+        this.secret = options.secret;
+    }
 }
 
-export interface PredicateInputSecureFile {
-    _: 'inputSecureFile'
+export class PredicateInputSecureFile {
+    _ = 'inputSecureFile' as const
     id: string
     access_hash: string
+    constructor(options: {
+        id: string
+        access_hash: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicateInputSecureFileLocation {
-    _: 'inputSecureFileLocation'
+export class PredicateInputSecureFileLocation {
+    _ = 'inputSecureFileLocation' as const
     id: string
     access_hash: string
+    constructor(options: {
+        id: string
+        access_hash: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicateSecureFileEmpty {
-    _: 'secureFileEmpty'
+export class PredicateSecureFileEmpty {
+    _ = 'secureFileEmpty' as const
 }
 
-export interface PredicateSecureFile {
-    _: 'secureFile'
+export class PredicateSecureFile {
+    _ = 'secureFile' as const
     id: string
     access_hash: string
     size: number
@@ -4027,79 +8770,115 @@ export interface PredicateSecureFile {
     date: number
     file_hash: Uint8Array
     secret: Uint8Array
+    constructor(options: {
+        id: string
+        access_hash: string
+        size: number
+        dc_id: number
+        date: number
+        file_hash: Uint8Array
+        secret: Uint8Array
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.size = options.size;
+        this.dc_id = options.dc_id;
+        this.date = options.date;
+        this.file_hash = options.file_hash;
+        this.secret = options.secret;
+    }
 }
 
-export interface PredicateSecureData {
-    _: 'secureData'
+export class PredicateSecureData {
+    _ = 'secureData' as const
     data: Uint8Array
     data_hash: Uint8Array
     secret: Uint8Array
+    constructor(options: {
+        data: Uint8Array
+        data_hash: Uint8Array
+        secret: Uint8Array
+    }) {
+        this.data = options.data;
+        this.data_hash = options.data_hash;
+        this.secret = options.secret;
+    }
 }
 
-export interface PredicateSecurePlainPhone {
-    _: 'securePlainPhone'
+export class PredicateSecurePlainPhone {
+    _ = 'securePlainPhone' as const
     phone: string
+    constructor(options: {
+        phone: string
+    }) {
+        this.phone = options.phone;
+    }
 }
 
-export interface PredicateSecurePlainEmail {
-    _: 'securePlainEmail'
+export class PredicateSecurePlainEmail {
+    _ = 'securePlainEmail' as const
     email: string
+    constructor(options: {
+        email: string
+    }) {
+        this.email = options.email;
+    }
 }
 
-export interface PredicateSecureValueTypePersonalDetails {
-    _: 'secureValueTypePersonalDetails'
+export class PredicateSecureValueTypePersonalDetails {
+    _ = 'secureValueTypePersonalDetails' as const
 }
 
-export interface PredicateSecureValueTypePassport {
-    _: 'secureValueTypePassport'
+export class PredicateSecureValueTypePassport {
+    _ = 'secureValueTypePassport' as const
 }
 
-export interface PredicateSecureValueTypeDriverLicense {
-    _: 'secureValueTypeDriverLicense'
+export class PredicateSecureValueTypeDriverLicense {
+    _ = 'secureValueTypeDriverLicense' as const
 }
 
-export interface PredicateSecureValueTypeIdentityCard {
-    _: 'secureValueTypeIdentityCard'
+export class PredicateSecureValueTypeIdentityCard {
+    _ = 'secureValueTypeIdentityCard' as const
 }
 
-export interface PredicateSecureValueTypeInternalPassport {
-    _: 'secureValueTypeInternalPassport'
+export class PredicateSecureValueTypeInternalPassport {
+    _ = 'secureValueTypeInternalPassport' as const
 }
 
-export interface PredicateSecureValueTypeAddress {
-    _: 'secureValueTypeAddress'
+export class PredicateSecureValueTypeAddress {
+    _ = 'secureValueTypeAddress' as const
 }
 
-export interface PredicateSecureValueTypeUtilityBill {
-    _: 'secureValueTypeUtilityBill'
+export class PredicateSecureValueTypeUtilityBill {
+    _ = 'secureValueTypeUtilityBill' as const
 }
 
-export interface PredicateSecureValueTypeBankStatement {
-    _: 'secureValueTypeBankStatement'
+export class PredicateSecureValueTypeBankStatement {
+    _ = 'secureValueTypeBankStatement' as const
 }
 
-export interface PredicateSecureValueTypeRentalAgreement {
-    _: 'secureValueTypeRentalAgreement'
+export class PredicateSecureValueTypeRentalAgreement {
+    _ = 'secureValueTypeRentalAgreement' as const
 }
 
-export interface PredicateSecureValueTypePassportRegistration {
-    _: 'secureValueTypePassportRegistration'
+export class PredicateSecureValueTypePassportRegistration {
+    _ = 'secureValueTypePassportRegistration' as const
 }
 
-export interface PredicateSecureValueTypeTemporaryRegistration {
-    _: 'secureValueTypeTemporaryRegistration'
+export class PredicateSecureValueTypeTemporaryRegistration {
+    _ = 'secureValueTypeTemporaryRegistration' as const
 }
 
-export interface PredicateSecureValueTypePhone {
-    _: 'secureValueTypePhone'
+export class PredicateSecureValueTypePhone {
+    _ = 'secureValueTypePhone' as const
 }
 
-export interface PredicateSecureValueTypeEmail {
-    _: 'secureValueTypeEmail'
+export class PredicateSecureValueTypeEmail {
+    _ = 'secureValueTypeEmail' as const
 }
 
-export interface PredicateSecureValue {
-    _: 'secureValue'
+export class PredicateSecureValue {
+    _ = 'secureValue' as const
     type: SecureValueType
     data?: SecureData
     front_side?: SecureFile
@@ -4109,10 +8888,31 @@ export interface PredicateSecureValue {
     files?: SecureFile[]
     plain_data?: SecurePlainData
     hash: Uint8Array
+    constructor(options: {
+        type: SecureValueType
+        data?: SecureData
+        front_side?: SecureFile
+        reverse_side?: SecureFile
+        selfie?: SecureFile
+        translation?: SecureFile[]
+        files?: SecureFile[]
+        plain_data?: SecurePlainData
+        hash: Uint8Array
+    }) {
+        this.type = options.type;
+        this.data = options.data;
+        this.front_side = options.front_side;
+        this.reverse_side = options.reverse_side;
+        this.selfie = options.selfie;
+        this.translation = options.translation;
+        this.files = options.files;
+        this.plain_data = options.plain_data;
+        this.hash = options.hash;
+    }
 }
 
-export interface PredicateInputSecureValue {
-    _: 'inputSecureValue'
+export class PredicateInputSecureValue {
+    _ = 'inputSecureValue' as const
     type: SecureValueType
     data?: SecureData
     front_side?: InputSecureFile
@@ -4121,321 +8921,664 @@ export interface PredicateInputSecureValue {
     translation?: InputSecureFile[]
     files?: InputSecureFile[]
     plain_data?: SecurePlainData
+    constructor(options: {
+        type: SecureValueType
+        data?: SecureData
+        front_side?: InputSecureFile
+        reverse_side?: InputSecureFile
+        selfie?: InputSecureFile
+        translation?: InputSecureFile[]
+        files?: InputSecureFile[]
+        plain_data?: SecurePlainData
+    }) {
+        this.type = options.type;
+        this.data = options.data;
+        this.front_side = options.front_side;
+        this.reverse_side = options.reverse_side;
+        this.selfie = options.selfie;
+        this.translation = options.translation;
+        this.files = options.files;
+        this.plain_data = options.plain_data;
+    }
 }
 
-export interface PredicateSecureValueHash {
-    _: 'secureValueHash'
+export class PredicateSecureValueHash {
+    _ = 'secureValueHash' as const
     type: SecureValueType
     hash: Uint8Array
+    constructor(options: {
+        type: SecureValueType
+        hash: Uint8Array
+    }) {
+        this.type = options.type;
+        this.hash = options.hash;
+    }
 }
 
-export interface PredicateSecureValueErrorData {
-    _: 'secureValueErrorData'
+export class PredicateSecureValueErrorData {
+    _ = 'secureValueErrorData' as const
     type: SecureValueType
     data_hash: Uint8Array
     field: string
     text: string
+    constructor(options: {
+        type: SecureValueType
+        data_hash: Uint8Array
+        field: string
+        text: string
+    }) {
+        this.type = options.type;
+        this.data_hash = options.data_hash;
+        this.field = options.field;
+        this.text = options.text;
+    }
 }
 
-export interface PredicateSecureValueErrorFrontSide {
-    _: 'secureValueErrorFrontSide'
+export class PredicateSecureValueErrorFrontSide {
+    _ = 'secureValueErrorFrontSide' as const
     type: SecureValueType
     file_hash: Uint8Array
     text: string
+    constructor(options: {
+        type: SecureValueType
+        file_hash: Uint8Array
+        text: string
+    }) {
+        this.type = options.type;
+        this.file_hash = options.file_hash;
+        this.text = options.text;
+    }
 }
 
-export interface PredicateSecureValueErrorReverseSide {
-    _: 'secureValueErrorReverseSide'
+export class PredicateSecureValueErrorReverseSide {
+    _ = 'secureValueErrorReverseSide' as const
     type: SecureValueType
     file_hash: Uint8Array
     text: string
+    constructor(options: {
+        type: SecureValueType
+        file_hash: Uint8Array
+        text: string
+    }) {
+        this.type = options.type;
+        this.file_hash = options.file_hash;
+        this.text = options.text;
+    }
 }
 
-export interface PredicateSecureValueErrorSelfie {
-    _: 'secureValueErrorSelfie'
+export class PredicateSecureValueErrorSelfie {
+    _ = 'secureValueErrorSelfie' as const
     type: SecureValueType
     file_hash: Uint8Array
     text: string
+    constructor(options: {
+        type: SecureValueType
+        file_hash: Uint8Array
+        text: string
+    }) {
+        this.type = options.type;
+        this.file_hash = options.file_hash;
+        this.text = options.text;
+    }
 }
 
-export interface PredicateSecureValueErrorFile {
-    _: 'secureValueErrorFile'
+export class PredicateSecureValueErrorFile {
+    _ = 'secureValueErrorFile' as const
     type: SecureValueType
     file_hash: Uint8Array
     text: string
+    constructor(options: {
+        type: SecureValueType
+        file_hash: Uint8Array
+        text: string
+    }) {
+        this.type = options.type;
+        this.file_hash = options.file_hash;
+        this.text = options.text;
+    }
 }
 
-export interface PredicateSecureValueErrorFiles {
-    _: 'secureValueErrorFiles'
+export class PredicateSecureValueErrorFiles {
+    _ = 'secureValueErrorFiles' as const
     type: SecureValueType
     file_hash: Uint8Array[]
     text: string
+    constructor(options: {
+        type: SecureValueType
+        file_hash: Uint8Array[]
+        text: string
+    }) {
+        this.type = options.type;
+        this.file_hash = options.file_hash;
+        this.text = options.text;
+    }
 }
 
-export interface PredicateSecureCredentialsEncrypted {
-    _: 'secureCredentialsEncrypted'
+export class PredicateSecureCredentialsEncrypted {
+    _ = 'secureCredentialsEncrypted' as const
     data: Uint8Array
     hash: Uint8Array
     secret: Uint8Array
+    constructor(options: {
+        data: Uint8Array
+        hash: Uint8Array
+        secret: Uint8Array
+    }) {
+        this.data = options.data;
+        this.hash = options.hash;
+        this.secret = options.secret;
+    }
 }
 
-export interface PredicateAccountAuthorizationForm {
-    _: 'account.authorizationForm'
+export class PredicateAccountAuthorizationForm {
+    _ = 'account.authorizationForm' as const
     required_types: SecureRequiredType[]
     values: SecureValue[]
     errors: SecureValueError[]
     users: User[]
     privacy_policy_url?: string
+    constructor(options: {
+        required_types: SecureRequiredType[]
+        values: SecureValue[]
+        errors: SecureValueError[]
+        users: User[]
+        privacy_policy_url?: string
+    }) {
+        this.required_types = options.required_types;
+        this.values = options.values;
+        this.errors = options.errors;
+        this.users = options.users;
+        this.privacy_policy_url = options.privacy_policy_url;
+    }
 }
 
-export interface PredicateAccountSentEmailCode {
-    _: 'account.sentEmailCode'
+export class PredicateAccountSentEmailCode {
+    _ = 'account.sentEmailCode' as const
     email_pattern: string
     length: number
+    constructor(options: {
+        email_pattern: string
+        length: number
+    }) {
+        this.email_pattern = options.email_pattern;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateMessageActionSecureValuesSentMe {
-    _: 'messageActionSecureValuesSentMe'
+export class PredicateMessageActionSecureValuesSentMe {
+    _ = 'messageActionSecureValuesSentMe' as const
     values: SecureValue[]
     credentials: SecureCredentialsEncrypted
+    constructor(options: {
+        values: SecureValue[]
+        credentials: SecureCredentialsEncrypted
+    }) {
+        this.values = options.values;
+        this.credentials = options.credentials;
+    }
 }
 
-export interface PredicateMessageActionSecureValuesSent {
-    _: 'messageActionSecureValuesSent'
+export class PredicateMessageActionSecureValuesSent {
+    _ = 'messageActionSecureValuesSent' as const
     types: SecureValueType[]
+    constructor(options: {
+        types: SecureValueType[]
+    }) {
+        this.types = options.types;
+    }
 }
 
-export interface PredicateHelpDeepLinkInfoEmpty {
-    _: 'help.deepLinkInfoEmpty'
+export class PredicateHelpDeepLinkInfoEmpty {
+    _ = 'help.deepLinkInfoEmpty' as const
 }
 
-export interface PredicateHelpDeepLinkInfo {
-    _: 'help.deepLinkInfo'
+export class PredicateHelpDeepLinkInfo {
+    _ = 'help.deepLinkInfo' as const
     update_app?: true
     message: string
     entities?: MessageEntity[]
+    constructor(options: {
+        update_app?: true
+        message: string
+        entities?: MessageEntity[]
+    }) {
+        this.update_app = options.update_app;
+        this.message = options.message;
+        this.entities = options.entities;
+    }
 }
 
-export interface PredicateSavedPhoneContact {
-    _: 'savedPhoneContact'
+export class PredicateSavedPhoneContact {
+    _ = 'savedPhoneContact' as const
     phone: string
     first_name: string
     last_name: string
     date: number
+    constructor(options: {
+        phone: string
+        first_name: string
+        last_name: string
+        date: number
+    }) {
+        this.phone = options.phone;
+        this.first_name = options.first_name;
+        this.last_name = options.last_name;
+        this.date = options.date;
+    }
 }
 
-export interface PredicateAccountTakeout {
-    _: 'account.takeout'
+export class PredicateAccountTakeout {
+    _ = 'account.takeout' as const
     id: string
+    constructor(options: {
+        id: string
+    }) {
+        this.id = options.id;
+    }
 }
 
-export interface PredicateInputTakeoutFileLocation {
-    _: 'inputTakeoutFileLocation'
+export class PredicateInputTakeoutFileLocation {
+    _ = 'inputTakeoutFileLocation' as const
 }
 
-export interface PredicateUpdateDialogUnreadMark {
-    _: 'updateDialogUnreadMark'
+export class PredicateUpdateDialogUnreadMark {
+    _ = 'updateDialogUnreadMark' as const
     unread?: true
     peer: DialogPeer
+    constructor(options: {
+        unread?: true
+        peer: DialogPeer
+    }) {
+        this.unread = options.unread;
+        this.peer = options.peer;
+    }
 }
 
-export interface PredicateMessagesDialogsNotModified {
-    _: 'messages.dialogsNotModified'
+export class PredicateMessagesDialogsNotModified {
+    _ = 'messages.dialogsNotModified' as const
     count: number
+    constructor(options: {
+        count: number
+    }) {
+        this.count = options.count;
+    }
 }
 
-export interface PredicateInputWebFileGeoPointLocation {
-    _: 'inputWebFileGeoPointLocation'
+export class PredicateInputWebFileGeoPointLocation {
+    _ = 'inputWebFileGeoPointLocation' as const
     geo_point: InputGeoPoint
     access_hash: string
     w: number
     h: number
     zoom: number
     scale: number
+    constructor(options: {
+        geo_point: InputGeoPoint
+        access_hash: string
+        w: number
+        h: number
+        zoom: number
+        scale: number
+    }) {
+        this.geo_point = options.geo_point;
+        this.access_hash = options.access_hash;
+        this.w = options.w;
+        this.h = options.h;
+        this.zoom = options.zoom;
+        this.scale = options.scale;
+    }
 }
 
-export interface PredicateContactsTopPeersDisabled {
-    _: 'contacts.topPeersDisabled'
+export class PredicateContactsTopPeersDisabled {
+    _ = 'contacts.topPeersDisabled' as const
 }
 
-export interface PredicateInputReportReasonCopyright {
-    _: 'inputReportReasonCopyright'
+export class PredicateInputReportReasonCopyright {
+    _ = 'inputReportReasonCopyright' as const
 }
 
-export interface PredicatePasswordKdfAlgoUnknown {
-    _: 'passwordKdfAlgoUnknown'
+export class PredicatePasswordKdfAlgoUnknown {
+    _ = 'passwordKdfAlgoUnknown' as const
 }
 
-export interface PredicateSecurePasswordKdfAlgoUnknown {
-    _: 'securePasswordKdfAlgoUnknown'
+export class PredicateSecurePasswordKdfAlgoUnknown {
+    _ = 'securePasswordKdfAlgoUnknown' as const
 }
 
-export interface PredicateSecurePasswordKdfAlgoPBKDF2HMACSHA512iter100000 {
-    _: 'securePasswordKdfAlgoPBKDF2HMACSHA512iter100000'
+export class PredicateSecurePasswordKdfAlgoPBKDF2HMACSHA512iter100000 {
+    _ = 'securePasswordKdfAlgoPBKDF2HMACSHA512iter100000' as const
     salt: Uint8Array
+    constructor(options: {
+        salt: Uint8Array
+    }) {
+        this.salt = options.salt;
+    }
 }
 
-export interface PredicateSecurePasswordKdfAlgoSHA512 {
-    _: 'securePasswordKdfAlgoSHA512'
+export class PredicateSecurePasswordKdfAlgoSHA512 {
+    _ = 'securePasswordKdfAlgoSHA512' as const
     salt: Uint8Array
+    constructor(options: {
+        salt: Uint8Array
+    }) {
+        this.salt = options.salt;
+    }
 }
 
-export interface PredicateSecureSecretSettings {
-    _: 'secureSecretSettings'
+export class PredicateSecureSecretSettings {
+    _ = 'secureSecretSettings' as const
     secure_algo: SecurePasswordKdfAlgo
     secure_secret: Uint8Array
     secure_secret_id: string
+    constructor(options: {
+        secure_algo: SecurePasswordKdfAlgo
+        secure_secret: Uint8Array
+        secure_secret_id: string
+    }) {
+        this.secure_algo = options.secure_algo;
+        this.secure_secret = options.secure_secret;
+        this.secure_secret_id = options.secure_secret_id;
+    }
 }
 
-export interface PredicatePasswordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow {
-    _: 'passwordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow'
+export class PredicatePasswordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow {
+    _ = 'passwordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow' as const
     salt1: Uint8Array
     salt2: Uint8Array
     g: number
     p: Uint8Array
+    constructor(options: {
+        salt1: Uint8Array
+        salt2: Uint8Array
+        g: number
+        p: Uint8Array
+    }) {
+        this.salt1 = options.salt1;
+        this.salt2 = options.salt2;
+        this.g = options.g;
+        this.p = options.p;
+    }
 }
 
-export interface PredicateInputCheckPasswordEmpty {
-    _: 'inputCheckPasswordEmpty'
+export class PredicateInputCheckPasswordEmpty {
+    _ = 'inputCheckPasswordEmpty' as const
 }
 
-export interface PredicateInputCheckPasswordSRP {
-    _: 'inputCheckPasswordSRP'
+export class PredicateInputCheckPasswordSRP {
+    _ = 'inputCheckPasswordSRP' as const
     srp_id: string
     A: Uint8Array
     M1: Uint8Array
+    constructor(options: {
+        srp_id: string
+        A: Uint8Array
+        M1: Uint8Array
+    }) {
+        this.srp_id = options.srp_id;
+        this.A = options.A;
+        this.M1 = options.M1;
+    }
 }
 
-export interface PredicateSecureValueError {
-    _: 'secureValueError'
+export class PredicateSecureValueError {
+    _ = 'secureValueError' as const
     type: SecureValueType
     hash: Uint8Array
     text: string
+    constructor(options: {
+        type: SecureValueType
+        hash: Uint8Array
+        text: string
+    }) {
+        this.type = options.type;
+        this.hash = options.hash;
+        this.text = options.text;
+    }
 }
 
-export interface PredicateSecureValueErrorTranslationFile {
-    _: 'secureValueErrorTranslationFile'
+export class PredicateSecureValueErrorTranslationFile {
+    _ = 'secureValueErrorTranslationFile' as const
     type: SecureValueType
     file_hash: Uint8Array
     text: string
+    constructor(options: {
+        type: SecureValueType
+        file_hash: Uint8Array
+        text: string
+    }) {
+        this.type = options.type;
+        this.file_hash = options.file_hash;
+        this.text = options.text;
+    }
 }
 
-export interface PredicateSecureValueErrorTranslationFiles {
-    _: 'secureValueErrorTranslationFiles'
+export class PredicateSecureValueErrorTranslationFiles {
+    _ = 'secureValueErrorTranslationFiles' as const
     type: SecureValueType
     file_hash: Uint8Array[]
     text: string
+    constructor(options: {
+        type: SecureValueType
+        file_hash: Uint8Array[]
+        text: string
+    }) {
+        this.type = options.type;
+        this.file_hash = options.file_hash;
+        this.text = options.text;
+    }
 }
 
-export interface PredicateSecureRequiredType {
-    _: 'secureRequiredType'
+export class PredicateSecureRequiredType {
+    _ = 'secureRequiredType' as const
     native_names?: true
     selfie_required?: true
     translation_required?: true
     type: SecureValueType
+    constructor(options: {
+        native_names?: true
+        selfie_required?: true
+        translation_required?: true
+        type: SecureValueType
+    }) {
+        this.native_names = options.native_names;
+        this.selfie_required = options.selfie_required;
+        this.translation_required = options.translation_required;
+        this.type = options.type;
+    }
 }
 
-export interface PredicateSecureRequiredTypeOneOf {
-    _: 'secureRequiredTypeOneOf'
+export class PredicateSecureRequiredTypeOneOf {
+    _ = 'secureRequiredTypeOneOf' as const
     types: SecureRequiredType[]
+    constructor(options: {
+        types: SecureRequiredType[]
+    }) {
+        this.types = options.types;
+    }
 }
 
-export interface PredicateHelpPassportConfigNotModified {
-    _: 'help.passportConfigNotModified'
+export class PredicateHelpPassportConfigNotModified {
+    _ = 'help.passportConfigNotModified' as const
 }
 
-export interface PredicateHelpPassportConfig {
-    _: 'help.passportConfig'
+export class PredicateHelpPassportConfig {
+    _ = 'help.passportConfig' as const
     hash: number
     countries_langs: DataJSON
+    constructor(options: {
+        hash: number
+        countries_langs: DataJSON
+    }) {
+        this.hash = options.hash;
+        this.countries_langs = options.countries_langs;
+    }
 }
 
-export interface PredicateInputAppEvent {
-    _: 'inputAppEvent'
+export class PredicateInputAppEvent {
+    _ = 'inputAppEvent' as const
     time: number
     type: string
     peer: string
     data: JSONValue
+    constructor(options: {
+        time: number
+        type: string
+        peer: string
+        data: JSONValue
+    }) {
+        this.time = options.time;
+        this.type = options.type;
+        this.peer = options.peer;
+        this.data = options.data;
+    }
 }
 
-export interface PredicateJsonObjectValue {
-    _: 'jsonObjectValue'
+export class PredicateJsonObjectValue {
+    _ = 'jsonObjectValue' as const
     key: string
     value: JSONValue
+    constructor(options: {
+        key: string
+        value: JSONValue
+    }) {
+        this.key = options.key;
+        this.value = options.value;
+    }
 }
 
-export interface PredicateJsonNull {
-    _: 'jsonNull'
+export class PredicateJsonNull {
+    _ = 'jsonNull' as const
 }
 
-export interface PredicateJsonBool {
-    _: 'jsonBool'
+export class PredicateJsonBool {
+    _ = 'jsonBool' as const
     value: boolean
+    constructor(options: {
+        value: boolean
+    }) {
+        this.value = options.value;
+    }
 }
 
-export interface PredicateJsonNumber {
-    _: 'jsonNumber'
+export class PredicateJsonNumber {
+    _ = 'jsonNumber' as const
     value: number
+    constructor(options: {
+        value: number
+    }) {
+        this.value = options.value;
+    }
 }
 
-export interface PredicateJsonString {
-    _: 'jsonString'
+export class PredicateJsonString {
+    _ = 'jsonString' as const
     value: string
+    constructor(options: {
+        value: string
+    }) {
+        this.value = options.value;
+    }
 }
 
-export interface PredicateJsonArray {
-    _: 'jsonArray'
+export class PredicateJsonArray {
+    _ = 'jsonArray' as const
     value: JSONValue[]
+    constructor(options: {
+        value: JSONValue[]
+    }) {
+        this.value = options.value;
+    }
 }
 
-export interface PredicateJsonObject {
-    _: 'jsonObject'
+export class PredicateJsonObject {
+    _ = 'jsonObject' as const
     value: JSONObjectValue[]
+    constructor(options: {
+        value: JSONObjectValue[]
+    }) {
+        this.value = options.value;
+    }
 }
 
-export interface PredicateInputNotifyBroadcasts {
-    _: 'inputNotifyBroadcasts'
+export class PredicateInputNotifyBroadcasts {
+    _ = 'inputNotifyBroadcasts' as const
 }
 
-export interface PredicateNotifyBroadcasts {
-    _: 'notifyBroadcasts'
+export class PredicateNotifyBroadcasts {
+    _ = 'notifyBroadcasts' as const
 }
 
-export interface PredicateTextSubscript {
-    _: 'textSubscript'
+export class PredicateTextSubscript {
+    _ = 'textSubscript' as const
     text: RichText
+    constructor(options: {
+        text: RichText
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicateTextSuperscript {
-    _: 'textSuperscript'
+export class PredicateTextSuperscript {
+    _ = 'textSuperscript' as const
     text: RichText
+    constructor(options: {
+        text: RichText
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicateTextMarked {
-    _: 'textMarked'
+export class PredicateTextMarked {
+    _ = 'textMarked' as const
     text: RichText
+    constructor(options: {
+        text: RichText
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicateTextPhone {
-    _: 'textPhone'
+export class PredicateTextPhone {
+    _ = 'textPhone' as const
     text: RichText
     phone: string
+    constructor(options: {
+        text: RichText
+        phone: string
+    }) {
+        this.text = options.text;
+        this.phone = options.phone;
+    }
 }
 
-export interface PredicateTextImage {
-    _: 'textImage'
+export class PredicateTextImage {
+    _ = 'textImage' as const
     document_id: string
     w: number
     h: number
+    constructor(options: {
+        document_id: string
+        w: number
+        h: number
+    }) {
+        this.document_id = options.document_id;
+        this.w = options.w;
+        this.h = options.h;
+    }
 }
 
-export interface PredicatePageBlockKicker {
-    _: 'pageBlockKicker'
+export class PredicatePageBlockKicker {
+    _ = 'pageBlockKicker' as const
     text: RichText
+    constructor(options: {
+        text: RichText
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicatePageTableCell {
-    _: 'pageTableCell'
+export class PredicatePageTableCell {
+    _ = 'pageTableCell' as const
     header?: true
     align_center?: true
     align_right?: true
@@ -4444,63 +9587,143 @@ export interface PredicatePageTableCell {
     text?: RichText
     colspan?: number
     rowspan?: number
+    constructor(options: {
+        header?: true
+        align_center?: true
+        align_right?: true
+        valign_middle?: true
+        valign_bottom?: true
+        text?: RichText
+        colspan?: number
+        rowspan?: number
+    } = {}) {
+        this.header = options.header;
+        this.align_center = options.align_center;
+        this.align_right = options.align_right;
+        this.valign_middle = options.valign_middle;
+        this.valign_bottom = options.valign_bottom;
+        this.text = options.text;
+        this.colspan = options.colspan;
+        this.rowspan = options.rowspan;
+    }
 }
 
-export interface PredicatePageTableRow {
-    _: 'pageTableRow'
+export class PredicatePageTableRow {
+    _ = 'pageTableRow' as const
     cells: PageTableCell[]
+    constructor(options: {
+        cells: PageTableCell[]
+    }) {
+        this.cells = options.cells;
+    }
 }
 
-export interface PredicatePageBlockTable {
-    _: 'pageBlockTable'
+export class PredicatePageBlockTable {
+    _ = 'pageBlockTable' as const
     bordered?: true
     striped?: true
     title: RichText
     rows: PageTableRow[]
+    constructor(options: {
+        bordered?: true
+        striped?: true
+        title: RichText
+        rows: PageTableRow[]
+    }) {
+        this.bordered = options.bordered;
+        this.striped = options.striped;
+        this.title = options.title;
+        this.rows = options.rows;
+    }
 }
 
-export interface PredicatePageCaption {
-    _: 'pageCaption'
+export class PredicatePageCaption {
+    _ = 'pageCaption' as const
     text: RichText
     credit: RichText
+    constructor(options: {
+        text: RichText
+        credit: RichText
+    }) {
+        this.text = options.text;
+        this.credit = options.credit;
+    }
 }
 
-export interface PredicatePageListItemText {
-    _: 'pageListItemText'
+export class PredicatePageListItemText {
+    _ = 'pageListItemText' as const
     text: RichText
+    constructor(options: {
+        text: RichText
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicatePageListItemBlocks {
-    _: 'pageListItemBlocks'
+export class PredicatePageListItemBlocks {
+    _ = 'pageListItemBlocks' as const
     blocks: PageBlock[]
+    constructor(options: {
+        blocks: PageBlock[]
+    }) {
+        this.blocks = options.blocks;
+    }
 }
 
-export interface PredicatePageListOrderedItemText {
-    _: 'pageListOrderedItemText'
+export class PredicatePageListOrderedItemText {
+    _ = 'pageListOrderedItemText' as const
     num: string
     text: RichText
+    constructor(options: {
+        num: string
+        text: RichText
+    }) {
+        this.num = options.num;
+        this.text = options.text;
+    }
 }
 
-export interface PredicatePageListOrderedItemBlocks {
-    _: 'pageListOrderedItemBlocks'
+export class PredicatePageListOrderedItemBlocks {
+    _ = 'pageListOrderedItemBlocks' as const
     num: string
     blocks: PageBlock[]
+    constructor(options: {
+        num: string
+        blocks: PageBlock[]
+    }) {
+        this.num = options.num;
+        this.blocks = options.blocks;
+    }
 }
 
-export interface PredicatePageBlockOrderedList {
-    _: 'pageBlockOrderedList'
+export class PredicatePageBlockOrderedList {
+    _ = 'pageBlockOrderedList' as const
     items: PageListOrderedItem[]
+    constructor(options: {
+        items: PageListOrderedItem[]
+    }) {
+        this.items = options.items;
+    }
 }
 
-export interface PredicatePageBlockDetails {
-    _: 'pageBlockDetails'
+export class PredicatePageBlockDetails {
+    _ = 'pageBlockDetails' as const
     open?: true
     blocks: PageBlock[]
     title: RichText
+    constructor(options: {
+        open?: true
+        blocks: PageBlock[]
+        title: RichText
+    }) {
+        this.open = options.open;
+        this.blocks = options.blocks;
+        this.title = options.title;
+    }
 }
 
-export interface PredicatePageRelatedArticle {
-    _: 'pageRelatedArticle'
+export class PredicatePageRelatedArticle {
+    _ = 'pageRelatedArticle' as const
     url: string
     webpage_id: string
     title?: string
@@ -4508,25 +9731,62 @@ export interface PredicatePageRelatedArticle {
     photo_id?: string
     author?: string
     published_date?: number
+    constructor(options: {
+        url: string
+        webpage_id: string
+        title?: string
+        description?: string
+        photo_id?: string
+        author?: string
+        published_date?: number
+    }) {
+        this.url = options.url;
+        this.webpage_id = options.webpage_id;
+        this.title = options.title;
+        this.description = options.description;
+        this.photo_id = options.photo_id;
+        this.author = options.author;
+        this.published_date = options.published_date;
+    }
 }
 
-export interface PredicatePageBlockRelatedArticles {
-    _: 'pageBlockRelatedArticles'
+export class PredicatePageBlockRelatedArticles {
+    _ = 'pageBlockRelatedArticles' as const
     title: RichText
     articles: PageRelatedArticle[]
+    constructor(options: {
+        title: RichText
+        articles: PageRelatedArticle[]
+    }) {
+        this.title = options.title;
+        this.articles = options.articles;
+    }
 }
 
-export interface PredicatePageBlockMap {
-    _: 'pageBlockMap'
+export class PredicatePageBlockMap {
+    _ = 'pageBlockMap' as const
     geo: GeoPoint
     zoom: number
     w: number
     h: number
     caption: PageCaption
+    constructor(options: {
+        geo: GeoPoint
+        zoom: number
+        w: number
+        h: number
+        caption: PageCaption
+    }) {
+        this.geo = options.geo;
+        this.zoom = options.zoom;
+        this.w = options.w;
+        this.h = options.h;
+        this.caption = options.caption;
+    }
 }
 
-export interface PredicatePage {
-    _: 'page'
+export class PredicatePage {
+    _ = 'page' as const
     part?: true
     rtl?: true
     v2?: true
@@ -4535,58 +9795,116 @@ export interface PredicatePage {
     photos: Photo[]
     documents: Document[]
     views?: number
+    constructor(options: {
+        part?: true
+        rtl?: true
+        v2?: true
+        url: string
+        blocks: PageBlock[]
+        photos: Photo[]
+        documents: Document[]
+        views?: number
+    }) {
+        this.part = options.part;
+        this.rtl = options.rtl;
+        this.v2 = options.v2;
+        this.url = options.url;
+        this.blocks = options.blocks;
+        this.photos = options.photos;
+        this.documents = options.documents;
+        this.views = options.views;
+    }
 }
 
-export interface PredicateInputPrivacyKeyPhoneP2P {
-    _: 'inputPrivacyKeyPhoneP2P'
+export class PredicateInputPrivacyKeyPhoneP2P {
+    _ = 'inputPrivacyKeyPhoneP2P' as const
 }
 
-export interface PredicatePrivacyKeyPhoneP2P {
-    _: 'privacyKeyPhoneP2P'
+export class PredicatePrivacyKeyPhoneP2P {
+    _ = 'privacyKeyPhoneP2P' as const
 }
 
-export interface PredicateTextAnchor {
-    _: 'textAnchor'
+export class PredicateTextAnchor {
+    _ = 'textAnchor' as const
     text: RichText
     name: string
+    constructor(options: {
+        text: RichText
+        name: string
+    }) {
+        this.text = options.text;
+        this.name = options.name;
+    }
 }
 
-export interface PredicateHelpSupportName {
-    _: 'help.supportName'
+export class PredicateHelpSupportName {
+    _ = 'help.supportName' as const
     name: string
+    constructor(options: {
+        name: string
+    }) {
+        this.name = options.name;
+    }
 }
 
-export interface PredicateHelpUserInfoEmpty {
-    _: 'help.userInfoEmpty'
+export class PredicateHelpUserInfoEmpty {
+    _ = 'help.userInfoEmpty' as const
 }
 
-export interface PredicateHelpUserInfo {
-    _: 'help.userInfo'
+export class PredicateHelpUserInfo {
+    _ = 'help.userInfo' as const
     message: string
     entities: MessageEntity[]
     author: string
     date: number
+    constructor(options: {
+        message: string
+        entities: MessageEntity[]
+        author: string
+        date: number
+    }) {
+        this.message = options.message;
+        this.entities = options.entities;
+        this.author = options.author;
+        this.date = options.date;
+    }
 }
 
-export interface PredicateMessageActionContactSignUp {
-    _: 'messageActionContactSignUp'
+export class PredicateMessageActionContactSignUp {
+    _ = 'messageActionContactSignUp' as const
 }
 
-export interface PredicateUpdateMessagePoll {
-    _: 'updateMessagePoll'
+export class PredicateUpdateMessagePoll {
+    _ = 'updateMessagePoll' as const
     poll_id: string
     poll?: Poll
     results: PollResults
+    constructor(options: {
+        poll_id: string
+        poll?: Poll
+        results: PollResults
+    }) {
+        this.poll_id = options.poll_id;
+        this.poll = options.poll;
+        this.results = options.results;
+    }
 }
 
-export interface PredicatePollAnswer {
-    _: 'pollAnswer'
+export class PredicatePollAnswer {
+    _ = 'pollAnswer' as const
     text: string
     option: Uint8Array
+    constructor(options: {
+        text: string
+        option: Uint8Array
+    }) {
+        this.text = options.text;
+        this.option = options.option;
+    }
 }
 
-export interface PredicatePoll {
-    _: 'poll'
+export class PredicatePoll {
+    _ = 'poll' as const
     id: string
     closed?: true
     public_voters?: true
@@ -4596,58 +9914,140 @@ export interface PredicatePoll {
     answers: PollAnswer[]
     close_period?: number
     close_date?: number
+    constructor(options: {
+        id: string
+        closed?: true
+        public_voters?: true
+        multiple_choice?: true
+        quiz?: true
+        question: string
+        answers: PollAnswer[]
+        close_period?: number
+        close_date?: number
+    }) {
+        this.id = options.id;
+        this.closed = options.closed;
+        this.public_voters = options.public_voters;
+        this.multiple_choice = options.multiple_choice;
+        this.quiz = options.quiz;
+        this.question = options.question;
+        this.answers = options.answers;
+        this.close_period = options.close_period;
+        this.close_date = options.close_date;
+    }
 }
 
-export interface PredicatePollAnswerVoters {
-    _: 'pollAnswerVoters'
+export class PredicatePollAnswerVoters {
+    _ = 'pollAnswerVoters' as const
     chosen?: true
     correct?: true
     option: Uint8Array
     voters: number
+    constructor(options: {
+        chosen?: true
+        correct?: true
+        option: Uint8Array
+        voters: number
+    }) {
+        this.chosen = options.chosen;
+        this.correct = options.correct;
+        this.option = options.option;
+        this.voters = options.voters;
+    }
 }
 
-export interface PredicatePollResults {
-    _: 'pollResults'
+export class PredicatePollResults {
+    _ = 'pollResults' as const
     min?: true
     results?: PollAnswerVoters[]
     total_voters?: number
     recent_voters?: string[]
     solution?: string
     solution_entities?: MessageEntity[]
+    constructor(options: {
+        min?: true
+        results?: PollAnswerVoters[]
+        total_voters?: number
+        recent_voters?: string[]
+        solution?: string
+        solution_entities?: MessageEntity[]
+    } = {}) {
+        this.min = options.min;
+        this.results = options.results;
+        this.total_voters = options.total_voters;
+        this.recent_voters = options.recent_voters;
+        this.solution = options.solution;
+        this.solution_entities = options.solution_entities;
+    }
 }
 
-export interface PredicateInputMediaPoll {
-    _: 'inputMediaPoll'
+export class PredicateInputMediaPoll {
+    _ = 'inputMediaPoll' as const
     poll: Poll
     correct_answers?: Uint8Array[]
     solution?: string
     solution_entities?: MessageEntity[]
+    constructor(options: {
+        poll: Poll
+        correct_answers?: Uint8Array[]
+        solution?: string
+        solution_entities?: MessageEntity[]
+    }) {
+        this.poll = options.poll;
+        this.correct_answers = options.correct_answers;
+        this.solution = options.solution;
+        this.solution_entities = options.solution_entities;
+    }
 }
 
-export interface PredicateMessageMediaPoll {
-    _: 'messageMediaPoll'
+export class PredicateMessageMediaPoll {
+    _ = 'messageMediaPoll' as const
     poll: Poll
     results: PollResults
+    constructor(options: {
+        poll: Poll
+        results: PollResults
+    }) {
+        this.poll = options.poll;
+        this.results = options.results;
+    }
 }
 
-export interface PredicateChatOnlines {
-    _: 'chatOnlines'
+export class PredicateChatOnlines {
+    _ = 'chatOnlines' as const
     onlines: number
+    constructor(options: {
+        onlines: number
+    }) {
+        this.onlines = options.onlines;
+    }
 }
 
-export interface PredicateStatsURL {
-    _: 'statsURL'
+export class PredicateStatsURL {
+    _ = 'statsURL' as const
     url: string
+    constructor(options: {
+        url: string
+    }) {
+        this.url = options.url;
+    }
 }
 
-export interface PredicatePhotoStrippedSize {
-    _: 'photoStrippedSize'
+export class PredicatePhotoStrippedSize {
+    _ = 'photoStrippedSize' as const
     type: string
     bytes: Uint8Array
+    constructor(options: {
+        type: string
+        bytes: Uint8Array
+    }) {
+        this.type = options.type;
+        this.bytes = options.bytes;
+    }
 }
 
-export interface PredicateChatAdminRights {
-    _: 'chatAdminRights'
+export class PredicateChatAdminRights {
+    _ = 'chatAdminRights' as const
     change_info?: true
     post_messages?: true
     edit_messages?: true
@@ -4659,10 +10059,35 @@ export interface PredicateChatAdminRights {
     anonymous?: true
     manage_call?: true
     other?: true
+    constructor(options: {
+        change_info?: true
+        post_messages?: true
+        edit_messages?: true
+        delete_messages?: true
+        ban_users?: true
+        invite_users?: true
+        pin_messages?: true
+        add_admins?: true
+        anonymous?: true
+        manage_call?: true
+        other?: true
+    } = {}) {
+        this.change_info = options.change_info;
+        this.post_messages = options.post_messages;
+        this.edit_messages = options.edit_messages;
+        this.delete_messages = options.delete_messages;
+        this.ban_users = options.ban_users;
+        this.invite_users = options.invite_users;
+        this.pin_messages = options.pin_messages;
+        this.add_admins = options.add_admins;
+        this.anonymous = options.anonymous;
+        this.manage_call = options.manage_call;
+        this.other = options.other;
+    }
 }
 
-export interface PredicateChatBannedRights {
-    _: 'chatBannedRights'
+export class PredicateChatBannedRights {
+    _ = 'chatBannedRights' as const
     view_messages?: true
     send_messages?: true
     send_media?: true
@@ -4676,63 +10101,150 @@ export interface PredicateChatBannedRights {
     invite_users?: true
     pin_messages?: true
     until_date: number
+    constructor(options: {
+        view_messages?: true
+        send_messages?: true
+        send_media?: true
+        send_stickers?: true
+        send_gifs?: true
+        send_games?: true
+        send_inline?: true
+        embed_links?: true
+        send_polls?: true
+        change_info?: true
+        invite_users?: true
+        pin_messages?: true
+        until_date: number
+    }) {
+        this.view_messages = options.view_messages;
+        this.send_messages = options.send_messages;
+        this.send_media = options.send_media;
+        this.send_stickers = options.send_stickers;
+        this.send_gifs = options.send_gifs;
+        this.send_games = options.send_games;
+        this.send_inline = options.send_inline;
+        this.embed_links = options.embed_links;
+        this.send_polls = options.send_polls;
+        this.change_info = options.change_info;
+        this.invite_users = options.invite_users;
+        this.pin_messages = options.pin_messages;
+        this.until_date = options.until_date;
+    }
 }
 
-export interface PredicateUpdateChatDefaultBannedRights {
-    _: 'updateChatDefaultBannedRights'
+export class PredicateUpdateChatDefaultBannedRights {
+    _ = 'updateChatDefaultBannedRights' as const
     peer: Peer
     default_banned_rights: ChatBannedRights
     version: number
+    constructor(options: {
+        peer: Peer
+        default_banned_rights: ChatBannedRights
+        version: number
+    }) {
+        this.peer = options.peer;
+        this.default_banned_rights = options.default_banned_rights;
+        this.version = options.version;
+    }
 }
 
-export interface PredicateInputWallPaper {
-    _: 'inputWallPaper'
+export class PredicateInputWallPaper {
+    _ = 'inputWallPaper' as const
     id: string
     access_hash: string
+    constructor(options: {
+        id: string
+        access_hash: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicateInputWallPaperSlug {
-    _: 'inputWallPaperSlug'
+export class PredicateInputWallPaperSlug {
+    _ = 'inputWallPaperSlug' as const
     slug: string
+    constructor(options: {
+        slug: string
+    }) {
+        this.slug = options.slug;
+    }
 }
 
-export interface PredicateChannelParticipantsContacts {
-    _: 'channelParticipantsContacts'
+export class PredicateChannelParticipantsContacts {
+    _ = 'channelParticipantsContacts' as const
     q: string
+    constructor(options: {
+        q: string
+    }) {
+        this.q = options.q;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionDefaultBannedRights {
-    _: 'channelAdminLogEventActionDefaultBannedRights'
+export class PredicateChannelAdminLogEventActionDefaultBannedRights {
+    _ = 'channelAdminLogEventActionDefaultBannedRights' as const
     prev_banned_rights: ChatBannedRights
     new_banned_rights: ChatBannedRights
+    constructor(options: {
+        prev_banned_rights: ChatBannedRights
+        new_banned_rights: ChatBannedRights
+    }) {
+        this.prev_banned_rights = options.prev_banned_rights;
+        this.new_banned_rights = options.new_banned_rights;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionStopPoll {
-    _: 'channelAdminLogEventActionStopPoll'
+export class PredicateChannelAdminLogEventActionStopPoll {
+    _ = 'channelAdminLogEventActionStopPoll' as const
     message: Message
+    constructor(options: {
+        message: Message
+    }) {
+        this.message = options.message;
+    }
 }
 
-export interface PredicateAccountWallPapersNotModified {
-    _: 'account.wallPapersNotModified'
+export class PredicateAccountWallPapersNotModified {
+    _ = 'account.wallPapersNotModified' as const
 }
 
-export interface PredicateAccountWallPapers {
-    _: 'account.wallPapers'
+export class PredicateAccountWallPapers {
+    _ = 'account.wallPapers' as const
     hash: string
     wallpapers: WallPaper[]
+    constructor(options: {
+        hash: string
+        wallpapers: WallPaper[]
+    }) {
+        this.hash = options.hash;
+        this.wallpapers = options.wallpapers;
+    }
 }
 
-export interface PredicateCodeSettings {
-    _: 'codeSettings'
+export class PredicateCodeSettings {
+    _ = 'codeSettings' as const
     allow_flashcall?: true
     current_number?: true
     allow_app_hash?: true
     allow_missed_call?: true
     logout_tokens?: Uint8Array[]
+    constructor(options: {
+        allow_flashcall?: true
+        current_number?: true
+        allow_app_hash?: true
+        allow_missed_call?: true
+        logout_tokens?: Uint8Array[]
+    } = {}) {
+        this.allow_flashcall = options.allow_flashcall;
+        this.current_number = options.current_number;
+        this.allow_app_hash = options.allow_app_hash;
+        this.allow_missed_call = options.allow_missed_call;
+        this.logout_tokens = options.logout_tokens;
+    }
 }
 
-export interface PredicateWallPaperSettings {
-    _: 'wallPaperSettings'
+export class PredicateWallPaperSettings {
+    _ = 'wallPaperSettings' as const
     blur?: true
     motion?: true
     background_color?: number
@@ -4741,10 +10253,29 @@ export interface PredicateWallPaperSettings {
     fourth_background_color?: number
     intensity?: number
     rotation?: number
+    constructor(options: {
+        blur?: true
+        motion?: true
+        background_color?: number
+        second_background_color?: number
+        third_background_color?: number
+        fourth_background_color?: number
+        intensity?: number
+        rotation?: number
+    } = {}) {
+        this.blur = options.blur;
+        this.motion = options.motion;
+        this.background_color = options.background_color;
+        this.second_background_color = options.second_background_color;
+        this.third_background_color = options.third_background_color;
+        this.fourth_background_color = options.fourth_background_color;
+        this.intensity = options.intensity;
+        this.rotation = options.rotation;
+    }
 }
 
-export interface PredicateAutoDownloadSettings {
-    _: 'autoDownloadSettings'
+export class PredicateAutoDownloadSettings {
+    _ = 'autoDownloadSettings' as const
     disabled?: true
     video_preload_large?: true
     audio_preload_next?: true
@@ -4753,104 +10284,224 @@ export interface PredicateAutoDownloadSettings {
     video_size_max: number
     file_size_max: number
     video_upload_maxbitrate: number
+    constructor(options: {
+        disabled?: true
+        video_preload_large?: true
+        audio_preload_next?: true
+        phonecalls_less_data?: true
+        photo_size_max: number
+        video_size_max: number
+        file_size_max: number
+        video_upload_maxbitrate: number
+    }) {
+        this.disabled = options.disabled;
+        this.video_preload_large = options.video_preload_large;
+        this.audio_preload_next = options.audio_preload_next;
+        this.phonecalls_less_data = options.phonecalls_less_data;
+        this.photo_size_max = options.photo_size_max;
+        this.video_size_max = options.video_size_max;
+        this.file_size_max = options.file_size_max;
+        this.video_upload_maxbitrate = options.video_upload_maxbitrate;
+    }
 }
 
-export interface PredicateAccountAutoDownloadSettings {
-    _: 'account.autoDownloadSettings'
+export class PredicateAccountAutoDownloadSettings {
+    _ = 'account.autoDownloadSettings' as const
     low: AutoDownloadSettings
     medium: AutoDownloadSettings
     high: AutoDownloadSettings
+    constructor(options: {
+        low: AutoDownloadSettings
+        medium: AutoDownloadSettings
+        high: AutoDownloadSettings
+    }) {
+        this.low = options.low;
+        this.medium = options.medium;
+        this.high = options.high;
+    }
 }
 
-export interface PredicateEmojiKeyword {
-    _: 'emojiKeyword'
+export class PredicateEmojiKeyword {
+    _ = 'emojiKeyword' as const
     keyword: string
     emoticons: string[]
+    constructor(options: {
+        keyword: string
+        emoticons: string[]
+    }) {
+        this.keyword = options.keyword;
+        this.emoticons = options.emoticons;
+    }
 }
 
-export interface PredicateEmojiKeywordDeleted {
-    _: 'emojiKeywordDeleted'
+export class PredicateEmojiKeywordDeleted {
+    _ = 'emojiKeywordDeleted' as const
     keyword: string
     emoticons: string[]
+    constructor(options: {
+        keyword: string
+        emoticons: string[]
+    }) {
+        this.keyword = options.keyword;
+        this.emoticons = options.emoticons;
+    }
 }
 
-export interface PredicateEmojiKeywordsDifference {
-    _: 'emojiKeywordsDifference'
+export class PredicateEmojiKeywordsDifference {
+    _ = 'emojiKeywordsDifference' as const
     lang_code: string
     from_version: number
     version: number
     keywords: EmojiKeyword[]
+    constructor(options: {
+        lang_code: string
+        from_version: number
+        version: number
+        keywords: EmojiKeyword[]
+    }) {
+        this.lang_code = options.lang_code;
+        this.from_version = options.from_version;
+        this.version = options.version;
+        this.keywords = options.keywords;
+    }
 }
 
-export interface PredicateEmojiURL {
-    _: 'emojiURL'
+export class PredicateEmojiURL {
+    _ = 'emojiURL' as const
     url: string
+    constructor(options: {
+        url: string
+    }) {
+        this.url = options.url;
+    }
 }
 
-export interface PredicateEmojiLanguage {
-    _: 'emojiLanguage'
+export class PredicateEmojiLanguage {
+    _ = 'emojiLanguage' as const
     lang_code: string
+    constructor(options: {
+        lang_code: string
+    }) {
+        this.lang_code = options.lang_code;
+    }
 }
 
-export interface PredicateInputPrivacyKeyForwards {
-    _: 'inputPrivacyKeyForwards'
+export class PredicateInputPrivacyKeyForwards {
+    _ = 'inputPrivacyKeyForwards' as const
 }
 
-export interface PredicatePrivacyKeyForwards {
-    _: 'privacyKeyForwards'
+export class PredicatePrivacyKeyForwards {
+    _ = 'privacyKeyForwards' as const
 }
 
-export interface PredicateInputPrivacyKeyProfilePhoto {
-    _: 'inputPrivacyKeyProfilePhoto'
+export class PredicateInputPrivacyKeyProfilePhoto {
+    _ = 'inputPrivacyKeyProfilePhoto' as const
 }
 
-export interface PredicatePrivacyKeyProfilePhoto {
-    _: 'privacyKeyProfilePhoto'
+export class PredicatePrivacyKeyProfilePhoto {
+    _ = 'privacyKeyProfilePhoto' as const
 }
 
-export interface PredicateInputPhotoFileLocation {
-    _: 'inputPhotoFileLocation'
+export class PredicateInputPhotoFileLocation {
+    _ = 'inputPhotoFileLocation' as const
     id: string
     access_hash: string
     file_reference: Uint8Array
     thumb_size: string
+    constructor(options: {
+        id: string
+        access_hash: string
+        file_reference: Uint8Array
+        thumb_size: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.file_reference = options.file_reference;
+        this.thumb_size = options.thumb_size;
+    }
 }
 
-export interface PredicateInputPhotoLegacyFileLocation {
-    _: 'inputPhotoLegacyFileLocation'
+export class PredicateInputPhotoLegacyFileLocation {
+    _ = 'inputPhotoLegacyFileLocation' as const
     id: string
     access_hash: string
     file_reference: Uint8Array
     volume_id: string
     local_id: number
     secret: string
+    constructor(options: {
+        id: string
+        access_hash: string
+        file_reference: Uint8Array
+        volume_id: string
+        local_id: number
+        secret: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.file_reference = options.file_reference;
+        this.volume_id = options.volume_id;
+        this.local_id = options.local_id;
+        this.secret = options.secret;
+    }
 }
 
-export interface PredicateInputPeerPhotoFileLocation {
-    _: 'inputPeerPhotoFileLocation'
+export class PredicateInputPeerPhotoFileLocation {
+    _ = 'inputPeerPhotoFileLocation' as const
     big?: true
     peer: InputPeer
     photo_id: string
+    constructor(options: {
+        big?: true
+        peer: InputPeer
+        photo_id: string
+    }) {
+        this.big = options.big;
+        this.peer = options.peer;
+        this.photo_id = options.photo_id;
+    }
 }
 
-export interface PredicateInputStickerSetThumb {
-    _: 'inputStickerSetThumb'
+export class PredicateInputStickerSetThumb {
+    _ = 'inputStickerSetThumb' as const
     stickerset: InputStickerSet
     thumb_version: number
+    constructor(options: {
+        stickerset: InputStickerSet
+        thumb_version: number
+    }) {
+        this.stickerset = options.stickerset;
+        this.thumb_version = options.thumb_version;
+    }
 }
 
-export interface PredicateFolder {
-    _: 'folder'
+export class PredicateFolder {
+    _ = 'folder' as const
     autofill_new_broadcasts?: true
     autofill_public_groups?: true
     autofill_new_correspondents?: true
     id: number
     title: string
     photo?: ChatPhoto
+    constructor(options: {
+        autofill_new_broadcasts?: true
+        autofill_public_groups?: true
+        autofill_new_correspondents?: true
+        id: number
+        title: string
+        photo?: ChatPhoto
+    }) {
+        this.autofill_new_broadcasts = options.autofill_new_broadcasts;
+        this.autofill_public_groups = options.autofill_public_groups;
+        this.autofill_new_correspondents = options.autofill_new_correspondents;
+        this.id = options.id;
+        this.title = options.title;
+        this.photo = options.photo;
+    }
 }
 
-export interface PredicateDialogFolder {
-    _: 'dialogFolder'
+export class PredicateDialogFolder {
+    _ = 'dialogFolder' as const
     pinned?: true
     folder: Folder
     peer: Peer
@@ -4859,254 +10510,522 @@ export interface PredicateDialogFolder {
     unread_unmuted_peers_count: number
     unread_muted_messages_count: number
     unread_unmuted_messages_count: number
+    constructor(options: {
+        pinned?: true
+        folder: Folder
+        peer: Peer
+        top_message: number
+        unread_muted_peers_count: number
+        unread_unmuted_peers_count: number
+        unread_muted_messages_count: number
+        unread_unmuted_messages_count: number
+    }) {
+        this.pinned = options.pinned;
+        this.folder = options.folder;
+        this.peer = options.peer;
+        this.top_message = options.top_message;
+        this.unread_muted_peers_count = options.unread_muted_peers_count;
+        this.unread_unmuted_peers_count = options.unread_unmuted_peers_count;
+        this.unread_muted_messages_count = options.unread_muted_messages_count;
+        this.unread_unmuted_messages_count = options.unread_unmuted_messages_count;
+    }
 }
 
-export interface PredicateInputDialogPeerFolder {
-    _: 'inputDialogPeerFolder'
+export class PredicateInputDialogPeerFolder {
+    _ = 'inputDialogPeerFolder' as const
     folder_id: number
+    constructor(options: {
+        folder_id: number
+    }) {
+        this.folder_id = options.folder_id;
+    }
 }
 
-export interface PredicateDialogPeerFolder {
-    _: 'dialogPeerFolder'
+export class PredicateDialogPeerFolder {
+    _ = 'dialogPeerFolder' as const
     folder_id: number
+    constructor(options: {
+        folder_id: number
+    }) {
+        this.folder_id = options.folder_id;
+    }
 }
 
-export interface PredicateInputFolderPeer {
-    _: 'inputFolderPeer'
+export class PredicateInputFolderPeer {
+    _ = 'inputFolderPeer' as const
     peer: InputPeer
     folder_id: number
+    constructor(options: {
+        peer: InputPeer
+        folder_id: number
+    }) {
+        this.peer = options.peer;
+        this.folder_id = options.folder_id;
+    }
 }
 
-export interface PredicateFolderPeer {
-    _: 'folderPeer'
+export class PredicateFolderPeer {
+    _ = 'folderPeer' as const
     peer: Peer
     folder_id: number
+    constructor(options: {
+        peer: Peer
+        folder_id: number
+    }) {
+        this.peer = options.peer;
+        this.folder_id = options.folder_id;
+    }
 }
 
-export interface PredicateUpdateFolderPeers {
-    _: 'updateFolderPeers'
+export class PredicateUpdateFolderPeers {
+    _ = 'updateFolderPeers' as const
     folder_peers: FolderPeer[]
     pts: number
     pts_count: number
+    constructor(options: {
+        folder_peers: FolderPeer[]
+        pts: number
+        pts_count: number
+    }) {
+        this.folder_peers = options.folder_peers;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+    }
 }
 
-export interface PredicateInputUserFromMessage {
-    _: 'inputUserFromMessage'
+export class PredicateInputUserFromMessage {
+    _ = 'inputUserFromMessage' as const
     peer: InputPeer
     msg_id: number
     user_id: string
+    constructor(options: {
+        peer: InputPeer
+        msg_id: number
+        user_id: string
+    }) {
+        this.peer = options.peer;
+        this.msg_id = options.msg_id;
+        this.user_id = options.user_id;
+    }
 }
 
-export interface PredicateInputChannelFromMessage {
-    _: 'inputChannelFromMessage'
+export class PredicateInputChannelFromMessage {
+    _ = 'inputChannelFromMessage' as const
     peer: InputPeer
     msg_id: number
     channel_id: string
+    constructor(options: {
+        peer: InputPeer
+        msg_id: number
+        channel_id: string
+    }) {
+        this.peer = options.peer;
+        this.msg_id = options.msg_id;
+        this.channel_id = options.channel_id;
+    }
 }
 
-export interface PredicateInputPeerUserFromMessage {
-    _: 'inputPeerUserFromMessage'
+export class PredicateInputPeerUserFromMessage {
+    _ = 'inputPeerUserFromMessage' as const
     peer: InputPeer
     msg_id: number
     user_id: string
+    constructor(options: {
+        peer: InputPeer
+        msg_id: number
+        user_id: string
+    }) {
+        this.peer = options.peer;
+        this.msg_id = options.msg_id;
+        this.user_id = options.user_id;
+    }
 }
 
-export interface PredicateInputPeerChannelFromMessage {
-    _: 'inputPeerChannelFromMessage'
+export class PredicateInputPeerChannelFromMessage {
+    _ = 'inputPeerChannelFromMessage' as const
     peer: InputPeer
     msg_id: number
     channel_id: string
+    constructor(options: {
+        peer: InputPeer
+        msg_id: number
+        channel_id: string
+    }) {
+        this.peer = options.peer;
+        this.msg_id = options.msg_id;
+        this.channel_id = options.channel_id;
+    }
 }
 
-export interface PredicateInputPrivacyKeyPhoneNumber {
-    _: 'inputPrivacyKeyPhoneNumber'
+export class PredicateInputPrivacyKeyPhoneNumber {
+    _ = 'inputPrivacyKeyPhoneNumber' as const
 }
 
-export interface PredicatePrivacyKeyPhoneNumber {
-    _: 'privacyKeyPhoneNumber'
+export class PredicatePrivacyKeyPhoneNumber {
+    _ = 'privacyKeyPhoneNumber' as const
 }
 
-export interface PredicateTopPeerCategoryForwardUsers {
-    _: 'topPeerCategoryForwardUsers'
+export class PredicateTopPeerCategoryForwardUsers {
+    _ = 'topPeerCategoryForwardUsers' as const
 }
 
-export interface PredicateTopPeerCategoryForwardChats {
-    _: 'topPeerCategoryForwardChats'
+export class PredicateTopPeerCategoryForwardChats {
+    _ = 'topPeerCategoryForwardChats' as const
 }
 
-export interface PredicateChannelAdminLogEventActionChangeLinkedChat {
-    _: 'channelAdminLogEventActionChangeLinkedChat'
+export class PredicateChannelAdminLogEventActionChangeLinkedChat {
+    _ = 'channelAdminLogEventActionChangeLinkedChat' as const
     prev_value: string
     new_value: string
+    constructor(options: {
+        prev_value: string
+        new_value: string
+    }) {
+        this.prev_value = options.prev_value;
+        this.new_value = options.new_value;
+    }
 }
 
-export interface PredicateMessagesSearchCounter {
-    _: 'messages.searchCounter'
+export class PredicateMessagesSearchCounter {
+    _ = 'messages.searchCounter' as const
     inexact?: true
     filter: MessagesFilter
     count: number
+    constructor(options: {
+        inexact?: true
+        filter: MessagesFilter
+        count: number
+    }) {
+        this.inexact = options.inexact;
+        this.filter = options.filter;
+        this.count = options.count;
+    }
 }
 
-export interface PredicateKeyboardButtonUrlAuth {
-    _: 'keyboardButtonUrlAuth'
+export class PredicateKeyboardButtonUrlAuth {
+    _ = 'keyboardButtonUrlAuth' as const
     text: string
     fwd_text?: string
     url: string
     button_id: number
+    constructor(options: {
+        text: string
+        fwd_text?: string
+        url: string
+        button_id: number
+    }) {
+        this.text = options.text;
+        this.fwd_text = options.fwd_text;
+        this.url = options.url;
+        this.button_id = options.button_id;
+    }
 }
 
-export interface PredicateInputKeyboardButtonUrlAuth {
-    _: 'inputKeyboardButtonUrlAuth'
+export class PredicateInputKeyboardButtonUrlAuth {
+    _ = 'inputKeyboardButtonUrlAuth' as const
     request_write_access?: true
     text: string
     fwd_text?: string
     url: string
     bot: InputUser
+    constructor(options: {
+        request_write_access?: true
+        text: string
+        fwd_text?: string
+        url: string
+        bot: InputUser
+    }) {
+        this.request_write_access = options.request_write_access;
+        this.text = options.text;
+        this.fwd_text = options.fwd_text;
+        this.url = options.url;
+        this.bot = options.bot;
+    }
 }
 
-export interface PredicateUrlAuthResultRequest {
-    _: 'urlAuthResultRequest'
+export class PredicateUrlAuthResultRequest {
+    _ = 'urlAuthResultRequest' as const
     request_write_access?: true
     bot: User
     domain: string
+    constructor(options: {
+        request_write_access?: true
+        bot: User
+        domain: string
+    }) {
+        this.request_write_access = options.request_write_access;
+        this.bot = options.bot;
+        this.domain = options.domain;
+    }
 }
 
-export interface PredicateUrlAuthResultAccepted {
-    _: 'urlAuthResultAccepted'
+export class PredicateUrlAuthResultAccepted {
+    _ = 'urlAuthResultAccepted' as const
     url: string
+    constructor(options: {
+        url: string
+    }) {
+        this.url = options.url;
+    }
 }
 
-export interface PredicateUrlAuthResultDefault {
-    _: 'urlAuthResultDefault'
+export class PredicateUrlAuthResultDefault {
+    _ = 'urlAuthResultDefault' as const
 }
 
-export interface PredicateInputPrivacyValueAllowChatParticipants {
-    _: 'inputPrivacyValueAllowChatParticipants'
+export class PredicateInputPrivacyValueAllowChatParticipants {
+    _ = 'inputPrivacyValueAllowChatParticipants' as const
     chats: string[]
+    constructor(options: {
+        chats: string[]
+    }) {
+        this.chats = options.chats;
+    }
 }
 
-export interface PredicateInputPrivacyValueDisallowChatParticipants {
-    _: 'inputPrivacyValueDisallowChatParticipants'
+export class PredicateInputPrivacyValueDisallowChatParticipants {
+    _ = 'inputPrivacyValueDisallowChatParticipants' as const
     chats: string[]
+    constructor(options: {
+        chats: string[]
+    }) {
+        this.chats = options.chats;
+    }
 }
 
-export interface PredicatePrivacyValueAllowChatParticipants {
-    _: 'privacyValueAllowChatParticipants'
+export class PredicatePrivacyValueAllowChatParticipants {
+    _ = 'privacyValueAllowChatParticipants' as const
     chats: string[]
+    constructor(options: {
+        chats: string[]
+    }) {
+        this.chats = options.chats;
+    }
 }
 
-export interface PredicatePrivacyValueDisallowChatParticipants {
-    _: 'privacyValueDisallowChatParticipants'
+export class PredicatePrivacyValueDisallowChatParticipants {
+    _ = 'privacyValueDisallowChatParticipants' as const
     chats: string[]
+    constructor(options: {
+        chats: string[]
+    }) {
+        this.chats = options.chats;
+    }
 }
 
-export interface PredicateMessageEntityUnderline {
-    _: 'messageEntityUnderline'
+export class PredicateMessageEntityUnderline {
+    _ = 'messageEntityUnderline' as const
     offset: number
     length: number
+    constructor(options: {
+        offset: number
+        length: number
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateMessageEntityStrike {
-    _: 'messageEntityStrike'
+export class PredicateMessageEntityStrike {
+    _ = 'messageEntityStrike' as const
     offset: number
     length: number
+    constructor(options: {
+        offset: number
+        length: number
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateMessageEntityBlockquote {
-    _: 'messageEntityBlockquote'
+export class PredicateMessageEntityBlockquote {
+    _ = 'messageEntityBlockquote' as const
     offset: number
     length: number
+    constructor(options: {
+        offset: number
+        length: number
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateUpdatePeerSettings {
-    _: 'updatePeerSettings'
+export class PredicateUpdatePeerSettings {
+    _ = 'updatePeerSettings' as const
     peer: Peer
     settings: PeerSettings
+    constructor(options: {
+        peer: Peer
+        settings: PeerSettings
+    }) {
+        this.peer = options.peer;
+        this.settings = options.settings;
+    }
 }
 
-export interface PredicateChannelLocationEmpty {
-    _: 'channelLocationEmpty'
+export class PredicateChannelLocationEmpty {
+    _ = 'channelLocationEmpty' as const
 }
 
-export interface PredicateChannelLocation {
-    _: 'channelLocation'
+export class PredicateChannelLocation {
+    _ = 'channelLocation' as const
     geo_point: GeoPoint
     address: string
+    constructor(options: {
+        geo_point: GeoPoint
+        address: string
+    }) {
+        this.geo_point = options.geo_point;
+        this.address = options.address;
+    }
 }
 
-export interface PredicatePeerLocated {
-    _: 'peerLocated'
+export class PredicatePeerLocated {
+    _ = 'peerLocated' as const
     peer: Peer
     expires: number
     distance: number
+    constructor(options: {
+        peer: Peer
+        expires: number
+        distance: number
+    }) {
+        this.peer = options.peer;
+        this.expires = options.expires;
+        this.distance = options.distance;
+    }
 }
 
-export interface PredicateUpdatePeerLocated {
-    _: 'updatePeerLocated'
+export class PredicateUpdatePeerLocated {
+    _ = 'updatePeerLocated' as const
     peers: PeerLocated[]
+    constructor(options: {
+        peers: PeerLocated[]
+    }) {
+        this.peers = options.peers;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionChangeLocation {
-    _: 'channelAdminLogEventActionChangeLocation'
+export class PredicateChannelAdminLogEventActionChangeLocation {
+    _ = 'channelAdminLogEventActionChangeLocation' as const
     prev_value: ChannelLocation
     new_value: ChannelLocation
+    constructor(options: {
+        prev_value: ChannelLocation
+        new_value: ChannelLocation
+    }) {
+        this.prev_value = options.prev_value;
+        this.new_value = options.new_value;
+    }
 }
 
-export interface PredicateInputReportReasonGeoIrrelevant {
-    _: 'inputReportReasonGeoIrrelevant'
+export class PredicateInputReportReasonGeoIrrelevant {
+    _ = 'inputReportReasonGeoIrrelevant' as const
 }
 
-export interface PredicateChannelAdminLogEventActionToggleSlowMode {
-    _: 'channelAdminLogEventActionToggleSlowMode'
+export class PredicateChannelAdminLogEventActionToggleSlowMode {
+    _ = 'channelAdminLogEventActionToggleSlowMode' as const
     prev_value: number
     new_value: number
+    constructor(options: {
+        prev_value: number
+        new_value: number
+    }) {
+        this.prev_value = options.prev_value;
+        this.new_value = options.new_value;
+    }
 }
 
-export interface PredicateAuthAuthorizationSignUpRequired {
-    _: 'auth.authorizationSignUpRequired'
+export class PredicateAuthAuthorizationSignUpRequired {
+    _ = 'auth.authorizationSignUpRequired' as const
     terms_of_service?: HelpTermsOfService
+    constructor(options: {
+        terms_of_service?: HelpTermsOfService
+    } = {}) {
+        this.terms_of_service = options.terms_of_service;
+    }
 }
 
-export interface PredicatePaymentsPaymentVerificationNeeded {
-    _: 'payments.paymentVerificationNeeded'
+export class PredicatePaymentsPaymentVerificationNeeded {
+    _ = 'payments.paymentVerificationNeeded' as const
     url: string
+    constructor(options: {
+        url: string
+    }) {
+        this.url = options.url;
+    }
 }
 
-export interface PredicateInputStickerSetAnimatedEmoji {
-    _: 'inputStickerSetAnimatedEmoji'
+export class PredicateInputStickerSetAnimatedEmoji {
+    _ = 'inputStickerSetAnimatedEmoji' as const
 }
 
-export interface PredicateUpdateNewScheduledMessage {
-    _: 'updateNewScheduledMessage'
+export class PredicateUpdateNewScheduledMessage {
+    _ = 'updateNewScheduledMessage' as const
     message: Message
+    constructor(options: {
+        message: Message
+    }) {
+        this.message = options.message;
+    }
 }
 
-export interface PredicateUpdateDeleteScheduledMessages {
-    _: 'updateDeleteScheduledMessages'
+export class PredicateUpdateDeleteScheduledMessages {
+    _ = 'updateDeleteScheduledMessages' as const
     peer: Peer
     messages: number[]
+    constructor(options: {
+        peer: Peer
+        messages: number[]
+    }) {
+        this.peer = options.peer;
+        this.messages = options.messages;
+    }
 }
 
-export interface PredicateRestrictionReason {
-    _: 'restrictionReason'
+export class PredicateRestrictionReason {
+    _ = 'restrictionReason' as const
     platform: string
     reason: string
     text: string
+    constructor(options: {
+        platform: string
+        reason: string
+        text: string
+    }) {
+        this.platform = options.platform;
+        this.reason = options.reason;
+        this.text = options.text;
+    }
 }
 
-export interface PredicateInputTheme {
-    _: 'inputTheme'
+export class PredicateInputTheme {
+    _ = 'inputTheme' as const
     id: string
     access_hash: string
+    constructor(options: {
+        id: string
+        access_hash: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicateInputThemeSlug {
-    _: 'inputThemeSlug'
+export class PredicateInputThemeSlug {
+    _ = 'inputThemeSlug' as const
     slug: string
+    constructor(options: {
+        slug: string
+    }) {
+        this.slug = options.slug;
+    }
 }
 
-export interface PredicateTheme {
-    _: 'theme'
+export class PredicateTheme {
+    _ = 'theme' as const
     creator?: true
     default?: true
     for_chat?: true
@@ -5118,106 +11037,201 @@ export interface PredicateTheme {
     settings?: ThemeSettings[]
     emoticon?: string
     installs_count?: number
+    constructor(options: {
+        creator?: true
+        default?: true
+        for_chat?: true
+        id: string
+        access_hash: string
+        slug: string
+        title: string
+        document?: Document
+        settings?: ThemeSettings[]
+        emoticon?: string
+        installs_count?: number
+    }) {
+        this.creator = options.creator;
+        this.default = options.default;
+        this.for_chat = options.for_chat;
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.slug = options.slug;
+        this.title = options.title;
+        this.document = options.document;
+        this.settings = options.settings;
+        this.emoticon = options.emoticon;
+        this.installs_count = options.installs_count;
+    }
 }
 
-export interface PredicateAccountThemesNotModified {
-    _: 'account.themesNotModified'
+export class PredicateAccountThemesNotModified {
+    _ = 'account.themesNotModified' as const
 }
 
-export interface PredicateAccountThemes {
-    _: 'account.themes'
+export class PredicateAccountThemes {
+    _ = 'account.themes' as const
     hash: string
     themes: Theme[]
+    constructor(options: {
+        hash: string
+        themes: Theme[]
+    }) {
+        this.hash = options.hash;
+        this.themes = options.themes;
+    }
 }
 
-export interface PredicateUpdateTheme {
-    _: 'updateTheme'
+export class PredicateUpdateTheme {
+    _ = 'updateTheme' as const
     theme: Theme
+    constructor(options: {
+        theme: Theme
+    }) {
+        this.theme = options.theme;
+    }
 }
 
-export interface PredicateInputPrivacyKeyAddedByPhone {
-    _: 'inputPrivacyKeyAddedByPhone'
+export class PredicateInputPrivacyKeyAddedByPhone {
+    _ = 'inputPrivacyKeyAddedByPhone' as const
 }
 
-export interface PredicatePrivacyKeyAddedByPhone {
-    _: 'privacyKeyAddedByPhone'
+export class PredicatePrivacyKeyAddedByPhone {
+    _ = 'privacyKeyAddedByPhone' as const
 }
 
-export interface PredicateUpdateGeoLiveViewed {
-    _: 'updateGeoLiveViewed'
+export class PredicateUpdateGeoLiveViewed {
+    _ = 'updateGeoLiveViewed' as const
     peer: Peer
     msg_id: number
+    constructor(options: {
+        peer: Peer
+        msg_id: number
+    }) {
+        this.peer = options.peer;
+        this.msg_id = options.msg_id;
+    }
 }
 
-export interface PredicateUpdateLoginToken {
-    _: 'updateLoginToken'
+export class PredicateUpdateLoginToken {
+    _ = 'updateLoginToken' as const
 }
 
-export interface PredicateAuthLoginToken {
-    _: 'auth.loginToken'
+export class PredicateAuthLoginToken {
+    _ = 'auth.loginToken' as const
     expires: number
     token: Uint8Array
+    constructor(options: {
+        expires: number
+        token: Uint8Array
+    }) {
+        this.expires = options.expires;
+        this.token = options.token;
+    }
 }
 
-export interface PredicateAuthLoginTokenMigrateTo {
-    _: 'auth.loginTokenMigrateTo'
+export class PredicateAuthLoginTokenMigrateTo {
+    _ = 'auth.loginTokenMigrateTo' as const
     dc_id: number
     token: Uint8Array
+    constructor(options: {
+        dc_id: number
+        token: Uint8Array
+    }) {
+        this.dc_id = options.dc_id;
+        this.token = options.token;
+    }
 }
 
-export interface PredicateAuthLoginTokenSuccess {
-    _: 'auth.loginTokenSuccess'
+export class PredicateAuthLoginTokenSuccess {
+    _ = 'auth.loginTokenSuccess' as const
     authorization: AuthAuthorization
+    constructor(options: {
+        authorization: AuthAuthorization
+    }) {
+        this.authorization = options.authorization;
+    }
 }
 
-export interface PredicateAccountContentSettings {
-    _: 'account.contentSettings'
+export class PredicateAccountContentSettings {
+    _ = 'account.contentSettings' as const
     sensitive_enabled?: true
     sensitive_can_change?: true
+    constructor(options: {
+        sensitive_enabled?: true
+        sensitive_can_change?: true
+    } = {}) {
+        this.sensitive_enabled = options.sensitive_enabled;
+        this.sensitive_can_change = options.sensitive_can_change;
+    }
 }
 
-export interface PredicateMessagesInactiveChats {
-    _: 'messages.inactiveChats'
+export class PredicateMessagesInactiveChats {
+    _ = 'messages.inactiveChats' as const
     dates: number[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        dates: number[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.dates = options.dates;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateBaseThemeClassic {
-    _: 'baseThemeClassic'
+export class PredicateBaseThemeClassic {
+    _ = 'baseThemeClassic' as const
 }
 
-export interface PredicateBaseThemeDay {
-    _: 'baseThemeDay'
+export class PredicateBaseThemeDay {
+    _ = 'baseThemeDay' as const
 }
 
-export interface PredicateBaseThemeNight {
-    _: 'baseThemeNight'
+export class PredicateBaseThemeNight {
+    _ = 'baseThemeNight' as const
 }
 
-export interface PredicateBaseThemeTinted {
-    _: 'baseThemeTinted'
+export class PredicateBaseThemeTinted {
+    _ = 'baseThemeTinted' as const
 }
 
-export interface PredicateBaseThemeArctic {
-    _: 'baseThemeArctic'
+export class PredicateBaseThemeArctic {
+    _ = 'baseThemeArctic' as const
 }
 
-export interface PredicateInputWallPaperNoFile {
-    _: 'inputWallPaperNoFile'
+export class PredicateInputWallPaperNoFile {
+    _ = 'inputWallPaperNoFile' as const
     id: string
+    constructor(options: {
+        id: string
+    }) {
+        this.id = options.id;
+    }
 }
 
-export interface PredicateWallPaperNoFile {
-    _: 'wallPaperNoFile'
+export class PredicateWallPaperNoFile {
+    _ = 'wallPaperNoFile' as const
     id: string
     default?: true
     dark?: true
     settings?: WallPaperSettings
+    constructor(options: {
+        id: string
+        default?: true
+        dark?: true
+        settings?: WallPaperSettings
+    }) {
+        this.id = options.id;
+        this.default = options.default;
+        this.dark = options.dark;
+        this.settings = options.settings;
+    }
 }
 
-export interface PredicateInputThemeSettings {
-    _: 'inputThemeSettings'
+export class PredicateInputThemeSettings {
+    _ = 'inputThemeSettings' as const
     message_colors_animated?: true
     base_theme: BaseTheme
     accent_color: number
@@ -5225,91 +11239,210 @@ export interface PredicateInputThemeSettings {
     message_colors?: number[]
     wallpaper?: InputWallPaper
     wallpaper_settings?: WallPaperSettings
+    constructor(options: {
+        message_colors_animated?: true
+        base_theme: BaseTheme
+        accent_color: number
+        outbox_accent_color?: number
+        message_colors?: number[]
+        wallpaper?: InputWallPaper
+        wallpaper_settings?: WallPaperSettings
+    }) {
+        this.message_colors_animated = options.message_colors_animated;
+        this.base_theme = options.base_theme;
+        this.accent_color = options.accent_color;
+        this.outbox_accent_color = options.outbox_accent_color;
+        this.message_colors = options.message_colors;
+        this.wallpaper = options.wallpaper;
+        this.wallpaper_settings = options.wallpaper_settings;
+    }
 }
 
-export interface PredicateThemeSettings {
-    _: 'themeSettings'
+export class PredicateThemeSettings {
+    _ = 'themeSettings' as const
     message_colors_animated?: true
     base_theme: BaseTheme
     accent_color: number
     outbox_accent_color?: number
     message_colors?: number[]
     wallpaper?: WallPaper
+    constructor(options: {
+        message_colors_animated?: true
+        base_theme: BaseTheme
+        accent_color: number
+        outbox_accent_color?: number
+        message_colors?: number[]
+        wallpaper?: WallPaper
+    }) {
+        this.message_colors_animated = options.message_colors_animated;
+        this.base_theme = options.base_theme;
+        this.accent_color = options.accent_color;
+        this.outbox_accent_color = options.outbox_accent_color;
+        this.message_colors = options.message_colors;
+        this.wallpaper = options.wallpaper;
+    }
 }
 
-export interface PredicateWebPageAttributeTheme {
-    _: 'webPageAttributeTheme'
+export class PredicateWebPageAttributeTheme {
+    _ = 'webPageAttributeTheme' as const
     documents?: Document[]
     settings?: ThemeSettings
+    constructor(options: {
+        documents?: Document[]
+        settings?: ThemeSettings
+    } = {}) {
+        this.documents = options.documents;
+        this.settings = options.settings;
+    }
 }
 
-export interface PredicateUpdateMessagePollVote {
-    _: 'updateMessagePollVote'
+export class PredicateUpdateMessagePollVote {
+    _ = 'updateMessagePollVote' as const
     poll_id: string
     user_id: string
     options: Uint8Array[]
     qts: number
+    constructor(options: {
+        poll_id: string
+        user_id: string
+        options: Uint8Array[]
+        qts: number
+    }) {
+        this.poll_id = options.poll_id;
+        this.user_id = options.user_id;
+        this.options = options.options;
+        this.qts = options.qts;
+    }
 }
 
-export interface PredicateMessageUserVote {
-    _: 'messageUserVote'
+export class PredicateMessageUserVote {
+    _ = 'messageUserVote' as const
     user_id: string
     option: Uint8Array
     date: number
+    constructor(options: {
+        user_id: string
+        option: Uint8Array
+        date: number
+    }) {
+        this.user_id = options.user_id;
+        this.option = options.option;
+        this.date = options.date;
+    }
 }
 
-export interface PredicateMessageUserVoteInputOption {
-    _: 'messageUserVoteInputOption'
+export class PredicateMessageUserVoteInputOption {
+    _ = 'messageUserVoteInputOption' as const
     user_id: string
     date: number
+    constructor(options: {
+        user_id: string
+        date: number
+    }) {
+        this.user_id = options.user_id;
+        this.date = options.date;
+    }
 }
 
-export interface PredicateMessageUserVoteMultiple {
-    _: 'messageUserVoteMultiple'
+export class PredicateMessageUserVoteMultiple {
+    _ = 'messageUserVoteMultiple' as const
     user_id: string
     options: Uint8Array[]
     date: number
+    constructor(options: {
+        user_id: string
+        options: Uint8Array[]
+        date: number
+    }) {
+        this.user_id = options.user_id;
+        this.options = options.options;
+        this.date = options.date;
+    }
 }
 
-export interface PredicateMessagesVotesList {
-    _: 'messages.votesList'
+export class PredicateMessagesVotesList {
+    _ = 'messages.votesList' as const
     count: number
     votes: MessageUserVote[]
     users: User[]
     next_offset?: string
+    constructor(options: {
+        count: number
+        votes: MessageUserVote[]
+        users: User[]
+        next_offset?: string
+    }) {
+        this.count = options.count;
+        this.votes = options.votes;
+        this.users = options.users;
+        this.next_offset = options.next_offset;
+    }
 }
 
-export interface PredicateKeyboardButtonRequestPoll {
-    _: 'keyboardButtonRequestPoll'
+export class PredicateKeyboardButtonRequestPoll {
+    _ = 'keyboardButtonRequestPoll' as const
     quiz?: boolean
     text: string
+    constructor(options: {
+        quiz?: boolean
+        text: string
+    }) {
+        this.quiz = options.quiz;
+        this.text = options.text;
+    }
 }
 
-export interface PredicateMessageEntityBankCard {
-    _: 'messageEntityBankCard'
+export class PredicateMessageEntityBankCard {
+    _ = 'messageEntityBankCard' as const
     offset: number
     length: number
+    constructor(options: {
+        offset: number
+        length: number
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateBankCardOpenUrl {
-    _: 'bankCardOpenUrl'
+export class PredicateBankCardOpenUrl {
+    _ = 'bankCardOpenUrl' as const
     url: string
     name: string
+    constructor(options: {
+        url: string
+        name: string
+    }) {
+        this.url = options.url;
+        this.name = options.name;
+    }
 }
 
-export interface PredicatePaymentsBankCardData {
-    _: 'payments.bankCardData'
+export class PredicatePaymentsBankCardData {
+    _ = 'payments.bankCardData' as const
     title: string
     open_urls: BankCardOpenUrl[]
+    constructor(options: {
+        title: string
+        open_urls: BankCardOpenUrl[]
+    }) {
+        this.title = options.title;
+        this.open_urls = options.open_urls;
+    }
 }
 
-export interface PredicatePeerSelfLocated {
-    _: 'peerSelfLocated'
+export class PredicatePeerSelfLocated {
+    _ = 'peerSelfLocated' as const
     expires: number
+    constructor(options: {
+        expires: number
+    }) {
+        this.expires = options.expires;
+    }
 }
 
-export interface PredicateDialogFilter {
-    _: 'dialogFilter'
+export class PredicateDialogFilter {
+    _ = 'dialogFilter' as const
     contacts?: true
     non_contacts?: true
     groups?: true
@@ -5324,72 +11457,169 @@ export interface PredicateDialogFilter {
     pinned_peers: InputPeer[]
     include_peers: InputPeer[]
     exclude_peers: InputPeer[]
+    constructor(options: {
+        contacts?: true
+        non_contacts?: true
+        groups?: true
+        broadcasts?: true
+        bots?: true
+        exclude_muted?: true
+        exclude_read?: true
+        exclude_archived?: true
+        id: number
+        title: string
+        emoticon?: string
+        pinned_peers: InputPeer[]
+        include_peers: InputPeer[]
+        exclude_peers: InputPeer[]
+    }) {
+        this.contacts = options.contacts;
+        this.non_contacts = options.non_contacts;
+        this.groups = options.groups;
+        this.broadcasts = options.broadcasts;
+        this.bots = options.bots;
+        this.exclude_muted = options.exclude_muted;
+        this.exclude_read = options.exclude_read;
+        this.exclude_archived = options.exclude_archived;
+        this.id = options.id;
+        this.title = options.title;
+        this.emoticon = options.emoticon;
+        this.pinned_peers = options.pinned_peers;
+        this.include_peers = options.include_peers;
+        this.exclude_peers = options.exclude_peers;
+    }
 }
 
-export interface PredicateDialogFilterSuggested {
-    _: 'dialogFilterSuggested'
+export class PredicateDialogFilterSuggested {
+    _ = 'dialogFilterSuggested' as const
     filter: DialogFilter
     description: string
+    constructor(options: {
+        filter: DialogFilter
+        description: string
+    }) {
+        this.filter = options.filter;
+        this.description = options.description;
+    }
 }
 
-export interface PredicateUpdateDialogFilter {
-    _: 'updateDialogFilter'
+export class PredicateUpdateDialogFilter {
+    _ = 'updateDialogFilter' as const
     id: number
     filter?: DialogFilter
+    constructor(options: {
+        id: number
+        filter?: DialogFilter
+    }) {
+        this.id = options.id;
+        this.filter = options.filter;
+    }
 }
 
-export interface PredicateUpdateDialogFilterOrder {
-    _: 'updateDialogFilterOrder'
+export class PredicateUpdateDialogFilterOrder {
+    _ = 'updateDialogFilterOrder' as const
     order: number[]
+    constructor(options: {
+        order: number[]
+    }) {
+        this.order = options.order;
+    }
 }
 
-export interface PredicateUpdateDialogFilters {
-    _: 'updateDialogFilters'
+export class PredicateUpdateDialogFilters {
+    _ = 'updateDialogFilters' as const
 }
 
-export interface PredicateStatsDateRangeDays {
-    _: 'statsDateRangeDays'
+export class PredicateStatsDateRangeDays {
+    _ = 'statsDateRangeDays' as const
     min_date: number
     max_date: number
+    constructor(options: {
+        min_date: number
+        max_date: number
+    }) {
+        this.min_date = options.min_date;
+        this.max_date = options.max_date;
+    }
 }
 
-export interface PredicateStatsAbsValueAndPrev {
-    _: 'statsAbsValueAndPrev'
+export class PredicateStatsAbsValueAndPrev {
+    _ = 'statsAbsValueAndPrev' as const
     current: number
     previous: number
+    constructor(options: {
+        current: number
+        previous: number
+    }) {
+        this.current = options.current;
+        this.previous = options.previous;
+    }
 }
 
-export interface PredicateStatsPercentValue {
-    _: 'statsPercentValue'
+export class PredicateStatsPercentValue {
+    _ = 'statsPercentValue' as const
     part: number
     total: number
+    constructor(options: {
+        part: number
+        total: number
+    }) {
+        this.part = options.part;
+        this.total = options.total;
+    }
 }
 
-export interface PredicateStatsGraphAsync {
-    _: 'statsGraphAsync'
+export class PredicateStatsGraphAsync {
+    _ = 'statsGraphAsync' as const
     token: string
+    constructor(options: {
+        token: string
+    }) {
+        this.token = options.token;
+    }
 }
 
-export interface PredicateStatsGraphError {
-    _: 'statsGraphError'
+export class PredicateStatsGraphError {
+    _ = 'statsGraphError' as const
     error: string
+    constructor(options: {
+        error: string
+    }) {
+        this.error = options.error;
+    }
 }
 
-export interface PredicateStatsGraph {
-    _: 'statsGraph'
+export class PredicateStatsGraph {
+    _ = 'statsGraph' as const
     json: DataJSON
     zoom_token?: string
+    constructor(options: {
+        json: DataJSON
+        zoom_token?: string
+    }) {
+        this.json = options.json;
+        this.zoom_token = options.zoom_token;
+    }
 }
 
-export interface PredicateMessageInteractionCounters {
-    _: 'messageInteractionCounters'
+export class PredicateMessageInteractionCounters {
+    _ = 'messageInteractionCounters' as const
     msg_id: number
     views: number
     forwards: number
+    constructor(options: {
+        msg_id: number
+        views: number
+        forwards: number
+    }) {
+        this.msg_id = options.msg_id;
+        this.views = options.views;
+        this.forwards = options.forwards;
+    }
 }
 
-export interface PredicateStatsBroadcastStats {
-    _: 'stats.broadcastStats'
+export class PredicateStatsBroadcastStats {
+    _ = 'stats.broadcastStats' as const
     period: StatsDateRangeDays
     followers: StatsAbsValueAndPrev
     views_per_post: StatsAbsValueAndPrev
@@ -5405,31 +11635,86 @@ export interface PredicateStatsBroadcastStats {
     new_followers_by_source_graph: StatsGraph
     languages_graph: StatsGraph
     recent_message_interactions: MessageInteractionCounters[]
+    constructor(options: {
+        period: StatsDateRangeDays
+        followers: StatsAbsValueAndPrev
+        views_per_post: StatsAbsValueAndPrev
+        shares_per_post: StatsAbsValueAndPrev
+        enabled_notifications: StatsPercentValue
+        growth_graph: StatsGraph
+        followers_graph: StatsGraph
+        mute_graph: StatsGraph
+        top_hours_graph: StatsGraph
+        interactions_graph: StatsGraph
+        iv_interactions_graph: StatsGraph
+        views_by_source_graph: StatsGraph
+        new_followers_by_source_graph: StatsGraph
+        languages_graph: StatsGraph
+        recent_message_interactions: MessageInteractionCounters[]
+    }) {
+        this.period = options.period;
+        this.followers = options.followers;
+        this.views_per_post = options.views_per_post;
+        this.shares_per_post = options.shares_per_post;
+        this.enabled_notifications = options.enabled_notifications;
+        this.growth_graph = options.growth_graph;
+        this.followers_graph = options.followers_graph;
+        this.mute_graph = options.mute_graph;
+        this.top_hours_graph = options.top_hours_graph;
+        this.interactions_graph = options.interactions_graph;
+        this.iv_interactions_graph = options.iv_interactions_graph;
+        this.views_by_source_graph = options.views_by_source_graph;
+        this.new_followers_by_source_graph = options.new_followers_by_source_graph;
+        this.languages_graph = options.languages_graph;
+        this.recent_message_interactions = options.recent_message_interactions;
+    }
 }
 
-export interface PredicateInputMediaDice {
-    _: 'inputMediaDice'
+export class PredicateInputMediaDice {
+    _ = 'inputMediaDice' as const
     emoticon: string
+    constructor(options: {
+        emoticon: string
+    }) {
+        this.emoticon = options.emoticon;
+    }
 }
 
-export interface PredicateMessageMediaDice {
-    _: 'messageMediaDice'
+export class PredicateMessageMediaDice {
+    _ = 'messageMediaDice' as const
     value: number
     emoticon: string
+    constructor(options: {
+        value: number
+        emoticon: string
+    }) {
+        this.value = options.value;
+        this.emoticon = options.emoticon;
+    }
 }
 
-export interface PredicateInputStickerSetDice {
-    _: 'inputStickerSetDice'
+export class PredicateInputStickerSetDice {
+    _ = 'inputStickerSetDice' as const
     emoticon: string
+    constructor(options: {
+        emoticon: string
+    }) {
+        this.emoticon = options.emoticon;
+    }
 }
 
-export interface PredicateHelpPromoDataEmpty {
-    _: 'help.promoDataEmpty'
+export class PredicateHelpPromoDataEmpty {
+    _ = 'help.promoDataEmpty' as const
     expires: number
+    constructor(options: {
+        expires: number
+    }) {
+        this.expires = options.expires;
+    }
 }
 
-export interface PredicateHelpPromoData {
-    _: 'help.promoData'
+export class PredicateHelpPromoData {
+    _ = 'help.promoData' as const
     proxy?: true
     expires: number
     peer: Peer
@@ -5437,52 +11722,123 @@ export interface PredicateHelpPromoData {
     users: User[]
     psa_type?: string
     psa_message?: string
+    constructor(options: {
+        proxy?: true
+        expires: number
+        peer: Peer
+        chats: Chat[]
+        users: User[]
+        psa_type?: string
+        psa_message?: string
+    }) {
+        this.proxy = options.proxy;
+        this.expires = options.expires;
+        this.peer = options.peer;
+        this.chats = options.chats;
+        this.users = options.users;
+        this.psa_type = options.psa_type;
+        this.psa_message = options.psa_message;
+    }
 }
 
-export interface PredicateVideoSize {
-    _: 'videoSize'
+export class PredicateVideoSize {
+    _ = 'videoSize' as const
     type: string
     w: number
     h: number
     size: number
     video_start_ts?: number
+    constructor(options: {
+        type: string
+        w: number
+        h: number
+        size: number
+        video_start_ts?: number
+    }) {
+        this.type = options.type;
+        this.w = options.w;
+        this.h = options.h;
+        this.size = options.size;
+        this.video_start_ts = options.video_start_ts;
+    }
 }
 
-export interface PredicateUpdatePhoneCallSignalingData {
-    _: 'updatePhoneCallSignalingData'
+export class PredicateUpdatePhoneCallSignalingData {
+    _ = 'updatePhoneCallSignalingData' as const
     phone_call_id: string
     data: Uint8Array
+    constructor(options: {
+        phone_call_id: string
+        data: Uint8Array
+    }) {
+        this.phone_call_id = options.phone_call_id;
+        this.data = options.data;
+    }
 }
 
-export interface PredicateChatInvitePeek {
-    _: 'chatInvitePeek'
+export class PredicateChatInvitePeek {
+    _ = 'chatInvitePeek' as const
     chat: Chat
     expires: number
+    constructor(options: {
+        chat: Chat
+        expires: number
+    }) {
+        this.chat = options.chat;
+        this.expires = options.expires;
+    }
 }
 
-export interface PredicateStatsGroupTopPoster {
-    _: 'statsGroupTopPoster'
+export class PredicateStatsGroupTopPoster {
+    _ = 'statsGroupTopPoster' as const
     user_id: string
     messages: number
     avg_chars: number
+    constructor(options: {
+        user_id: string
+        messages: number
+        avg_chars: number
+    }) {
+        this.user_id = options.user_id;
+        this.messages = options.messages;
+        this.avg_chars = options.avg_chars;
+    }
 }
 
-export interface PredicateStatsGroupTopAdmin {
-    _: 'statsGroupTopAdmin'
+export class PredicateStatsGroupTopAdmin {
+    _ = 'statsGroupTopAdmin' as const
     user_id: string
     deleted: number
     kicked: number
     banned: number
+    constructor(options: {
+        user_id: string
+        deleted: number
+        kicked: number
+        banned: number
+    }) {
+        this.user_id = options.user_id;
+        this.deleted = options.deleted;
+        this.kicked = options.kicked;
+        this.banned = options.banned;
+    }
 }
 
-export interface PredicateStatsGroupTopInviter {
-    _: 'statsGroupTopInviter'
+export class PredicateStatsGroupTopInviter {
+    _ = 'statsGroupTopInviter' as const
     user_id: string
     invitations: number
+    constructor(options: {
+        user_id: string
+        invitations: number
+    }) {
+        this.user_id = options.user_id;
+        this.invitations = options.invitations;
+    }
 }
 
-export interface PredicateStatsMegagroupStats {
-    _: 'stats.megagroupStats'
+export class PredicateStatsMegagroupStats {
+    _ = 'stats.megagroupStats' as const
     period: StatsDateRangeDays
     members: StatsAbsValueAndPrev
     messages: StatsAbsValueAndPrev
@@ -5500,15 +11856,57 @@ export interface PredicateStatsMegagroupStats {
     top_admins: StatsGroupTopAdmin[]
     top_inviters: StatsGroupTopInviter[]
     users: User[]
+    constructor(options: {
+        period: StatsDateRangeDays
+        members: StatsAbsValueAndPrev
+        messages: StatsAbsValueAndPrev
+        viewers: StatsAbsValueAndPrev
+        posters: StatsAbsValueAndPrev
+        growth_graph: StatsGraph
+        members_graph: StatsGraph
+        new_members_by_source_graph: StatsGraph
+        languages_graph: StatsGraph
+        messages_graph: StatsGraph
+        actions_graph: StatsGraph
+        top_hours_graph: StatsGraph
+        weekdays_graph: StatsGraph
+        top_posters: StatsGroupTopPoster[]
+        top_admins: StatsGroupTopAdmin[]
+        top_inviters: StatsGroupTopInviter[]
+        users: User[]
+    }) {
+        this.period = options.period;
+        this.members = options.members;
+        this.messages = options.messages;
+        this.viewers = options.viewers;
+        this.posters = options.posters;
+        this.growth_graph = options.growth_graph;
+        this.members_graph = options.members_graph;
+        this.new_members_by_source_graph = options.new_members_by_source_graph;
+        this.languages_graph = options.languages_graph;
+        this.messages_graph = options.messages_graph;
+        this.actions_graph = options.actions_graph;
+        this.top_hours_graph = options.top_hours_graph;
+        this.weekdays_graph = options.weekdays_graph;
+        this.top_posters = options.top_posters;
+        this.top_admins = options.top_admins;
+        this.top_inviters = options.top_inviters;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateGlobalPrivacySettings {
-    _: 'globalPrivacySettings'
+export class PredicateGlobalPrivacySettings {
+    _ = 'globalPrivacySettings' as const
     archive_and_mute_new_noncontact_peers?: boolean
+    constructor(options: {
+        archive_and_mute_new_noncontact_peers?: boolean
+    } = {}) {
+        this.archive_and_mute_new_noncontact_peers = options.archive_and_mute_new_noncontact_peers;
+    }
 }
 
-export interface PredicatePhoneConnectionWebrtc {
-    _: 'phoneConnectionWebrtc'
+export class PredicatePhoneConnectionWebrtc {
+    _ = 'phoneConnectionWebrtc' as const
     turn?: true
     stun?: true
     id: string
@@ -5517,81 +11915,189 @@ export interface PredicatePhoneConnectionWebrtc {
     port: number
     username: string
     password: string
+    constructor(options: {
+        turn?: true
+        stun?: true
+        id: string
+        ip: string
+        ipv6: string
+        port: number
+        username: string
+        password: string
+    }) {
+        this.turn = options.turn;
+        this.stun = options.stun;
+        this.id = options.id;
+        this.ip = options.ip;
+        this.ipv6 = options.ipv6;
+        this.port = options.port;
+        this.username = options.username;
+        this.password = options.password;
+    }
 }
 
-export interface PredicateHelpCountryCode {
-    _: 'help.countryCode'
+export class PredicateHelpCountryCode {
+    _ = 'help.countryCode' as const
     country_code: string
     prefixes?: string[]
     patterns?: string[]
+    constructor(options: {
+        country_code: string
+        prefixes?: string[]
+        patterns?: string[]
+    }) {
+        this.country_code = options.country_code;
+        this.prefixes = options.prefixes;
+        this.patterns = options.patterns;
+    }
 }
 
-export interface PredicateHelpCountry {
-    _: 'help.country'
+export class PredicateHelpCountry {
+    _ = 'help.country' as const
     hidden?: true
     iso2: string
     default_name: string
     name?: string
     country_codes: HelpCountryCode[]
+    constructor(options: {
+        hidden?: true
+        iso2: string
+        default_name: string
+        name?: string
+        country_codes: HelpCountryCode[]
+    }) {
+        this.hidden = options.hidden;
+        this.iso2 = options.iso2;
+        this.default_name = options.default_name;
+        this.name = options.name;
+        this.country_codes = options.country_codes;
+    }
 }
 
-export interface PredicateHelpCountriesListNotModified {
-    _: 'help.countriesListNotModified'
+export class PredicateHelpCountriesListNotModified {
+    _ = 'help.countriesListNotModified' as const
 }
 
-export interface PredicateHelpCountriesList {
-    _: 'help.countriesList'
+export class PredicateHelpCountriesList {
+    _ = 'help.countriesList' as const
     countries: HelpCountry[]
     hash: number
+    constructor(options: {
+        countries: HelpCountry[]
+        hash: number
+    }) {
+        this.countries = options.countries;
+        this.hash = options.hash;
+    }
 }
 
-export interface PredicateMessageViews {
-    _: 'messageViews'
+export class PredicateMessageViews {
+    _ = 'messageViews' as const
     views?: number
     forwards?: number
     replies?: MessageReplies
+    constructor(options: {
+        views?: number
+        forwards?: number
+        replies?: MessageReplies
+    } = {}) {
+        this.views = options.views;
+        this.forwards = options.forwards;
+        this.replies = options.replies;
+    }
 }
 
-export interface PredicateUpdateChannelMessageForwards {
-    _: 'updateChannelMessageForwards'
+export class PredicateUpdateChannelMessageForwards {
+    _ = 'updateChannelMessageForwards' as const
     channel_id: string
     id: number
     forwards: number
+    constructor(options: {
+        channel_id: string
+        id: number
+        forwards: number
+    }) {
+        this.channel_id = options.channel_id;
+        this.id = options.id;
+        this.forwards = options.forwards;
+    }
 }
 
-export interface PredicatePhotoSizeProgressive {
-    _: 'photoSizeProgressive'
+export class PredicatePhotoSizeProgressive {
+    _ = 'photoSizeProgressive' as const
     type: string
     w: number
     h: number
     sizes: number[]
+    constructor(options: {
+        type: string
+        w: number
+        h: number
+        sizes: number[]
+    }) {
+        this.type = options.type;
+        this.w = options.w;
+        this.h = options.h;
+        this.sizes = options.sizes;
+    }
 }
 
-export interface PredicateMessagesMessageViews {
-    _: 'messages.messageViews'
+export class PredicateMessagesMessageViews {
+    _ = 'messages.messageViews' as const
     views: MessageViews[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        views: MessageViews[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.views = options.views;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateUpdateReadChannelDiscussionInbox {
-    _: 'updateReadChannelDiscussionInbox'
+export class PredicateUpdateReadChannelDiscussionInbox {
+    _ = 'updateReadChannelDiscussionInbox' as const
     channel_id: string
     top_msg_id: number
     read_max_id: number
     broadcast_id?: string
     broadcast_post?: number
+    constructor(options: {
+        channel_id: string
+        top_msg_id: number
+        read_max_id: number
+        broadcast_id?: string
+        broadcast_post?: number
+    }) {
+        this.channel_id = options.channel_id;
+        this.top_msg_id = options.top_msg_id;
+        this.read_max_id = options.read_max_id;
+        this.broadcast_id = options.broadcast_id;
+        this.broadcast_post = options.broadcast_post;
+    }
 }
 
-export interface PredicateUpdateReadChannelDiscussionOutbox {
-    _: 'updateReadChannelDiscussionOutbox'
+export class PredicateUpdateReadChannelDiscussionOutbox {
+    _ = 'updateReadChannelDiscussionOutbox' as const
     channel_id: string
     top_msg_id: number
     read_max_id: number
+    constructor(options: {
+        channel_id: string
+        top_msg_id: number
+        read_max_id: number
+    }) {
+        this.channel_id = options.channel_id;
+        this.top_msg_id = options.top_msg_id;
+        this.read_max_id = options.read_max_id;
+    }
 }
 
-export interface PredicateMessagesDiscussionMessage {
-    _: 'messages.discussionMessage'
+export class PredicateMessagesDiscussionMessage {
+    _ = 'messages.discussionMessage' as const
     messages: Message[]
     max_id?: number
     read_inbox_max_id?: number
@@ -5599,18 +12105,46 @@ export interface PredicateMessagesDiscussionMessage {
     unread_count: number
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        messages: Message[]
+        max_id?: number
+        read_inbox_max_id?: number
+        read_outbox_max_id?: number
+        unread_count: number
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.messages = options.messages;
+        this.max_id = options.max_id;
+        this.read_inbox_max_id = options.read_inbox_max_id;
+        this.read_outbox_max_id = options.read_outbox_max_id;
+        this.unread_count = options.unread_count;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateMessageReplyHeader {
-    _: 'messageReplyHeader'
+export class PredicateMessageReplyHeader {
+    _ = 'messageReplyHeader' as const
     reply_to_scheduled?: true
     reply_to_msg_id: number
     reply_to_peer_id?: Peer
     reply_to_top_id?: number
+    constructor(options: {
+        reply_to_scheduled?: true
+        reply_to_msg_id: number
+        reply_to_peer_id?: Peer
+        reply_to_top_id?: number
+    }) {
+        this.reply_to_scheduled = options.reply_to_scheduled;
+        this.reply_to_msg_id = options.reply_to_msg_id;
+        this.reply_to_peer_id = options.reply_to_peer_id;
+        this.reply_to_top_id = options.reply_to_top_id;
+    }
 }
 
-export interface PredicateMessageReplies {
-    _: 'messageReplies'
+export class PredicateMessageReplies {
+    _ = 'messageReplies' as const
     comments?: true
     replies: number
     replies_pts: number
@@ -5618,98 +12152,215 @@ export interface PredicateMessageReplies {
     channel_id?: string
     max_id?: number
     read_max_id?: number
+    constructor(options: {
+        comments?: true
+        replies: number
+        replies_pts: number
+        recent_repliers?: Peer[]
+        channel_id?: string
+        max_id?: number
+        read_max_id?: number
+    }) {
+        this.comments = options.comments;
+        this.replies = options.replies;
+        this.replies_pts = options.replies_pts;
+        this.recent_repliers = options.recent_repliers;
+        this.channel_id = options.channel_id;
+        this.max_id = options.max_id;
+        this.read_max_id = options.read_max_id;
+    }
 }
 
-export interface PredicateUpdatePeerBlocked {
-    _: 'updatePeerBlocked'
+export class PredicateUpdatePeerBlocked {
+    _ = 'updatePeerBlocked' as const
     peer_id: Peer
     blocked: boolean
+    constructor(options: {
+        peer_id: Peer
+        blocked: boolean
+    }) {
+        this.peer_id = options.peer_id;
+        this.blocked = options.blocked;
+    }
 }
 
-export interface PredicatePeerBlocked {
-    _: 'peerBlocked'
+export class PredicatePeerBlocked {
+    _ = 'peerBlocked' as const
     peer_id: Peer
     date: number
+    constructor(options: {
+        peer_id: Peer
+        date: number
+    }) {
+        this.peer_id = options.peer_id;
+        this.date = options.date;
+    }
 }
 
-export interface PredicateUpdateChannelUserTyping {
-    _: 'updateChannelUserTyping'
+export class PredicateUpdateChannelUserTyping {
+    _ = 'updateChannelUserTyping' as const
     channel_id: string
     top_msg_id?: number
     from_id: Peer
     action: SendMessageAction
+    constructor(options: {
+        channel_id: string
+        top_msg_id?: number
+        from_id: Peer
+        action: SendMessageAction
+    }) {
+        this.channel_id = options.channel_id;
+        this.top_msg_id = options.top_msg_id;
+        this.from_id = options.from_id;
+        this.action = options.action;
+    }
 }
 
-export interface PredicateInputMessageCallbackQuery {
-    _: 'inputMessageCallbackQuery'
+export class PredicateInputMessageCallbackQuery {
+    _ = 'inputMessageCallbackQuery' as const
     id: number
     query_id: string
+    constructor(options: {
+        id: number
+        query_id: string
+    }) {
+        this.id = options.id;
+        this.query_id = options.query_id;
+    }
 }
 
-export interface PredicateChannelParticipantLeft {
-    _: 'channelParticipantLeft'
+export class PredicateChannelParticipantLeft {
+    _ = 'channelParticipantLeft' as const
     peer: Peer
+    constructor(options: {
+        peer: Peer
+    }) {
+        this.peer = options.peer;
+    }
 }
 
-export interface PredicateChannelParticipantsMentions {
-    _: 'channelParticipantsMentions'
+export class PredicateChannelParticipantsMentions {
+    _ = 'channelParticipantsMentions' as const
     q?: string
     top_msg_id?: number
+    constructor(options: {
+        q?: string
+        top_msg_id?: number
+    } = {}) {
+        this.q = options.q;
+        this.top_msg_id = options.top_msg_id;
+    }
 }
 
-export interface PredicateUpdatePinnedMessages {
-    _: 'updatePinnedMessages'
+export class PredicateUpdatePinnedMessages {
+    _ = 'updatePinnedMessages' as const
     pinned?: true
     peer: Peer
     messages: number[]
     pts: number
     pts_count: number
+    constructor(options: {
+        pinned?: true
+        peer: Peer
+        messages: number[]
+        pts: number
+        pts_count: number
+    }) {
+        this.pinned = options.pinned;
+        this.peer = options.peer;
+        this.messages = options.messages;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+    }
 }
 
-export interface PredicateUpdatePinnedChannelMessages {
-    _: 'updatePinnedChannelMessages'
+export class PredicateUpdatePinnedChannelMessages {
+    _ = 'updatePinnedChannelMessages' as const
     pinned?: true
     channel_id: string
     messages: number[]
     pts: number
     pts_count: number
+    constructor(options: {
+        pinned?: true
+        channel_id: string
+        messages: number[]
+        pts: number
+        pts_count: number
+    }) {
+        this.pinned = options.pinned;
+        this.channel_id = options.channel_id;
+        this.messages = options.messages;
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+    }
 }
 
-export interface PredicateInputMessagesFilterPinned {
-    _: 'inputMessagesFilterPinned'
+export class PredicateInputMessagesFilterPinned {
+    _ = 'inputMessagesFilterPinned' as const
 }
 
-export interface PredicateStatsMessageStats {
-    _: 'stats.messageStats'
+export class PredicateStatsMessageStats {
+    _ = 'stats.messageStats' as const
     views_graph: StatsGraph
+    constructor(options: {
+        views_graph: StatsGraph
+    }) {
+        this.views_graph = options.views_graph;
+    }
 }
 
-export interface PredicateMessageActionGeoProximityReached {
-    _: 'messageActionGeoProximityReached'
+export class PredicateMessageActionGeoProximityReached {
+    _ = 'messageActionGeoProximityReached' as const
     from_id: Peer
     to_id: Peer
     distance: number
+    constructor(options: {
+        from_id: Peer
+        to_id: Peer
+        distance: number
+    }) {
+        this.from_id = options.from_id;
+        this.to_id = options.to_id;
+        this.distance = options.distance;
+    }
 }
 
-export interface PredicatePhotoPathSize {
-    _: 'photoPathSize'
+export class PredicatePhotoPathSize {
+    _ = 'photoPathSize' as const
     type: string
     bytes: Uint8Array
+    constructor(options: {
+        type: string
+        bytes: Uint8Array
+    }) {
+        this.type = options.type;
+        this.bytes = options.bytes;
+    }
 }
 
-export interface PredicateSpeakingInGroupCallAction {
-    _: 'speakingInGroupCallAction'
+export class PredicateSpeakingInGroupCallAction {
+    _ = 'speakingInGroupCallAction' as const
 }
 
-export interface PredicateGroupCallDiscarded {
-    _: 'groupCallDiscarded'
+export class PredicateGroupCallDiscarded {
+    _ = 'groupCallDiscarded' as const
     id: string
     access_hash: string
     duration: number
+    constructor(options: {
+        id: string
+        access_hash: string
+        duration: number
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.duration = options.duration;
+    }
 }
 
-export interface PredicateGroupCall {
-    _: 'groupCall'
+export class PredicateGroupCall {
+    _ = 'groupCall' as const
     join_muted?: true
     can_change_join_muted?: true
     join_date_asc?: true
@@ -5728,28 +12379,88 @@ export interface PredicateGroupCall {
     unmuted_video_count?: number
     unmuted_video_limit: number
     version: number
+    constructor(options: {
+        join_muted?: true
+        can_change_join_muted?: true
+        join_date_asc?: true
+        schedule_start_subscribed?: true
+        can_start_video?: true
+        record_video_active?: true
+        rtmp_stream?: true
+        listeners_hidden?: true
+        id: string
+        access_hash: string
+        participants_count: number
+        title?: string
+        stream_dc_id?: number
+        record_start_date?: number
+        schedule_date?: number
+        unmuted_video_count?: number
+        unmuted_video_limit: number
+        version: number
+    }) {
+        this.join_muted = options.join_muted;
+        this.can_change_join_muted = options.can_change_join_muted;
+        this.join_date_asc = options.join_date_asc;
+        this.schedule_start_subscribed = options.schedule_start_subscribed;
+        this.can_start_video = options.can_start_video;
+        this.record_video_active = options.record_video_active;
+        this.rtmp_stream = options.rtmp_stream;
+        this.listeners_hidden = options.listeners_hidden;
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.participants_count = options.participants_count;
+        this.title = options.title;
+        this.stream_dc_id = options.stream_dc_id;
+        this.record_start_date = options.record_start_date;
+        this.schedule_date = options.schedule_date;
+        this.unmuted_video_count = options.unmuted_video_count;
+        this.unmuted_video_limit = options.unmuted_video_limit;
+        this.version = options.version;
+    }
 }
 
-export interface PredicateInputGroupCall {
-    _: 'inputGroupCall'
+export class PredicateInputGroupCall {
+    _ = 'inputGroupCall' as const
     id: string
     access_hash: string
+    constructor(options: {
+        id: string
+        access_hash: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicateMessageActionGroupCall {
-    _: 'messageActionGroupCall'
+export class PredicateMessageActionGroupCall {
+    _ = 'messageActionGroupCall' as const
     call: InputGroupCall
     duration?: number
+    constructor(options: {
+        call: InputGroupCall
+        duration?: number
+    }) {
+        this.call = options.call;
+        this.duration = options.duration;
+    }
 }
 
-export interface PredicateMessageActionInviteToGroupCall {
-    _: 'messageActionInviteToGroupCall'
+export class PredicateMessageActionInviteToGroupCall {
+    _ = 'messageActionInviteToGroupCall' as const
     call: InputGroupCall
     users: string[]
+    constructor(options: {
+        call: InputGroupCall
+        users: string[]
+    }) {
+        this.call = options.call;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateGroupCallParticipant {
-    _: 'groupCallParticipant'
+export class PredicateGroupCallParticipant {
+    _ = 'groupCallParticipant' as const
     muted?: true
     left?: true
     can_self_unmute?: true
@@ -5769,137 +12480,299 @@ export interface PredicateGroupCallParticipant {
     raise_hand_rating?: string
     video?: GroupCallParticipantVideo
     presentation?: GroupCallParticipantVideo
+    constructor(options: {
+        muted?: true
+        left?: true
+        can_self_unmute?: true
+        just_joined?: true
+        versioned?: true
+        min?: true
+        muted_by_you?: true
+        volume_by_admin?: true
+        self?: true
+        video_joined?: true
+        peer: Peer
+        date: number
+        active_date?: number
+        source: number
+        volume?: number
+        about?: string
+        raise_hand_rating?: string
+        video?: GroupCallParticipantVideo
+        presentation?: GroupCallParticipantVideo
+    }) {
+        this.muted = options.muted;
+        this.left = options.left;
+        this.can_self_unmute = options.can_self_unmute;
+        this.just_joined = options.just_joined;
+        this.versioned = options.versioned;
+        this.min = options.min;
+        this.muted_by_you = options.muted_by_you;
+        this.volume_by_admin = options.volume_by_admin;
+        this.self = options.self;
+        this.video_joined = options.video_joined;
+        this.peer = options.peer;
+        this.date = options.date;
+        this.active_date = options.active_date;
+        this.source = options.source;
+        this.volume = options.volume;
+        this.about = options.about;
+        this.raise_hand_rating = options.raise_hand_rating;
+        this.video = options.video;
+        this.presentation = options.presentation;
+    }
 }
 
-export interface PredicateUpdateChat {
-    _: 'updateChat'
+export class PredicateUpdateChat {
+    _ = 'updateChat' as const
     chat_id: string
+    constructor(options: {
+        chat_id: string
+    }) {
+        this.chat_id = options.chat_id;
+    }
 }
 
-export interface PredicateUpdateGroupCallParticipants {
-    _: 'updateGroupCallParticipants'
+export class PredicateUpdateGroupCallParticipants {
+    _ = 'updateGroupCallParticipants' as const
     call: InputGroupCall
     participants: GroupCallParticipant[]
     version: number
+    constructor(options: {
+        call: InputGroupCall
+        participants: GroupCallParticipant[]
+        version: number
+    }) {
+        this.call = options.call;
+        this.participants = options.participants;
+        this.version = options.version;
+    }
 }
 
-export interface PredicateUpdateGroupCall {
-    _: 'updateGroupCall'
+export class PredicateUpdateGroupCall {
+    _ = 'updateGroupCall' as const
     chat_id: string
     call: GroupCall
+    constructor(options: {
+        chat_id: string
+        call: GroupCall
+    }) {
+        this.chat_id = options.chat_id;
+        this.call = options.call;
+    }
 }
 
-export interface PredicatePhoneGroupCall {
-    _: 'phone.groupCall'
+export class PredicatePhoneGroupCall {
+    _ = 'phone.groupCall' as const
     call: GroupCall
     participants: GroupCallParticipant[]
     participants_next_offset: string
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        call: GroupCall
+        participants: GroupCallParticipant[]
+        participants_next_offset: string
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.call = options.call;
+        this.participants = options.participants;
+        this.participants_next_offset = options.participants_next_offset;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicatePhoneGroupParticipants {
-    _: 'phone.groupParticipants'
+export class PredicatePhoneGroupParticipants {
+    _ = 'phone.groupParticipants' as const
     count: number
     participants: GroupCallParticipant[]
     next_offset: string
     chats: Chat[]
     users: User[]
     version: number
+    constructor(options: {
+        count: number
+        participants: GroupCallParticipant[]
+        next_offset: string
+        chats: Chat[]
+        users: User[]
+        version: number
+    }) {
+        this.count = options.count;
+        this.participants = options.participants;
+        this.next_offset = options.next_offset;
+        this.chats = options.chats;
+        this.users = options.users;
+        this.version = options.version;
+    }
 }
 
-export interface PredicateInlineQueryPeerTypeSameBotPM {
-    _: 'inlineQueryPeerTypeSameBotPM'
+export class PredicateInlineQueryPeerTypeSameBotPM {
+    _ = 'inlineQueryPeerTypeSameBotPM' as const
 }
 
-export interface PredicateInlineQueryPeerTypePM {
-    _: 'inlineQueryPeerTypePM'
+export class PredicateInlineQueryPeerTypePM {
+    _ = 'inlineQueryPeerTypePM' as const
 }
 
-export interface PredicateInlineQueryPeerTypeChat {
-    _: 'inlineQueryPeerTypeChat'
+export class PredicateInlineQueryPeerTypeChat {
+    _ = 'inlineQueryPeerTypeChat' as const
 }
 
-export interface PredicateInlineQueryPeerTypeMegagroup {
-    _: 'inlineQueryPeerTypeMegagroup'
+export class PredicateInlineQueryPeerTypeMegagroup {
+    _ = 'inlineQueryPeerTypeMegagroup' as const
 }
 
-export interface PredicateInlineQueryPeerTypeBroadcast {
-    _: 'inlineQueryPeerTypeBroadcast'
+export class PredicateInlineQueryPeerTypeBroadcast {
+    _ = 'inlineQueryPeerTypeBroadcast' as const
 }
 
-export interface PredicateChannelAdminLogEventActionStartGroupCall {
-    _: 'channelAdminLogEventActionStartGroupCall'
+export class PredicateChannelAdminLogEventActionStartGroupCall {
+    _ = 'channelAdminLogEventActionStartGroupCall' as const
     call: InputGroupCall
+    constructor(options: {
+        call: InputGroupCall
+    }) {
+        this.call = options.call;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionDiscardGroupCall {
-    _: 'channelAdminLogEventActionDiscardGroupCall'
+export class PredicateChannelAdminLogEventActionDiscardGroupCall {
+    _ = 'channelAdminLogEventActionDiscardGroupCall' as const
     call: InputGroupCall
+    constructor(options: {
+        call: InputGroupCall
+    }) {
+        this.call = options.call;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionParticipantMute {
-    _: 'channelAdminLogEventActionParticipantMute'
+export class PredicateChannelAdminLogEventActionParticipantMute {
+    _ = 'channelAdminLogEventActionParticipantMute' as const
     participant: GroupCallParticipant
+    constructor(options: {
+        participant: GroupCallParticipant
+    }) {
+        this.participant = options.participant;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionParticipantUnmute {
-    _: 'channelAdminLogEventActionParticipantUnmute'
+export class PredicateChannelAdminLogEventActionParticipantUnmute {
+    _ = 'channelAdminLogEventActionParticipantUnmute' as const
     participant: GroupCallParticipant
+    constructor(options: {
+        participant: GroupCallParticipant
+    }) {
+        this.participant = options.participant;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionToggleGroupCallSetting {
-    _: 'channelAdminLogEventActionToggleGroupCallSetting'
+export class PredicateChannelAdminLogEventActionToggleGroupCallSetting {
+    _ = 'channelAdminLogEventActionToggleGroupCallSetting' as const
     join_muted: boolean
+    constructor(options: {
+        join_muted: boolean
+    }) {
+        this.join_muted = options.join_muted;
+    }
 }
 
-export interface PredicateInputPaymentCredentialsGooglePay {
-    _: 'inputPaymentCredentialsGooglePay'
+export class PredicateInputPaymentCredentialsGooglePay {
+    _ = 'inputPaymentCredentialsGooglePay' as const
     payment_token: DataJSON
+    constructor(options: {
+        payment_token: DataJSON
+    }) {
+        this.payment_token = options.payment_token;
+    }
 }
 
-export interface PredicateMessagesHistoryImport {
-    _: 'messages.historyImport'
+export class PredicateMessagesHistoryImport {
+    _ = 'messages.historyImport' as const
     id: string
+    constructor(options: {
+        id: string
+    }) {
+        this.id = options.id;
+    }
 }
 
-export interface PredicateSendMessageHistoryImportAction {
-    _: 'sendMessageHistoryImportAction'
+export class PredicateSendMessageHistoryImportAction {
+    _ = 'sendMessageHistoryImportAction' as const
     progress: number
+    constructor(options: {
+        progress: number
+    }) {
+        this.progress = options.progress;
+    }
 }
 
-export interface PredicateMessagesHistoryImportParsed {
-    _: 'messages.historyImportParsed'
+export class PredicateMessagesHistoryImportParsed {
+    _ = 'messages.historyImportParsed' as const
     pm?: true
     group?: true
     title?: string
+    constructor(options: {
+        pm?: true
+        group?: true
+        title?: string
+    } = {}) {
+        this.pm = options.pm;
+        this.group = options.group;
+        this.title = options.title;
+    }
 }
 
-export interface PredicateInputReportReasonFake {
-    _: 'inputReportReasonFake'
+export class PredicateInputReportReasonFake {
+    _ = 'inputReportReasonFake' as const
 }
 
-export interface PredicateMessagesAffectedFoundMessages {
-    _: 'messages.affectedFoundMessages'
+export class PredicateMessagesAffectedFoundMessages {
+    _ = 'messages.affectedFoundMessages' as const
     pts: number
     pts_count: number
     offset: number
     messages: number[]
+    constructor(options: {
+        pts: number
+        pts_count: number
+        offset: number
+        messages: number[]
+    }) {
+        this.pts = options.pts;
+        this.pts_count = options.pts_count;
+        this.offset = options.offset;
+        this.messages = options.messages;
+    }
 }
 
-export interface PredicateMessageActionSetMessagesTTL {
-    _: 'messageActionSetMessagesTTL'
+export class PredicateMessageActionSetMessagesTTL {
+    _ = 'messageActionSetMessagesTTL' as const
     period: number
+    constructor(options: {
+        period: number
+    }) {
+        this.period = options.period;
+    }
 }
 
-export interface PredicateUpdatePeerHistoryTTL {
-    _: 'updatePeerHistoryTTL'
+export class PredicateUpdatePeerHistoryTTL {
+    _ = 'updatePeerHistoryTTL' as const
     peer: Peer
     ttl_period?: number
+    constructor(options: {
+        peer: Peer
+        ttl_period?: number
+    }) {
+        this.peer = options.peer;
+        this.ttl_period = options.ttl_period;
+    }
 }
 
-export interface PredicateUpdateChatParticipant {
-    _: 'updateChatParticipant'
+export class PredicateUpdateChatParticipant {
+    _ = 'updateChatParticipant' as const
     chat_id: string
     date: number
     actor_id: string
@@ -5908,10 +12781,29 @@ export interface PredicateUpdateChatParticipant {
     new_participant?: ChatParticipant
     invite?: ExportedChatInvite
     qts: number
+    constructor(options: {
+        chat_id: string
+        date: number
+        actor_id: string
+        user_id: string
+        prev_participant?: ChatParticipant
+        new_participant?: ChatParticipant
+        invite?: ExportedChatInvite
+        qts: number
+    }) {
+        this.chat_id = options.chat_id;
+        this.date = options.date;
+        this.actor_id = options.actor_id;
+        this.user_id = options.user_id;
+        this.prev_participant = options.prev_participant;
+        this.new_participant = options.new_participant;
+        this.invite = options.invite;
+        this.qts = options.qts;
+    }
 }
 
-export interface PredicateUpdateChannelParticipant {
-    _: 'updateChannelParticipant'
+export class PredicateUpdateChannelParticipant {
+    _ = 'updateChannelParticipant' as const
     channel_id: string
     date: number
     actor_id: string
@@ -5920,125 +12812,284 @@ export interface PredicateUpdateChannelParticipant {
     new_participant?: ChannelParticipant
     invite?: ExportedChatInvite
     qts: number
+    constructor(options: {
+        channel_id: string
+        date: number
+        actor_id: string
+        user_id: string
+        prev_participant?: ChannelParticipant
+        new_participant?: ChannelParticipant
+        invite?: ExportedChatInvite
+        qts: number
+    }) {
+        this.channel_id = options.channel_id;
+        this.date = options.date;
+        this.actor_id = options.actor_id;
+        this.user_id = options.user_id;
+        this.prev_participant = options.prev_participant;
+        this.new_participant = options.new_participant;
+        this.invite = options.invite;
+        this.qts = options.qts;
+    }
 }
 
-export interface PredicateUpdateBotStopped {
-    _: 'updateBotStopped'
+export class PredicateUpdateBotStopped {
+    _ = 'updateBotStopped' as const
     user_id: string
     date: number
     stopped: boolean
     qts: number
+    constructor(options: {
+        user_id: string
+        date: number
+        stopped: boolean
+        qts: number
+    }) {
+        this.user_id = options.user_id;
+        this.date = options.date;
+        this.stopped = options.stopped;
+        this.qts = options.qts;
+    }
 }
 
-export interface PredicateChatInviteImporter {
-    _: 'chatInviteImporter'
+export class PredicateChatInviteImporter {
+    _ = 'chatInviteImporter' as const
     requested?: true
     user_id: string
     date: number
     about?: string
     approved_by?: string
+    constructor(options: {
+        requested?: true
+        user_id: string
+        date: number
+        about?: string
+        approved_by?: string
+    }) {
+        this.requested = options.requested;
+        this.user_id = options.user_id;
+        this.date = options.date;
+        this.about = options.about;
+        this.approved_by = options.approved_by;
+    }
 }
 
-export interface PredicateMessagesExportedChatInvites {
-    _: 'messages.exportedChatInvites'
+export class PredicateMessagesExportedChatInvites {
+    _ = 'messages.exportedChatInvites' as const
     count: number
     invites: ExportedChatInvite[]
     users: User[]
+    constructor(options: {
+        count: number
+        invites: ExportedChatInvite[]
+        users: User[]
+    }) {
+        this.count = options.count;
+        this.invites = options.invites;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateMessagesExportedChatInvite {
-    _: 'messages.exportedChatInvite'
+export class PredicateMessagesExportedChatInvite {
+    _ = 'messages.exportedChatInvite' as const
     invite: ExportedChatInvite
     users: User[]
+    constructor(options: {
+        invite: ExportedChatInvite
+        users: User[]
+    }) {
+        this.invite = options.invite;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateMessagesExportedChatInviteReplaced {
-    _: 'messages.exportedChatInviteReplaced'
+export class PredicateMessagesExportedChatInviteReplaced {
+    _ = 'messages.exportedChatInviteReplaced' as const
     invite: ExportedChatInvite
     new_invite: ExportedChatInvite
     users: User[]
+    constructor(options: {
+        invite: ExportedChatInvite
+        new_invite: ExportedChatInvite
+        users: User[]
+    }) {
+        this.invite = options.invite;
+        this.new_invite = options.new_invite;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateMessagesChatInviteImporters {
-    _: 'messages.chatInviteImporters'
+export class PredicateMessagesChatInviteImporters {
+    _ = 'messages.chatInviteImporters' as const
     count: number
     importers: ChatInviteImporter[]
     users: User[]
+    constructor(options: {
+        count: number
+        importers: ChatInviteImporter[]
+        users: User[]
+    }) {
+        this.count = options.count;
+        this.importers = options.importers;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateChatAdminWithInvites {
-    _: 'chatAdminWithInvites'
+export class PredicateChatAdminWithInvites {
+    _ = 'chatAdminWithInvites' as const
     admin_id: string
     invites_count: number
     revoked_invites_count: number
+    constructor(options: {
+        admin_id: string
+        invites_count: number
+        revoked_invites_count: number
+    }) {
+        this.admin_id = options.admin_id;
+        this.invites_count = options.invites_count;
+        this.revoked_invites_count = options.revoked_invites_count;
+    }
 }
 
-export interface PredicateMessagesChatAdminsWithInvites {
-    _: 'messages.chatAdminsWithInvites'
+export class PredicateMessagesChatAdminsWithInvites {
+    _ = 'messages.chatAdminsWithInvites' as const
     admins: ChatAdminWithInvites[]
     users: User[]
+    constructor(options: {
+        admins: ChatAdminWithInvites[]
+        users: User[]
+    }) {
+        this.admins = options.admins;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionParticipantJoinByInvite {
-    _: 'channelAdminLogEventActionParticipantJoinByInvite'
+export class PredicateChannelAdminLogEventActionParticipantJoinByInvite {
+    _ = 'channelAdminLogEventActionParticipantJoinByInvite' as const
     invite: ExportedChatInvite
+    constructor(options: {
+        invite: ExportedChatInvite
+    }) {
+        this.invite = options.invite;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionExportedInviteDelete {
-    _: 'channelAdminLogEventActionExportedInviteDelete'
+export class PredicateChannelAdminLogEventActionExportedInviteDelete {
+    _ = 'channelAdminLogEventActionExportedInviteDelete' as const
     invite: ExportedChatInvite
+    constructor(options: {
+        invite: ExportedChatInvite
+    }) {
+        this.invite = options.invite;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionExportedInviteRevoke {
-    _: 'channelAdminLogEventActionExportedInviteRevoke'
+export class PredicateChannelAdminLogEventActionExportedInviteRevoke {
+    _ = 'channelAdminLogEventActionExportedInviteRevoke' as const
     invite: ExportedChatInvite
+    constructor(options: {
+        invite: ExportedChatInvite
+    }) {
+        this.invite = options.invite;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionExportedInviteEdit {
-    _: 'channelAdminLogEventActionExportedInviteEdit'
+export class PredicateChannelAdminLogEventActionExportedInviteEdit {
+    _ = 'channelAdminLogEventActionExportedInviteEdit' as const
     prev_invite: ExportedChatInvite
     new_invite: ExportedChatInvite
+    constructor(options: {
+        prev_invite: ExportedChatInvite
+        new_invite: ExportedChatInvite
+    }) {
+        this.prev_invite = options.prev_invite;
+        this.new_invite = options.new_invite;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionParticipantVolume {
-    _: 'channelAdminLogEventActionParticipantVolume'
+export class PredicateChannelAdminLogEventActionParticipantVolume {
+    _ = 'channelAdminLogEventActionParticipantVolume' as const
     participant: GroupCallParticipant
+    constructor(options: {
+        participant: GroupCallParticipant
+    }) {
+        this.participant = options.participant;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionChangeHistoryTTL {
-    _: 'channelAdminLogEventActionChangeHistoryTTL'
+export class PredicateChannelAdminLogEventActionChangeHistoryTTL {
+    _ = 'channelAdminLogEventActionChangeHistoryTTL' as const
     prev_value: number
     new_value: number
+    constructor(options: {
+        prev_value: number
+        new_value: number
+    }) {
+        this.prev_value = options.prev_value;
+        this.new_value = options.new_value;
+    }
 }
 
-export interface PredicateMessagesCheckedHistoryImportPeer {
-    _: 'messages.checkedHistoryImportPeer'
+export class PredicateMessagesCheckedHistoryImportPeer {
+    _ = 'messages.checkedHistoryImportPeer' as const
     confirm_text: string
+    constructor(options: {
+        confirm_text: string
+    }) {
+        this.confirm_text = options.confirm_text;
+    }
 }
 
-export interface PredicateInputGroupCallStream {
-    _: 'inputGroupCallStream'
+export class PredicateInputGroupCallStream {
+    _ = 'inputGroupCallStream' as const
     call: InputGroupCall
     time_ms: string
     scale: number
     video_channel?: number
     video_quality?: number
+    constructor(options: {
+        call: InputGroupCall
+        time_ms: string
+        scale: number
+        video_channel?: number
+        video_quality?: number
+    }) {
+        this.call = options.call;
+        this.time_ms = options.time_ms;
+        this.scale = options.scale;
+        this.video_channel = options.video_channel;
+        this.video_quality = options.video_quality;
+    }
 }
 
-export interface PredicatePhoneJoinAsPeers {
-    _: 'phone.joinAsPeers'
+export class PredicatePhoneJoinAsPeers {
+    _ = 'phone.joinAsPeers' as const
     peers: Peer[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        peers: Peer[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.peers = options.peers;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicatePhoneExportedGroupCallInvite {
-    _: 'phone.exportedGroupCallInvite'
+export class PredicatePhoneExportedGroupCallInvite {
+    _ = 'phone.exportedGroupCallInvite' as const
     link: string
+    constructor(options: {
+        link: string
+    }) {
+        this.link = options.link;
+    }
 }
 
-export interface PredicateInputBotInlineMessageMediaInvoice {
-    _: 'inputBotInlineMessageMediaInvoice'
+export class PredicateInputBotInlineMessageMediaInvoice {
+    _ = 'inputBotInlineMessageMediaInvoice' as const
     title: string
     description: string
     photo?: InputWebDocument
@@ -6047,10 +13098,29 @@ export interface PredicateInputBotInlineMessageMediaInvoice {
     provider: string
     provider_data: DataJSON
     reply_markup?: ReplyMarkup
+    constructor(options: {
+        title: string
+        description: string
+        photo?: InputWebDocument
+        invoice: Invoice
+        payload: Uint8Array
+        provider: string
+        provider_data: DataJSON
+        reply_markup?: ReplyMarkup
+    }) {
+        this.title = options.title;
+        this.description = options.description;
+        this.photo = options.photo;
+        this.invoice = options.invoice;
+        this.payload = options.payload;
+        this.provider = options.provider;
+        this.provider_data = options.provider_data;
+        this.reply_markup = options.reply_markup;
+    }
 }
 
-export interface PredicateBotInlineMessageMediaInvoice {
-    _: 'botInlineMessageMediaInvoice'
+export class PredicateBotInlineMessageMediaInvoice {
+    _ = 'botInlineMessageMediaInvoice' as const
     shipping_address_requested?: true
     test?: true
     title: string
@@ -6059,103 +13129,200 @@ export interface PredicateBotInlineMessageMediaInvoice {
     currency: string
     total_amount: string
     reply_markup?: ReplyMarkup
+    constructor(options: {
+        shipping_address_requested?: true
+        test?: true
+        title: string
+        description: string
+        photo?: WebDocument
+        currency: string
+        total_amount: string
+        reply_markup?: ReplyMarkup
+    }) {
+        this.shipping_address_requested = options.shipping_address_requested;
+        this.test = options.test;
+        this.title = options.title;
+        this.description = options.description;
+        this.photo = options.photo;
+        this.currency = options.currency;
+        this.total_amount = options.total_amount;
+        this.reply_markup = options.reply_markup;
+    }
 }
 
-export interface PredicateMessageActionGroupCallScheduled {
-    _: 'messageActionGroupCallScheduled'
+export class PredicateMessageActionGroupCallScheduled {
+    _ = 'messageActionGroupCallScheduled' as const
     call: InputGroupCall
     schedule_date: number
+    constructor(options: {
+        call: InputGroupCall
+        schedule_date: number
+    }) {
+        this.call = options.call;
+        this.schedule_date = options.schedule_date;
+    }
 }
 
-export interface PredicateGroupCallParticipantVideoSourceGroup {
-    _: 'groupCallParticipantVideoSourceGroup'
+export class PredicateGroupCallParticipantVideoSourceGroup {
+    _ = 'groupCallParticipantVideoSourceGroup' as const
     semantics: string
     sources: number[]
+    constructor(options: {
+        semantics: string
+        sources: number[]
+    }) {
+        this.semantics = options.semantics;
+        this.sources = options.sources;
+    }
 }
 
-export interface PredicateGroupCallParticipantVideo {
-    _: 'groupCallParticipantVideo'
+export class PredicateGroupCallParticipantVideo {
+    _ = 'groupCallParticipantVideo' as const
     paused?: true
     endpoint: string
     source_groups: GroupCallParticipantVideoSourceGroup[]
     audio_source?: number
+    constructor(options: {
+        paused?: true
+        endpoint: string
+        source_groups: GroupCallParticipantVideoSourceGroup[]
+        audio_source?: number
+    }) {
+        this.paused = options.paused;
+        this.endpoint = options.endpoint;
+        this.source_groups = options.source_groups;
+        this.audio_source = options.audio_source;
+    }
 }
 
-export interface PredicateUpdateGroupCallConnection {
-    _: 'updateGroupCallConnection'
+export class PredicateUpdateGroupCallConnection {
+    _ = 'updateGroupCallConnection' as const
     presentation?: true
     params: DataJSON
+    constructor(options: {
+        presentation?: true
+        params: DataJSON
+    }) {
+        this.presentation = options.presentation;
+        this.params = options.params;
+    }
 }
 
-export interface PredicateStickersSuggestedShortName {
-    _: 'stickers.suggestedShortName'
+export class PredicateStickersSuggestedShortName {
+    _ = 'stickers.suggestedShortName' as const
     short_name: string
+    constructor(options: {
+        short_name: string
+    }) {
+        this.short_name = options.short_name;
+    }
 }
 
-export interface PredicateBotCommandScopeDefault {
-    _: 'botCommandScopeDefault'
+export class PredicateBotCommandScopeDefault {
+    _ = 'botCommandScopeDefault' as const
 }
 
-export interface PredicateBotCommandScopeUsers {
-    _: 'botCommandScopeUsers'
+export class PredicateBotCommandScopeUsers {
+    _ = 'botCommandScopeUsers' as const
 }
 
-export interface PredicateBotCommandScopeChats {
-    _: 'botCommandScopeChats'
+export class PredicateBotCommandScopeChats {
+    _ = 'botCommandScopeChats' as const
 }
 
-export interface PredicateBotCommandScopeChatAdmins {
-    _: 'botCommandScopeChatAdmins'
+export class PredicateBotCommandScopeChatAdmins {
+    _ = 'botCommandScopeChatAdmins' as const
 }
 
-export interface PredicateBotCommandScopePeer {
-    _: 'botCommandScopePeer'
+export class PredicateBotCommandScopePeer {
+    _ = 'botCommandScopePeer' as const
     peer: InputPeer
+    constructor(options: {
+        peer: InputPeer
+    }) {
+        this.peer = options.peer;
+    }
 }
 
-export interface PredicateBotCommandScopePeerAdmins {
-    _: 'botCommandScopePeerAdmins'
+export class PredicateBotCommandScopePeerAdmins {
+    _ = 'botCommandScopePeerAdmins' as const
     peer: InputPeer
+    constructor(options: {
+        peer: InputPeer
+    }) {
+        this.peer = options.peer;
+    }
 }
 
-export interface PredicateBotCommandScopePeerUser {
-    _: 'botCommandScopePeerUser'
+export class PredicateBotCommandScopePeerUser {
+    _ = 'botCommandScopePeerUser' as const
     peer: InputPeer
     user_id: InputUser
+    constructor(options: {
+        peer: InputPeer
+        user_id: InputUser
+    }) {
+        this.peer = options.peer;
+        this.user_id = options.user_id;
+    }
 }
 
-export interface PredicateAccountResetPasswordFailedWait {
-    _: 'account.resetPasswordFailedWait'
+export class PredicateAccountResetPasswordFailedWait {
+    _ = 'account.resetPasswordFailedWait' as const
     retry_date: number
+    constructor(options: {
+        retry_date: number
+    }) {
+        this.retry_date = options.retry_date;
+    }
 }
 
-export interface PredicateAccountResetPasswordRequestedWait {
-    _: 'account.resetPasswordRequestedWait'
+export class PredicateAccountResetPasswordRequestedWait {
+    _ = 'account.resetPasswordRequestedWait' as const
     until_date: number
+    constructor(options: {
+        until_date: number
+    }) {
+        this.until_date = options.until_date;
+    }
 }
 
-export interface PredicateAccountResetPasswordOk {
-    _: 'account.resetPasswordOk'
+export class PredicateAccountResetPasswordOk {
+    _ = 'account.resetPasswordOk' as const
 }
 
-export interface PredicateUpdateBotCommands {
-    _: 'updateBotCommands'
+export class PredicateUpdateBotCommands {
+    _ = 'updateBotCommands' as const
     peer: Peer
     bot_id: string
     commands: BotCommand[]
+    constructor(options: {
+        peer: Peer
+        bot_id: string
+        commands: BotCommand[]
+    }) {
+        this.peer = options.peer;
+        this.bot_id = options.bot_id;
+        this.commands = options.commands;
+    }
 }
 
-export interface PredicateMessageActionSetChatTheme {
-    _: 'messageActionSetChatTheme'
+export class PredicateMessageActionSetChatTheme {
+    _ = 'messageActionSetChatTheme' as const
     emoticon: string
+    constructor(options: {
+        emoticon: string
+    }) {
+        this.emoticon = options.emoticon;
+    }
 }
 
-export interface PredicateSendMessageChooseStickerAction {
-    _: 'sendMessageChooseStickerAction'
+export class PredicateSendMessageChooseStickerAction {
+    _ = 'sendMessageChooseStickerAction' as const
 }
 
-export interface PredicateSponsoredMessage {
-    _: 'sponsoredMessage'
+export class PredicateSponsoredMessage {
+    _ = 'sponsoredMessage' as const
     recommended?: true
     random_id: Uint8Array
     from_id?: Peer
@@ -6165,49 +13332,115 @@ export interface PredicateSponsoredMessage {
     start_param?: string
     message: string
     entities?: MessageEntity[]
+    constructor(options: {
+        recommended?: true
+        random_id: Uint8Array
+        from_id?: Peer
+        chat_invite?: ChatInvite
+        chat_invite_hash?: string
+        channel_post?: number
+        start_param?: string
+        message: string
+        entities?: MessageEntity[]
+    }) {
+        this.recommended = options.recommended;
+        this.random_id = options.random_id;
+        this.from_id = options.from_id;
+        this.chat_invite = options.chat_invite;
+        this.chat_invite_hash = options.chat_invite_hash;
+        this.channel_post = options.channel_post;
+        this.start_param = options.start_param;
+        this.message = options.message;
+        this.entities = options.entities;
+    }
 }
 
-export interface PredicateMessagesSponsoredMessages {
-    _: 'messages.sponsoredMessages'
+export class PredicateMessagesSponsoredMessages {
+    _ = 'messages.sponsoredMessages' as const
     messages: SponsoredMessage[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        messages: SponsoredMessage[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.messages = options.messages;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateInputStickerSetAnimatedEmojiAnimations {
-    _: 'inputStickerSetAnimatedEmojiAnimations'
+export class PredicateInputStickerSetAnimatedEmojiAnimations {
+    _ = 'inputStickerSetAnimatedEmojiAnimations' as const
 }
 
-export interface PredicateSendMessageEmojiInteraction {
-    _: 'sendMessageEmojiInteraction'
+export class PredicateSendMessageEmojiInteraction {
+    _ = 'sendMessageEmojiInteraction' as const
     emoticon: string
     msg_id: number
     interaction: DataJSON
+    constructor(options: {
+        emoticon: string
+        msg_id: number
+        interaction: DataJSON
+    }) {
+        this.emoticon = options.emoticon;
+        this.msg_id = options.msg_id;
+        this.interaction = options.interaction;
+    }
 }
 
-export interface PredicateSendMessageEmojiInteractionSeen {
-    _: 'sendMessageEmojiInteractionSeen'
+export class PredicateSendMessageEmojiInteractionSeen {
+    _ = 'sendMessageEmojiInteractionSeen' as const
     emoticon: string
+    constructor(options: {
+        emoticon: string
+    }) {
+        this.emoticon = options.emoticon;
+    }
 }
 
-export interface PredicateInputBotInlineMessageID64 {
-    _: 'inputBotInlineMessageID64'
+export class PredicateInputBotInlineMessageID64 {
+    _ = 'inputBotInlineMessageID64' as const
     dc_id: number
     owner_id: string
     id: number
     access_hash: string
+    constructor(options: {
+        dc_id: number
+        owner_id: string
+        id: number
+        access_hash: string
+    }) {
+        this.dc_id = options.dc_id;
+        this.owner_id = options.owner_id;
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+    }
 }
 
-export interface PredicateSearchResultsCalendarPeriod {
-    _: 'searchResultsCalendarPeriod'
+export class PredicateSearchResultsCalendarPeriod {
+    _ = 'searchResultsCalendarPeriod' as const
     date: number
     min_msg_id: number
     max_msg_id: number
     count: number
+    constructor(options: {
+        date: number
+        min_msg_id: number
+        max_msg_id: number
+        count: number
+    }) {
+        this.date = options.date;
+        this.min_msg_id = options.min_msg_id;
+        this.max_msg_id = options.max_msg_id;
+        this.count = options.count;
+    }
 }
 
-export interface PredicateMessagesSearchResultsCalendar {
-    _: 'messages.searchResultsCalendar'
+export class PredicateMessagesSearchResultsCalendar {
+    _ = 'messages.searchResultsCalendar' as const
     inexact?: true
     count: number
     min_date: number
@@ -6217,143 +13450,316 @@ export interface PredicateMessagesSearchResultsCalendar {
     messages: Message[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        inexact?: true
+        count: number
+        min_date: number
+        min_msg_id: number
+        offset_id_offset?: number
+        periods: SearchResultsCalendarPeriod[]
+        messages: Message[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.inexact = options.inexact;
+        this.count = options.count;
+        this.min_date = options.min_date;
+        this.min_msg_id = options.min_msg_id;
+        this.offset_id_offset = options.offset_id_offset;
+        this.periods = options.periods;
+        this.messages = options.messages;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateSearchResultPosition {
-    _: 'searchResultPosition'
+export class PredicateSearchResultPosition {
+    _ = 'searchResultPosition' as const
     msg_id: number
     date: number
     offset: number
+    constructor(options: {
+        msg_id: number
+        date: number
+        offset: number
+    }) {
+        this.msg_id = options.msg_id;
+        this.date = options.date;
+        this.offset = options.offset;
+    }
 }
 
-export interface PredicateMessagesSearchResultsPositions {
-    _: 'messages.searchResultsPositions'
+export class PredicateMessagesSearchResultsPositions {
+    _ = 'messages.searchResultsPositions' as const
     count: number
     positions: SearchResultsPosition[]
+    constructor(options: {
+        count: number
+        positions: SearchResultsPosition[]
+    }) {
+        this.count = options.count;
+        this.positions = options.positions;
+    }
 }
 
-export interface PredicateMessageActionChatJoinedByRequest {
-    _: 'messageActionChatJoinedByRequest'
+export class PredicateMessageActionChatJoinedByRequest {
+    _ = 'messageActionChatJoinedByRequest' as const
 }
 
-export interface PredicateUpdatePendingJoinRequests {
-    _: 'updatePendingJoinRequests'
+export class PredicateUpdatePendingJoinRequests {
+    _ = 'updatePendingJoinRequests' as const
     peer: Peer
     requests_pending: number
     recent_requesters: string[]
+    constructor(options: {
+        peer: Peer
+        requests_pending: number
+        recent_requesters: string[]
+    }) {
+        this.peer = options.peer;
+        this.requests_pending = options.requests_pending;
+        this.recent_requesters = options.recent_requesters;
+    }
 }
 
-export interface PredicateUpdateBotChatInviteRequester {
-    _: 'updateBotChatInviteRequester'
+export class PredicateUpdateBotChatInviteRequester {
+    _ = 'updateBotChatInviteRequester' as const
     peer: Peer
     date: number
     user_id: string
     about: string
     invite: ExportedChatInvite
     qts: number
+    constructor(options: {
+        peer: Peer
+        date: number
+        user_id: string
+        about: string
+        invite: ExportedChatInvite
+        qts: number
+    }) {
+        this.peer = options.peer;
+        this.date = options.date;
+        this.user_id = options.user_id;
+        this.about = options.about;
+        this.invite = options.invite;
+        this.qts = options.qts;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionParticipantJoinByRequest {
-    _: 'channelAdminLogEventActionParticipantJoinByRequest'
+export class PredicateChannelAdminLogEventActionParticipantJoinByRequest {
+    _ = 'channelAdminLogEventActionParticipantJoinByRequest' as const
     invite: ExportedChatInvite
     approved_by: string
+    constructor(options: {
+        invite: ExportedChatInvite
+        approved_by: string
+    }) {
+        this.invite = options.invite;
+        this.approved_by = options.approved_by;
+    }
 }
 
-export interface PredicateInputKeyboardButtonUserProfile {
-    _: 'inputKeyboardButtonUserProfile'
+export class PredicateInputKeyboardButtonUserProfile {
+    _ = 'inputKeyboardButtonUserProfile' as const
     text: string
     user_id: InputUser
+    constructor(options: {
+        text: string
+        user_id: InputUser
+    }) {
+        this.text = options.text;
+        this.user_id = options.user_id;
+    }
 }
 
-export interface PredicateKeyboardButtonUserProfile {
-    _: 'keyboardButtonUserProfile'
+export class PredicateKeyboardButtonUserProfile {
+    _ = 'keyboardButtonUserProfile' as const
     text: string
     user_id: string
+    constructor(options: {
+        text: string
+        user_id: string
+    }) {
+        this.text = options.text;
+        this.user_id = options.user_id;
+    }
 }
 
-export interface PredicateChannelsSendAsPeers {
-    _: 'channels.sendAsPeers'
+export class PredicateChannelsSendAsPeers {
+    _ = 'channels.sendAsPeers' as const
     peers: Peer[]
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        peers: Peer[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.peers = options.peers;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionToggleNoForwards {
-    _: 'channelAdminLogEventActionToggleNoForwards'
+export class PredicateChannelAdminLogEventActionToggleNoForwards {
+    _ = 'channelAdminLogEventActionToggleNoForwards' as const
     new_value: boolean
+    constructor(options: {
+        new_value: boolean
+    }) {
+        this.new_value = options.new_value;
+    }
 }
 
-export interface PredicateMessagesStickerSetNotModified {
-    _: 'messages.stickerSetNotModified'
+export class PredicateMessagesStickerSetNotModified {
+    _ = 'messages.stickerSetNotModified' as const
 }
 
-export interface PredicateUsersUserFull {
-    _: 'users.userFull'
+export class PredicateUsersUserFull {
+    _ = 'users.userFull' as const
     full_user: UserFull
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        full_user: UserFull
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.full_user = options.full_user;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateMessagesPeerSettings {
-    _: 'messages.peerSettings'
+export class PredicateMessagesPeerSettings {
+    _ = 'messages.peerSettings' as const
     settings: PeerSettings
     chats: Chat[]
     users: User[]
+    constructor(options: {
+        settings: PeerSettings
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.settings = options.settings;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionSendMessage {
-    _: 'channelAdminLogEventActionSendMessage'
+export class PredicateChannelAdminLogEventActionSendMessage {
+    _ = 'channelAdminLogEventActionSendMessage' as const
     message: Message
+    constructor(options: {
+        message: Message
+    }) {
+        this.message = options.message;
+    }
 }
 
-export interface PredicateAuthCodeTypeMissedCall {
-    _: 'auth.codeTypeMissedCall'
+export class PredicateAuthCodeTypeMissedCall {
+    _ = 'auth.codeTypeMissedCall' as const
 }
 
-export interface PredicateAuthSentCodeTypeMissedCall {
-    _: 'auth.sentCodeTypeMissedCall'
+export class PredicateAuthSentCodeTypeMissedCall {
+    _ = 'auth.sentCodeTypeMissedCall' as const
     prefix: string
     length: number
+    constructor(options: {
+        prefix: string
+        length: number
+    }) {
+        this.prefix = options.prefix;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateAuthLoggedOut {
-    _: 'auth.loggedOut'
+export class PredicateAuthLoggedOut {
+    _ = 'auth.loggedOut' as const
     future_auth_token?: Uint8Array
+    constructor(options: {
+        future_auth_token?: Uint8Array
+    } = {}) {
+        this.future_auth_token = options.future_auth_token;
+    }
 }
 
-export interface PredicateUpdateMessageReactions {
-    _: 'updateMessageReactions'
+export class PredicateUpdateMessageReactions {
+    _ = 'updateMessageReactions' as const
     peer: Peer
     msg_id: number
     reactions: MessageReactions
+    constructor(options: {
+        peer: Peer
+        msg_id: number
+        reactions: MessageReactions
+    }) {
+        this.peer = options.peer;
+        this.msg_id = options.msg_id;
+        this.reactions = options.reactions;
+    }
 }
 
-export interface PredicateReactionCount {
-    _: 'reactionCount'
+export class PredicateReactionCount {
+    _ = 'reactionCount' as const
     chosen?: true
     reaction: string
     count: number
+    constructor(options: {
+        chosen?: true
+        reaction: string
+        count: number
+    }) {
+        this.chosen = options.chosen;
+        this.reaction = options.reaction;
+        this.count = options.count;
+    }
 }
 
-export interface PredicateMessageReactions {
-    _: 'messageReactions'
+export class PredicateMessageReactions {
+    _ = 'messageReactions' as const
     min?: true
     can_see_list?: true
     results: ReactionCount[]
     recent_reactions?: MessagePeerReaction[]
+    constructor(options: {
+        min?: true
+        can_see_list?: true
+        results: ReactionCount[]
+        recent_reactions?: MessagePeerReaction[]
+    }) {
+        this.min = options.min;
+        this.can_see_list = options.can_see_list;
+        this.results = options.results;
+        this.recent_reactions = options.recent_reactions;
+    }
 }
 
-export interface PredicateMessagesMessageReactionsList {
-    _: 'messages.messageReactionsList'
+export class PredicateMessagesMessageReactionsList {
+    _ = 'messages.messageReactionsList' as const
     count: number
     reactions: MessagePeerReaction[]
     chats: Chat[]
     users: User[]
     next_offset?: string
+    constructor(options: {
+        count: number
+        reactions: MessagePeerReaction[]
+        chats: Chat[]
+        users: User[]
+        next_offset?: string
+    }) {
+        this.count = options.count;
+        this.reactions = options.reactions;
+        this.chats = options.chats;
+        this.users = options.users;
+        this.next_offset = options.next_offset;
+    }
 }
 
-export interface PredicateAvailableReaction {
-    _: 'availableReaction'
+export class PredicateAvailableReaction {
+    _ = 'availableReaction' as const
     inactive?: true
     reaction: string
     title: string
@@ -6364,71 +13770,152 @@ export interface PredicateAvailableReaction {
     effect_animation: Document
     around_animation?: Document
     center_icon?: Document
+    constructor(options: {
+        inactive?: true
+        reaction: string
+        title: string
+        static_icon: Document
+        appear_animation: Document
+        select_animation: Document
+        activate_animation: Document
+        effect_animation: Document
+        around_animation?: Document
+        center_icon?: Document
+    }) {
+        this.inactive = options.inactive;
+        this.reaction = options.reaction;
+        this.title = options.title;
+        this.static_icon = options.static_icon;
+        this.appear_animation = options.appear_animation;
+        this.select_animation = options.select_animation;
+        this.activate_animation = options.activate_animation;
+        this.effect_animation = options.effect_animation;
+        this.around_animation = options.around_animation;
+        this.center_icon = options.center_icon;
+    }
 }
 
-export interface PredicateMessagesAvailableReactionsNotModified {
-    _: 'messages.availableReactionsNotModified'
+export class PredicateMessagesAvailableReactionsNotModified {
+    _ = 'messages.availableReactionsNotModified' as const
 }
 
-export interface PredicateMessagesAvailableReactions {
-    _: 'messages.availableReactions'
+export class PredicateMessagesAvailableReactions {
+    _ = 'messages.availableReactions' as const
     hash: number
     reactions: AvailableReaction[]
+    constructor(options: {
+        hash: number
+        reactions: AvailableReaction[]
+    }) {
+        this.hash = options.hash;
+        this.reactions = options.reactions;
+    }
 }
 
-export interface PredicateMessageEntitySpoiler {
-    _: 'messageEntitySpoiler'
+export class PredicateMessageEntitySpoiler {
+    _ = 'messageEntitySpoiler' as const
     offset: number
     length: number
+    constructor(options: {
+        offset: number
+        length: number
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+    }
 }
 
-export interface PredicateChannelAdminLogEventActionChangeAvailableReactions {
-    _: 'channelAdminLogEventActionChangeAvailableReactions'
+export class PredicateChannelAdminLogEventActionChangeAvailableReactions {
+    _ = 'channelAdminLogEventActionChangeAvailableReactions' as const
     prev_value: string[]
     new_value: string[]
+    constructor(options: {
+        prev_value: string[]
+        new_value: string[]
+    }) {
+        this.prev_value = options.prev_value;
+        this.new_value = options.new_value;
+    }
 }
 
-export interface PredicateMessagesTranslateNoResult {
-    _: 'messages.translateNoResult'
+export class PredicateMessagesTranslateNoResult {
+    _ = 'messages.translateNoResult' as const
 }
 
-export interface PredicateMessagesTranslateResultText {
-    _: 'messages.translateResultText'
+export class PredicateMessagesTranslateResultText {
+    _ = 'messages.translateResultText' as const
     text: string
+    constructor(options: {
+        text: string
+    }) {
+        this.text = options.text;
+    }
 }
 
-export interface PredicateMessagePeerReaction {
-    _: 'messagePeerReaction'
+export class PredicateMessagePeerReaction {
+    _ = 'messagePeerReaction' as const
     big?: true
     unread?: true
     peer_id: Peer
     reaction: string
+    constructor(options: {
+        big?: true
+        unread?: true
+        peer_id: Peer
+        reaction: string
+    }) {
+        this.big = options.big;
+        this.unread = options.unread;
+        this.peer_id = options.peer_id;
+        this.reaction = options.reaction;
+    }
 }
 
-export interface PredicateGroupCallStreamChannel {
-    _: 'groupCallStreamChannel'
+export class PredicateGroupCallStreamChannel {
+    _ = 'groupCallStreamChannel' as const
     channel: number
     scale: number
     last_timestamp_ms: string
+    constructor(options: {
+        channel: number
+        scale: number
+        last_timestamp_ms: string
+    }) {
+        this.channel = options.channel;
+        this.scale = options.scale;
+        this.last_timestamp_ms = options.last_timestamp_ms;
+    }
 }
 
-export interface PredicatePhoneGroupCallStreamChannels {
-    _: 'phone.groupCallStreamChannels'
+export class PredicatePhoneGroupCallStreamChannels {
+    _ = 'phone.groupCallStreamChannels' as const
     channels: GroupCallStreamChannel[]
+    constructor(options: {
+        channels: GroupCallStreamChannel[]
+    }) {
+        this.channels = options.channels;
+    }
 }
 
-export interface PredicateInputReportReasonIllegalDrugs {
-    _: 'inputReportReasonIllegalDrugs'
+export class PredicateInputReportReasonIllegalDrugs {
+    _ = 'inputReportReasonIllegalDrugs' as const
 }
 
-export interface PredicateInputReportReasonPersonalDetails {
-    _: 'inputReportReasonPersonalDetails'
+export class PredicateInputReportReasonPersonalDetails {
+    _ = 'inputReportReasonPersonalDetails' as const
 }
 
-export interface PredicatePhoneGroupCallStreamRtmpUrl {
-    _: 'phone.groupCallStreamRtmpUrl'
+export class PredicatePhoneGroupCallStreamRtmpUrl {
+    _ = 'phone.groupCallStreamRtmpUrl' as const
     url: string
     key: string
+    constructor(options: {
+        url: string
+        key: string
+    }) {
+        this.url = options.url;
+        this.key = options.key;
+    }
 }
 
 export type Error = PredicateError;

@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { getTgUserApiSchema } from './getTgUserApiSchema';
 import { readFile } from '../utils/file/readFile';
+import { indent } from '../utils/indent';
 
 export const generateTgUserApiSchemaMethods = async () => {
     const tgUserApiSchema = await getTgUserApiSchema();
@@ -9,13 +10,22 @@ export const generateTgUserApiSchemaMethods = async () => {
     const constructorsTypes = tgUserApiSchema.constructors
         .map((constructor) => {
             const params = constructor.params
-                .map((param) => `    ${param.propName}${param.isMaybe ? '?' : ''}: ${param.typeName}`)
-                .join('\n');
+                .map((param) => `${param.propName}${param.isMaybe ? '?' : ''}: ${param.typeName}`);
+            const setParams = constructor.params
+                .map((param) => `this.${param.propName} = options.${param.propName};`);
+            const isMaybeOptions = constructor.params.every((param) => param.isMaybe);
 
             return [
-                `export interface ${constructor.typeName} {`,
-                `    _: '${constructor.predicate}'`,
-                params,
+                `export class ${constructor.typeName} {`,
+                `    _ = '${constructor.predicate}' as const`,
+                ...indent(params, 4),
+                ...params.length ? indent([
+                    'constructor(options: {',
+                    ...indent(params, 4),
+                    `}${isMaybeOptions ? ' = {}' : ''}) {`,
+                    ...indent(setParams, 4),
+                    '}',
+                ], 4) : [],
                 '}',
             ].filter(Boolean).join('\n');
         });
@@ -39,9 +49,11 @@ export const generateTgUserApiSchemaMethods = async () => {
         });
     const makeTgUserApiMethods = [
         'export const makeTgUserApiMethods = (dependencies: TgUserApiDependencies) => ({',
-        tgUserApiSchema.methods
-            .map((itMethod) => `    ${itMethod.methodName}: ${itMethod.methodName}(dependencies),`)
-            .join('\n'),
+        ...indent(
+            tgUserApiSchema.methods
+                .map((itMethod) => `${itMethod.methodName}: ${itMethod.methodName}(dependencies),`),
+            4,
+        ),
         '});',
     ].join('\n');
 
