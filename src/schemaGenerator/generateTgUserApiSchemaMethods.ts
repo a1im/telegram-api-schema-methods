@@ -32,18 +32,9 @@ export const generateTgUserApiSchemaMethods = async () => {
         });
     const groupConstructorsTypes = Object.entries(tgUserApiSchema.constructorsByType)
         .map(([groupTypeName, constructors]) => {
-            const isMaybe = Boolean(constructors.length > 1);
-            const types = constructors.map((it) => {
-                const propName = uncapitalizeFirstChar(it.typeName.replace('Predicate', ''));
+            const types = constructors.map((it) => it.typeName).join(' | ');
 
-                return `${propName}${isMaybe ? '?' : ''}: ${it.typeName}`;
-            });
-
-            return [
-                `export interface ${groupTypeName} {`,
-                ...indent(types, 4),
-                '}',
-            ].join('\n');
+            return `export type ${groupTypeName} = ${types};`;
         });
     const methods = tgUserApiSchema.methods
         .map((itMethod) => {
