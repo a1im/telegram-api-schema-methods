@@ -3,6 +3,7 @@ import path from 'path';
 import { getTgUserApiSchema } from './getTgUserApiSchema';
 import { readFile } from '../utils/file/readFile';
 import { indent } from '../utils/indent';
+import { uncapitalizeFirstChar } from '../utils/string/uncapitalizeFirstChar';
 
 export const generateTgUserApiSchemaMethods = async () => {
     const tgUserApiSchema = await getTgUserApiSchema();
@@ -31,9 +32,18 @@ export const generateTgUserApiSchemaMethods = async () => {
         });
     const groupConstructorsTypes = Object.entries(tgUserApiSchema.constructorsByType)
         .map(([groupTypeName, constructors]) => {
-            const types = constructors.map((it) => it.typeName).join(' | ');
+            const isMaybe = Boolean(constructors.length > 1);
+            const types = constructors.map((it) => {
+                const propName = uncapitalizeFirstChar(it.typeName.replace('Predicate', ''));
 
-            return `export type ${groupTypeName} = ${types};`;
+                return `${propName}${isMaybe ? '?' : ''}: ${it.typeName}`;
+            });
+
+            return [
+                `export interface ${groupTypeName} {`,
+                ...indent(types, 4),
+                '}',
+            ].join('\n');
         });
     const methods = tgUserApiSchema.methods
         .map((itMethod) => {

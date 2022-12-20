@@ -13918,681 +13918,1973 @@ export class PredicatePhoneGroupCallStreamRtmpUrl {
     }
 }
 
-export type Error = PredicateError;
-
-export type InputPeer = PredicateInputPeerEmpty | PredicateInputPeerSelf | PredicateInputPeerChat | PredicateInputPeerUser | PredicateInputPeerChannel | PredicateInputPeerUserFromMessage | PredicateInputPeerChannelFromMessage;
-
-export type InputUser = PredicateInputUserEmpty | PredicateInputUserSelf | PredicateInputUser | PredicateInputUserFromMessage;
-
-export type InputContact = PredicateInputPhoneContact;
-
-export type InputFile = PredicateInputFile | PredicateInputFileBig;
-
-export type InputMedia = PredicateInputMediaEmpty | PredicateInputMediaUploadedPhoto | PredicateInputMediaPhoto | PredicateInputMediaGeoPoint | PredicateInputMediaContact | PredicateInputMediaUploadedDocument | PredicateInputMediaDocument | PredicateInputMediaVenue | PredicateInputMediaPhotoExternal | PredicateInputMediaDocumentExternal | PredicateInputMediaGame | PredicateInputMediaInvoice | PredicateInputMediaGeoLive | PredicateInputMediaPoll | PredicateInputMediaDice;
-
-export type InputChatPhoto = PredicateInputChatPhotoEmpty | PredicateInputChatUploadedPhoto | PredicateInputChatPhoto;
-
-export type InputGeoPoint = PredicateInputGeoPointEmpty | PredicateInputGeoPoint;
-
-export type InputPhoto = PredicateInputPhotoEmpty | PredicateInputPhoto;
-
-export type InputFileLocation = PredicateInputFileLocation | PredicateInputEncryptedFileLocation | PredicateInputDocumentFileLocation | PredicateInputSecureFileLocation | PredicateInputTakeoutFileLocation | PredicateInputPhotoFileLocation | PredicateInputPhotoLegacyFileLocation | PredicateInputPeerPhotoFileLocation | PredicateInputStickerSetThumb | PredicateInputGroupCallStream;
-
-export type Peer = PredicatePeerUser | PredicatePeerChat | PredicatePeerChannel;
-
-export type StorageFileType = PredicateStorageFileUnknown | PredicateStorageFilePartial | PredicateStorageFileJpeg | PredicateStorageFileGif | PredicateStorageFilePng | PredicateStorageFilePdf | PredicateStorageFileMp3 | PredicateStorageFileMov | PredicateStorageFileMp4 | PredicateStorageFileWebp;
-
-export type User = PredicateUserEmpty | PredicateUser;
-
-export type UserProfilePhoto = PredicateUserProfilePhotoEmpty | PredicateUserProfilePhoto;
-
-export type UserStatus = PredicateUserStatusEmpty | PredicateUserStatusOnline | PredicateUserStatusOffline | PredicateUserStatusRecently | PredicateUserStatusLastWeek | PredicateUserStatusLastMonth;
-
-export type Chat = PredicateChatEmpty | PredicateChat | PredicateChatForbidden | PredicateChannel | PredicateChannelForbidden;
-
-export type ChatFull = PredicateChatFull | PredicateChannelFull;
-
-export type ChatParticipant = PredicateChatParticipant | PredicateChatParticipantCreator | PredicateChatParticipantAdmin;
-
-export type ChatParticipants = PredicateChatParticipantsForbidden | PredicateChatParticipants;
-
-export type ChatPhoto = PredicateChatPhotoEmpty | PredicateChatPhoto;
-
-export type Message = PredicateMessageEmpty | PredicateMessage | PredicateMessageService;
-
-export type MessageMedia = PredicateMessageMediaEmpty | PredicateMessageMediaPhoto | PredicateMessageMediaGeo | PredicateMessageMediaContact | PredicateMessageMediaUnsupported | PredicateMessageMediaDocument | PredicateMessageMediaWebPage | PredicateMessageMediaVenue | PredicateMessageMediaGame | PredicateMessageMediaInvoice | PredicateMessageMediaGeoLive | PredicateMessageMediaPoll | PredicateMessageMediaDice;
-
-export type MessageAction = PredicateMessageActionEmpty | PredicateMessageActionChatCreate | PredicateMessageActionChatEditTitle | PredicateMessageActionChatEditPhoto | PredicateMessageActionChatDeletePhoto | PredicateMessageActionChatAddUser | PredicateMessageActionChatDeleteUser | PredicateMessageActionChatJoinedByLink | PredicateMessageActionChannelCreate | PredicateMessageActionChatMigrateTo | PredicateMessageActionChannelMigrateFrom | PredicateMessageActionPinMessage | PredicateMessageActionHistoryClear | PredicateMessageActionGameScore | PredicateMessageActionPaymentSentMe | PredicateMessageActionPaymentSent | PredicateMessageActionPhoneCall | PredicateMessageActionScreenshotTaken | PredicateMessageActionCustomAction | PredicateMessageActionBotAllowed | PredicateMessageActionSecureValuesSentMe | PredicateMessageActionSecureValuesSent | PredicateMessageActionContactSignUp | PredicateMessageActionGeoProximityReached | PredicateMessageActionGroupCall | PredicateMessageActionInviteToGroupCall | PredicateMessageActionSetMessagesTTL | PredicateMessageActionGroupCallScheduled | PredicateMessageActionSetChatTheme | PredicateMessageActionChatJoinedByRequest;
-
-export type Dialog = PredicateDialog | PredicateDialogFolder;
-
-export type Photo = PredicatePhotoEmpty | PredicatePhoto;
-
-export type PhotoSize = PredicatePhotoSizeEmpty | PredicatePhotoSize | PredicatePhotoCachedSize | PredicatePhotoStrippedSize | PredicatePhotoSizeProgressive | PredicatePhotoPathSize;
-
-export type GeoPoint = PredicateGeoPointEmpty | PredicateGeoPoint;
-
-export type AuthSentCode = PredicateAuthSentCode;
-
-export type AuthAuthorization = PredicateAuthAuthorization | PredicateAuthAuthorizationSignUpRequired;
-
-export type AuthExportedAuthorization = PredicateAuthExportedAuthorization;
-
-export type InputNotifyPeer = PredicateInputNotifyPeer | PredicateInputNotifyUsers | PredicateInputNotifyChats | PredicateInputNotifyBroadcasts;
-
-export type InputPeerNotifySettings = PredicateInputPeerNotifySettings;
-
-export type PeerNotifySettings = PredicatePeerNotifySettings;
-
-export type PeerSettings = PredicatePeerSettings;
-
-export type WallPaper = PredicateWallPaper | PredicateWallPaperNoFile;
-
-export type ReportReason = PredicateInputReportReasonSpam | PredicateInputReportReasonViolence | PredicateInputReportReasonPornography | PredicateInputReportReasonChildAbuse | PredicateInputReportReasonOther | PredicateInputReportReasonCopyright | PredicateInputReportReasonGeoIrrelevant | PredicateInputReportReasonFake | PredicateInputReportReasonIllegalDrugs | PredicateInputReportReasonPersonalDetails;
-
-export type UserFull = PredicateUserFull;
-
-export type Contact = PredicateContact;
-
-export type ImportedContact = PredicateImportedContact;
-
-export type ContactStatus = PredicateContactStatus;
-
-export type ContactsContacts = PredicateContactsContactsNotModified | PredicateContactsContacts;
-
-export type ContactsImportedContacts = PredicateContactsImportedContacts;
-
-export type ContactsBlocked = PredicateContactsBlocked | PredicateContactsBlockedSlice;
-
-export type MessagesDialogs = PredicateMessagesDialogs | PredicateMessagesDialogsSlice | PredicateMessagesDialogsNotModified;
-
-export type MessagesMessages = PredicateMessagesMessages | PredicateMessagesMessagesSlice | PredicateMessagesChannelMessages | PredicateMessagesMessagesNotModified;
-
-export type MessagesChats = PredicateMessagesChats | PredicateMessagesChatsSlice;
-
-export type MessagesChatFull = PredicateMessagesChatFull;
-
-export type MessagesAffectedHistory = PredicateMessagesAffectedHistory;
-
-export type MessagesFilter = PredicateInputMessagesFilterEmpty | PredicateInputMessagesFilterPhotos | PredicateInputMessagesFilterVideo | PredicateInputMessagesFilterPhotoVideo | PredicateInputMessagesFilterDocument | PredicateInputMessagesFilterUrl | PredicateInputMessagesFilterGif | PredicateInputMessagesFilterVoice | PredicateInputMessagesFilterMusic | PredicateInputMessagesFilterChatPhotos | PredicateInputMessagesFilterPhoneCalls | PredicateInputMessagesFilterRoundVoice | PredicateInputMessagesFilterRoundVideo | PredicateInputMessagesFilterMyMentions | PredicateInputMessagesFilterGeo | PredicateInputMessagesFilterContacts | PredicateInputMessagesFilterPinned;
-
-export type Update = PredicateUpdateNewMessage | PredicateUpdateMessageID | PredicateUpdateDeleteMessages | PredicateUpdateUserTyping | PredicateUpdateChatUserTyping | PredicateUpdateChatParticipants | PredicateUpdateUserStatus | PredicateUpdateUserName | PredicateUpdateUserPhoto | PredicateUpdateNewEncryptedMessage | PredicateUpdateEncryptedChatTyping | PredicateUpdateEncryption | PredicateUpdateEncryptedMessagesRead | PredicateUpdateChatParticipantAdd | PredicateUpdateChatParticipantDelete | PredicateUpdateDcOptions | PredicateUpdateNotifySettings | PredicateUpdateServiceNotification | PredicateUpdatePrivacy | PredicateUpdateUserPhone | PredicateUpdateReadHistoryInbox | PredicateUpdateReadHistoryOutbox | PredicateUpdateWebPage | PredicateUpdateReadMessagesContents | PredicateUpdateChannelTooLong | PredicateUpdateChannel | PredicateUpdateNewChannelMessage | PredicateUpdateReadChannelInbox | PredicateUpdateDeleteChannelMessages | PredicateUpdateChannelMessageViews | PredicateUpdateChatParticipantAdmin | PredicateUpdateNewStickerSet | PredicateUpdateStickerSetsOrder | PredicateUpdateStickerSets | PredicateUpdateSavedGifs | PredicateUpdateBotInlineQuery | PredicateUpdateBotInlineSend | PredicateUpdateEditChannelMessage | PredicateUpdateBotCallbackQuery | PredicateUpdateEditMessage | PredicateUpdateInlineBotCallbackQuery | PredicateUpdateReadChannelOutbox | PredicateUpdateDraftMessage | PredicateUpdateReadFeaturedStickers | PredicateUpdateRecentStickers | PredicateUpdateConfig | PredicateUpdatePtsChanged | PredicateUpdateChannelWebPage | PredicateUpdateDialogPinned | PredicateUpdatePinnedDialogs | PredicateUpdateBotWebhookJSON | PredicateUpdateBotWebhookJSONQuery | PredicateUpdateBotShippingQuery | PredicateUpdateBotPrecheckoutQuery | PredicateUpdatePhoneCall | PredicateUpdateLangPackTooLong | PredicateUpdateLangPack | PredicateUpdateFavedStickers | PredicateUpdateChannelReadMessagesContents | PredicateUpdateContactsReset | PredicateUpdateChannelAvailableMessages | PredicateUpdateDialogUnreadMark | PredicateUpdateMessagePoll | PredicateUpdateChatDefaultBannedRights | PredicateUpdateFolderPeers | PredicateUpdatePeerSettings | PredicateUpdatePeerLocated | PredicateUpdateNewScheduledMessage | PredicateUpdateDeleteScheduledMessages | PredicateUpdateTheme | PredicateUpdateGeoLiveViewed | PredicateUpdateLoginToken | PredicateUpdateMessagePollVote | PredicateUpdateDialogFilter | PredicateUpdateDialogFilterOrder | PredicateUpdateDialogFilters | PredicateUpdatePhoneCallSignalingData | PredicateUpdateChannelMessageForwards | PredicateUpdateReadChannelDiscussionInbox | PredicateUpdateReadChannelDiscussionOutbox | PredicateUpdatePeerBlocked | PredicateUpdateChannelUserTyping | PredicateUpdatePinnedMessages | PredicateUpdatePinnedChannelMessages | PredicateUpdateChat | PredicateUpdateGroupCallParticipants | PredicateUpdateGroupCall | PredicateUpdatePeerHistoryTTL | PredicateUpdateChatParticipant | PredicateUpdateChannelParticipant | PredicateUpdateBotStopped | PredicateUpdateGroupCallConnection | PredicateUpdateBotCommands | PredicateUpdatePendingJoinRequests | PredicateUpdateBotChatInviteRequester | PredicateUpdateMessageReactions;
-
-export type UpdatesState = PredicateUpdatesState;
-
-export type UpdatesDifference = PredicateUpdatesDifferenceEmpty | PredicateUpdatesDifference | PredicateUpdatesDifferenceSlice | PredicateUpdatesDifferenceTooLong;
-
-export type Updates = PredicateUpdatesTooLong | PredicateUpdateShortMessage | PredicateUpdateShortChatMessage | PredicateUpdateShort | PredicateUpdatesCombined | PredicateUpdates | PredicateUpdateShortSentMessage;
-
-export type PhotosPhotos = PredicatePhotosPhotos | PredicatePhotosPhotosSlice;
-
-export type PhotosPhoto = PredicatePhotosPhoto;
-
-export type UploadFile = PredicateUploadFile | PredicateUploadFileCdnRedirect;
-
-export type DcOption = PredicateDcOption;
-
-export type Config = PredicateConfig;
-
-export type NearestDc = PredicateNearestDc;
-
-export type HelpAppUpdate = PredicateHelpAppUpdate | PredicateHelpNoAppUpdate;
-
-export type HelpInviteText = PredicateHelpInviteText;
-
-export type EncryptedChat = PredicateEncryptedChatEmpty | PredicateEncryptedChatWaiting | PredicateEncryptedChatRequested | PredicateEncryptedChat | PredicateEncryptedChatDiscarded;
-
-export type InputEncryptedChat = PredicateInputEncryptedChat;
-
-export type EncryptedFile = PredicateEncryptedFileEmpty | PredicateEncryptedFile;
-
-export type InputEncryptedFile = PredicateInputEncryptedFileEmpty | PredicateInputEncryptedFileUploaded | PredicateInputEncryptedFile | PredicateInputEncryptedFileBigUploaded;
-
-export type EncryptedMessage = PredicateEncryptedMessage | PredicateEncryptedMessageService;
-
-export type MessagesDhConfig = PredicateMessagesDhConfigNotModified | PredicateMessagesDhConfig;
-
-export type MessagesSentEncryptedMessage = PredicateMessagesSentEncryptedMessage | PredicateMessagesSentEncryptedFile;
-
-export type InputDocument = PredicateInputDocumentEmpty | PredicateInputDocument;
-
-export type Document = PredicateDocumentEmpty | PredicateDocument;
-
-export type HelpSupport = PredicateHelpSupport;
-
-export type NotifyPeer = PredicateNotifyPeer | PredicateNotifyUsers | PredicateNotifyChats | PredicateNotifyBroadcasts;
-
-export type SendMessageAction = PredicateSendMessageTypingAction | PredicateSendMessageCancelAction | PredicateSendMessageRecordVideoAction | PredicateSendMessageUploadVideoAction | PredicateSendMessageRecordAudioAction | PredicateSendMessageUploadAudioAction | PredicateSendMessageUploadPhotoAction | PredicateSendMessageUploadDocumentAction | PredicateSendMessageGeoLocationAction | PredicateSendMessageChooseContactAction | PredicateSendMessageGamePlayAction | PredicateSendMessageRecordRoundAction | PredicateSendMessageUploadRoundAction | PredicateSpeakingInGroupCallAction | PredicateSendMessageHistoryImportAction | PredicateSendMessageChooseStickerAction | PredicateSendMessageEmojiInteraction | PredicateSendMessageEmojiInteractionSeen;
-
-export type ContactsFound = PredicateContactsFound;
-
-export type InputPrivacyKey = PredicateInputPrivacyKeyStatusTimestamp | PredicateInputPrivacyKeyChatInvite | PredicateInputPrivacyKeyPhoneCall | PredicateInputPrivacyKeyPhoneP2P | PredicateInputPrivacyKeyForwards | PredicateInputPrivacyKeyProfilePhoto | PredicateInputPrivacyKeyPhoneNumber | PredicateInputPrivacyKeyAddedByPhone;
-
-export type PrivacyKey = PredicatePrivacyKeyStatusTimestamp | PredicatePrivacyKeyChatInvite | PredicatePrivacyKeyPhoneCall | PredicatePrivacyKeyPhoneP2P | PredicatePrivacyKeyForwards | PredicatePrivacyKeyProfilePhoto | PredicatePrivacyKeyPhoneNumber | PredicatePrivacyKeyAddedByPhone;
-
-export type InputPrivacyRule = PredicateInputPrivacyValueAllowContacts | PredicateInputPrivacyValueAllowAll | PredicateInputPrivacyValueAllowUsers | PredicateInputPrivacyValueDisallowContacts | PredicateInputPrivacyValueDisallowAll | PredicateInputPrivacyValueDisallowUsers | PredicateInputPrivacyValueAllowChatParticipants | PredicateInputPrivacyValueDisallowChatParticipants;
-
-export type PrivacyRule = PredicatePrivacyValueAllowContacts | PredicatePrivacyValueAllowAll | PredicatePrivacyValueAllowUsers | PredicatePrivacyValueDisallowContacts | PredicatePrivacyValueDisallowAll | PredicatePrivacyValueDisallowUsers | PredicatePrivacyValueAllowChatParticipants | PredicatePrivacyValueDisallowChatParticipants;
-
-export type AccountPrivacyRules = PredicateAccountPrivacyRules;
-
-export type AccountDaysTTL = PredicateAccountDaysTTL;
-
-export type DocumentAttribute = PredicateDocumentAttributeImageSize | PredicateDocumentAttributeAnimated | PredicateDocumentAttributeSticker | PredicateDocumentAttributeVideo | PredicateDocumentAttributeAudio | PredicateDocumentAttributeFilename | PredicateDocumentAttributeHasStickers;
-
-export type MessagesStickers = PredicateMessagesStickersNotModified | PredicateMessagesStickers;
-
-export type StickerPack = PredicateStickerPack;
-
-export type MessagesAllStickers = PredicateMessagesAllStickersNotModified | PredicateMessagesAllStickers;
-
-export type MessagesAffectedMessages = PredicateMessagesAffectedMessages;
-
-export type WebPage = PredicateWebPageEmpty | PredicateWebPagePending | PredicateWebPage | PredicateWebPageNotModified;
-
-export type Authorization = PredicateAuthorization;
-
-export type AccountAuthorizations = PredicateAccountAuthorizations;
-
-export type AccountPassword = PredicateAccountPassword;
-
-export type AccountPasswordSettings = PredicateAccountPasswordSettings;
-
-export type AccountPasswordInputSettings = PredicateAccountPasswordInputSettings;
-
-export type AuthPasswordRecovery = PredicateAuthPasswordRecovery;
-
-export type ReceivedNotifyMessage = PredicateReceivedNotifyMessage;
-
-export type ExportedChatInvite = PredicateChatInviteExported;
-
-export type ChatInvite = PredicateChatInviteAlready | PredicateChatInvite | PredicateChatInvitePeek;
-
-export type InputStickerSet = PredicateInputStickerSetEmpty | PredicateInputStickerSetID | PredicateInputStickerSetShortName | PredicateInputStickerSetAnimatedEmoji | PredicateInputStickerSetDice | PredicateInputStickerSetAnimatedEmojiAnimations;
-
-export type StickerSet = PredicateStickerSet;
-
-export type MessagesStickerSet = PredicateMessagesStickerSet | PredicateMessagesStickerSetNotModified;
-
-export type BotCommand = PredicateBotCommand;
-
-export type BotInfo = PredicateBotInfo;
-
-export type KeyboardButton = PredicateKeyboardButton | PredicateKeyboardButtonUrl | PredicateKeyboardButtonCallback | PredicateKeyboardButtonRequestPhone | PredicateKeyboardButtonRequestGeoLocation | PredicateKeyboardButtonSwitchInline | PredicateKeyboardButtonGame | PredicateKeyboardButtonBuy | PredicateKeyboardButtonUrlAuth | PredicateInputKeyboardButtonUrlAuth | PredicateKeyboardButtonRequestPoll | PredicateInputKeyboardButtonUserProfile | PredicateKeyboardButtonUserProfile;
-
-export type KeyboardButtonRow = PredicateKeyboardButtonRow;
-
-export type ReplyMarkup = PredicateReplyKeyboardHide | PredicateReplyKeyboardForceReply | PredicateReplyKeyboardMarkup | PredicateReplyInlineMarkup;
-
-export type MessageEntity = PredicateMessageEntityUnknown | PredicateMessageEntityMention | PredicateMessageEntityHashtag | PredicateMessageEntityBotCommand | PredicateMessageEntityUrl | PredicateMessageEntityEmail | PredicateMessageEntityBold | PredicateMessageEntityItalic | PredicateMessageEntityCode | PredicateMessageEntityPre | PredicateMessageEntityTextUrl | PredicateMessageEntityMentionName | PredicateInputMessageEntityMentionName | PredicateMessageEntityPhone | PredicateMessageEntityCashtag | PredicateMessageEntityUnderline | PredicateMessageEntityStrike | PredicateMessageEntityBlockquote | PredicateMessageEntityBankCard | PredicateMessageEntitySpoiler;
-
-export type InputChannel = PredicateInputChannelEmpty | PredicateInputChannel | PredicateInputChannelFromMessage;
-
-export type ContactsResolvedPeer = PredicateContactsResolvedPeer;
-
-export type MessageRange = PredicateMessageRange;
-
-export type UpdatesChannelDifference = PredicateUpdatesChannelDifferenceEmpty | PredicateUpdatesChannelDifferenceTooLong | PredicateUpdatesChannelDifference;
-
-export type ChannelMessagesFilter = PredicateChannelMessagesFilterEmpty | PredicateChannelMessagesFilter;
-
-export type ChannelParticipant = PredicateChannelParticipant | PredicateChannelParticipantSelf | PredicateChannelParticipantCreator | PredicateChannelParticipantAdmin | PredicateChannelParticipantBanned | PredicateChannelParticipantLeft;
-
-export type ChannelParticipantsFilter = PredicateChannelParticipantsRecent | PredicateChannelParticipantsAdmins | PredicateChannelParticipantsKicked | PredicateChannelParticipantsBots | PredicateChannelParticipantsBanned | PredicateChannelParticipantsSearch | PredicateChannelParticipantsContacts | PredicateChannelParticipantsMentions;
-
-export type ChannelsChannelParticipants = PredicateChannelsChannelParticipants | PredicateChannelsChannelParticipantsNotModified;
-
-export type ChannelsChannelParticipant = PredicateChannelsChannelParticipant;
-
-export type HelpTermsOfService = PredicateHelpTermsOfService;
-
-export type MessagesSavedGifs = PredicateMessagesSavedGifsNotModified | PredicateMessagesSavedGifs;
-
-export type InputBotInlineMessage = PredicateInputBotInlineMessageMediaAuto | PredicateInputBotInlineMessageText | PredicateInputBotInlineMessageMediaGeo | PredicateInputBotInlineMessageMediaVenue | PredicateInputBotInlineMessageMediaContact | PredicateInputBotInlineMessageGame | PredicateInputBotInlineMessageMediaInvoice;
-
-export type InputBotInlineResult = PredicateInputBotInlineResult | PredicateInputBotInlineResultPhoto | PredicateInputBotInlineResultDocument | PredicateInputBotInlineResultGame;
-
-export type BotInlineMessage = PredicateBotInlineMessageMediaAuto | PredicateBotInlineMessageText | PredicateBotInlineMessageMediaGeo | PredicateBotInlineMessageMediaVenue | PredicateBotInlineMessageMediaContact | PredicateBotInlineMessageMediaInvoice;
-
-export type BotInlineResult = PredicateBotInlineResult | PredicateBotInlineMediaResult;
-
-export type MessagesBotResults = PredicateMessagesBotResults;
-
-export type ExportedMessageLink = PredicateExportedMessageLink;
-
-export type MessageFwdHeader = PredicateMessageFwdHeader;
-
-export type AuthCodeType = PredicateAuthCodeTypeSms | PredicateAuthCodeTypeCall | PredicateAuthCodeTypeFlashCall | PredicateAuthCodeTypeMissedCall;
-
-export type AuthSentCodeType = PredicateAuthSentCodeTypeApp | PredicateAuthSentCodeTypeSms | PredicateAuthSentCodeTypeCall | PredicateAuthSentCodeTypeFlashCall | PredicateAuthSentCodeTypeMissedCall;
-
-export type MessagesBotCallbackAnswer = PredicateMessagesBotCallbackAnswer;
-
-export type MessagesMessageEditData = PredicateMessagesMessageEditData;
-
-export type InputBotInlineMessageID = PredicateInputBotInlineMessageID | PredicateInputBotInlineMessageID64;
-
-export type InlineBotSwitchPM = PredicateInlineBotSwitchPM;
-
-export type MessagesPeerDialogs = PredicateMessagesPeerDialogs;
-
-export type TopPeer = PredicateTopPeer;
-
-export type TopPeerCategory = PredicateTopPeerCategoryBotsPM | PredicateTopPeerCategoryBotsInline | PredicateTopPeerCategoryCorrespondents | PredicateTopPeerCategoryGroups | PredicateTopPeerCategoryChannels | PredicateTopPeerCategoryPhoneCalls | PredicateTopPeerCategoryForwardUsers | PredicateTopPeerCategoryForwardChats;
-
-export type TopPeerCategoryPeers = PredicateTopPeerCategoryPeers;
-
-export type ContactsTopPeers = PredicateContactsTopPeersNotModified | PredicateContactsTopPeers | PredicateContactsTopPeersDisabled;
-
-export type DraftMessage = PredicateDraftMessageEmpty | PredicateDraftMessage;
-
-export type MessagesFeaturedStickers = PredicateMessagesFeaturedStickersNotModified | PredicateMessagesFeaturedStickers;
-
-export type MessagesRecentStickers = PredicateMessagesRecentStickersNotModified | PredicateMessagesRecentStickers;
-
-export type MessagesArchivedStickers = PredicateMessagesArchivedStickers;
-
-export type MessagesStickerSetInstallResult = PredicateMessagesStickerSetInstallResultSuccess | PredicateMessagesStickerSetInstallResultArchive;
-
-export type StickerSetCovered = PredicateStickerSetCovered | PredicateStickerSetMultiCovered;
-
-export type MaskCoords = PredicateMaskCoords;
-
-export type InputStickeredMedia = PredicateInputStickeredMediaPhoto | PredicateInputStickeredMediaDocument;
-
-export type Game = PredicateGame;
-
-export type InputGame = PredicateInputGameID | PredicateInputGameShortName;
-
-export type HighScore = PredicateHighScore;
-
-export type MessagesHighScores = PredicateMessagesHighScores;
-
-export type RichText = PredicateTextEmpty | PredicateTextPlain | PredicateTextBold | PredicateTextItalic | PredicateTextUnderline | PredicateTextStrike | PredicateTextFixed | PredicateTextUrl | PredicateTextEmail | PredicateTextConcat | PredicateTextSubscript | PredicateTextSuperscript | PredicateTextMarked | PredicateTextPhone | PredicateTextImage | PredicateTextAnchor;
-
-export type PageBlock = PredicatePageBlockUnsupported | PredicatePageBlockTitle | PredicatePageBlockSubtitle | PredicatePageBlockAuthorDate | PredicatePageBlockHeader | PredicatePageBlockSubheader | PredicatePageBlockParagraph | PredicatePageBlockPreformatted | PredicatePageBlockFooter | PredicatePageBlockDivider | PredicatePageBlockAnchor | PredicatePageBlockList | PredicatePageBlockBlockquote | PredicatePageBlockPullquote | PredicatePageBlockPhoto | PredicatePageBlockVideo | PredicatePageBlockCover | PredicatePageBlockEmbed | PredicatePageBlockEmbedPost | PredicatePageBlockCollage | PredicatePageBlockSlideshow | PredicatePageBlockChannel | PredicatePageBlockAudio | PredicatePageBlockKicker | PredicatePageBlockTable | PredicatePageBlockOrderedList | PredicatePageBlockDetails | PredicatePageBlockRelatedArticles | PredicatePageBlockMap;
-
-export type PhoneCallDiscardReason = PredicatePhoneCallDiscardReasonMissed | PredicatePhoneCallDiscardReasonDisconnect | PredicatePhoneCallDiscardReasonHangup | PredicatePhoneCallDiscardReasonBusy;
-
-export type DataJSON = PredicateDataJSON;
-
-export type LabeledPrice = PredicateLabeledPrice;
-
-export type Invoice = PredicateInvoice;
-
-export type PaymentCharge = PredicatePaymentCharge;
-
-export type PostAddress = PredicatePostAddress;
-
-export type PaymentRequestedInfo = PredicatePaymentRequestedInfo;
-
-export type PaymentSavedCredentials = PredicatePaymentSavedCredentialsCard;
-
-export type WebDocument = PredicateWebDocument | PredicateWebDocumentNoProxy;
-
-export type InputWebDocument = PredicateInputWebDocument;
-
-export type InputWebFileLocation = PredicateInputWebFileLocation | PredicateInputWebFileGeoPointLocation;
-
-export type UploadWebFile = PredicateUploadWebFile;
-
-export type PaymentsPaymentForm = PredicatePaymentsPaymentForm;
-
-export type PaymentsValidatedRequestedInfo = PredicatePaymentsValidatedRequestedInfo;
-
-export type PaymentsPaymentResult = PredicatePaymentsPaymentResult | PredicatePaymentsPaymentVerificationNeeded;
-
-export type PaymentsPaymentReceipt = PredicatePaymentsPaymentReceipt;
-
-export type PaymentsSavedInfo = PredicatePaymentsSavedInfo;
-
-export type InputPaymentCredentials = PredicateInputPaymentCredentialsSaved | PredicateInputPaymentCredentials | PredicateInputPaymentCredentialsApplePay | PredicateInputPaymentCredentialsGooglePay;
-
-export type AccountTmpPassword = PredicateAccountTmpPassword;
-
-export type ShippingOption = PredicateShippingOption;
-
-export type InputStickerSetItem = PredicateInputStickerSetItem;
-
-export type InputPhoneCall = PredicateInputPhoneCall;
-
-export type PhoneCall = PredicatePhoneCallEmpty | PredicatePhoneCallWaiting | PredicatePhoneCallRequested | PredicatePhoneCallAccepted | PredicatePhoneCall | PredicatePhoneCallDiscarded;
-
-export type PhoneConnection = PredicatePhoneConnection | PredicatePhoneConnectionWebrtc;
-
-export type PhoneCallProtocol = PredicatePhoneCallProtocol;
-
-export type PhonePhoneCall = PredicatePhonePhoneCall;
-
-export type UploadCdnFile = PredicateUploadCdnFileReuploadNeeded | PredicateUploadCdnFile;
-
-export type CdnPublicKey = PredicateCdnPublicKey;
-
-export type CdnConfig = PredicateCdnConfig;
-
-export type LangPackString = PredicateLangPackString | PredicateLangPackStringPluralized | PredicateLangPackStringDeleted;
-
-export type LangPackDifference = PredicateLangPackDifference;
-
-export type LangPackLanguage = PredicateLangPackLanguage;
-
-export type ChannelAdminLogEventAction = PredicateChannelAdminLogEventActionChangeTitle | PredicateChannelAdminLogEventActionChangeAbout | PredicateChannelAdminLogEventActionChangeUsername | PredicateChannelAdminLogEventActionChangePhoto | PredicateChannelAdminLogEventActionToggleInvites | PredicateChannelAdminLogEventActionToggleSignatures | PredicateChannelAdminLogEventActionUpdatePinned | PredicateChannelAdminLogEventActionEditMessage | PredicateChannelAdminLogEventActionDeleteMessage | PredicateChannelAdminLogEventActionParticipantJoin | PredicateChannelAdminLogEventActionParticipantLeave | PredicateChannelAdminLogEventActionParticipantInvite | PredicateChannelAdminLogEventActionParticipantToggleBan | PredicateChannelAdminLogEventActionParticipantToggleAdmin | PredicateChannelAdminLogEventActionChangeStickerSet | PredicateChannelAdminLogEventActionTogglePreHistoryHidden | PredicateChannelAdminLogEventActionDefaultBannedRights | PredicateChannelAdminLogEventActionStopPoll | PredicateChannelAdminLogEventActionChangeLinkedChat | PredicateChannelAdminLogEventActionChangeLocation | PredicateChannelAdminLogEventActionToggleSlowMode | PredicateChannelAdminLogEventActionStartGroupCall | PredicateChannelAdminLogEventActionDiscardGroupCall | PredicateChannelAdminLogEventActionParticipantMute | PredicateChannelAdminLogEventActionParticipantUnmute | PredicateChannelAdminLogEventActionToggleGroupCallSetting | PredicateChannelAdminLogEventActionParticipantJoinByInvite | PredicateChannelAdminLogEventActionExportedInviteDelete | PredicateChannelAdminLogEventActionExportedInviteRevoke | PredicateChannelAdminLogEventActionExportedInviteEdit | PredicateChannelAdminLogEventActionParticipantVolume | PredicateChannelAdminLogEventActionChangeHistoryTTL | PredicateChannelAdminLogEventActionParticipantJoinByRequest | PredicateChannelAdminLogEventActionToggleNoForwards | PredicateChannelAdminLogEventActionSendMessage | PredicateChannelAdminLogEventActionChangeAvailableReactions;
-
-export type ChannelAdminLogEvent = PredicateChannelAdminLogEvent;
-
-export type ChannelsAdminLogResults = PredicateChannelsAdminLogResults;
-
-export type ChannelAdminLogEventsFilter = PredicateChannelAdminLogEventsFilter;
-
-export type PopularContact = PredicatePopularContact;
-
-export type MessagesFavedStickers = PredicateMessagesFavedStickersNotModified | PredicateMessagesFavedStickers;
-
-export type RecentMeUrl = PredicateRecentMeUrlUnknown | PredicateRecentMeUrlUser | PredicateRecentMeUrlChat | PredicateRecentMeUrlChatInvite | PredicateRecentMeUrlStickerSet;
-
-export type HelpRecentMeUrls = PredicateHelpRecentMeUrls;
-
-export type InputSingleMedia = PredicateInputSingleMedia;
-
-export type WebAuthorization = PredicateWebAuthorization;
-
-export type AccountWebAuthorizations = PredicateAccountWebAuthorizations;
-
-export type InputMessage = PredicateInputMessageID | PredicateInputMessageReplyTo | PredicateInputMessagePinned | PredicateInputMessageCallbackQuery;
-
-export type InputDialogPeer = PredicateInputDialogPeer | PredicateInputDialogPeerFolder;
-
-export type DialogPeer = PredicateDialogPeer | PredicateDialogPeerFolder;
-
-export type MessagesFoundStickerSets = PredicateMessagesFoundStickerSetsNotModified | PredicateMessagesFoundStickerSets;
-
-export type FileHash = PredicateFileHash;
-
-export type InputClientProxy = PredicateInputClientProxy;
-
-export type HelpTermsOfServiceUpdate = PredicateHelpTermsOfServiceUpdateEmpty | PredicateHelpTermsOfServiceUpdate;
-
-export type InputSecureFile = PredicateInputSecureFileUploaded | PredicateInputSecureFile;
-
-export type SecureFile = PredicateSecureFileEmpty | PredicateSecureFile;
-
-export type SecureData = PredicateSecureData;
-
-export type SecurePlainData = PredicateSecurePlainPhone | PredicateSecurePlainEmail;
-
-export type SecureValueType = PredicateSecureValueTypePersonalDetails | PredicateSecureValueTypePassport | PredicateSecureValueTypeDriverLicense | PredicateSecureValueTypeIdentityCard | PredicateSecureValueTypeInternalPassport | PredicateSecureValueTypeAddress | PredicateSecureValueTypeUtilityBill | PredicateSecureValueTypeBankStatement | PredicateSecureValueTypeRentalAgreement | PredicateSecureValueTypePassportRegistration | PredicateSecureValueTypeTemporaryRegistration | PredicateSecureValueTypePhone | PredicateSecureValueTypeEmail;
-
-export type SecureValue = PredicateSecureValue;
-
-export type InputSecureValue = PredicateInputSecureValue;
-
-export type SecureValueHash = PredicateSecureValueHash;
-
-export type SecureValueError = PredicateSecureValueErrorData | PredicateSecureValueErrorFrontSide | PredicateSecureValueErrorReverseSide | PredicateSecureValueErrorSelfie | PredicateSecureValueErrorFile | PredicateSecureValueErrorFiles | PredicateSecureValueError | PredicateSecureValueErrorTranslationFile | PredicateSecureValueErrorTranslationFiles;
-
-export type SecureCredentialsEncrypted = PredicateSecureCredentialsEncrypted;
-
-export type AccountAuthorizationForm = PredicateAccountAuthorizationForm;
-
-export type AccountSentEmailCode = PredicateAccountSentEmailCode;
-
-export type HelpDeepLinkInfo = PredicateHelpDeepLinkInfoEmpty | PredicateHelpDeepLinkInfo;
-
-export type SavedContact = PredicateSavedPhoneContact;
-
-export type AccountTakeout = PredicateAccountTakeout;
-
-export type PasswordKdfAlgo = PredicatePasswordKdfAlgoUnknown | PredicatePasswordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow;
-
-export type SecurePasswordKdfAlgo = PredicateSecurePasswordKdfAlgoUnknown | PredicateSecurePasswordKdfAlgoPBKDF2HMACSHA512iter100000 | PredicateSecurePasswordKdfAlgoSHA512;
-
-export type SecureSecretSettings = PredicateSecureSecretSettings;
-
-export type InputCheckPasswordSRP = PredicateInputCheckPasswordEmpty | PredicateInputCheckPasswordSRP;
-
-export type SecureRequiredType = PredicateSecureRequiredType | PredicateSecureRequiredTypeOneOf;
-
-export type HelpPassportConfig = PredicateHelpPassportConfigNotModified | PredicateHelpPassportConfig;
-
-export type InputAppEvent = PredicateInputAppEvent;
-
-export type JSONObjectValue = PredicateJsonObjectValue;
-
-export type JSONValue = PredicateJsonNull | PredicateJsonBool | PredicateJsonNumber | PredicateJsonString | PredicateJsonArray | PredicateJsonObject;
-
-export type PageTableCell = PredicatePageTableCell;
-
-export type PageTableRow = PredicatePageTableRow;
-
-export type PageCaption = PredicatePageCaption;
-
-export type PageListItem = PredicatePageListItemText | PredicatePageListItemBlocks;
-
-export type PageListOrderedItem = PredicatePageListOrderedItemText | PredicatePageListOrderedItemBlocks;
-
-export type PageRelatedArticle = PredicatePageRelatedArticle;
-
-export type Page = PredicatePage;
-
-export type HelpSupportName = PredicateHelpSupportName;
-
-export type HelpUserInfo = PredicateHelpUserInfoEmpty | PredicateHelpUserInfo;
-
-export type PollAnswer = PredicatePollAnswer;
-
-export type Poll = PredicatePoll;
-
-export type PollAnswerVoters = PredicatePollAnswerVoters;
-
-export type PollResults = PredicatePollResults;
-
-export type ChatOnlines = PredicateChatOnlines;
-
-export type StatsURL = PredicateStatsURL;
-
-export type ChatAdminRights = PredicateChatAdminRights;
-
-export type ChatBannedRights = PredicateChatBannedRights;
-
-export type InputWallPaper = PredicateInputWallPaper | PredicateInputWallPaperSlug | PredicateInputWallPaperNoFile;
-
-export type AccountWallPapers = PredicateAccountWallPapersNotModified | PredicateAccountWallPapers;
-
-export type CodeSettings = PredicateCodeSettings;
-
-export type WallPaperSettings = PredicateWallPaperSettings;
-
-export type AutoDownloadSettings = PredicateAutoDownloadSettings;
-
-export type AccountAutoDownloadSettings = PredicateAccountAutoDownloadSettings;
-
-export type EmojiKeyword = PredicateEmojiKeyword | PredicateEmojiKeywordDeleted;
-
-export type EmojiKeywordsDifference = PredicateEmojiKeywordsDifference;
-
-export type EmojiURL = PredicateEmojiURL;
-
-export type EmojiLanguage = PredicateEmojiLanguage;
-
-export type Folder = PredicateFolder;
-
-export type InputFolderPeer = PredicateInputFolderPeer;
-
-export type FolderPeer = PredicateFolderPeer;
-
-export type MessagesSearchCounter = PredicateMessagesSearchCounter;
-
-export type UrlAuthResult = PredicateUrlAuthResultRequest | PredicateUrlAuthResultAccepted | PredicateUrlAuthResultDefault;
-
-export type ChannelLocation = PredicateChannelLocationEmpty | PredicateChannelLocation;
-
-export type PeerLocated = PredicatePeerLocated | PredicatePeerSelfLocated;
-
-export type RestrictionReason = PredicateRestrictionReason;
-
-export type InputTheme = PredicateInputTheme | PredicateInputThemeSlug;
-
-export type Theme = PredicateTheme;
-
-export type AccountThemes = PredicateAccountThemesNotModified | PredicateAccountThemes;
-
-export type AuthLoginToken = PredicateAuthLoginToken | PredicateAuthLoginTokenMigrateTo | PredicateAuthLoginTokenSuccess;
-
-export type AccountContentSettings = PredicateAccountContentSettings;
-
-export type MessagesInactiveChats = PredicateMessagesInactiveChats;
-
-export type BaseTheme = PredicateBaseThemeClassic | PredicateBaseThemeDay | PredicateBaseThemeNight | PredicateBaseThemeTinted | PredicateBaseThemeArctic;
-
-export type InputThemeSettings = PredicateInputThemeSettings;
-
-export type ThemeSettings = PredicateThemeSettings;
-
-export type WebPageAttribute = PredicateWebPageAttributeTheme;
-
-export type MessageUserVote = PredicateMessageUserVote | PredicateMessageUserVoteInputOption | PredicateMessageUserVoteMultiple;
-
-export type MessagesVotesList = PredicateMessagesVotesList;
-
-export type BankCardOpenUrl = PredicateBankCardOpenUrl;
-
-export type PaymentsBankCardData = PredicatePaymentsBankCardData;
-
-export type DialogFilter = PredicateDialogFilter;
-
-export type DialogFilterSuggested = PredicateDialogFilterSuggested;
-
-export type StatsDateRangeDays = PredicateStatsDateRangeDays;
-
-export type StatsAbsValueAndPrev = PredicateStatsAbsValueAndPrev;
-
-export type StatsPercentValue = PredicateStatsPercentValue;
-
-export type StatsGraph = PredicateStatsGraphAsync | PredicateStatsGraphError | PredicateStatsGraph;
-
-export type MessageInteractionCounters = PredicateMessageInteractionCounters;
-
-export type StatsBroadcastStats = PredicateStatsBroadcastStats;
-
-export type HelpPromoData = PredicateHelpPromoDataEmpty | PredicateHelpPromoData;
-
-export type VideoSize = PredicateVideoSize;
-
-export type StatsGroupTopPoster = PredicateStatsGroupTopPoster;
-
-export type StatsGroupTopAdmin = PredicateStatsGroupTopAdmin;
-
-export type StatsGroupTopInviter = PredicateStatsGroupTopInviter;
-
-export type StatsMegagroupStats = PredicateStatsMegagroupStats;
-
-export type GlobalPrivacySettings = PredicateGlobalPrivacySettings;
-
-export type HelpCountryCode = PredicateHelpCountryCode;
-
-export type HelpCountry = PredicateHelpCountry;
-
-export type HelpCountriesList = PredicateHelpCountriesListNotModified | PredicateHelpCountriesList;
-
-export type MessageViews = PredicateMessageViews;
-
-export type MessagesMessageViews = PredicateMessagesMessageViews;
-
-export type MessagesDiscussionMessage = PredicateMessagesDiscussionMessage;
-
-export type MessageReplyHeader = PredicateMessageReplyHeader;
-
-export type MessageReplies = PredicateMessageReplies;
-
-export type PeerBlocked = PredicatePeerBlocked;
-
-export type StatsMessageStats = PredicateStatsMessageStats;
-
-export type GroupCall = PredicateGroupCallDiscarded | PredicateGroupCall;
-
-export type InputGroupCall = PredicateInputGroupCall;
-
-export type GroupCallParticipant = PredicateGroupCallParticipant;
-
-export type PhoneGroupCall = PredicatePhoneGroupCall;
-
-export type PhoneGroupParticipants = PredicatePhoneGroupParticipants;
-
-export type InlineQueryPeerType = PredicateInlineQueryPeerTypeSameBotPM | PredicateInlineQueryPeerTypePM | PredicateInlineQueryPeerTypeChat | PredicateInlineQueryPeerTypeMegagroup | PredicateInlineQueryPeerTypeBroadcast;
-
-export type MessagesHistoryImport = PredicateMessagesHistoryImport;
-
-export type MessagesHistoryImportParsed = PredicateMessagesHistoryImportParsed;
-
-export type MessagesAffectedFoundMessages = PredicateMessagesAffectedFoundMessages;
-
-export type ChatInviteImporter = PredicateChatInviteImporter;
-
-export type MessagesExportedChatInvites = PredicateMessagesExportedChatInvites;
-
-export type MessagesExportedChatInvite = PredicateMessagesExportedChatInvite | PredicateMessagesExportedChatInviteReplaced;
-
-export type MessagesChatInviteImporters = PredicateMessagesChatInviteImporters;
-
-export type ChatAdminWithInvites = PredicateChatAdminWithInvites;
-
-export type MessagesChatAdminsWithInvites = PredicateMessagesChatAdminsWithInvites;
-
-export type MessagesCheckedHistoryImportPeer = PredicateMessagesCheckedHistoryImportPeer;
-
-export type PhoneJoinAsPeers = PredicatePhoneJoinAsPeers;
-
-export type PhoneExportedGroupCallInvite = PredicatePhoneExportedGroupCallInvite;
-
-export type GroupCallParticipantVideoSourceGroup = PredicateGroupCallParticipantVideoSourceGroup;
-
-export type GroupCallParticipantVideo = PredicateGroupCallParticipantVideo;
-
-export type StickersSuggestedShortName = PredicateStickersSuggestedShortName;
-
-export type BotCommandScope = PredicateBotCommandScopeDefault | PredicateBotCommandScopeUsers | PredicateBotCommandScopeChats | PredicateBotCommandScopeChatAdmins | PredicateBotCommandScopePeer | PredicateBotCommandScopePeerAdmins | PredicateBotCommandScopePeerUser;
-
-export type AccountResetPasswordResult = PredicateAccountResetPasswordFailedWait | PredicateAccountResetPasswordRequestedWait | PredicateAccountResetPasswordOk;
-
-export type SponsoredMessage = PredicateSponsoredMessage;
-
-export type MessagesSponsoredMessages = PredicateMessagesSponsoredMessages;
-
-export type SearchResultsCalendarPeriod = PredicateSearchResultsCalendarPeriod;
-
-export type MessagesSearchResultsCalendar = PredicateMessagesSearchResultsCalendar;
-
-export type SearchResultsPosition = PredicateSearchResultPosition;
-
-export type MessagesSearchResultsPositions = PredicateMessagesSearchResultsPositions;
-
-export type ChannelsSendAsPeers = PredicateChannelsSendAsPeers;
-
-export type UsersUserFull = PredicateUsersUserFull;
-
-export type MessagesPeerSettings = PredicateMessagesPeerSettings;
-
-export type AuthLoggedOut = PredicateAuthLoggedOut;
-
-export type ReactionCount = PredicateReactionCount;
-
-export type MessageReactions = PredicateMessageReactions;
-
-export type MessagesMessageReactionsList = PredicateMessagesMessageReactionsList;
-
-export type AvailableReaction = PredicateAvailableReaction;
-
-export type MessagesAvailableReactions = PredicateMessagesAvailableReactionsNotModified | PredicateMessagesAvailableReactions;
-
-export type MessagesTranslatedText = PredicateMessagesTranslateNoResult | PredicateMessagesTranslateResultText;
-
-export type MessagePeerReaction = PredicateMessagePeerReaction;
-
-export type GroupCallStreamChannel = PredicateGroupCallStreamChannel;
-
-export type PhoneGroupCallStreamChannels = PredicatePhoneGroupCallStreamChannels;
-
-export type PhoneGroupCallStreamRtmpUrl = PredicatePhoneGroupCallStreamRtmpUrl;
+export interface Error {
+    error: PredicateError
+}
+
+export interface InputPeer {
+    inputPeerEmpty?: PredicateInputPeerEmpty
+    inputPeerSelf?: PredicateInputPeerSelf
+    inputPeerChat?: PredicateInputPeerChat
+    inputPeerUser?: PredicateInputPeerUser
+    inputPeerChannel?: PredicateInputPeerChannel
+    inputPeerUserFromMessage?: PredicateInputPeerUserFromMessage
+    inputPeerChannelFromMessage?: PredicateInputPeerChannelFromMessage
+}
+
+export interface InputUser {
+    inputUserEmpty?: PredicateInputUserEmpty
+    inputUserSelf?: PredicateInputUserSelf
+    inputUser?: PredicateInputUser
+    inputUserFromMessage?: PredicateInputUserFromMessage
+}
+
+export interface InputContact {
+    inputPhoneContact: PredicateInputPhoneContact
+}
+
+export interface InputFile {
+    inputFile?: PredicateInputFile
+    inputFileBig?: PredicateInputFileBig
+}
+
+export interface InputMedia {
+    inputMediaEmpty?: PredicateInputMediaEmpty
+    inputMediaUploadedPhoto?: PredicateInputMediaUploadedPhoto
+    inputMediaPhoto?: PredicateInputMediaPhoto
+    inputMediaGeoPoint?: PredicateInputMediaGeoPoint
+    inputMediaContact?: PredicateInputMediaContact
+    inputMediaUploadedDocument?: PredicateInputMediaUploadedDocument
+    inputMediaDocument?: PredicateInputMediaDocument
+    inputMediaVenue?: PredicateInputMediaVenue
+    inputMediaPhotoExternal?: PredicateInputMediaPhotoExternal
+    inputMediaDocumentExternal?: PredicateInputMediaDocumentExternal
+    inputMediaGame?: PredicateInputMediaGame
+    inputMediaInvoice?: PredicateInputMediaInvoice
+    inputMediaGeoLive?: PredicateInputMediaGeoLive
+    inputMediaPoll?: PredicateInputMediaPoll
+    inputMediaDice?: PredicateInputMediaDice
+}
+
+export interface InputChatPhoto {
+    inputChatPhotoEmpty?: PredicateInputChatPhotoEmpty
+    inputChatUploadedPhoto?: PredicateInputChatUploadedPhoto
+    inputChatPhoto?: PredicateInputChatPhoto
+}
+
+export interface InputGeoPoint {
+    inputGeoPointEmpty?: PredicateInputGeoPointEmpty
+    inputGeoPoint?: PredicateInputGeoPoint
+}
+
+export interface InputPhoto {
+    inputPhotoEmpty?: PredicateInputPhotoEmpty
+    inputPhoto?: PredicateInputPhoto
+}
+
+export interface InputFileLocation {
+    inputFileLocation?: PredicateInputFileLocation
+    inputEncryptedFileLocation?: PredicateInputEncryptedFileLocation
+    inputDocumentFileLocation?: PredicateInputDocumentFileLocation
+    inputSecureFileLocation?: PredicateInputSecureFileLocation
+    inputTakeoutFileLocation?: PredicateInputTakeoutFileLocation
+    inputPhotoFileLocation?: PredicateInputPhotoFileLocation
+    inputPhotoLegacyFileLocation?: PredicateInputPhotoLegacyFileLocation
+    inputPeerPhotoFileLocation?: PredicateInputPeerPhotoFileLocation
+    inputStickerSetThumb?: PredicateInputStickerSetThumb
+    inputGroupCallStream?: PredicateInputGroupCallStream
+}
+
+export interface Peer {
+    peerUser?: PredicatePeerUser
+    peerChat?: PredicatePeerChat
+    peerChannel?: PredicatePeerChannel
+}
+
+export interface StorageFileType {
+    storageFileUnknown?: PredicateStorageFileUnknown
+    storageFilePartial?: PredicateStorageFilePartial
+    storageFileJpeg?: PredicateStorageFileJpeg
+    storageFileGif?: PredicateStorageFileGif
+    storageFilePng?: PredicateStorageFilePng
+    storageFilePdf?: PredicateStorageFilePdf
+    storageFileMp3?: PredicateStorageFileMp3
+    storageFileMov?: PredicateStorageFileMov
+    storageFileMp4?: PredicateStorageFileMp4
+    storageFileWebp?: PredicateStorageFileWebp
+}
+
+export interface User {
+    userEmpty?: PredicateUserEmpty
+    user?: PredicateUser
+}
+
+export interface UserProfilePhoto {
+    userProfilePhotoEmpty?: PredicateUserProfilePhotoEmpty
+    userProfilePhoto?: PredicateUserProfilePhoto
+}
+
+export interface UserStatus {
+    userStatusEmpty?: PredicateUserStatusEmpty
+    userStatusOnline?: PredicateUserStatusOnline
+    userStatusOffline?: PredicateUserStatusOffline
+    userStatusRecently?: PredicateUserStatusRecently
+    userStatusLastWeek?: PredicateUserStatusLastWeek
+    userStatusLastMonth?: PredicateUserStatusLastMonth
+}
+
+export interface Chat {
+    chatEmpty?: PredicateChatEmpty
+    chat?: PredicateChat
+    chatForbidden?: PredicateChatForbidden
+    channel?: PredicateChannel
+    channelForbidden?: PredicateChannelForbidden
+}
+
+export interface ChatFull {
+    chatFull?: PredicateChatFull
+    channelFull?: PredicateChannelFull
+}
+
+export interface ChatParticipant {
+    chatParticipant?: PredicateChatParticipant
+    chatParticipantCreator?: PredicateChatParticipantCreator
+    chatParticipantAdmin?: PredicateChatParticipantAdmin
+}
+
+export interface ChatParticipants {
+    chatParticipantsForbidden?: PredicateChatParticipantsForbidden
+    chatParticipants?: PredicateChatParticipants
+}
+
+export interface ChatPhoto {
+    chatPhotoEmpty?: PredicateChatPhotoEmpty
+    chatPhoto?: PredicateChatPhoto
+}
+
+export interface Message {
+    messageEmpty?: PredicateMessageEmpty
+    message?: PredicateMessage
+    messageService?: PredicateMessageService
+}
+
+export interface MessageMedia {
+    messageMediaEmpty?: PredicateMessageMediaEmpty
+    messageMediaPhoto?: PredicateMessageMediaPhoto
+    messageMediaGeo?: PredicateMessageMediaGeo
+    messageMediaContact?: PredicateMessageMediaContact
+    messageMediaUnsupported?: PredicateMessageMediaUnsupported
+    messageMediaDocument?: PredicateMessageMediaDocument
+    messageMediaWebPage?: PredicateMessageMediaWebPage
+    messageMediaVenue?: PredicateMessageMediaVenue
+    messageMediaGame?: PredicateMessageMediaGame
+    messageMediaInvoice?: PredicateMessageMediaInvoice
+    messageMediaGeoLive?: PredicateMessageMediaGeoLive
+    messageMediaPoll?: PredicateMessageMediaPoll
+    messageMediaDice?: PredicateMessageMediaDice
+}
+
+export interface MessageAction {
+    messageActionEmpty?: PredicateMessageActionEmpty
+    messageActionChatCreate?: PredicateMessageActionChatCreate
+    messageActionChatEditTitle?: PredicateMessageActionChatEditTitle
+    messageActionChatEditPhoto?: PredicateMessageActionChatEditPhoto
+    messageActionChatDeletePhoto?: PredicateMessageActionChatDeletePhoto
+    messageActionChatAddUser?: PredicateMessageActionChatAddUser
+    messageActionChatDeleteUser?: PredicateMessageActionChatDeleteUser
+    messageActionChatJoinedByLink?: PredicateMessageActionChatJoinedByLink
+    messageActionChannelCreate?: PredicateMessageActionChannelCreate
+    messageActionChatMigrateTo?: PredicateMessageActionChatMigrateTo
+    messageActionChannelMigrateFrom?: PredicateMessageActionChannelMigrateFrom
+    messageActionPinMessage?: PredicateMessageActionPinMessage
+    messageActionHistoryClear?: PredicateMessageActionHistoryClear
+    messageActionGameScore?: PredicateMessageActionGameScore
+    messageActionPaymentSentMe?: PredicateMessageActionPaymentSentMe
+    messageActionPaymentSent?: PredicateMessageActionPaymentSent
+    messageActionPhoneCall?: PredicateMessageActionPhoneCall
+    messageActionScreenshotTaken?: PredicateMessageActionScreenshotTaken
+    messageActionCustomAction?: PredicateMessageActionCustomAction
+    messageActionBotAllowed?: PredicateMessageActionBotAllowed
+    messageActionSecureValuesSentMe?: PredicateMessageActionSecureValuesSentMe
+    messageActionSecureValuesSent?: PredicateMessageActionSecureValuesSent
+    messageActionContactSignUp?: PredicateMessageActionContactSignUp
+    messageActionGeoProximityReached?: PredicateMessageActionGeoProximityReached
+    messageActionGroupCall?: PredicateMessageActionGroupCall
+    messageActionInviteToGroupCall?: PredicateMessageActionInviteToGroupCall
+    messageActionSetMessagesTTL?: PredicateMessageActionSetMessagesTTL
+    messageActionGroupCallScheduled?: PredicateMessageActionGroupCallScheduled
+    messageActionSetChatTheme?: PredicateMessageActionSetChatTheme
+    messageActionChatJoinedByRequest?: PredicateMessageActionChatJoinedByRequest
+}
+
+export interface Dialog {
+    dialog?: PredicateDialog
+    dialogFolder?: PredicateDialogFolder
+}
+
+export interface Photo {
+    photoEmpty?: PredicatePhotoEmpty
+    photo?: PredicatePhoto
+}
+
+export interface PhotoSize {
+    photoSizeEmpty?: PredicatePhotoSizeEmpty
+    photoSize?: PredicatePhotoSize
+    photoCachedSize?: PredicatePhotoCachedSize
+    photoStrippedSize?: PredicatePhotoStrippedSize
+    photoSizeProgressive?: PredicatePhotoSizeProgressive
+    photoPathSize?: PredicatePhotoPathSize
+}
+
+export interface GeoPoint {
+    geoPointEmpty?: PredicateGeoPointEmpty
+    geoPoint?: PredicateGeoPoint
+}
+
+export interface AuthSentCode {
+    authSentCode: PredicateAuthSentCode
+}
+
+export interface AuthAuthorization {
+    authAuthorization?: PredicateAuthAuthorization
+    authAuthorizationSignUpRequired?: PredicateAuthAuthorizationSignUpRequired
+}
+
+export interface AuthExportedAuthorization {
+    authExportedAuthorization: PredicateAuthExportedAuthorization
+}
+
+export interface InputNotifyPeer {
+    inputNotifyPeer?: PredicateInputNotifyPeer
+    inputNotifyUsers?: PredicateInputNotifyUsers
+    inputNotifyChats?: PredicateInputNotifyChats
+    inputNotifyBroadcasts?: PredicateInputNotifyBroadcasts
+}
+
+export interface InputPeerNotifySettings {
+    inputPeerNotifySettings: PredicateInputPeerNotifySettings
+}
+
+export interface PeerNotifySettings {
+    peerNotifySettings: PredicatePeerNotifySettings
+}
+
+export interface PeerSettings {
+    peerSettings: PredicatePeerSettings
+}
+
+export interface WallPaper {
+    wallPaper?: PredicateWallPaper
+    wallPaperNoFile?: PredicateWallPaperNoFile
+}
+
+export interface ReportReason {
+    inputReportReasonSpam?: PredicateInputReportReasonSpam
+    inputReportReasonViolence?: PredicateInputReportReasonViolence
+    inputReportReasonPornography?: PredicateInputReportReasonPornography
+    inputReportReasonChildAbuse?: PredicateInputReportReasonChildAbuse
+    inputReportReasonOther?: PredicateInputReportReasonOther
+    inputReportReasonCopyright?: PredicateInputReportReasonCopyright
+    inputReportReasonGeoIrrelevant?: PredicateInputReportReasonGeoIrrelevant
+    inputReportReasonFake?: PredicateInputReportReasonFake
+    inputReportReasonIllegalDrugs?: PredicateInputReportReasonIllegalDrugs
+    inputReportReasonPersonalDetails?: PredicateInputReportReasonPersonalDetails
+}
+
+export interface UserFull {
+    userFull: PredicateUserFull
+}
+
+export interface Contact {
+    contact: PredicateContact
+}
+
+export interface ImportedContact {
+    importedContact: PredicateImportedContact
+}
+
+export interface ContactStatus {
+    contactStatus: PredicateContactStatus
+}
+
+export interface ContactsContacts {
+    contactsContactsNotModified?: PredicateContactsContactsNotModified
+    contactsContacts?: PredicateContactsContacts
+}
+
+export interface ContactsImportedContacts {
+    contactsImportedContacts: PredicateContactsImportedContacts
+}
+
+export interface ContactsBlocked {
+    contactsBlocked?: PredicateContactsBlocked
+    contactsBlockedSlice?: PredicateContactsBlockedSlice
+}
+
+export interface MessagesDialogs {
+    messagesDialogs?: PredicateMessagesDialogs
+    messagesDialogsSlice?: PredicateMessagesDialogsSlice
+    messagesDialogsNotModified?: PredicateMessagesDialogsNotModified
+}
+
+export interface MessagesMessages {
+    messagesMessages?: PredicateMessagesMessages
+    messagesMessagesSlice?: PredicateMessagesMessagesSlice
+    messagesChannelMessages?: PredicateMessagesChannelMessages
+    messagesMessagesNotModified?: PredicateMessagesMessagesNotModified
+}
+
+export interface MessagesChats {
+    messagesChats?: PredicateMessagesChats
+    messagesChatsSlice?: PredicateMessagesChatsSlice
+}
+
+export interface MessagesChatFull {
+    messagesChatFull: PredicateMessagesChatFull
+}
+
+export interface MessagesAffectedHistory {
+    messagesAffectedHistory: PredicateMessagesAffectedHistory
+}
+
+export interface MessagesFilter {
+    inputMessagesFilterEmpty?: PredicateInputMessagesFilterEmpty
+    inputMessagesFilterPhotos?: PredicateInputMessagesFilterPhotos
+    inputMessagesFilterVideo?: PredicateInputMessagesFilterVideo
+    inputMessagesFilterPhotoVideo?: PredicateInputMessagesFilterPhotoVideo
+    inputMessagesFilterDocument?: PredicateInputMessagesFilterDocument
+    inputMessagesFilterUrl?: PredicateInputMessagesFilterUrl
+    inputMessagesFilterGif?: PredicateInputMessagesFilterGif
+    inputMessagesFilterVoice?: PredicateInputMessagesFilterVoice
+    inputMessagesFilterMusic?: PredicateInputMessagesFilterMusic
+    inputMessagesFilterChatPhotos?: PredicateInputMessagesFilterChatPhotos
+    inputMessagesFilterPhoneCalls?: PredicateInputMessagesFilterPhoneCalls
+    inputMessagesFilterRoundVoice?: PredicateInputMessagesFilterRoundVoice
+    inputMessagesFilterRoundVideo?: PredicateInputMessagesFilterRoundVideo
+    inputMessagesFilterMyMentions?: PredicateInputMessagesFilterMyMentions
+    inputMessagesFilterGeo?: PredicateInputMessagesFilterGeo
+    inputMessagesFilterContacts?: PredicateInputMessagesFilterContacts
+    inputMessagesFilterPinned?: PredicateInputMessagesFilterPinned
+}
+
+export interface Update {
+    updateNewMessage?: PredicateUpdateNewMessage
+    updateMessageID?: PredicateUpdateMessageID
+    updateDeleteMessages?: PredicateUpdateDeleteMessages
+    updateUserTyping?: PredicateUpdateUserTyping
+    updateChatUserTyping?: PredicateUpdateChatUserTyping
+    updateChatParticipants?: PredicateUpdateChatParticipants
+    updateUserStatus?: PredicateUpdateUserStatus
+    updateUserName?: PredicateUpdateUserName
+    updateUserPhoto?: PredicateUpdateUserPhoto
+    updateNewEncryptedMessage?: PredicateUpdateNewEncryptedMessage
+    updateEncryptedChatTyping?: PredicateUpdateEncryptedChatTyping
+    updateEncryption?: PredicateUpdateEncryption
+    updateEncryptedMessagesRead?: PredicateUpdateEncryptedMessagesRead
+    updateChatParticipantAdd?: PredicateUpdateChatParticipantAdd
+    updateChatParticipantDelete?: PredicateUpdateChatParticipantDelete
+    updateDcOptions?: PredicateUpdateDcOptions
+    updateNotifySettings?: PredicateUpdateNotifySettings
+    updateServiceNotification?: PredicateUpdateServiceNotification
+    updatePrivacy?: PredicateUpdatePrivacy
+    updateUserPhone?: PredicateUpdateUserPhone
+    updateReadHistoryInbox?: PredicateUpdateReadHistoryInbox
+    updateReadHistoryOutbox?: PredicateUpdateReadHistoryOutbox
+    updateWebPage?: PredicateUpdateWebPage
+    updateReadMessagesContents?: PredicateUpdateReadMessagesContents
+    updateChannelTooLong?: PredicateUpdateChannelTooLong
+    updateChannel?: PredicateUpdateChannel
+    updateNewChannelMessage?: PredicateUpdateNewChannelMessage
+    updateReadChannelInbox?: PredicateUpdateReadChannelInbox
+    updateDeleteChannelMessages?: PredicateUpdateDeleteChannelMessages
+    updateChannelMessageViews?: PredicateUpdateChannelMessageViews
+    updateChatParticipantAdmin?: PredicateUpdateChatParticipantAdmin
+    updateNewStickerSet?: PredicateUpdateNewStickerSet
+    updateStickerSetsOrder?: PredicateUpdateStickerSetsOrder
+    updateStickerSets?: PredicateUpdateStickerSets
+    updateSavedGifs?: PredicateUpdateSavedGifs
+    updateBotInlineQuery?: PredicateUpdateBotInlineQuery
+    updateBotInlineSend?: PredicateUpdateBotInlineSend
+    updateEditChannelMessage?: PredicateUpdateEditChannelMessage
+    updateBotCallbackQuery?: PredicateUpdateBotCallbackQuery
+    updateEditMessage?: PredicateUpdateEditMessage
+    updateInlineBotCallbackQuery?: PredicateUpdateInlineBotCallbackQuery
+    updateReadChannelOutbox?: PredicateUpdateReadChannelOutbox
+    updateDraftMessage?: PredicateUpdateDraftMessage
+    updateReadFeaturedStickers?: PredicateUpdateReadFeaturedStickers
+    updateRecentStickers?: PredicateUpdateRecentStickers
+    updateConfig?: PredicateUpdateConfig
+    updatePtsChanged?: PredicateUpdatePtsChanged
+    updateChannelWebPage?: PredicateUpdateChannelWebPage
+    updateDialogPinned?: PredicateUpdateDialogPinned
+    updatePinnedDialogs?: PredicateUpdatePinnedDialogs
+    updateBotWebhookJSON?: PredicateUpdateBotWebhookJSON
+    updateBotWebhookJSONQuery?: PredicateUpdateBotWebhookJSONQuery
+    updateBotShippingQuery?: PredicateUpdateBotShippingQuery
+    updateBotPrecheckoutQuery?: PredicateUpdateBotPrecheckoutQuery
+    updatePhoneCall?: PredicateUpdatePhoneCall
+    updateLangPackTooLong?: PredicateUpdateLangPackTooLong
+    updateLangPack?: PredicateUpdateLangPack
+    updateFavedStickers?: PredicateUpdateFavedStickers
+    updateChannelReadMessagesContents?: PredicateUpdateChannelReadMessagesContents
+    updateContactsReset?: PredicateUpdateContactsReset
+    updateChannelAvailableMessages?: PredicateUpdateChannelAvailableMessages
+    updateDialogUnreadMark?: PredicateUpdateDialogUnreadMark
+    updateMessagePoll?: PredicateUpdateMessagePoll
+    updateChatDefaultBannedRights?: PredicateUpdateChatDefaultBannedRights
+    updateFolderPeers?: PredicateUpdateFolderPeers
+    updatePeerSettings?: PredicateUpdatePeerSettings
+    updatePeerLocated?: PredicateUpdatePeerLocated
+    updateNewScheduledMessage?: PredicateUpdateNewScheduledMessage
+    updateDeleteScheduledMessages?: PredicateUpdateDeleteScheduledMessages
+    updateTheme?: PredicateUpdateTheme
+    updateGeoLiveViewed?: PredicateUpdateGeoLiveViewed
+    updateLoginToken?: PredicateUpdateLoginToken
+    updateMessagePollVote?: PredicateUpdateMessagePollVote
+    updateDialogFilter?: PredicateUpdateDialogFilter
+    updateDialogFilterOrder?: PredicateUpdateDialogFilterOrder
+    updateDialogFilters?: PredicateUpdateDialogFilters
+    updatePhoneCallSignalingData?: PredicateUpdatePhoneCallSignalingData
+    updateChannelMessageForwards?: PredicateUpdateChannelMessageForwards
+    updateReadChannelDiscussionInbox?: PredicateUpdateReadChannelDiscussionInbox
+    updateReadChannelDiscussionOutbox?: PredicateUpdateReadChannelDiscussionOutbox
+    updatePeerBlocked?: PredicateUpdatePeerBlocked
+    updateChannelUserTyping?: PredicateUpdateChannelUserTyping
+    updatePinnedMessages?: PredicateUpdatePinnedMessages
+    updatePinnedChannelMessages?: PredicateUpdatePinnedChannelMessages
+    updateChat?: PredicateUpdateChat
+    updateGroupCallParticipants?: PredicateUpdateGroupCallParticipants
+    updateGroupCall?: PredicateUpdateGroupCall
+    updatePeerHistoryTTL?: PredicateUpdatePeerHistoryTTL
+    updateChatParticipant?: PredicateUpdateChatParticipant
+    updateChannelParticipant?: PredicateUpdateChannelParticipant
+    updateBotStopped?: PredicateUpdateBotStopped
+    updateGroupCallConnection?: PredicateUpdateGroupCallConnection
+    updateBotCommands?: PredicateUpdateBotCommands
+    updatePendingJoinRequests?: PredicateUpdatePendingJoinRequests
+    updateBotChatInviteRequester?: PredicateUpdateBotChatInviteRequester
+    updateMessageReactions?: PredicateUpdateMessageReactions
+}
+
+export interface UpdatesState {
+    updatesState: PredicateUpdatesState
+}
+
+export interface UpdatesDifference {
+    updatesDifferenceEmpty?: PredicateUpdatesDifferenceEmpty
+    updatesDifference?: PredicateUpdatesDifference
+    updatesDifferenceSlice?: PredicateUpdatesDifferenceSlice
+    updatesDifferenceTooLong?: PredicateUpdatesDifferenceTooLong
+}
+
+export interface Updates {
+    updatesTooLong?: PredicateUpdatesTooLong
+    updateShortMessage?: PredicateUpdateShortMessage
+    updateShortChatMessage?: PredicateUpdateShortChatMessage
+    updateShort?: PredicateUpdateShort
+    updatesCombined?: PredicateUpdatesCombined
+    updates?: PredicateUpdates
+    updateShortSentMessage?: PredicateUpdateShortSentMessage
+}
+
+export interface PhotosPhotos {
+    photosPhotos?: PredicatePhotosPhotos
+    photosPhotosSlice?: PredicatePhotosPhotosSlice
+}
+
+export interface PhotosPhoto {
+    photosPhoto: PredicatePhotosPhoto
+}
+
+export interface UploadFile {
+    uploadFile?: PredicateUploadFile
+    uploadFileCdnRedirect?: PredicateUploadFileCdnRedirect
+}
+
+export interface DcOption {
+    dcOption: PredicateDcOption
+}
+
+export interface Config {
+    config: PredicateConfig
+}
+
+export interface NearestDc {
+    nearestDc: PredicateNearestDc
+}
+
+export interface HelpAppUpdate {
+    helpAppUpdate?: PredicateHelpAppUpdate
+    helpNoAppUpdate?: PredicateHelpNoAppUpdate
+}
+
+export interface HelpInviteText {
+    helpInviteText: PredicateHelpInviteText
+}
+
+export interface EncryptedChat {
+    encryptedChatEmpty?: PredicateEncryptedChatEmpty
+    encryptedChatWaiting?: PredicateEncryptedChatWaiting
+    encryptedChatRequested?: PredicateEncryptedChatRequested
+    encryptedChat?: PredicateEncryptedChat
+    encryptedChatDiscarded?: PredicateEncryptedChatDiscarded
+}
+
+export interface InputEncryptedChat {
+    inputEncryptedChat: PredicateInputEncryptedChat
+}
+
+export interface EncryptedFile {
+    encryptedFileEmpty?: PredicateEncryptedFileEmpty
+    encryptedFile?: PredicateEncryptedFile
+}
+
+export interface InputEncryptedFile {
+    inputEncryptedFileEmpty?: PredicateInputEncryptedFileEmpty
+    inputEncryptedFileUploaded?: PredicateInputEncryptedFileUploaded
+    inputEncryptedFile?: PredicateInputEncryptedFile
+    inputEncryptedFileBigUploaded?: PredicateInputEncryptedFileBigUploaded
+}
+
+export interface EncryptedMessage {
+    encryptedMessage?: PredicateEncryptedMessage
+    encryptedMessageService?: PredicateEncryptedMessageService
+}
+
+export interface MessagesDhConfig {
+    messagesDhConfigNotModified?: PredicateMessagesDhConfigNotModified
+    messagesDhConfig?: PredicateMessagesDhConfig
+}
+
+export interface MessagesSentEncryptedMessage {
+    messagesSentEncryptedMessage?: PredicateMessagesSentEncryptedMessage
+    messagesSentEncryptedFile?: PredicateMessagesSentEncryptedFile
+}
+
+export interface InputDocument {
+    inputDocumentEmpty?: PredicateInputDocumentEmpty
+    inputDocument?: PredicateInputDocument
+}
+
+export interface Document {
+    documentEmpty?: PredicateDocumentEmpty
+    document?: PredicateDocument
+}
+
+export interface HelpSupport {
+    helpSupport: PredicateHelpSupport
+}
+
+export interface NotifyPeer {
+    notifyPeer?: PredicateNotifyPeer
+    notifyUsers?: PredicateNotifyUsers
+    notifyChats?: PredicateNotifyChats
+    notifyBroadcasts?: PredicateNotifyBroadcasts
+}
+
+export interface SendMessageAction {
+    sendMessageTypingAction?: PredicateSendMessageTypingAction
+    sendMessageCancelAction?: PredicateSendMessageCancelAction
+    sendMessageRecordVideoAction?: PredicateSendMessageRecordVideoAction
+    sendMessageUploadVideoAction?: PredicateSendMessageUploadVideoAction
+    sendMessageRecordAudioAction?: PredicateSendMessageRecordAudioAction
+    sendMessageUploadAudioAction?: PredicateSendMessageUploadAudioAction
+    sendMessageUploadPhotoAction?: PredicateSendMessageUploadPhotoAction
+    sendMessageUploadDocumentAction?: PredicateSendMessageUploadDocumentAction
+    sendMessageGeoLocationAction?: PredicateSendMessageGeoLocationAction
+    sendMessageChooseContactAction?: PredicateSendMessageChooseContactAction
+    sendMessageGamePlayAction?: PredicateSendMessageGamePlayAction
+    sendMessageRecordRoundAction?: PredicateSendMessageRecordRoundAction
+    sendMessageUploadRoundAction?: PredicateSendMessageUploadRoundAction
+    speakingInGroupCallAction?: PredicateSpeakingInGroupCallAction
+    sendMessageHistoryImportAction?: PredicateSendMessageHistoryImportAction
+    sendMessageChooseStickerAction?: PredicateSendMessageChooseStickerAction
+    sendMessageEmojiInteraction?: PredicateSendMessageEmojiInteraction
+    sendMessageEmojiInteractionSeen?: PredicateSendMessageEmojiInteractionSeen
+}
+
+export interface ContactsFound {
+    contactsFound: PredicateContactsFound
+}
+
+export interface InputPrivacyKey {
+    inputPrivacyKeyStatusTimestamp?: PredicateInputPrivacyKeyStatusTimestamp
+    inputPrivacyKeyChatInvite?: PredicateInputPrivacyKeyChatInvite
+    inputPrivacyKeyPhoneCall?: PredicateInputPrivacyKeyPhoneCall
+    inputPrivacyKeyPhoneP2P?: PredicateInputPrivacyKeyPhoneP2P
+    inputPrivacyKeyForwards?: PredicateInputPrivacyKeyForwards
+    inputPrivacyKeyProfilePhoto?: PredicateInputPrivacyKeyProfilePhoto
+    inputPrivacyKeyPhoneNumber?: PredicateInputPrivacyKeyPhoneNumber
+    inputPrivacyKeyAddedByPhone?: PredicateInputPrivacyKeyAddedByPhone
+}
+
+export interface PrivacyKey {
+    privacyKeyStatusTimestamp?: PredicatePrivacyKeyStatusTimestamp
+    privacyKeyChatInvite?: PredicatePrivacyKeyChatInvite
+    privacyKeyPhoneCall?: PredicatePrivacyKeyPhoneCall
+    privacyKeyPhoneP2P?: PredicatePrivacyKeyPhoneP2P
+    privacyKeyForwards?: PredicatePrivacyKeyForwards
+    privacyKeyProfilePhoto?: PredicatePrivacyKeyProfilePhoto
+    privacyKeyPhoneNumber?: PredicatePrivacyKeyPhoneNumber
+    privacyKeyAddedByPhone?: PredicatePrivacyKeyAddedByPhone
+}
+
+export interface InputPrivacyRule {
+    inputPrivacyValueAllowContacts?: PredicateInputPrivacyValueAllowContacts
+    inputPrivacyValueAllowAll?: PredicateInputPrivacyValueAllowAll
+    inputPrivacyValueAllowUsers?: PredicateInputPrivacyValueAllowUsers
+    inputPrivacyValueDisallowContacts?: PredicateInputPrivacyValueDisallowContacts
+    inputPrivacyValueDisallowAll?: PredicateInputPrivacyValueDisallowAll
+    inputPrivacyValueDisallowUsers?: PredicateInputPrivacyValueDisallowUsers
+    inputPrivacyValueAllowChatParticipants?: PredicateInputPrivacyValueAllowChatParticipants
+    inputPrivacyValueDisallowChatParticipants?: PredicateInputPrivacyValueDisallowChatParticipants
+}
+
+export interface PrivacyRule {
+    privacyValueAllowContacts?: PredicatePrivacyValueAllowContacts
+    privacyValueAllowAll?: PredicatePrivacyValueAllowAll
+    privacyValueAllowUsers?: PredicatePrivacyValueAllowUsers
+    privacyValueDisallowContacts?: PredicatePrivacyValueDisallowContacts
+    privacyValueDisallowAll?: PredicatePrivacyValueDisallowAll
+    privacyValueDisallowUsers?: PredicatePrivacyValueDisallowUsers
+    privacyValueAllowChatParticipants?: PredicatePrivacyValueAllowChatParticipants
+    privacyValueDisallowChatParticipants?: PredicatePrivacyValueDisallowChatParticipants
+}
+
+export interface AccountPrivacyRules {
+    accountPrivacyRules: PredicateAccountPrivacyRules
+}
+
+export interface AccountDaysTTL {
+    accountDaysTTL: PredicateAccountDaysTTL
+}
+
+export interface DocumentAttribute {
+    documentAttributeImageSize?: PredicateDocumentAttributeImageSize
+    documentAttributeAnimated?: PredicateDocumentAttributeAnimated
+    documentAttributeSticker?: PredicateDocumentAttributeSticker
+    documentAttributeVideo?: PredicateDocumentAttributeVideo
+    documentAttributeAudio?: PredicateDocumentAttributeAudio
+    documentAttributeFilename?: PredicateDocumentAttributeFilename
+    documentAttributeHasStickers?: PredicateDocumentAttributeHasStickers
+}
+
+export interface MessagesStickers {
+    messagesStickersNotModified?: PredicateMessagesStickersNotModified
+    messagesStickers?: PredicateMessagesStickers
+}
+
+export interface StickerPack {
+    stickerPack: PredicateStickerPack
+}
+
+export interface MessagesAllStickers {
+    messagesAllStickersNotModified?: PredicateMessagesAllStickersNotModified
+    messagesAllStickers?: PredicateMessagesAllStickers
+}
+
+export interface MessagesAffectedMessages {
+    messagesAffectedMessages: PredicateMessagesAffectedMessages
+}
+
+export interface WebPage {
+    webPageEmpty?: PredicateWebPageEmpty
+    webPagePending?: PredicateWebPagePending
+    webPage?: PredicateWebPage
+    webPageNotModified?: PredicateWebPageNotModified
+}
+
+export interface Authorization {
+    authorization: PredicateAuthorization
+}
+
+export interface AccountAuthorizations {
+    accountAuthorizations: PredicateAccountAuthorizations
+}
+
+export interface AccountPassword {
+    accountPassword: PredicateAccountPassword
+}
+
+export interface AccountPasswordSettings {
+    accountPasswordSettings: PredicateAccountPasswordSettings
+}
+
+export interface AccountPasswordInputSettings {
+    accountPasswordInputSettings: PredicateAccountPasswordInputSettings
+}
+
+export interface AuthPasswordRecovery {
+    authPasswordRecovery: PredicateAuthPasswordRecovery
+}
+
+export interface ReceivedNotifyMessage {
+    receivedNotifyMessage: PredicateReceivedNotifyMessage
+}
+
+export interface ExportedChatInvite {
+    chatInviteExported: PredicateChatInviteExported
+}
+
+export interface ChatInvite {
+    chatInviteAlready?: PredicateChatInviteAlready
+    chatInvite?: PredicateChatInvite
+    chatInvitePeek?: PredicateChatInvitePeek
+}
+
+export interface InputStickerSet {
+    inputStickerSetEmpty?: PredicateInputStickerSetEmpty
+    inputStickerSetID?: PredicateInputStickerSetID
+    inputStickerSetShortName?: PredicateInputStickerSetShortName
+    inputStickerSetAnimatedEmoji?: PredicateInputStickerSetAnimatedEmoji
+    inputStickerSetDice?: PredicateInputStickerSetDice
+    inputStickerSetAnimatedEmojiAnimations?: PredicateInputStickerSetAnimatedEmojiAnimations
+}
+
+export interface StickerSet {
+    stickerSet: PredicateStickerSet
+}
+
+export interface MessagesStickerSet {
+    messagesStickerSet?: PredicateMessagesStickerSet
+    messagesStickerSetNotModified?: PredicateMessagesStickerSetNotModified
+}
+
+export interface BotCommand {
+    botCommand: PredicateBotCommand
+}
+
+export interface BotInfo {
+    botInfo: PredicateBotInfo
+}
+
+export interface KeyboardButton {
+    keyboardButton?: PredicateKeyboardButton
+    keyboardButtonUrl?: PredicateKeyboardButtonUrl
+    keyboardButtonCallback?: PredicateKeyboardButtonCallback
+    keyboardButtonRequestPhone?: PredicateKeyboardButtonRequestPhone
+    keyboardButtonRequestGeoLocation?: PredicateKeyboardButtonRequestGeoLocation
+    keyboardButtonSwitchInline?: PredicateKeyboardButtonSwitchInline
+    keyboardButtonGame?: PredicateKeyboardButtonGame
+    keyboardButtonBuy?: PredicateKeyboardButtonBuy
+    keyboardButtonUrlAuth?: PredicateKeyboardButtonUrlAuth
+    inputKeyboardButtonUrlAuth?: PredicateInputKeyboardButtonUrlAuth
+    keyboardButtonRequestPoll?: PredicateKeyboardButtonRequestPoll
+    inputKeyboardButtonUserProfile?: PredicateInputKeyboardButtonUserProfile
+    keyboardButtonUserProfile?: PredicateKeyboardButtonUserProfile
+}
+
+export interface KeyboardButtonRow {
+    keyboardButtonRow: PredicateKeyboardButtonRow
+}
+
+export interface ReplyMarkup {
+    replyKeyboardHide?: PredicateReplyKeyboardHide
+    replyKeyboardForceReply?: PredicateReplyKeyboardForceReply
+    replyKeyboardMarkup?: PredicateReplyKeyboardMarkup
+    replyInlineMarkup?: PredicateReplyInlineMarkup
+}
+
+export interface MessageEntity {
+    messageEntityUnknown?: PredicateMessageEntityUnknown
+    messageEntityMention?: PredicateMessageEntityMention
+    messageEntityHashtag?: PredicateMessageEntityHashtag
+    messageEntityBotCommand?: PredicateMessageEntityBotCommand
+    messageEntityUrl?: PredicateMessageEntityUrl
+    messageEntityEmail?: PredicateMessageEntityEmail
+    messageEntityBold?: PredicateMessageEntityBold
+    messageEntityItalic?: PredicateMessageEntityItalic
+    messageEntityCode?: PredicateMessageEntityCode
+    messageEntityPre?: PredicateMessageEntityPre
+    messageEntityTextUrl?: PredicateMessageEntityTextUrl
+    messageEntityMentionName?: PredicateMessageEntityMentionName
+    inputMessageEntityMentionName?: PredicateInputMessageEntityMentionName
+    messageEntityPhone?: PredicateMessageEntityPhone
+    messageEntityCashtag?: PredicateMessageEntityCashtag
+    messageEntityUnderline?: PredicateMessageEntityUnderline
+    messageEntityStrike?: PredicateMessageEntityStrike
+    messageEntityBlockquote?: PredicateMessageEntityBlockquote
+    messageEntityBankCard?: PredicateMessageEntityBankCard
+    messageEntitySpoiler?: PredicateMessageEntitySpoiler
+}
+
+export interface InputChannel {
+    inputChannelEmpty?: PredicateInputChannelEmpty
+    inputChannel?: PredicateInputChannel
+    inputChannelFromMessage?: PredicateInputChannelFromMessage
+}
+
+export interface ContactsResolvedPeer {
+    contactsResolvedPeer: PredicateContactsResolvedPeer
+}
+
+export interface MessageRange {
+    messageRange: PredicateMessageRange
+}
+
+export interface UpdatesChannelDifference {
+    updatesChannelDifferenceEmpty?: PredicateUpdatesChannelDifferenceEmpty
+    updatesChannelDifferenceTooLong?: PredicateUpdatesChannelDifferenceTooLong
+    updatesChannelDifference?: PredicateUpdatesChannelDifference
+}
+
+export interface ChannelMessagesFilter {
+    channelMessagesFilterEmpty?: PredicateChannelMessagesFilterEmpty
+    channelMessagesFilter?: PredicateChannelMessagesFilter
+}
+
+export interface ChannelParticipant {
+    channelParticipant?: PredicateChannelParticipant
+    channelParticipantSelf?: PredicateChannelParticipantSelf
+    channelParticipantCreator?: PredicateChannelParticipantCreator
+    channelParticipantAdmin?: PredicateChannelParticipantAdmin
+    channelParticipantBanned?: PredicateChannelParticipantBanned
+    channelParticipantLeft?: PredicateChannelParticipantLeft
+}
+
+export interface ChannelParticipantsFilter {
+    channelParticipantsRecent?: PredicateChannelParticipantsRecent
+    channelParticipantsAdmins?: PredicateChannelParticipantsAdmins
+    channelParticipantsKicked?: PredicateChannelParticipantsKicked
+    channelParticipantsBots?: PredicateChannelParticipantsBots
+    channelParticipantsBanned?: PredicateChannelParticipantsBanned
+    channelParticipantsSearch?: PredicateChannelParticipantsSearch
+    channelParticipantsContacts?: PredicateChannelParticipantsContacts
+    channelParticipantsMentions?: PredicateChannelParticipantsMentions
+}
+
+export interface ChannelsChannelParticipants {
+    channelsChannelParticipants?: PredicateChannelsChannelParticipants
+    channelsChannelParticipantsNotModified?: PredicateChannelsChannelParticipantsNotModified
+}
+
+export interface ChannelsChannelParticipant {
+    channelsChannelParticipant: PredicateChannelsChannelParticipant
+}
+
+export interface HelpTermsOfService {
+    helpTermsOfService: PredicateHelpTermsOfService
+}
+
+export interface MessagesSavedGifs {
+    messagesSavedGifsNotModified?: PredicateMessagesSavedGifsNotModified
+    messagesSavedGifs?: PredicateMessagesSavedGifs
+}
+
+export interface InputBotInlineMessage {
+    inputBotInlineMessageMediaAuto?: PredicateInputBotInlineMessageMediaAuto
+    inputBotInlineMessageText?: PredicateInputBotInlineMessageText
+    inputBotInlineMessageMediaGeo?: PredicateInputBotInlineMessageMediaGeo
+    inputBotInlineMessageMediaVenue?: PredicateInputBotInlineMessageMediaVenue
+    inputBotInlineMessageMediaContact?: PredicateInputBotInlineMessageMediaContact
+    inputBotInlineMessageGame?: PredicateInputBotInlineMessageGame
+    inputBotInlineMessageMediaInvoice?: PredicateInputBotInlineMessageMediaInvoice
+}
+
+export interface InputBotInlineResult {
+    inputBotInlineResult?: PredicateInputBotInlineResult
+    inputBotInlineResultPhoto?: PredicateInputBotInlineResultPhoto
+    inputBotInlineResultDocument?: PredicateInputBotInlineResultDocument
+    inputBotInlineResultGame?: PredicateInputBotInlineResultGame
+}
+
+export interface BotInlineMessage {
+    botInlineMessageMediaAuto?: PredicateBotInlineMessageMediaAuto
+    botInlineMessageText?: PredicateBotInlineMessageText
+    botInlineMessageMediaGeo?: PredicateBotInlineMessageMediaGeo
+    botInlineMessageMediaVenue?: PredicateBotInlineMessageMediaVenue
+    botInlineMessageMediaContact?: PredicateBotInlineMessageMediaContact
+    botInlineMessageMediaInvoice?: PredicateBotInlineMessageMediaInvoice
+}
+
+export interface BotInlineResult {
+    botInlineResult?: PredicateBotInlineResult
+    botInlineMediaResult?: PredicateBotInlineMediaResult
+}
+
+export interface MessagesBotResults {
+    messagesBotResults: PredicateMessagesBotResults
+}
+
+export interface ExportedMessageLink {
+    exportedMessageLink: PredicateExportedMessageLink
+}
+
+export interface MessageFwdHeader {
+    messageFwdHeader: PredicateMessageFwdHeader
+}
+
+export interface AuthCodeType {
+    authCodeTypeSms?: PredicateAuthCodeTypeSms
+    authCodeTypeCall?: PredicateAuthCodeTypeCall
+    authCodeTypeFlashCall?: PredicateAuthCodeTypeFlashCall
+    authCodeTypeMissedCall?: PredicateAuthCodeTypeMissedCall
+}
+
+export interface AuthSentCodeType {
+    authSentCodeTypeApp?: PredicateAuthSentCodeTypeApp
+    authSentCodeTypeSms?: PredicateAuthSentCodeTypeSms
+    authSentCodeTypeCall?: PredicateAuthSentCodeTypeCall
+    authSentCodeTypeFlashCall?: PredicateAuthSentCodeTypeFlashCall
+    authSentCodeTypeMissedCall?: PredicateAuthSentCodeTypeMissedCall
+}
+
+export interface MessagesBotCallbackAnswer {
+    messagesBotCallbackAnswer: PredicateMessagesBotCallbackAnswer
+}
+
+export interface MessagesMessageEditData {
+    messagesMessageEditData: PredicateMessagesMessageEditData
+}
+
+export interface InputBotInlineMessageID {
+    inputBotInlineMessageID?: PredicateInputBotInlineMessageID
+    inputBotInlineMessageID64?: PredicateInputBotInlineMessageID64
+}
+
+export interface InlineBotSwitchPM {
+    inlineBotSwitchPM: PredicateInlineBotSwitchPM
+}
+
+export interface MessagesPeerDialogs {
+    messagesPeerDialogs: PredicateMessagesPeerDialogs
+}
+
+export interface TopPeer {
+    topPeer: PredicateTopPeer
+}
+
+export interface TopPeerCategory {
+    topPeerCategoryBotsPM?: PredicateTopPeerCategoryBotsPM
+    topPeerCategoryBotsInline?: PredicateTopPeerCategoryBotsInline
+    topPeerCategoryCorrespondents?: PredicateTopPeerCategoryCorrespondents
+    topPeerCategoryGroups?: PredicateTopPeerCategoryGroups
+    topPeerCategoryChannels?: PredicateTopPeerCategoryChannels
+    topPeerCategoryPhoneCalls?: PredicateTopPeerCategoryPhoneCalls
+    topPeerCategoryForwardUsers?: PredicateTopPeerCategoryForwardUsers
+    topPeerCategoryForwardChats?: PredicateTopPeerCategoryForwardChats
+}
+
+export interface TopPeerCategoryPeers {
+    topPeerCategoryPeers: PredicateTopPeerCategoryPeers
+}
+
+export interface ContactsTopPeers {
+    contactsTopPeersNotModified?: PredicateContactsTopPeersNotModified
+    contactsTopPeers?: PredicateContactsTopPeers
+    contactsTopPeersDisabled?: PredicateContactsTopPeersDisabled
+}
+
+export interface DraftMessage {
+    draftMessageEmpty?: PredicateDraftMessageEmpty
+    draftMessage?: PredicateDraftMessage
+}
+
+export interface MessagesFeaturedStickers {
+    messagesFeaturedStickersNotModified?: PredicateMessagesFeaturedStickersNotModified
+    messagesFeaturedStickers?: PredicateMessagesFeaturedStickers
+}
+
+export interface MessagesRecentStickers {
+    messagesRecentStickersNotModified?: PredicateMessagesRecentStickersNotModified
+    messagesRecentStickers?: PredicateMessagesRecentStickers
+}
+
+export interface MessagesArchivedStickers {
+    messagesArchivedStickers: PredicateMessagesArchivedStickers
+}
+
+export interface MessagesStickerSetInstallResult {
+    messagesStickerSetInstallResultSuccess?: PredicateMessagesStickerSetInstallResultSuccess
+    messagesStickerSetInstallResultArchive?: PredicateMessagesStickerSetInstallResultArchive
+}
+
+export interface StickerSetCovered {
+    stickerSetCovered?: PredicateStickerSetCovered
+    stickerSetMultiCovered?: PredicateStickerSetMultiCovered
+}
+
+export interface MaskCoords {
+    maskCoords: PredicateMaskCoords
+}
+
+export interface InputStickeredMedia {
+    inputStickeredMediaPhoto?: PredicateInputStickeredMediaPhoto
+    inputStickeredMediaDocument?: PredicateInputStickeredMediaDocument
+}
+
+export interface Game {
+    game: PredicateGame
+}
+
+export interface InputGame {
+    inputGameID?: PredicateInputGameID
+    inputGameShortName?: PredicateInputGameShortName
+}
+
+export interface HighScore {
+    highScore: PredicateHighScore
+}
+
+export interface MessagesHighScores {
+    messagesHighScores: PredicateMessagesHighScores
+}
+
+export interface RichText {
+    textEmpty?: PredicateTextEmpty
+    textPlain?: PredicateTextPlain
+    textBold?: PredicateTextBold
+    textItalic?: PredicateTextItalic
+    textUnderline?: PredicateTextUnderline
+    textStrike?: PredicateTextStrike
+    textFixed?: PredicateTextFixed
+    textUrl?: PredicateTextUrl
+    textEmail?: PredicateTextEmail
+    textConcat?: PredicateTextConcat
+    textSubscript?: PredicateTextSubscript
+    textSuperscript?: PredicateTextSuperscript
+    textMarked?: PredicateTextMarked
+    textPhone?: PredicateTextPhone
+    textImage?: PredicateTextImage
+    textAnchor?: PredicateTextAnchor
+}
+
+export interface PageBlock {
+    pageBlockUnsupported?: PredicatePageBlockUnsupported
+    pageBlockTitle?: PredicatePageBlockTitle
+    pageBlockSubtitle?: PredicatePageBlockSubtitle
+    pageBlockAuthorDate?: PredicatePageBlockAuthorDate
+    pageBlockHeader?: PredicatePageBlockHeader
+    pageBlockSubheader?: PredicatePageBlockSubheader
+    pageBlockParagraph?: PredicatePageBlockParagraph
+    pageBlockPreformatted?: PredicatePageBlockPreformatted
+    pageBlockFooter?: PredicatePageBlockFooter
+    pageBlockDivider?: PredicatePageBlockDivider
+    pageBlockAnchor?: PredicatePageBlockAnchor
+    pageBlockList?: PredicatePageBlockList
+    pageBlockBlockquote?: PredicatePageBlockBlockquote
+    pageBlockPullquote?: PredicatePageBlockPullquote
+    pageBlockPhoto?: PredicatePageBlockPhoto
+    pageBlockVideo?: PredicatePageBlockVideo
+    pageBlockCover?: PredicatePageBlockCover
+    pageBlockEmbed?: PredicatePageBlockEmbed
+    pageBlockEmbedPost?: PredicatePageBlockEmbedPost
+    pageBlockCollage?: PredicatePageBlockCollage
+    pageBlockSlideshow?: PredicatePageBlockSlideshow
+    pageBlockChannel?: PredicatePageBlockChannel
+    pageBlockAudio?: PredicatePageBlockAudio
+    pageBlockKicker?: PredicatePageBlockKicker
+    pageBlockTable?: PredicatePageBlockTable
+    pageBlockOrderedList?: PredicatePageBlockOrderedList
+    pageBlockDetails?: PredicatePageBlockDetails
+    pageBlockRelatedArticles?: PredicatePageBlockRelatedArticles
+    pageBlockMap?: PredicatePageBlockMap
+}
+
+export interface PhoneCallDiscardReason {
+    phoneCallDiscardReasonMissed?: PredicatePhoneCallDiscardReasonMissed
+    phoneCallDiscardReasonDisconnect?: PredicatePhoneCallDiscardReasonDisconnect
+    phoneCallDiscardReasonHangup?: PredicatePhoneCallDiscardReasonHangup
+    phoneCallDiscardReasonBusy?: PredicatePhoneCallDiscardReasonBusy
+}
+
+export interface DataJSON {
+    dataJSON: PredicateDataJSON
+}
+
+export interface LabeledPrice {
+    labeledPrice: PredicateLabeledPrice
+}
+
+export interface Invoice {
+    invoice: PredicateInvoice
+}
+
+export interface PaymentCharge {
+    paymentCharge: PredicatePaymentCharge
+}
+
+export interface PostAddress {
+    postAddress: PredicatePostAddress
+}
+
+export interface PaymentRequestedInfo {
+    paymentRequestedInfo: PredicatePaymentRequestedInfo
+}
+
+export interface PaymentSavedCredentials {
+    paymentSavedCredentialsCard: PredicatePaymentSavedCredentialsCard
+}
+
+export interface WebDocument {
+    webDocument?: PredicateWebDocument
+    webDocumentNoProxy?: PredicateWebDocumentNoProxy
+}
+
+export interface InputWebDocument {
+    inputWebDocument: PredicateInputWebDocument
+}
+
+export interface InputWebFileLocation {
+    inputWebFileLocation?: PredicateInputWebFileLocation
+    inputWebFileGeoPointLocation?: PredicateInputWebFileGeoPointLocation
+}
+
+export interface UploadWebFile {
+    uploadWebFile: PredicateUploadWebFile
+}
+
+export interface PaymentsPaymentForm {
+    paymentsPaymentForm: PredicatePaymentsPaymentForm
+}
+
+export interface PaymentsValidatedRequestedInfo {
+    paymentsValidatedRequestedInfo: PredicatePaymentsValidatedRequestedInfo
+}
+
+export interface PaymentsPaymentResult {
+    paymentsPaymentResult?: PredicatePaymentsPaymentResult
+    paymentsPaymentVerificationNeeded?: PredicatePaymentsPaymentVerificationNeeded
+}
+
+export interface PaymentsPaymentReceipt {
+    paymentsPaymentReceipt: PredicatePaymentsPaymentReceipt
+}
+
+export interface PaymentsSavedInfo {
+    paymentsSavedInfo: PredicatePaymentsSavedInfo
+}
+
+export interface InputPaymentCredentials {
+    inputPaymentCredentialsSaved?: PredicateInputPaymentCredentialsSaved
+    inputPaymentCredentials?: PredicateInputPaymentCredentials
+    inputPaymentCredentialsApplePay?: PredicateInputPaymentCredentialsApplePay
+    inputPaymentCredentialsGooglePay?: PredicateInputPaymentCredentialsGooglePay
+}
+
+export interface AccountTmpPassword {
+    accountTmpPassword: PredicateAccountTmpPassword
+}
+
+export interface ShippingOption {
+    shippingOption: PredicateShippingOption
+}
+
+export interface InputStickerSetItem {
+    inputStickerSetItem: PredicateInputStickerSetItem
+}
+
+export interface InputPhoneCall {
+    inputPhoneCall: PredicateInputPhoneCall
+}
+
+export interface PhoneCall {
+    phoneCallEmpty?: PredicatePhoneCallEmpty
+    phoneCallWaiting?: PredicatePhoneCallWaiting
+    phoneCallRequested?: PredicatePhoneCallRequested
+    phoneCallAccepted?: PredicatePhoneCallAccepted
+    phoneCall?: PredicatePhoneCall
+    phoneCallDiscarded?: PredicatePhoneCallDiscarded
+}
+
+export interface PhoneConnection {
+    phoneConnection?: PredicatePhoneConnection
+    phoneConnectionWebrtc?: PredicatePhoneConnectionWebrtc
+}
+
+export interface PhoneCallProtocol {
+    phoneCallProtocol: PredicatePhoneCallProtocol
+}
+
+export interface PhonePhoneCall {
+    phonePhoneCall: PredicatePhonePhoneCall
+}
+
+export interface UploadCdnFile {
+    uploadCdnFileReuploadNeeded?: PredicateUploadCdnFileReuploadNeeded
+    uploadCdnFile?: PredicateUploadCdnFile
+}
+
+export interface CdnPublicKey {
+    cdnPublicKey: PredicateCdnPublicKey
+}
+
+export interface CdnConfig {
+    cdnConfig: PredicateCdnConfig
+}
+
+export interface LangPackString {
+    langPackString?: PredicateLangPackString
+    langPackStringPluralized?: PredicateLangPackStringPluralized
+    langPackStringDeleted?: PredicateLangPackStringDeleted
+}
+
+export interface LangPackDifference {
+    langPackDifference: PredicateLangPackDifference
+}
+
+export interface LangPackLanguage {
+    langPackLanguage: PredicateLangPackLanguage
+}
+
+export interface ChannelAdminLogEventAction {
+    channelAdminLogEventActionChangeTitle?: PredicateChannelAdminLogEventActionChangeTitle
+    channelAdminLogEventActionChangeAbout?: PredicateChannelAdminLogEventActionChangeAbout
+    channelAdminLogEventActionChangeUsername?: PredicateChannelAdminLogEventActionChangeUsername
+    channelAdminLogEventActionChangePhoto?: PredicateChannelAdminLogEventActionChangePhoto
+    channelAdminLogEventActionToggleInvites?: PredicateChannelAdminLogEventActionToggleInvites
+    channelAdminLogEventActionToggleSignatures?: PredicateChannelAdminLogEventActionToggleSignatures
+    channelAdminLogEventActionUpdatePinned?: PredicateChannelAdminLogEventActionUpdatePinned
+    channelAdminLogEventActionEditMessage?: PredicateChannelAdminLogEventActionEditMessage
+    channelAdminLogEventActionDeleteMessage?: PredicateChannelAdminLogEventActionDeleteMessage
+    channelAdminLogEventActionParticipantJoin?: PredicateChannelAdminLogEventActionParticipantJoin
+    channelAdminLogEventActionParticipantLeave?: PredicateChannelAdminLogEventActionParticipantLeave
+    channelAdminLogEventActionParticipantInvite?: PredicateChannelAdminLogEventActionParticipantInvite
+    channelAdminLogEventActionParticipantToggleBan?: PredicateChannelAdminLogEventActionParticipantToggleBan
+    channelAdminLogEventActionParticipantToggleAdmin?: PredicateChannelAdminLogEventActionParticipantToggleAdmin
+    channelAdminLogEventActionChangeStickerSet?: PredicateChannelAdminLogEventActionChangeStickerSet
+    channelAdminLogEventActionTogglePreHistoryHidden?: PredicateChannelAdminLogEventActionTogglePreHistoryHidden
+    channelAdminLogEventActionDefaultBannedRights?: PredicateChannelAdminLogEventActionDefaultBannedRights
+    channelAdminLogEventActionStopPoll?: PredicateChannelAdminLogEventActionStopPoll
+    channelAdminLogEventActionChangeLinkedChat?: PredicateChannelAdminLogEventActionChangeLinkedChat
+    channelAdminLogEventActionChangeLocation?: PredicateChannelAdminLogEventActionChangeLocation
+    channelAdminLogEventActionToggleSlowMode?: PredicateChannelAdminLogEventActionToggleSlowMode
+    channelAdminLogEventActionStartGroupCall?: PredicateChannelAdminLogEventActionStartGroupCall
+    channelAdminLogEventActionDiscardGroupCall?: PredicateChannelAdminLogEventActionDiscardGroupCall
+    channelAdminLogEventActionParticipantMute?: PredicateChannelAdminLogEventActionParticipantMute
+    channelAdminLogEventActionParticipantUnmute?: PredicateChannelAdminLogEventActionParticipantUnmute
+    channelAdminLogEventActionToggleGroupCallSetting?: PredicateChannelAdminLogEventActionToggleGroupCallSetting
+    channelAdminLogEventActionParticipantJoinByInvite?: PredicateChannelAdminLogEventActionParticipantJoinByInvite
+    channelAdminLogEventActionExportedInviteDelete?: PredicateChannelAdminLogEventActionExportedInviteDelete
+    channelAdminLogEventActionExportedInviteRevoke?: PredicateChannelAdminLogEventActionExportedInviteRevoke
+    channelAdminLogEventActionExportedInviteEdit?: PredicateChannelAdminLogEventActionExportedInviteEdit
+    channelAdminLogEventActionParticipantVolume?: PredicateChannelAdminLogEventActionParticipantVolume
+    channelAdminLogEventActionChangeHistoryTTL?: PredicateChannelAdminLogEventActionChangeHistoryTTL
+    channelAdminLogEventActionParticipantJoinByRequest?: PredicateChannelAdminLogEventActionParticipantJoinByRequest
+    channelAdminLogEventActionToggleNoForwards?: PredicateChannelAdminLogEventActionToggleNoForwards
+    channelAdminLogEventActionSendMessage?: PredicateChannelAdminLogEventActionSendMessage
+    channelAdminLogEventActionChangeAvailableReactions?: PredicateChannelAdminLogEventActionChangeAvailableReactions
+}
+
+export interface ChannelAdminLogEvent {
+    channelAdminLogEvent: PredicateChannelAdminLogEvent
+}
+
+export interface ChannelsAdminLogResults {
+    channelsAdminLogResults: PredicateChannelsAdminLogResults
+}
+
+export interface ChannelAdminLogEventsFilter {
+    channelAdminLogEventsFilter: PredicateChannelAdminLogEventsFilter
+}
+
+export interface PopularContact {
+    popularContact: PredicatePopularContact
+}
+
+export interface MessagesFavedStickers {
+    messagesFavedStickersNotModified?: PredicateMessagesFavedStickersNotModified
+    messagesFavedStickers?: PredicateMessagesFavedStickers
+}
+
+export interface RecentMeUrl {
+    recentMeUrlUnknown?: PredicateRecentMeUrlUnknown
+    recentMeUrlUser?: PredicateRecentMeUrlUser
+    recentMeUrlChat?: PredicateRecentMeUrlChat
+    recentMeUrlChatInvite?: PredicateRecentMeUrlChatInvite
+    recentMeUrlStickerSet?: PredicateRecentMeUrlStickerSet
+}
+
+export interface HelpRecentMeUrls {
+    helpRecentMeUrls: PredicateHelpRecentMeUrls
+}
+
+export interface InputSingleMedia {
+    inputSingleMedia: PredicateInputSingleMedia
+}
+
+export interface WebAuthorization {
+    webAuthorization: PredicateWebAuthorization
+}
+
+export interface AccountWebAuthorizations {
+    accountWebAuthorizations: PredicateAccountWebAuthorizations
+}
+
+export interface InputMessage {
+    inputMessageID?: PredicateInputMessageID
+    inputMessageReplyTo?: PredicateInputMessageReplyTo
+    inputMessagePinned?: PredicateInputMessagePinned
+    inputMessageCallbackQuery?: PredicateInputMessageCallbackQuery
+}
+
+export interface InputDialogPeer {
+    inputDialogPeer?: PredicateInputDialogPeer
+    inputDialogPeerFolder?: PredicateInputDialogPeerFolder
+}
+
+export interface DialogPeer {
+    dialogPeer?: PredicateDialogPeer
+    dialogPeerFolder?: PredicateDialogPeerFolder
+}
+
+export interface MessagesFoundStickerSets {
+    messagesFoundStickerSetsNotModified?: PredicateMessagesFoundStickerSetsNotModified
+    messagesFoundStickerSets?: PredicateMessagesFoundStickerSets
+}
+
+export interface FileHash {
+    fileHash: PredicateFileHash
+}
+
+export interface InputClientProxy {
+    inputClientProxy: PredicateInputClientProxy
+}
+
+export interface HelpTermsOfServiceUpdate {
+    helpTermsOfServiceUpdateEmpty?: PredicateHelpTermsOfServiceUpdateEmpty
+    helpTermsOfServiceUpdate?: PredicateHelpTermsOfServiceUpdate
+}
+
+export interface InputSecureFile {
+    inputSecureFileUploaded?: PredicateInputSecureFileUploaded
+    inputSecureFile?: PredicateInputSecureFile
+}
+
+export interface SecureFile {
+    secureFileEmpty?: PredicateSecureFileEmpty
+    secureFile?: PredicateSecureFile
+}
+
+export interface SecureData {
+    secureData: PredicateSecureData
+}
+
+export interface SecurePlainData {
+    securePlainPhone?: PredicateSecurePlainPhone
+    securePlainEmail?: PredicateSecurePlainEmail
+}
+
+export interface SecureValueType {
+    secureValueTypePersonalDetails?: PredicateSecureValueTypePersonalDetails
+    secureValueTypePassport?: PredicateSecureValueTypePassport
+    secureValueTypeDriverLicense?: PredicateSecureValueTypeDriverLicense
+    secureValueTypeIdentityCard?: PredicateSecureValueTypeIdentityCard
+    secureValueTypeInternalPassport?: PredicateSecureValueTypeInternalPassport
+    secureValueTypeAddress?: PredicateSecureValueTypeAddress
+    secureValueTypeUtilityBill?: PredicateSecureValueTypeUtilityBill
+    secureValueTypeBankStatement?: PredicateSecureValueTypeBankStatement
+    secureValueTypeRentalAgreement?: PredicateSecureValueTypeRentalAgreement
+    secureValueTypePassportRegistration?: PredicateSecureValueTypePassportRegistration
+    secureValueTypeTemporaryRegistration?: PredicateSecureValueTypeTemporaryRegistration
+    secureValueTypePhone?: PredicateSecureValueTypePhone
+    secureValueTypeEmail?: PredicateSecureValueTypeEmail
+}
+
+export interface SecureValue {
+    secureValue: PredicateSecureValue
+}
+
+export interface InputSecureValue {
+    inputSecureValue: PredicateInputSecureValue
+}
+
+export interface SecureValueHash {
+    secureValueHash: PredicateSecureValueHash
+}
+
+export interface SecureValueError {
+    secureValueErrorData?: PredicateSecureValueErrorData
+    secureValueErrorFrontSide?: PredicateSecureValueErrorFrontSide
+    secureValueErrorReverseSide?: PredicateSecureValueErrorReverseSide
+    secureValueErrorSelfie?: PredicateSecureValueErrorSelfie
+    secureValueErrorFile?: PredicateSecureValueErrorFile
+    secureValueErrorFiles?: PredicateSecureValueErrorFiles
+    secureValueError?: PredicateSecureValueError
+    secureValueErrorTranslationFile?: PredicateSecureValueErrorTranslationFile
+    secureValueErrorTranslationFiles?: PredicateSecureValueErrorTranslationFiles
+}
+
+export interface SecureCredentialsEncrypted {
+    secureCredentialsEncrypted: PredicateSecureCredentialsEncrypted
+}
+
+export interface AccountAuthorizationForm {
+    accountAuthorizationForm: PredicateAccountAuthorizationForm
+}
+
+export interface AccountSentEmailCode {
+    accountSentEmailCode: PredicateAccountSentEmailCode
+}
+
+export interface HelpDeepLinkInfo {
+    helpDeepLinkInfoEmpty?: PredicateHelpDeepLinkInfoEmpty
+    helpDeepLinkInfo?: PredicateHelpDeepLinkInfo
+}
+
+export interface SavedContact {
+    savedPhoneContact: PredicateSavedPhoneContact
+}
+
+export interface AccountTakeout {
+    accountTakeout: PredicateAccountTakeout
+}
+
+export interface PasswordKdfAlgo {
+    passwordKdfAlgoUnknown?: PredicatePasswordKdfAlgoUnknown
+    passwordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow?: PredicatePasswordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow
+}
+
+export interface SecurePasswordKdfAlgo {
+    securePasswordKdfAlgoUnknown?: PredicateSecurePasswordKdfAlgoUnknown
+    securePasswordKdfAlgoPBKDF2HMACSHA512iter100000?: PredicateSecurePasswordKdfAlgoPBKDF2HMACSHA512iter100000
+    securePasswordKdfAlgoSHA512?: PredicateSecurePasswordKdfAlgoSHA512
+}
+
+export interface SecureSecretSettings {
+    secureSecretSettings: PredicateSecureSecretSettings
+}
+
+export interface InputCheckPasswordSRP {
+    inputCheckPasswordEmpty?: PredicateInputCheckPasswordEmpty
+    inputCheckPasswordSRP?: PredicateInputCheckPasswordSRP
+}
+
+export interface SecureRequiredType {
+    secureRequiredType?: PredicateSecureRequiredType
+    secureRequiredTypeOneOf?: PredicateSecureRequiredTypeOneOf
+}
+
+export interface HelpPassportConfig {
+    helpPassportConfigNotModified?: PredicateHelpPassportConfigNotModified
+    helpPassportConfig?: PredicateHelpPassportConfig
+}
+
+export interface InputAppEvent {
+    inputAppEvent: PredicateInputAppEvent
+}
+
+export interface JSONObjectValue {
+    jsonObjectValue: PredicateJsonObjectValue
+}
+
+export interface JSONValue {
+    jsonNull?: PredicateJsonNull
+    jsonBool?: PredicateJsonBool
+    jsonNumber?: PredicateJsonNumber
+    jsonString?: PredicateJsonString
+    jsonArray?: PredicateJsonArray
+    jsonObject?: PredicateJsonObject
+}
+
+export interface PageTableCell {
+    pageTableCell: PredicatePageTableCell
+}
+
+export interface PageTableRow {
+    pageTableRow: PredicatePageTableRow
+}
+
+export interface PageCaption {
+    pageCaption: PredicatePageCaption
+}
+
+export interface PageListItem {
+    pageListItemText?: PredicatePageListItemText
+    pageListItemBlocks?: PredicatePageListItemBlocks
+}
+
+export interface PageListOrderedItem {
+    pageListOrderedItemText?: PredicatePageListOrderedItemText
+    pageListOrderedItemBlocks?: PredicatePageListOrderedItemBlocks
+}
+
+export interface PageRelatedArticle {
+    pageRelatedArticle: PredicatePageRelatedArticle
+}
+
+export interface Page {
+    page: PredicatePage
+}
+
+export interface HelpSupportName {
+    helpSupportName: PredicateHelpSupportName
+}
+
+export interface HelpUserInfo {
+    helpUserInfoEmpty?: PredicateHelpUserInfoEmpty
+    helpUserInfo?: PredicateHelpUserInfo
+}
+
+export interface PollAnswer {
+    pollAnswer: PredicatePollAnswer
+}
+
+export interface Poll {
+    poll: PredicatePoll
+}
+
+export interface PollAnswerVoters {
+    pollAnswerVoters: PredicatePollAnswerVoters
+}
+
+export interface PollResults {
+    pollResults: PredicatePollResults
+}
+
+export interface ChatOnlines {
+    chatOnlines: PredicateChatOnlines
+}
+
+export interface StatsURL {
+    statsURL: PredicateStatsURL
+}
+
+export interface ChatAdminRights {
+    chatAdminRights: PredicateChatAdminRights
+}
+
+export interface ChatBannedRights {
+    chatBannedRights: PredicateChatBannedRights
+}
+
+export interface InputWallPaper {
+    inputWallPaper?: PredicateInputWallPaper
+    inputWallPaperSlug?: PredicateInputWallPaperSlug
+    inputWallPaperNoFile?: PredicateInputWallPaperNoFile
+}
+
+export interface AccountWallPapers {
+    accountWallPapersNotModified?: PredicateAccountWallPapersNotModified
+    accountWallPapers?: PredicateAccountWallPapers
+}
+
+export interface CodeSettings {
+    codeSettings: PredicateCodeSettings
+}
+
+export interface WallPaperSettings {
+    wallPaperSettings: PredicateWallPaperSettings
+}
+
+export interface AutoDownloadSettings {
+    autoDownloadSettings: PredicateAutoDownloadSettings
+}
+
+export interface AccountAutoDownloadSettings {
+    accountAutoDownloadSettings: PredicateAccountAutoDownloadSettings
+}
+
+export interface EmojiKeyword {
+    emojiKeyword?: PredicateEmojiKeyword
+    emojiKeywordDeleted?: PredicateEmojiKeywordDeleted
+}
+
+export interface EmojiKeywordsDifference {
+    emojiKeywordsDifference: PredicateEmojiKeywordsDifference
+}
+
+export interface EmojiURL {
+    emojiURL: PredicateEmojiURL
+}
+
+export interface EmojiLanguage {
+    emojiLanguage: PredicateEmojiLanguage
+}
+
+export interface Folder {
+    folder: PredicateFolder
+}
+
+export interface InputFolderPeer {
+    inputFolderPeer: PredicateInputFolderPeer
+}
+
+export interface FolderPeer {
+    folderPeer: PredicateFolderPeer
+}
+
+export interface MessagesSearchCounter {
+    messagesSearchCounter: PredicateMessagesSearchCounter
+}
+
+export interface UrlAuthResult {
+    urlAuthResultRequest?: PredicateUrlAuthResultRequest
+    urlAuthResultAccepted?: PredicateUrlAuthResultAccepted
+    urlAuthResultDefault?: PredicateUrlAuthResultDefault
+}
+
+export interface ChannelLocation {
+    channelLocationEmpty?: PredicateChannelLocationEmpty
+    channelLocation?: PredicateChannelLocation
+}
+
+export interface PeerLocated {
+    peerLocated?: PredicatePeerLocated
+    peerSelfLocated?: PredicatePeerSelfLocated
+}
+
+export interface RestrictionReason {
+    restrictionReason: PredicateRestrictionReason
+}
+
+export interface InputTheme {
+    inputTheme?: PredicateInputTheme
+    inputThemeSlug?: PredicateInputThemeSlug
+}
+
+export interface Theme {
+    theme: PredicateTheme
+}
+
+export interface AccountThemes {
+    accountThemesNotModified?: PredicateAccountThemesNotModified
+    accountThemes?: PredicateAccountThemes
+}
+
+export interface AuthLoginToken {
+    authLoginToken?: PredicateAuthLoginToken
+    authLoginTokenMigrateTo?: PredicateAuthLoginTokenMigrateTo
+    authLoginTokenSuccess?: PredicateAuthLoginTokenSuccess
+}
+
+export interface AccountContentSettings {
+    accountContentSettings: PredicateAccountContentSettings
+}
+
+export interface MessagesInactiveChats {
+    messagesInactiveChats: PredicateMessagesInactiveChats
+}
+
+export interface BaseTheme {
+    baseThemeClassic?: PredicateBaseThemeClassic
+    baseThemeDay?: PredicateBaseThemeDay
+    baseThemeNight?: PredicateBaseThemeNight
+    baseThemeTinted?: PredicateBaseThemeTinted
+    baseThemeArctic?: PredicateBaseThemeArctic
+}
+
+export interface InputThemeSettings {
+    inputThemeSettings: PredicateInputThemeSettings
+}
+
+export interface ThemeSettings {
+    themeSettings: PredicateThemeSettings
+}
+
+export interface WebPageAttribute {
+    webPageAttributeTheme: PredicateWebPageAttributeTheme
+}
+
+export interface MessageUserVote {
+    messageUserVote?: PredicateMessageUserVote
+    messageUserVoteInputOption?: PredicateMessageUserVoteInputOption
+    messageUserVoteMultiple?: PredicateMessageUserVoteMultiple
+}
+
+export interface MessagesVotesList {
+    messagesVotesList: PredicateMessagesVotesList
+}
+
+export interface BankCardOpenUrl {
+    bankCardOpenUrl: PredicateBankCardOpenUrl
+}
+
+export interface PaymentsBankCardData {
+    paymentsBankCardData: PredicatePaymentsBankCardData
+}
+
+export interface DialogFilter {
+    dialogFilter: PredicateDialogFilter
+}
+
+export interface DialogFilterSuggested {
+    dialogFilterSuggested: PredicateDialogFilterSuggested
+}
+
+export interface StatsDateRangeDays {
+    statsDateRangeDays: PredicateStatsDateRangeDays
+}
+
+export interface StatsAbsValueAndPrev {
+    statsAbsValueAndPrev: PredicateStatsAbsValueAndPrev
+}
+
+export interface StatsPercentValue {
+    statsPercentValue: PredicateStatsPercentValue
+}
+
+export interface StatsGraph {
+    statsGraphAsync?: PredicateStatsGraphAsync
+    statsGraphError?: PredicateStatsGraphError
+    statsGraph?: PredicateStatsGraph
+}
+
+export interface MessageInteractionCounters {
+    messageInteractionCounters: PredicateMessageInteractionCounters
+}
+
+export interface StatsBroadcastStats {
+    statsBroadcastStats: PredicateStatsBroadcastStats
+}
+
+export interface HelpPromoData {
+    helpPromoDataEmpty?: PredicateHelpPromoDataEmpty
+    helpPromoData?: PredicateHelpPromoData
+}
+
+export interface VideoSize {
+    videoSize: PredicateVideoSize
+}
+
+export interface StatsGroupTopPoster {
+    statsGroupTopPoster: PredicateStatsGroupTopPoster
+}
+
+export interface StatsGroupTopAdmin {
+    statsGroupTopAdmin: PredicateStatsGroupTopAdmin
+}
+
+export interface StatsGroupTopInviter {
+    statsGroupTopInviter: PredicateStatsGroupTopInviter
+}
+
+export interface StatsMegagroupStats {
+    statsMegagroupStats: PredicateStatsMegagroupStats
+}
+
+export interface GlobalPrivacySettings {
+    globalPrivacySettings: PredicateGlobalPrivacySettings
+}
+
+export interface HelpCountryCode {
+    helpCountryCode: PredicateHelpCountryCode
+}
+
+export interface HelpCountry {
+    helpCountry: PredicateHelpCountry
+}
+
+export interface HelpCountriesList {
+    helpCountriesListNotModified?: PredicateHelpCountriesListNotModified
+    helpCountriesList?: PredicateHelpCountriesList
+}
+
+export interface MessageViews {
+    messageViews: PredicateMessageViews
+}
+
+export interface MessagesMessageViews {
+    messagesMessageViews: PredicateMessagesMessageViews
+}
+
+export interface MessagesDiscussionMessage {
+    messagesDiscussionMessage: PredicateMessagesDiscussionMessage
+}
+
+export interface MessageReplyHeader {
+    messageReplyHeader: PredicateMessageReplyHeader
+}
+
+export interface MessageReplies {
+    messageReplies: PredicateMessageReplies
+}
+
+export interface PeerBlocked {
+    peerBlocked: PredicatePeerBlocked
+}
+
+export interface StatsMessageStats {
+    statsMessageStats: PredicateStatsMessageStats
+}
+
+export interface GroupCall {
+    groupCallDiscarded?: PredicateGroupCallDiscarded
+    groupCall?: PredicateGroupCall
+}
+
+export interface InputGroupCall {
+    inputGroupCall: PredicateInputGroupCall
+}
+
+export interface GroupCallParticipant {
+    groupCallParticipant: PredicateGroupCallParticipant
+}
+
+export interface PhoneGroupCall {
+    phoneGroupCall: PredicatePhoneGroupCall
+}
+
+export interface PhoneGroupParticipants {
+    phoneGroupParticipants: PredicatePhoneGroupParticipants
+}
+
+export interface InlineQueryPeerType {
+    inlineQueryPeerTypeSameBotPM?: PredicateInlineQueryPeerTypeSameBotPM
+    inlineQueryPeerTypePM?: PredicateInlineQueryPeerTypePM
+    inlineQueryPeerTypeChat?: PredicateInlineQueryPeerTypeChat
+    inlineQueryPeerTypeMegagroup?: PredicateInlineQueryPeerTypeMegagroup
+    inlineQueryPeerTypeBroadcast?: PredicateInlineQueryPeerTypeBroadcast
+}
+
+export interface MessagesHistoryImport {
+    messagesHistoryImport: PredicateMessagesHistoryImport
+}
+
+export interface MessagesHistoryImportParsed {
+    messagesHistoryImportParsed: PredicateMessagesHistoryImportParsed
+}
+
+export interface MessagesAffectedFoundMessages {
+    messagesAffectedFoundMessages: PredicateMessagesAffectedFoundMessages
+}
+
+export interface ChatInviteImporter {
+    chatInviteImporter: PredicateChatInviteImporter
+}
+
+export interface MessagesExportedChatInvites {
+    messagesExportedChatInvites: PredicateMessagesExportedChatInvites
+}
+
+export interface MessagesExportedChatInvite {
+    messagesExportedChatInvite?: PredicateMessagesExportedChatInvite
+    messagesExportedChatInviteReplaced?: PredicateMessagesExportedChatInviteReplaced
+}
+
+export interface MessagesChatInviteImporters {
+    messagesChatInviteImporters: PredicateMessagesChatInviteImporters
+}
+
+export interface ChatAdminWithInvites {
+    chatAdminWithInvites: PredicateChatAdminWithInvites
+}
+
+export interface MessagesChatAdminsWithInvites {
+    messagesChatAdminsWithInvites: PredicateMessagesChatAdminsWithInvites
+}
+
+export interface MessagesCheckedHistoryImportPeer {
+    messagesCheckedHistoryImportPeer: PredicateMessagesCheckedHistoryImportPeer
+}
+
+export interface PhoneJoinAsPeers {
+    phoneJoinAsPeers: PredicatePhoneJoinAsPeers
+}
+
+export interface PhoneExportedGroupCallInvite {
+    phoneExportedGroupCallInvite: PredicatePhoneExportedGroupCallInvite
+}
+
+export interface GroupCallParticipantVideoSourceGroup {
+    groupCallParticipantVideoSourceGroup: PredicateGroupCallParticipantVideoSourceGroup
+}
+
+export interface GroupCallParticipantVideo {
+    groupCallParticipantVideo: PredicateGroupCallParticipantVideo
+}
+
+export interface StickersSuggestedShortName {
+    stickersSuggestedShortName: PredicateStickersSuggestedShortName
+}
+
+export interface BotCommandScope {
+    botCommandScopeDefault?: PredicateBotCommandScopeDefault
+    botCommandScopeUsers?: PredicateBotCommandScopeUsers
+    botCommandScopeChats?: PredicateBotCommandScopeChats
+    botCommandScopeChatAdmins?: PredicateBotCommandScopeChatAdmins
+    botCommandScopePeer?: PredicateBotCommandScopePeer
+    botCommandScopePeerAdmins?: PredicateBotCommandScopePeerAdmins
+    botCommandScopePeerUser?: PredicateBotCommandScopePeerUser
+}
+
+export interface AccountResetPasswordResult {
+    accountResetPasswordFailedWait?: PredicateAccountResetPasswordFailedWait
+    accountResetPasswordRequestedWait?: PredicateAccountResetPasswordRequestedWait
+    accountResetPasswordOk?: PredicateAccountResetPasswordOk
+}
+
+export interface SponsoredMessage {
+    sponsoredMessage: PredicateSponsoredMessage
+}
+
+export interface MessagesSponsoredMessages {
+    messagesSponsoredMessages: PredicateMessagesSponsoredMessages
+}
+
+export interface SearchResultsCalendarPeriod {
+    searchResultsCalendarPeriod: PredicateSearchResultsCalendarPeriod
+}
+
+export interface MessagesSearchResultsCalendar {
+    messagesSearchResultsCalendar: PredicateMessagesSearchResultsCalendar
+}
+
+export interface SearchResultsPosition {
+    searchResultPosition: PredicateSearchResultPosition
+}
+
+export interface MessagesSearchResultsPositions {
+    messagesSearchResultsPositions: PredicateMessagesSearchResultsPositions
+}
+
+export interface ChannelsSendAsPeers {
+    channelsSendAsPeers: PredicateChannelsSendAsPeers
+}
+
+export interface UsersUserFull {
+    usersUserFull: PredicateUsersUserFull
+}
+
+export interface MessagesPeerSettings {
+    messagesPeerSettings: PredicateMessagesPeerSettings
+}
+
+export interface AuthLoggedOut {
+    authLoggedOut: PredicateAuthLoggedOut
+}
+
+export interface ReactionCount {
+    reactionCount: PredicateReactionCount
+}
+
+export interface MessageReactions {
+    messageReactions: PredicateMessageReactions
+}
+
+export interface MessagesMessageReactionsList {
+    messagesMessageReactionsList: PredicateMessagesMessageReactionsList
+}
+
+export interface AvailableReaction {
+    availableReaction: PredicateAvailableReaction
+}
+
+export interface MessagesAvailableReactions {
+    messagesAvailableReactionsNotModified?: PredicateMessagesAvailableReactionsNotModified
+    messagesAvailableReactions?: PredicateMessagesAvailableReactions
+}
+
+export interface MessagesTranslatedText {
+    messagesTranslateNoResult?: PredicateMessagesTranslateNoResult
+    messagesTranslateResultText?: PredicateMessagesTranslateResultText
+}
+
+export interface MessagePeerReaction {
+    messagePeerReaction: PredicateMessagePeerReaction
+}
+
+export interface GroupCallStreamChannel {
+    groupCallStreamChannel: PredicateGroupCallStreamChannel
+}
+
+export interface PhoneGroupCallStreamChannels {
+    phoneGroupCallStreamChannels: PredicatePhoneGroupCallStreamChannels
+}
+
+export interface PhoneGroupCallStreamRtmpUrl {
+    phoneGroupCallStreamRtmpUrl: PredicatePhoneGroupCallStreamRtmpUrl
+}
 
 export interface TgUserApiRequestResponseSuccess<Data = any> {
     success: true
