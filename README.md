@@ -5,7 +5,7 @@
 
 The library helps to type all methods for the Telegram User API (https://core.telegram.org/methods)
 
-- **Actual** 139 layer in the API scheme (https://core.telegram.org/schema)
+- **Actual** 158 layer in the API scheme (https://core.telegram.org/schema)
 
 ## Install
 ```

@@ -14,7 +14,7 @@ const BaseTypeByName: Record<string, string> = {
 };
 
 export const parseTgUserApiTypeName = (type: string, isUpperFirstChar = true) => {
-    const [, flagType] = type.match(/^flags.[0-9]+\?(.*)/) ?? [];
+    const [, flagNum, flagType] = type.match(/^flags([0-9]+)?.[0-9]+\?(.*)/) ?? [];
     const [, vectorType] = type.match(/Vector<(.+)>/) ?? [];
     const isFlag = Boolean(flagType);
     const isVector = Boolean(vectorType);

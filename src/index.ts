@@ -81,14 +81,17 @@ export class PredicateInputMediaEmpty {
 
 export class PredicateInputMediaUploadedPhoto {
     _ = 'inputMediaUploadedPhoto' as const
+    spoiler?: true
     file: InputFile
     stickers?: InputDocument[]
     ttl_seconds?: number
     constructor(options: {
+        spoiler?: true
         file: InputFile
         stickers?: InputDocument[]
         ttl_seconds?: number
     }) {
+        this.spoiler = options.spoiler;
         this.file = options.file;
         this.stickers = options.stickers;
         this.ttl_seconds = options.ttl_seconds;
@@ -97,12 +100,15 @@ export class PredicateInputMediaUploadedPhoto {
 
 export class PredicateInputMediaPhoto {
     _ = 'inputMediaPhoto' as const
+    spoiler?: true
     id: InputPhoto
     ttl_seconds?: number
     constructor(options: {
+        spoiler?: true
         id: InputPhoto
         ttl_seconds?: number
     }) {
+        this.spoiler = options.spoiler;
         this.id = options.id;
         this.ttl_seconds = options.ttl_seconds;
     }
@@ -146,14 +152,17 @@ export class PredicateInputChatUploadedPhoto {
     file?: InputFile
     video?: InputFile
     video_start_ts?: number
+    video_emoji_markup?: VideoSize
     constructor(options: {
         file?: InputFile
         video?: InputFile
         video_start_ts?: number
+        video_emoji_markup?: VideoSize
     } = {}) {
         this.file = options.file;
         this.video = options.video;
         this.video_start_ts = options.video_start_ts;
+        this.video_emoji_markup = options.video_emoji_markup;
     }
 }
 
@@ -303,16 +312,19 @@ export class PredicateUserProfilePhotoEmpty {
 export class PredicateUserProfilePhoto {
     _ = 'userProfilePhoto' as const
     has_video?: true
+    personal?: true
     photo_id: string
     stripped_thumb?: Uint8Array
     dc_id: number
     constructor(options: {
         has_video?: true
+        personal?: true
         photo_id: string
         stripped_thumb?: Uint8Array
         dc_id: number
     }) {
         this.has_video = options.has_video;
+        this.personal = options.personal;
         this.photo_id = options.photo_id;
         this.stripped_thumb = options.stripped_thumb;
         this.dc_id = options.dc_id;
@@ -422,6 +434,7 @@ export class PredicateChatFull {
     _ = 'chatFull' as const
     can_set_username?: true
     has_scheduled?: true
+    translations_disabled?: true
     id: string
     about: string
     participants: ChatParticipants
@@ -437,10 +450,11 @@ export class PredicateChatFull {
     theme_emoticon?: string
     requests_pending?: number
     recent_requesters?: string[]
-    available_reactions?: string[]
+    available_reactions?: ChatReactions
     constructor(options: {
         can_set_username?: true
         has_scheduled?: true
+        translations_disabled?: true
         id: string
         about: string
         participants: ChatParticipants
@@ -456,10 +470,11 @@ export class PredicateChatFull {
         theme_emoticon?: string
         requests_pending?: number
         recent_requesters?: string[]
-        available_reactions?: string[]
+        available_reactions?: ChatReactions
     }) {
         this.can_set_username = options.can_set_username;
         this.has_scheduled = options.has_scheduled;
+        this.translations_disabled = options.translations_disabled;
         this.id = options.id;
         this.about = options.about;
         this.participants = options.participants;
@@ -709,12 +724,15 @@ export class PredicateMessageMediaEmpty {
 
 export class PredicateMessageMediaPhoto {
     _ = 'messageMediaPhoto' as const
+    spoiler?: true
     photo?: Photo
     ttl_seconds?: number
     constructor(options: {
+        spoiler?: true
         photo?: Photo
         ttl_seconds?: number
     } = {}) {
+        this.spoiler = options.spoiler;
         this.photo = options.photo;
         this.ttl_seconds = options.ttl_seconds;
     }
@@ -821,6 +839,7 @@ export class PredicateDialog {
     _ = 'dialog' as const
     pinned?: true
     unread_mark?: true
+    view_forum_as_messages?: true
     peer: Peer
     top_message: number
     read_inbox_max_id: number
@@ -832,9 +851,11 @@ export class PredicateDialog {
     pts?: number
     draft?: DraftMessage
     folder_id?: number
+    ttl_period?: number
     constructor(options: {
         pinned?: true
         unread_mark?: true
+        view_forum_as_messages?: true
         peer: Peer
         top_message: number
         read_inbox_max_id: number
@@ -846,9 +867,11 @@ export class PredicateDialog {
         pts?: number
         draft?: DraftMessage
         folder_id?: number
+        ttl_period?: number
     }) {
         this.pinned = options.pinned;
         this.unread_mark = options.unread_mark;
+        this.view_forum_as_messages = options.view_forum_as_messages;
         this.peer = options.peer;
         this.top_message = options.top_message;
         this.read_inbox_max_id = options.read_inbox_max_id;
@@ -860,6 +883,7 @@ export class PredicateDialog {
         this.pts = options.pts;
         this.draft = options.draft;
         this.folder_id = options.folder_id;
+        this.ttl_period = options.ttl_period;
     }
 }
 
@@ -999,16 +1023,19 @@ export class PredicateAuthAuthorization {
     setup_password_required?: true
     otherwise_relogin_days?: number
     tmp_sessions?: number
+    future_auth_token?: Uint8Array
     user: User
     constructor(options: {
         setup_password_required?: true
         otherwise_relogin_days?: number
         tmp_sessions?: number
+        future_auth_token?: Uint8Array
         user: User
     }) {
         this.setup_password_required = options.setup_password_required;
         this.otherwise_relogin_days = options.otherwise_relogin_days;
         this.tmp_sessions = options.tmp_sessions;
+        this.future_auth_token = options.future_auth_token;
         this.user = options.user;
     }
 }
@@ -1049,12 +1076,12 @@ export class PredicateInputPeerNotifySettings {
     show_previews?: boolean
     silent?: boolean
     mute_until?: number
-    sound?: string
+    sound?: NotificationSound
     constructor(options: {
         show_previews?: boolean
         silent?: boolean
         mute_until?: number
-        sound?: string
+        sound?: NotificationSound
     } = {}) {
         this.show_previews = options.show_previews;
         this.silent = options.silent;
@@ -1068,17 +1095,23 @@ export class PredicatePeerNotifySettings {
     show_previews?: boolean
     silent?: boolean
     mute_until?: number
-    sound?: string
+    ios_sound?: NotificationSound
+    android_sound?: NotificationSound
+    other_sound?: NotificationSound
     constructor(options: {
         show_previews?: boolean
         silent?: boolean
         mute_until?: number
-        sound?: string
+        ios_sound?: NotificationSound
+        android_sound?: NotificationSound
+        other_sound?: NotificationSound
     } = {}) {
         this.show_previews = options.show_previews;
         this.silent = options.silent;
         this.mute_until = options.mute_until;
-        this.sound = options.sound;
+        this.ios_sound = options.ios_sound;
+        this.android_sound = options.android_sound;
+        this.other_sound = options.other_sound;
     }
 }
 
@@ -1187,10 +1220,14 @@ export class PredicateUserFull {
     can_pin_message?: true
     has_scheduled?: true
     video_calls_available?: true
+    voice_messages_forbidden?: true
+    translations_disabled?: true
     id: string
     about?: string
     settings: PeerSettings
+    personal_photo?: Photo
     profile_photo?: Photo
+    fallback_photo?: Photo
     notify_settings: PeerNotifySettings
     bot_info?: BotInfo
     pinned_msg_id?: number
@@ -1199,6 +1236,10 @@ export class PredicateUserFull {
     ttl_period?: number
     theme_emoticon?: string
     private_forward_name?: string
+    bot_group_admin_rights?: ChatAdminRights
+    bot_broadcast_admin_rights?: ChatAdminRights
+    premium_gifts?: PremiumGiftOption[]
+    wallpaper?: WallPaper
     constructor(options: {
         blocked?: true
         phone_calls_available?: true
@@ -1206,10 +1247,14 @@ export class PredicateUserFull {
         can_pin_message?: true
         has_scheduled?: true
         video_calls_available?: true
+        voice_messages_forbidden?: true
+        translations_disabled?: true
         id: string
         about?: string
         settings: PeerSettings
+        personal_photo?: Photo
         profile_photo?: Photo
+        fallback_photo?: Photo
         notify_settings: PeerNotifySettings
         bot_info?: BotInfo
         pinned_msg_id?: number
@@ -1218,6 +1263,10 @@ export class PredicateUserFull {
         ttl_period?: number
         theme_emoticon?: string
         private_forward_name?: string
+        bot_group_admin_rights?: ChatAdminRights
+        bot_broadcast_admin_rights?: ChatAdminRights
+        premium_gifts?: PremiumGiftOption[]
+        wallpaper?: WallPaper
     }) {
         this.blocked = options.blocked;
         this.phone_calls_available = options.phone_calls_available;
@@ -1225,10 +1274,14 @@ export class PredicateUserFull {
         this.can_pin_message = options.can_pin_message;
         this.has_scheduled = options.has_scheduled;
         this.video_calls_available = options.video_calls_available;
+        this.voice_messages_forbidden = options.voice_messages_forbidden;
+        this.translations_disabled = options.translations_disabled;
         this.id = options.id;
         this.about = options.about;
         this.settings = options.settings;
+        this.personal_photo = options.personal_photo;
         this.profile_photo = options.profile_photo;
+        this.fallback_photo = options.fallback_photo;
         this.notify_settings = options.notify_settings;
         this.bot_info = options.bot_info;
         this.pinned_msg_id = options.pinned_msg_id;
@@ -1237,6 +1290,10 @@ export class PredicateUserFull {
         this.ttl_period = options.ttl_period;
         this.theme_emoticon = options.theme_emoticon;
         this.private_forward_name = options.private_forward_name;
+        this.bot_group_admin_rights = options.bot_group_admin_rights;
+        this.bot_broadcast_admin_rights = options.bot_broadcast_admin_rights;
+        this.premium_gifts = options.premium_gifts;
+        this.wallpaper = options.wallpaper;
     }
 }
 
@@ -1610,36 +1667,17 @@ export class PredicateUpdateUserName {
     user_id: string
     first_name: string
     last_name: string
-    username: string
+    usernames: Username[]
     constructor(options: {
         user_id: string
         first_name: string
         last_name: string
-        username: string
+        usernames: Username[]
     }) {
         this.user_id = options.user_id;
         this.first_name = options.first_name;
         this.last_name = options.last_name;
-        this.username = options.username;
-    }
-}
-
-export class PredicateUpdateUserPhoto {
-    _ = 'updateUserPhoto' as const
-    user_id: string
-    date: number
-    photo: UserProfilePhoto
-    previous: boolean
-    constructor(options: {
-        user_id: string
-        date: number
-        photo: UserProfilePhoto
-        previous: boolean
-    }) {
-        this.user_id = options.user_id;
-        this.date = options.date;
-        this.photo = options.photo;
-        this.previous = options.previous;
+        this.usernames = options.usernames;
     }
 }
 
@@ -1996,13 +2034,10 @@ export class PredicateDcOption {
 
 export class PredicateConfig {
     _ = 'config' as const
-    phonecalls_enabled?: true
     default_p2p_contacts?: true
     preload_featured_stickers?: true
-    ignore_phone_entities?: true
     revoke_pm_inbox?: true
     blocked_mode?: true
-    pfs_enabled?: true
     force_try_ipv6?: true
     date: number
     expires: number
@@ -2021,17 +2056,13 @@ export class PredicateConfig {
     notify_default_delay_ms: number
     push_chat_period_ms: number
     push_chat_limit: number
-    saved_gifs_limit: number
     edit_time_limit: number
     revoke_time_limit: number
     revoke_pm_time_limit: number
     rating_e_decay: number
     stickers_recent_limit: number
-    stickers_faved_limit: number
     channels_read_media_period: number
     tmp_sessions?: number
-    pinned_dialogs_count_max: number
-    pinned_infolder_count_max: number
     call_receive_timeout_ms: number
     call_ring_timeout_ms: number
     call_connect_timeout_ms: number
@@ -2048,14 +2079,13 @@ export class PredicateConfig {
     suggested_lang_code?: string
     lang_pack_version?: number
     base_lang_pack_version?: number
+    reactions_default?: Reaction
+    autologin_token?: string
     constructor(options: {
-        phonecalls_enabled?: true
         default_p2p_contacts?: true
         preload_featured_stickers?: true
-        ignore_phone_entities?: true
         revoke_pm_inbox?: true
         blocked_mode?: true
-        pfs_enabled?: true
         force_try_ipv6?: true
         date: number
         expires: number
@@ -2074,17 +2104,13 @@ export class PredicateConfig {
         notify_default_delay_ms: number
         push_chat_period_ms: number
         push_chat_limit: number
-        saved_gifs_limit: number
         edit_time_limit: number
         revoke_time_limit: number
         revoke_pm_time_limit: number
         rating_e_decay: number
         stickers_recent_limit: number
-        stickers_faved_limit: number
         channels_read_media_period: number
         tmp_sessions?: number
-        pinned_dialogs_count_max: number
-        pinned_infolder_count_max: number
         call_receive_timeout_ms: number
         call_ring_timeout_ms: number
         call_connect_timeout_ms: number
@@ -2101,14 +2127,13 @@ export class PredicateConfig {
         suggested_lang_code?: string
         lang_pack_version?: number
         base_lang_pack_version?: number
+        reactions_default?: Reaction
+        autologin_token?: string
     }) {
-        this.phonecalls_enabled = options.phonecalls_enabled;
         this.default_p2p_contacts = options.default_p2p_contacts;
         this.preload_featured_stickers = options.preload_featured_stickers;
-        this.ignore_phone_entities = options.ignore_phone_entities;
         this.revoke_pm_inbox = options.revoke_pm_inbox;
         this.blocked_mode = options.blocked_mode;
-        this.pfs_enabled = options.pfs_enabled;
         this.force_try_ipv6 = options.force_try_ipv6;
         this.date = options.date;
         this.expires = options.expires;
@@ -2127,17 +2152,13 @@ export class PredicateConfig {
         this.notify_default_delay_ms = options.notify_default_delay_ms;
         this.push_chat_period_ms = options.push_chat_period_ms;
         this.push_chat_limit = options.push_chat_limit;
-        this.saved_gifs_limit = options.saved_gifs_limit;
         this.edit_time_limit = options.edit_time_limit;
         this.revoke_time_limit = options.revoke_time_limit;
         this.revoke_pm_time_limit = options.revoke_pm_time_limit;
         this.rating_e_decay = options.rating_e_decay;
         this.stickers_recent_limit = options.stickers_recent_limit;
-        this.stickers_faved_limit = options.stickers_faved_limit;
         this.channels_read_media_period = options.channels_read_media_period;
         this.tmp_sessions = options.tmp_sessions;
-        this.pinned_dialogs_count_max = options.pinned_dialogs_count_max;
-        this.pinned_infolder_count_max = options.pinned_infolder_count_max;
         this.call_receive_timeout_ms = options.call_receive_timeout_ms;
         this.call_ring_timeout_ms = options.call_ring_timeout_ms;
         this.call_connect_timeout_ms = options.call_connect_timeout_ms;
@@ -2154,6 +2175,8 @@ export class PredicateConfig {
         this.suggested_lang_code = options.suggested_lang_code;
         this.lang_pack_version = options.lang_pack_version;
         this.base_lang_pack_version = options.base_lang_pack_version;
+        this.reactions_default = options.reactions_default;
+        this.autologin_token = options.autologin_token;
     }
 }
 
@@ -2392,13 +2415,13 @@ export class PredicateEncryptedFile {
     _ = 'encryptedFile' as const
     id: string
     access_hash: string
-    size: number
+    size: string
     dc_id: number
     key_fingerprint: number
     constructor(options: {
         id: string
         access_hash: string
-        size: number
+        size: string
         dc_id: number
         key_fingerprint: number
     }) {
@@ -2636,6 +2659,7 @@ export class PredicateInputMediaUploadedDocument {
     _ = 'inputMediaUploadedDocument' as const
     nosound_video?: true
     force_file?: true
+    spoiler?: true
     file: InputFile
     thumb?: InputFile
     mime_type: string
@@ -2645,6 +2669,7 @@ export class PredicateInputMediaUploadedDocument {
     constructor(options: {
         nosound_video?: true
         force_file?: true
+        spoiler?: true
         file: InputFile
         thumb?: InputFile
         mime_type: string
@@ -2654,6 +2679,7 @@ export class PredicateInputMediaUploadedDocument {
     }) {
         this.nosound_video = options.nosound_video;
         this.force_file = options.force_file;
+        this.spoiler = options.spoiler;
         this.file = options.file;
         this.thumb = options.thumb;
         this.mime_type = options.mime_type;
@@ -2665,14 +2691,17 @@ export class PredicateInputMediaUploadedDocument {
 
 export class PredicateInputMediaDocument {
     _ = 'inputMediaDocument' as const
+    spoiler?: true
     id: InputDocument
     ttl_seconds?: number
     query?: string
     constructor(options: {
+        spoiler?: true
         id: InputDocument
         ttl_seconds?: number
         query?: string
     }) {
+        this.spoiler = options.spoiler;
         this.id = options.id;
         this.ttl_seconds = options.ttl_seconds;
         this.query = options.query;
@@ -2681,12 +2710,18 @@ export class PredicateInputMediaDocument {
 
 export class PredicateMessageMediaDocument {
     _ = 'messageMediaDocument' as const
+    nopremium?: true
+    spoiler?: true
     document?: Document
     ttl_seconds?: number
     constructor(options: {
+        nopremium?: true
+        spoiler?: true
         document?: Document
         ttl_seconds?: number
     } = {}) {
+        this.nopremium = options.nopremium;
+        this.spoiler = options.spoiler;
         this.document = options.document;
         this.ttl_seconds = options.ttl_seconds;
     }
@@ -2748,7 +2783,7 @@ export class PredicateDocument {
     file_reference: Uint8Array
     date: number
     mime_type: string
-    size: number
+    size: string
     thumbs?: PhotoSize[]
     video_thumbs?: VideoSize[]
     dc_id: number
@@ -2759,7 +2794,7 @@ export class PredicateDocument {
         file_reference: Uint8Array
         date: number
         mime_type: string
-        size: number
+        size: string
         thumbs?: PhotoSize[]
         video_thumbs?: VideoSize[]
         dc_id: number
@@ -3463,6 +3498,7 @@ export class PredicateAccountPassword {
     new_secure_algo: SecurePasswordKdfAlgo
     secure_random: Uint8Array
     pending_reset_date?: number
+    login_email_pattern?: string
     constructor(options: {
         has_recovery?: true
         has_secure_values?: true
@@ -3476,6 +3512,7 @@ export class PredicateAccountPassword {
         new_secure_algo: SecurePasswordKdfAlgo
         secure_random: Uint8Array
         pending_reset_date?: number
+        login_email_pattern?: string
     }) {
         this.has_recovery = options.has_recovery;
         this.has_secure_values = options.has_secure_values;
@@ -3489,6 +3526,7 @@ export class PredicateAccountPassword {
         this.new_secure_algo = options.new_secure_algo;
         this.secure_random = options.secure_random;
         this.pending_reset_date = options.pending_reset_date;
+        this.login_email_pattern = options.login_email_pattern;
     }
 }
 
@@ -3660,6 +3698,9 @@ export class PredicateChatInvite {
     public?: true
     megagroup?: true
     request_needed?: true
+    verified?: true
+    scam?: true
+    fake?: true
     title: string
     about?: string
     photo: Photo
@@ -3671,6 +3712,9 @@ export class PredicateChatInvite {
         public?: true
         megagroup?: true
         request_needed?: true
+        verified?: true
+        scam?: true
+        fake?: true
         title: string
         about?: string
         photo: Photo
@@ -3682,6 +3726,9 @@ export class PredicateChatInvite {
         this.public = options.public;
         this.megagroup = options.megagroup;
         this.request_needed = options.request_needed;
+        this.verified = options.verified;
+        this.scam = options.scam;
+        this.fake = options.fake;
         this.title = options.title;
         this.about = options.about;
         this.photo = options.photo;
@@ -3759,6 +3806,7 @@ export class PredicateStickerSet {
     thumbs?: PhotoSize[]
     thumb_dc_id?: number
     thumb_version?: number
+    thumb_document_id?: string
     count: number
     hash: number
     constructor(options: {
@@ -3776,6 +3824,7 @@ export class PredicateStickerSet {
         thumbs?: PhotoSize[]
         thumb_dc_id?: number
         thumb_version?: number
+        thumb_document_id?: string
         count: number
         hash: number
     }) {
@@ -3793,6 +3842,7 @@ export class PredicateStickerSet {
         this.thumbs = options.thumbs;
         this.thumb_dc_id = options.thumb_dc_id;
         this.thumb_version = options.thumb_version;
+        this.thumb_document_id = options.thumb_document_id;
         this.count = options.count;
         this.hash = options.hash;
     }
@@ -3802,14 +3852,17 @@ export class PredicateMessagesStickerSet {
     _ = 'messages.stickerSet' as const
     set: StickerSet
     packs: StickerPack[]
+    keywords: StickerKeyword[]
     documents: Document[]
     constructor(options: {
         set: StickerSet
         packs: StickerPack[]
+        keywords: StickerKeyword[]
         documents: Document[]
     }) {
         this.set = options.set;
         this.packs = options.packs;
+        this.keywords = options.keywords;
         this.documents = options.documents;
     }
 }
@@ -3831,6 +3884,10 @@ export class PredicateUser {
     scam?: true
     apply_min_photo?: true
     fake?: true
+    bot_attach_menu?: true
+    premium?: true
+    attach_menu_enabled?: true
+    bot_can_edit?: true
     id: string
     access_hash?: string
     first_name?: string
@@ -3843,6 +3900,8 @@ export class PredicateUser {
     restriction_reason?: RestrictionReason[]
     bot_inline_placeholder?: string
     lang_code?: string
+    emoji_status?: EmojiStatus
+    usernames?: Username[]
     constructor(options: {
         self?: true
         contact?: true
@@ -3859,6 +3918,10 @@ export class PredicateUser {
         scam?: true
         apply_min_photo?: true
         fake?: true
+        bot_attach_menu?: true
+        premium?: true
+        attach_menu_enabled?: true
+        bot_can_edit?: true
         id: string
         access_hash?: string
         first_name?: string
@@ -3871,6 +3934,8 @@ export class PredicateUser {
         restriction_reason?: RestrictionReason[]
         bot_inline_placeholder?: string
         lang_code?: string
+        emoji_status?: EmojiStatus
+        usernames?: Username[]
     }) {
         this.self = options.self;
         this.contact = options.contact;
@@ -3887,6 +3952,10 @@ export class PredicateUser {
         this.scam = options.scam;
         this.apply_min_photo = options.apply_min_photo;
         this.fake = options.fake;
+        this.bot_attach_menu = options.bot_attach_menu;
+        this.premium = options.premium;
+        this.attach_menu_enabled = options.attach_menu_enabled;
+        this.bot_can_edit = options.bot_can_edit;
         this.id = options.id;
         this.access_hash = options.access_hash;
         this.first_name = options.first_name;
@@ -3899,6 +3968,8 @@ export class PredicateUser {
         this.restriction_reason = options.restriction_reason;
         this.bot_inline_placeholder = options.bot_inline_placeholder;
         this.lang_code = options.lang_code;
+        this.emoji_status = options.emoji_status;
+        this.usernames = options.usernames;
     }
 }
 
@@ -3917,17 +3988,26 @@ export class PredicateBotCommand {
 
 export class PredicateBotInfo {
     _ = 'botInfo' as const
-    user_id: string
-    description: string
-    commands: BotCommand[]
+    user_id?: string
+    description?: string
+    description_photo?: Photo
+    description_document?: Document
+    commands?: BotCommand[]
+    menu_button?: BotMenuButton
     constructor(options: {
-        user_id: string
-        description: string
-        commands: BotCommand[]
-    }) {
+        user_id?: string
+        description?: string
+        description_photo?: Photo
+        description_document?: Document
+        commands?: BotCommand[]
+        menu_button?: BotMenuButton
+    } = {}) {
         this.user_id = options.user_id;
         this.description = options.description;
+        this.description_photo = options.description_photo;
+        this.description_document = options.description_document;
         this.commands = options.commands;
+        this.menu_button = options.menu_button;
     }
 }
 
@@ -3982,18 +4062,21 @@ export class PredicateReplyKeyboardMarkup {
     resize?: true
     single_use?: true
     selective?: true
+    persistent?: true
     rows: KeyboardButtonRow[]
     placeholder?: string
     constructor(options: {
         resize?: true
         single_use?: true
         selective?: true
+        persistent?: true
         rows: KeyboardButtonRow[]
         placeholder?: string
     }) {
         this.resize = options.resize;
         this.single_use = options.single_use;
         this.selective = options.selective;
+        this.persistent = options.persistent;
         this.rows = options.rows;
         this.placeholder = options.placeholder;
     }
@@ -4266,6 +4349,7 @@ export class PredicateChannel {
     noforwards?: true
     join_to_send?: true
     join_request?: true
+    forum?: true
     id: string
     access_hash?: string
     title: string
@@ -4277,6 +4361,7 @@ export class PredicateChannel {
     banned_rights?: ChatBannedRights
     default_banned_rights?: ChatBannedRights
     participants_count?: number
+    usernames?: Username[]
     constructor(options: {
         creator?: true
         left?: true
@@ -4297,6 +4382,7 @@ export class PredicateChannel {
         noforwards?: true
         join_to_send?: true
         join_request?: true
+        forum?: true
         id: string
         access_hash?: string
         title: string
@@ -4308,6 +4394,7 @@ export class PredicateChannel {
         banned_rights?: ChatBannedRights
         default_banned_rights?: ChatBannedRights
         participants_count?: number
+        usernames?: Username[]
     }) {
         this.creator = options.creator;
         this.left = options.left;
@@ -4328,6 +4415,7 @@ export class PredicateChannel {
         this.noforwards = options.noforwards;
         this.join_to_send = options.join_to_send;
         this.join_request = options.join_request;
+        this.forum = options.forum;
         this.id = options.id;
         this.access_hash = options.access_hash;
         this.title = options.title;
@@ -4339,6 +4427,7 @@ export class PredicateChannel {
         this.banned_rights = options.banned_rights;
         this.default_banned_rights = options.default_banned_rights;
         this.participants_count = options.participants_count;
+        this.usernames = options.usernames;
     }
 }
 
@@ -4393,6 +4482,10 @@ export class PredicateChannelFull {
     has_scheduled?: true
     can_view_stats?: true
     blocked?: true
+    can_delete_channel?: true
+    antispam?: true
+    participants_hidden?: true
+    translations_disabled?: true
     id: string
     about: string
     participants_count?: number
@@ -4427,7 +4520,7 @@ export class PredicateChannelFull {
     requests_pending?: number
     recent_requesters?: string[]
     default_send_as?: Peer
-    available_reactions?: string[]
+    available_reactions?: ChatReactions
     constructor(options: {
         can_view_participants?: true
         can_set_username?: true
@@ -4437,6 +4530,10 @@ export class PredicateChannelFull {
         has_scheduled?: true
         can_view_stats?: true
         blocked?: true
+        can_delete_channel?: true
+        antispam?: true
+        participants_hidden?: true
+        translations_disabled?: true
         id: string
         about: string
         participants_count?: number
@@ -4471,7 +4568,7 @@ export class PredicateChannelFull {
         requests_pending?: number
         recent_requesters?: string[]
         default_send_as?: Peer
-        available_reactions?: string[]
+        available_reactions?: ChatReactions
     }) {
         this.can_view_participants = options.can_view_participants;
         this.can_set_username = options.can_set_username;
@@ -4481,6 +4578,10 @@ export class PredicateChannelFull {
         this.has_scheduled = options.has_scheduled;
         this.can_view_stats = options.can_view_stats;
         this.blocked = options.blocked;
+        this.can_delete_channel = options.can_delete_channel;
+        this.antispam = options.antispam;
+        this.participants_hidden = options.participants_hidden;
+        this.translations_disabled = options.translations_disabled;
         this.id = options.id;
         this.about = options.about;
         this.participants_count = options.participants_count;
@@ -4539,6 +4640,7 @@ export class PredicateMessagesChannelMessages {
     count: number
     offset_id_offset?: number
     messages: Message[]
+    topics: ForumTopic[]
     chats: Chat[]
     users: User[]
     constructor(options: {
@@ -4547,6 +4649,7 @@ export class PredicateMessagesChannelMessages {
         count: number
         offset_id_offset?: number
         messages: Message[]
+        topics: ForumTopic[]
         chats: Chat[]
         users: User[]
     }) {
@@ -4555,6 +4658,7 @@ export class PredicateMessagesChannelMessages {
         this.count = options.count;
         this.offset_id_offset = options.offset_id_offset;
         this.messages = options.messages;
+        this.topics = options.topics;
         this.chats = options.chats;
         this.users = options.users;
     }
@@ -4975,6 +5079,15 @@ export class PredicateUpdateStickerSetsOrder {
 
 export class PredicateUpdateStickerSets {
     _ = 'updateStickerSets' as const
+    masks?: true
+    emojis?: true
+    constructor(options: {
+        masks?: true
+        emojis?: true
+    } = {}) {
+        this.masks = options.masks;
+        this.emojis = options.emojis;
+    }
 }
 
 export class PredicateMessagesSavedGifsNotModified {
@@ -5136,6 +5249,7 @@ export class PredicateMessagesBotResults {
     query_id: string
     next_offset?: string
     switch_pm?: InlineBotSwitchPM
+    switch_webview?: InlineBotWebView
     results: BotInlineResult[]
     cache_time: number
     users: User[]
@@ -5144,6 +5258,7 @@ export class PredicateMessagesBotResults {
         query_id: string
         next_offset?: string
         switch_pm?: InlineBotSwitchPM
+        switch_webview?: InlineBotWebView
         results: BotInlineResult[]
         cache_time: number
         users: User[]
@@ -5152,6 +5267,7 @@ export class PredicateMessagesBotResults {
         this.query_id = options.query_id;
         this.next_offset = options.next_offset;
         this.switch_pm = options.switch_pm;
+        this.switch_webview = options.switch_webview;
         this.results = options.results;
         this.cache_time = options.cache_time;
         this.users = options.users;
@@ -5394,14 +5510,17 @@ export class PredicateKeyboardButtonSwitchInline {
     same_peer?: true
     text: string
     query: string
+    peer_types?: InlineQueryPeerType[]
     constructor(options: {
         same_peer?: true
         text: string
         query: string
+        peer_types?: InlineQueryPeerType[]
     }) {
         this.same_peer = options.same_peer;
         this.text = options.text;
         this.query = options.query;
+        this.peer_types = options.peer_types;
     }
 }
 
@@ -5907,12 +6026,15 @@ export class PredicateUpdateReadChannelOutbox {
 export class PredicateUpdateDraftMessage {
     _ = 'updateDraftMessage' as const
     peer: Peer
+    top_msg_id?: number
     draft: DraftMessage
     constructor(options: {
         peer: Peer
+        top_msg_id?: number
         draft: DraftMessage
     }) {
         this.peer = options.peer;
+        this.top_msg_id = options.top_msg_id;
         this.draft = options.draft;
     }
 }
@@ -5965,16 +6087,19 @@ export class PredicateMessagesFeaturedStickersNotModified {
 
 export class PredicateMessagesFeaturedStickers {
     _ = 'messages.featuredStickers' as const
+    premium?: true
     hash: string
     count: number
     sets: StickerSetCovered[]
     unread: string[]
     constructor(options: {
+        premium?: true
         hash: string
         count: number
         sets: StickerSetCovered[]
         unread: string[]
     }) {
+        this.premium = options.premium;
         this.hash = options.hash;
         this.count = options.count;
         this.sets = options.sets;
@@ -6063,12 +6188,15 @@ export class PredicateUpdatePtsChanged {
 
 export class PredicateInputMediaPhotoExternal {
     _ = 'inputMediaPhotoExternal' as const
+    spoiler?: true
     url: string
     ttl_seconds?: number
     constructor(options: {
+        spoiler?: true
         url: string
         ttl_seconds?: number
     }) {
+        this.spoiler = options.spoiler;
         this.url = options.url;
         this.ttl_seconds = options.ttl_seconds;
     }
@@ -6076,12 +6204,15 @@ export class PredicateInputMediaPhotoExternal {
 
 export class PredicateInputMediaDocumentExternal {
     _ = 'inputMediaDocumentExternal' as const
+    spoiler?: true
     url: string
     ttl_seconds?: number
     constructor(options: {
+        spoiler?: true
         url: string
         ttl_seconds?: number
     }) {
+        this.spoiler = options.spoiler;
         this.url = options.url;
         this.ttl_seconds = options.ttl_seconds;
     }
@@ -6839,10 +6970,12 @@ export class PredicateInvoice {
     flexible?: true
     phone_to_provider?: true
     email_to_provider?: true
+    recurring?: true
     currency: string
     prices: LabeledPrice[]
     max_tip_amount?: string
     suggested_tip_amounts?: string[]
+    recurring_terms_url?: string
     constructor(options: {
         test?: true
         name_requested?: true
@@ -6852,10 +6985,12 @@ export class PredicateInvoice {
         flexible?: true
         phone_to_provider?: true
         email_to_provider?: true
+        recurring?: true
         currency: string
         prices: LabeledPrice[]
         max_tip_amount?: string
         suggested_tip_amounts?: string[]
+        recurring_terms_url?: string
     }) {
         this.test = options.test;
         this.name_requested = options.name_requested;
@@ -6865,10 +7000,12 @@ export class PredicateInvoice {
         this.flexible = options.flexible;
         this.phone_to_provider = options.phone_to_provider;
         this.email_to_provider = options.email_to_provider;
+        this.recurring = options.recurring;
         this.currency = options.currency;
         this.prices = options.prices;
         this.max_tip_amount = options.max_tip_amount;
         this.suggested_tip_amounts = options.suggested_tip_amounts;
+        this.recurring_terms_url = options.recurring_terms_url;
     }
 }
 
@@ -6882,6 +7019,7 @@ export class PredicateInputMediaInvoice {
     provider: string
     provider_data: DataJSON
     start_param?: string
+    extended_media?: InputMedia
     constructor(options: {
         title: string
         description: string
@@ -6891,6 +7029,7 @@ export class PredicateInputMediaInvoice {
         provider: string
         provider_data: DataJSON
         start_param?: string
+        extended_media?: InputMedia
     }) {
         this.title = options.title;
         this.description = options.description;
@@ -6900,6 +7039,7 @@ export class PredicateInputMediaInvoice {
         this.provider = options.provider;
         this.provider_data = options.provider_data;
         this.start_param = options.start_param;
+        this.extended_media = options.extended_media;
     }
 }
 
@@ -6918,6 +7058,8 @@ export class PredicatePaymentCharge {
 
 export class PredicateMessageActionPaymentSentMe {
     _ = 'messageActionPaymentSentMe' as const
+    recurring_init?: true
+    recurring_used?: true
     currency: string
     total_amount: string
     payload: Uint8Array
@@ -6925,6 +7067,8 @@ export class PredicateMessageActionPaymentSentMe {
     shipping_option_id?: string
     charge: PaymentCharge
     constructor(options: {
+        recurring_init?: true
+        recurring_used?: true
         currency: string
         total_amount: string
         payload: Uint8Array
@@ -6932,6 +7076,8 @@ export class PredicateMessageActionPaymentSentMe {
         shipping_option_id?: string
         charge: PaymentCharge
     }) {
+        this.recurring_init = options.recurring_init;
+        this.recurring_used = options.recurring_used;
         this.currency = options.currency;
         this.total_amount = options.total_amount;
         this.payload = options.payload;
@@ -6952,6 +7098,7 @@ export class PredicateMessageMediaInvoice {
     currency: string
     total_amount: string
     start_param: string
+    extended_media?: MessageExtendedMedia
     constructor(options: {
         shipping_address_requested?: true
         test?: true
@@ -6962,6 +7109,7 @@ export class PredicateMessageMediaInvoice {
         currency: string
         total_amount: string
         start_param: string
+        extended_media?: MessageExtendedMedia
     }) {
         this.shipping_address_requested = options.shipping_address_requested;
         this.test = options.test;
@@ -6972,6 +7120,7 @@ export class PredicateMessageMediaInvoice {
         this.currency = options.currency;
         this.total_amount = options.total_amount;
         this.start_param = options.start_param;
+        this.extended_media = options.extended_media;
     }
 }
 
@@ -7031,14 +7180,23 @@ export class PredicateKeyboardButtonBuy {
 
 export class PredicateMessageActionPaymentSent {
     _ = 'messageActionPaymentSent' as const
+    recurring_init?: true
+    recurring_used?: true
     currency: string
     total_amount: string
+    invoice_slug?: string
     constructor(options: {
+        recurring_init?: true
+        recurring_used?: true
         currency: string
         total_amount: string
+        invoice_slug?: string
     }) {
+        this.recurring_init = options.recurring_init;
+        this.recurring_used = options.recurring_used;
         this.currency = options.currency;
         this.total_amount = options.total_amount;
+        this.invoice_slug = options.invoice_slug;
     }
 }
 
@@ -7137,37 +7295,49 @@ export class PredicatePaymentsPaymentForm {
     password_missing?: true
     form_id: string
     bot_id: string
+    title: string
+    description: string
+    photo?: WebDocument
     invoice: Invoice
     provider_id: string
     url: string
     native_provider?: string
     native_params?: DataJSON
+    additional_methods?: PaymentFormMethod[]
     saved_info?: PaymentRequestedInfo
-    saved_credentials?: PaymentSavedCredentials
+    saved_credentials?: PaymentSavedCredentials[]
     users: User[]
     constructor(options: {
         can_save_credentials?: true
         password_missing?: true
         form_id: string
         bot_id: string
+        title: string
+        description: string
+        photo?: WebDocument
         invoice: Invoice
         provider_id: string
         url: string
         native_provider?: string
         native_params?: DataJSON
+        additional_methods?: PaymentFormMethod[]
         saved_info?: PaymentRequestedInfo
-        saved_credentials?: PaymentSavedCredentials
+        saved_credentials?: PaymentSavedCredentials[]
         users: User[]
     }) {
         this.can_save_credentials = options.can_save_credentials;
         this.password_missing = options.password_missing;
         this.form_id = options.form_id;
         this.bot_id = options.bot_id;
+        this.title = options.title;
+        this.description = options.description;
+        this.photo = options.photo;
         this.invoice = options.invoice;
         this.provider_id = options.provider_id;
         this.url = options.url;
         this.native_provider = options.native_provider;
         this.native_params = options.native_params;
+        this.additional_methods = options.additional_methods;
         this.saved_info = options.saved_info;
         this.saved_credentials = options.saved_credentials;
         this.users = options.users;
@@ -7366,14 +7536,17 @@ export class PredicateInputStickerSetItem {
     document: InputDocument
     emoji: string
     mask_coords?: MaskCoords
+    keywords?: string
     constructor(options: {
         document: InputDocument
         emoji: string
         mask_coords?: MaskCoords
+        keywords?: string
     }) {
         this.document = options.document;
         this.emoji = options.emoji;
         this.mask_coords = options.mask_coords;
+        this.keywords = options.keywords;
     }
 }
 
@@ -7573,18 +7746,21 @@ export class PredicatePhoneCallDiscarded {
 
 export class PredicatePhoneConnection {
     _ = 'phoneConnection' as const
+    tcp?: true
     id: string
     ip: string
     ipv6: string
     port: number
     peer_tag: Uint8Array
     constructor(options: {
+        tcp?: true
         id: string
         ip: string
         ipv6: string
         port: number
         peer_tag: Uint8Array
     }) {
+        this.tcp = options.tcp;
         this.id = options.id;
         this.ip = options.ip;
         this.ipv6 = options.ipv6;
@@ -8160,6 +8336,7 @@ export class PredicateChannelAdminLogEventsFilter {
     group_call?: true
     invites?: true
     send?: true
+    forums?: true
     constructor(options: {
         join?: true
         leave?: true
@@ -8178,6 +8355,7 @@ export class PredicateChannelAdminLogEventsFilter {
         group_call?: true
         invites?: true
         send?: true
+        forums?: true
     } = {}) {
         this.join = options.join;
         this.leave = options.leave;
@@ -8196,6 +8374,7 @@ export class PredicateChannelAdminLogEventsFilter {
         this.group_call = options.group_call;
         this.invites = options.invites;
         this.send = options.send;
+        this.forums = options.forums;
     }
 }
 
@@ -8260,12 +8439,15 @@ export class PredicateUpdateFavedStickers {
 export class PredicateUpdateChannelReadMessagesContents {
     _ = 'updateChannelReadMessagesContents' as const
     channel_id: string
+    top_msg_id?: number
     messages: number[]
     constructor(options: {
         channel_id: string
+        top_msg_id?: number
         messages: number[]
     }) {
         this.channel_id = options.channel_id;
+        this.top_msg_id = options.top_msg_id;
         this.messages = options.messages;
     }
 }
@@ -8593,11 +8775,17 @@ export class PredicateMessageEntityCashtag {
 
 export class PredicateMessageActionBotAllowed {
     _ = 'messageActionBotAllowed' as const
-    domain: string
+    attach_menu?: true
+    domain?: string
+    app?: BotApp
     constructor(options: {
-        domain: string
-    }) {
+        attach_menu?: true
+        domain?: string
+        app?: BotApp
+    } = {}) {
+        this.attach_menu = options.attach_menu;
         this.domain = options.domain;
+        this.app = options.app;
     }
 }
 
@@ -8640,11 +8828,11 @@ export class PredicateMessagesFoundStickerSets {
 
 export class PredicateFileHash {
     _ = 'fileHash' as const
-    offset: number
+    offset: string
     limit: number
     hash: Uint8Array
     constructor(options: {
-        offset: number
+        offset: string
         limit: number
         hash: Uint8Array
     }) {
@@ -8765,7 +8953,7 @@ export class PredicateSecureFile {
     _ = 'secureFile' as const
     id: string
     access_hash: string
-    size: number
+    size: string
     dc_id: number
     date: number
     file_hash: Uint8Array
@@ -8773,7 +8961,7 @@ export class PredicateSecureFile {
     constructor(options: {
         id: string
         access_hash: string
-        size: number
+        size: string
         dc_id: number
         date: number
         file_hash: Uint8Array
@@ -10059,6 +10247,7 @@ export class PredicateChatAdminRights {
     anonymous?: true
     manage_call?: true
     other?: true
+    manage_topics?: true
     constructor(options: {
         change_info?: true
         post_messages?: true
@@ -10071,6 +10260,7 @@ export class PredicateChatAdminRights {
         anonymous?: true
         manage_call?: true
         other?: true
+        manage_topics?: true
     } = {}) {
         this.change_info = options.change_info;
         this.post_messages = options.post_messages;
@@ -10083,6 +10273,7 @@ export class PredicateChatAdminRights {
         this.anonymous = options.anonymous;
         this.manage_call = options.manage_call;
         this.other = options.other;
+        this.manage_topics = options.manage_topics;
     }
 }
 
@@ -10100,6 +10291,14 @@ export class PredicateChatBannedRights {
     change_info?: true
     invite_users?: true
     pin_messages?: true
+    manage_topics?: true
+    send_photos?: true
+    send_videos?: true
+    send_roundvideos?: true
+    send_audios?: true
+    send_voices?: true
+    send_docs?: true
+    send_plain?: true
     until_date: number
     constructor(options: {
         view_messages?: true
@@ -10114,6 +10313,14 @@ export class PredicateChatBannedRights {
         change_info?: true
         invite_users?: true
         pin_messages?: true
+        manage_topics?: true
+        send_photos?: true
+        send_videos?: true
+        send_roundvideos?: true
+        send_audios?: true
+        send_voices?: true
+        send_docs?: true
+        send_plain?: true
         until_date: number
     }) {
         this.view_messages = options.view_messages;
@@ -10128,6 +10335,14 @@ export class PredicateChatBannedRights {
         this.change_info = options.change_info;
         this.invite_users = options.invite_users;
         this.pin_messages = options.pin_messages;
+        this.manage_topics = options.manage_topics;
+        this.send_photos = options.send_photos;
+        this.send_videos = options.send_videos;
+        this.send_roundvideos = options.send_roundvideos;
+        this.send_audios = options.send_audios;
+        this.send_voices = options.send_voices;
+        this.send_docs = options.send_docs;
+        this.send_plain = options.send_plain;
         this.until_date = options.until_date;
     }
 }
@@ -10227,19 +10442,28 @@ export class PredicateCodeSettings {
     current_number?: true
     allow_app_hash?: true
     allow_missed_call?: true
+    allow_firebase?: true
     logout_tokens?: Uint8Array[]
+    token?: string
+    app_sandbox?: boolean
     constructor(options: {
         allow_flashcall?: true
         current_number?: true
         allow_app_hash?: true
         allow_missed_call?: true
+        allow_firebase?: true
         logout_tokens?: Uint8Array[]
+        token?: string
+        app_sandbox?: boolean
     } = {}) {
         this.allow_flashcall = options.allow_flashcall;
         this.current_number = options.current_number;
         this.allow_app_hash = options.allow_app_hash;
         this.allow_missed_call = options.allow_missed_call;
+        this.allow_firebase = options.allow_firebase;
         this.logout_tokens = options.logout_tokens;
+        this.token = options.token;
+        this.app_sandbox = options.app_sandbox;
     }
 }
 
@@ -10281,8 +10505,8 @@ export class PredicateAutoDownloadSettings {
     audio_preload_next?: true
     phonecalls_less_data?: true
     photo_size_max: number
-    video_size_max: number
-    file_size_max: number
+    video_size_max: string
+    file_size_max: string
     video_upload_maxbitrate: number
     constructor(options: {
         disabled?: true
@@ -10290,8 +10514,8 @@ export class PredicateAutoDownloadSettings {
         audio_preload_next?: true
         phonecalls_less_data?: true
         photo_size_max: number
-        video_size_max: number
-        file_size_max: number
+        video_size_max: string
+        file_size_max: string
         video_upload_maxbitrate: number
     }) {
         this.disabled = options.disabled;
@@ -10828,19 +11052,6 @@ export class PredicateMessageEntityUnderline {
 
 export class PredicateMessageEntityStrike {
     _ = 'messageEntityStrike' as const
-    offset: number
-    length: number
-    constructor(options: {
-        offset: number
-        length: number
-    }) {
-        this.offset = options.offset;
-        this.length = options.length;
-    }
-}
-
-export class PredicateMessageEntityBlockquote {
-    _ = 'messageEntityBlockquote' as const
     offset: number
     length: number
     constructor(options: {
@@ -12127,16 +12338,19 @@ export class PredicateMessagesDiscussionMessage {
 export class PredicateMessageReplyHeader {
     _ = 'messageReplyHeader' as const
     reply_to_scheduled?: true
+    forum_topic?: true
     reply_to_msg_id: number
     reply_to_peer_id?: Peer
     reply_to_top_id?: number
     constructor(options: {
         reply_to_scheduled?: true
+        forum_topic?: true
         reply_to_msg_id: number
         reply_to_peer_id?: Peer
         reply_to_top_id?: number
     }) {
         this.reply_to_scheduled = options.reply_to_scheduled;
+        this.forum_topic = options.forum_topic;
         this.reply_to_msg_id = options.reply_to_msg_id;
         this.reply_to_peer_id = options.reply_to_peer_id;
         this.reply_to_top_id = options.reply_to_top_id;
@@ -12751,10 +12965,13 @@ export class PredicateMessagesAffectedFoundMessages {
 export class PredicateMessageActionSetMessagesTTL {
     _ = 'messageActionSetMessagesTTL' as const
     period: number
+    auto_setting_from?: string
     constructor(options: {
         period: number
+        auto_setting_from?: string
     }) {
         this.period = options.period;
+        this.auto_setting_from = options.auto_setting_from;
     }
 }
 
@@ -12804,6 +13021,7 @@ export class PredicateUpdateChatParticipant {
 
 export class PredicateUpdateChannelParticipant {
     _ = 'updateChannelParticipant' as const
+    via_chatlist?: true
     channel_id: string
     date: number
     actor_id: string
@@ -12813,6 +13031,7 @@ export class PredicateUpdateChannelParticipant {
     invite?: ExportedChatInvite
     qts: number
     constructor(options: {
+        via_chatlist?: true
         channel_id: string
         date: number
         actor_id: string
@@ -12822,6 +13041,7 @@ export class PredicateUpdateChannelParticipant {
         invite?: ExportedChatInvite
         qts: number
     }) {
+        this.via_chatlist = options.via_chatlist;
         this.channel_id = options.channel_id;
         this.date = options.date;
         this.actor_id = options.actor_id;
@@ -12855,18 +13075,21 @@ export class PredicateUpdateBotStopped {
 export class PredicateChatInviteImporter {
     _ = 'chatInviteImporter' as const
     requested?: true
+    via_chatlist?: true
     user_id: string
     date: number
     about?: string
     approved_by?: string
     constructor(options: {
         requested?: true
+        via_chatlist?: true
         user_id: string
         date: number
         about?: string
         approved_by?: string
     }) {
         this.requested = options.requested;
+        this.via_chatlist = options.via_chatlist;
         this.user_id = options.user_id;
         this.date = options.date;
         this.about = options.about;
@@ -12966,10 +13189,13 @@ export class PredicateMessagesChatAdminsWithInvites {
 
 export class PredicateChannelAdminLogEventActionParticipantJoinByInvite {
     _ = 'channelAdminLogEventActionParticipantJoinByInvite' as const
+    via_chatlist?: true
     invite: ExportedChatInvite
     constructor(options: {
+        via_chatlist?: true
         invite: ExportedChatInvite
     }) {
+        this.via_chatlist = options.via_chatlist;
         this.invite = options.invite;
     }
 }
@@ -13324,6 +13550,7 @@ export class PredicateSendMessageChooseStickerAction {
 export class PredicateSponsoredMessage {
     _ = 'sponsoredMessage' as const
     recommended?: true
+    show_peer_photo?: true
     random_id: Uint8Array
     from_id?: Peer
     chat_invite?: ChatInvite
@@ -13332,8 +13559,11 @@ export class PredicateSponsoredMessage {
     start_param?: string
     message: string
     entities?: MessageEntity[]
+    sponsor_info?: string
+    additional_info?: string
     constructor(options: {
         recommended?: true
+        show_peer_photo?: true
         random_id: Uint8Array
         from_id?: Peer
         chat_invite?: ChatInvite
@@ -13342,8 +13572,11 @@ export class PredicateSponsoredMessage {
         start_param?: string
         message: string
         entities?: MessageEntity[]
+        sponsor_info?: string
+        additional_info?: string
     }) {
         this.recommended = options.recommended;
+        this.show_peer_photo = options.show_peer_photo;
         this.random_id = options.random_id;
         this.from_id = options.from_id;
         this.chat_invite = options.chat_invite;
@@ -13352,19 +13585,24 @@ export class PredicateSponsoredMessage {
         this.start_param = options.start_param;
         this.message = options.message;
         this.entities = options.entities;
+        this.sponsor_info = options.sponsor_info;
+        this.additional_info = options.additional_info;
     }
 }
 
 export class PredicateMessagesSponsoredMessages {
     _ = 'messages.sponsoredMessages' as const
+    posts_between?: number
     messages: SponsoredMessage[]
     chats: Chat[]
     users: User[]
     constructor(options: {
+        posts_between?: number
         messages: SponsoredMessage[]
         chats: Chat[]
         users: User[]
     }) {
+        this.posts_between = options.posts_between;
         this.messages = options.messages;
         this.chats = options.chats;
         this.users = options.users;
@@ -13588,11 +13826,11 @@ export class PredicateKeyboardButtonUserProfile {
 
 export class PredicateChannelsSendAsPeers {
     _ = 'channels.sendAsPeers' as const
-    peers: Peer[]
+    peers: SendAsPeer[]
     chats: Chat[]
     users: User[]
     constructor(options: {
-        peers: Peer[]
+        peers: SendAsPeer[]
         chats: Chat[]
         users: User[]
     }) {
@@ -13689,29 +13927,32 @@ export class PredicateUpdateMessageReactions {
     _ = 'updateMessageReactions' as const
     peer: Peer
     msg_id: number
+    top_msg_id?: number
     reactions: MessageReactions
     constructor(options: {
         peer: Peer
         msg_id: number
+        top_msg_id?: number
         reactions: MessageReactions
     }) {
         this.peer = options.peer;
         this.msg_id = options.msg_id;
+        this.top_msg_id = options.top_msg_id;
         this.reactions = options.reactions;
     }
 }
 
 export class PredicateReactionCount {
     _ = 'reactionCount' as const
-    chosen?: true
-    reaction: string
+    chosen_order?: number
+    reaction: Reaction
     count: number
     constructor(options: {
-        chosen?: true
-        reaction: string
+        chosen_order?: number
+        reaction: Reaction
         count: number
     }) {
-        this.chosen = options.chosen;
+        this.chosen_order = options.chosen_order;
         this.reaction = options.reaction;
         this.count = options.count;
     }
@@ -13761,6 +14002,7 @@ export class PredicateMessagesMessageReactionsList {
 export class PredicateAvailableReaction {
     _ = 'availableReaction' as const
     inactive?: true
+    premium?: true
     reaction: string
     title: string
     static_icon: Document
@@ -13772,6 +14014,7 @@ export class PredicateAvailableReaction {
     center_icon?: Document
     constructor(options: {
         inactive?: true
+        premium?: true
         reaction: string
         title: string
         static_icon: Document
@@ -13783,6 +14026,7 @@ export class PredicateAvailableReaction {
         center_icon?: Document
     }) {
         this.inactive = options.inactive;
+        this.premium = options.premium;
         this.reaction = options.reaction;
         this.title = options.title;
         this.static_icon = options.static_icon;
@@ -13827,28 +14071,14 @@ export class PredicateMessageEntitySpoiler {
 
 export class PredicateChannelAdminLogEventActionChangeAvailableReactions {
     _ = 'channelAdminLogEventActionChangeAvailableReactions' as const
-    prev_value: string[]
-    new_value: string[]
+    prev_value: ChatReactions
+    new_value: ChatReactions
     constructor(options: {
-        prev_value: string[]
-        new_value: string[]
+        prev_value: ChatReactions
+        new_value: ChatReactions
     }) {
         this.prev_value = options.prev_value;
         this.new_value = options.new_value;
-    }
-}
-
-export class PredicateMessagesTranslateNoResult {
-    _ = 'messages.translateNoResult' as const
-}
-
-export class PredicateMessagesTranslateResultText {
-    _ = 'messages.translateResultText' as const
-    text: string
-    constructor(options: {
-        text: string
-    }) {
-        this.text = options.text;
     }
 }
 
@@ -13856,17 +14086,23 @@ export class PredicateMessagePeerReaction {
     _ = 'messagePeerReaction' as const
     big?: true
     unread?: true
+    my?: true
     peer_id: Peer
-    reaction: string
+    date: number
+    reaction: Reaction
     constructor(options: {
         big?: true
         unread?: true
+        my?: true
         peer_id: Peer
-        reaction: string
+        date: number
+        reaction: Reaction
     }) {
         this.big = options.big;
         this.unread = options.unread;
+        this.my = options.my;
         this.peer_id = options.peer_id;
+        this.date = options.date;
         this.reaction = options.reaction;
     }
 }
@@ -13918,6 +14154,1919 @@ export class PredicatePhoneGroupCallStreamRtmpUrl {
     }
 }
 
+export class PredicateAttachMenuBotIconColor {
+    _ = 'attachMenuBotIconColor' as const
+    name: string
+    color: number
+    constructor(options: {
+        name: string
+        color: number
+    }) {
+        this.name = options.name;
+        this.color = options.color;
+    }
+}
+
+export class PredicateAttachMenuBotIcon {
+    _ = 'attachMenuBotIcon' as const
+    name: string
+    icon: Document
+    colors?: AttachMenuBotIconColor[]
+    constructor(options: {
+        name: string
+        icon: Document
+        colors?: AttachMenuBotIconColor[]
+    }) {
+        this.name = options.name;
+        this.icon = options.icon;
+        this.colors = options.colors;
+    }
+}
+
+export class PredicateAttachMenuBot {
+    _ = 'attachMenuBot' as const
+    inactive?: true
+    has_settings?: true
+    request_write_access?: true
+    bot_id: string
+    short_name: string
+    peer_types: AttachMenuPeerType[]
+    icons: AttachMenuBotIcon[]
+    constructor(options: {
+        inactive?: true
+        has_settings?: true
+        request_write_access?: true
+        bot_id: string
+        short_name: string
+        peer_types: AttachMenuPeerType[]
+        icons: AttachMenuBotIcon[]
+    }) {
+        this.inactive = options.inactive;
+        this.has_settings = options.has_settings;
+        this.request_write_access = options.request_write_access;
+        this.bot_id = options.bot_id;
+        this.short_name = options.short_name;
+        this.peer_types = options.peer_types;
+        this.icons = options.icons;
+    }
+}
+
+export class PredicateAttachMenuBotsNotModified {
+    _ = 'attachMenuBotsNotModified' as const
+}
+
+export class PredicateAttachMenuBots {
+    _ = 'attachMenuBots' as const
+    hash: string
+    bots: AttachMenuBot[]
+    users: User[]
+    constructor(options: {
+        hash: string
+        bots: AttachMenuBot[]
+        users: User[]
+    }) {
+        this.hash = options.hash;
+        this.bots = options.bots;
+        this.users = options.users;
+    }
+}
+
+export class PredicateAttachMenuBotsBot {
+    _ = 'attachMenuBotsBot' as const
+    bot: AttachMenuBot
+    users: User[]
+    constructor(options: {
+        bot: AttachMenuBot
+        users: User[]
+    }) {
+        this.bot = options.bot;
+        this.users = options.users;
+    }
+}
+
+export class PredicateUpdateAttachMenuBots {
+    _ = 'updateAttachMenuBots' as const
+}
+
+export class PredicateWebViewResultUrl {
+    _ = 'webViewResultUrl' as const
+    query_id: string
+    url: string
+    constructor(options: {
+        query_id: string
+        url: string
+    }) {
+        this.query_id = options.query_id;
+        this.url = options.url;
+    }
+}
+
+export class PredicateSimpleWebViewResultUrl {
+    _ = 'simpleWebViewResultUrl' as const
+    url: string
+    constructor(options: {
+        url: string
+    }) {
+        this.url = options.url;
+    }
+}
+
+export class PredicateWebViewMessageSent {
+    _ = 'webViewMessageSent' as const
+    msg_id?: InputBotInlineMessageID
+    constructor(options: {
+        msg_id?: InputBotInlineMessageID
+    } = {}) {
+        this.msg_id = options.msg_id;
+    }
+}
+
+export class PredicateUpdateWebViewResultSent {
+    _ = 'updateWebViewResultSent' as const
+    query_id: string
+    constructor(options: {
+        query_id: string
+    }) {
+        this.query_id = options.query_id;
+    }
+}
+
+export class PredicateKeyboardButtonWebView {
+    _ = 'keyboardButtonWebView' as const
+    text: string
+    url: string
+    constructor(options: {
+        text: string
+        url: string
+    }) {
+        this.text = options.text;
+        this.url = options.url;
+    }
+}
+
+export class PredicateKeyboardButtonSimpleWebView {
+    _ = 'keyboardButtonSimpleWebView' as const
+    text: string
+    url: string
+    constructor(options: {
+        text: string
+        url: string
+    }) {
+        this.text = options.text;
+        this.url = options.url;
+    }
+}
+
+export class PredicateMessageActionWebViewDataSentMe {
+    _ = 'messageActionWebViewDataSentMe' as const
+    text: string
+    data: string
+    constructor(options: {
+        text: string
+        data: string
+    }) {
+        this.text = options.text;
+        this.data = options.data;
+    }
+}
+
+export class PredicateMessageActionWebViewDataSent {
+    _ = 'messageActionWebViewDataSent' as const
+    text: string
+    constructor(options: {
+        text: string
+    }) {
+        this.text = options.text;
+    }
+}
+
+export class PredicateUpdateBotMenuButton {
+    _ = 'updateBotMenuButton' as const
+    bot_id: string
+    button: BotMenuButton
+    constructor(options: {
+        bot_id: string
+        button: BotMenuButton
+    }) {
+        this.bot_id = options.bot_id;
+        this.button = options.button;
+    }
+}
+
+export class PredicateBotMenuButtonDefault {
+    _ = 'botMenuButtonDefault' as const
+}
+
+export class PredicateBotMenuButtonCommands {
+    _ = 'botMenuButtonCommands' as const
+}
+
+export class PredicateBotMenuButton {
+    _ = 'botMenuButton' as const
+    text: string
+    url: string
+    constructor(options: {
+        text: string
+        url: string
+    }) {
+        this.text = options.text;
+        this.url = options.url;
+    }
+}
+
+export class PredicateAccountSavedRingtonesNotModified {
+    _ = 'account.savedRingtonesNotModified' as const
+}
+
+export class PredicateAccountSavedRingtones {
+    _ = 'account.savedRingtones' as const
+    hash: string
+    ringtones: Document[]
+    constructor(options: {
+        hash: string
+        ringtones: Document[]
+    }) {
+        this.hash = options.hash;
+        this.ringtones = options.ringtones;
+    }
+}
+
+export class PredicateUpdateSavedRingtones {
+    _ = 'updateSavedRingtones' as const
+}
+
+export class PredicateNotificationSoundDefault {
+    _ = 'notificationSoundDefault' as const
+}
+
+export class PredicateNotificationSoundNone {
+    _ = 'notificationSoundNone' as const
+}
+
+export class PredicateNotificationSoundLocal {
+    _ = 'notificationSoundLocal' as const
+    title: string
+    data: string
+    constructor(options: {
+        title: string
+        data: string
+    }) {
+        this.title = options.title;
+        this.data = options.data;
+    }
+}
+
+export class PredicateNotificationSoundRingtone {
+    _ = 'notificationSoundRingtone' as const
+    id: string
+    constructor(options: {
+        id: string
+    }) {
+        this.id = options.id;
+    }
+}
+
+export class PredicateAccountSavedRingtone {
+    _ = 'account.savedRingtone' as const
+}
+
+export class PredicateAccountSavedRingtoneConverted {
+    _ = 'account.savedRingtoneConverted' as const
+    document: Document
+    constructor(options: {
+        document: Document
+    }) {
+        this.document = options.document;
+    }
+}
+
+export class PredicateAttachMenuPeerTypeSameBotPM {
+    _ = 'attachMenuPeerTypeSameBotPM' as const
+}
+
+export class PredicateAttachMenuPeerTypeBotPM {
+    _ = 'attachMenuPeerTypeBotPM' as const
+}
+
+export class PredicateAttachMenuPeerTypePM {
+    _ = 'attachMenuPeerTypePM' as const
+}
+
+export class PredicateAttachMenuPeerTypeChat {
+    _ = 'attachMenuPeerTypeChat' as const
+}
+
+export class PredicateAttachMenuPeerTypeBroadcast {
+    _ = 'attachMenuPeerTypeBroadcast' as const
+}
+
+export class PredicateChatInvitePublicJoinRequests {
+    _ = 'chatInvitePublicJoinRequests' as const
+}
+
+export class PredicateInputInvoiceMessage {
+    _ = 'inputInvoiceMessage' as const
+    peer: InputPeer
+    msg_id: number
+    constructor(options: {
+        peer: InputPeer
+        msg_id: number
+    }) {
+        this.peer = options.peer;
+        this.msg_id = options.msg_id;
+    }
+}
+
+export class PredicateInputInvoiceSlug {
+    _ = 'inputInvoiceSlug' as const
+    slug: string
+    constructor(options: {
+        slug: string
+    }) {
+        this.slug = options.slug;
+    }
+}
+
+export class PredicatePaymentsExportedInvoice {
+    _ = 'payments.exportedInvoice' as const
+    url: string
+    constructor(options: {
+        url: string
+    }) {
+        this.url = options.url;
+    }
+}
+
+export class PredicateUpdateTranscribedAudio {
+    _ = 'updateTranscribedAudio' as const
+    pending?: true
+    peer: Peer
+    msg_id: number
+    transcription_id: string
+    text: string
+    constructor(options: {
+        pending?: true
+        peer: Peer
+        msg_id: number
+        transcription_id: string
+        text: string
+    }) {
+        this.pending = options.pending;
+        this.peer = options.peer;
+        this.msg_id = options.msg_id;
+        this.transcription_id = options.transcription_id;
+        this.text = options.text;
+    }
+}
+
+export class PredicateMessagesTranscribedAudio {
+    _ = 'messages.transcribedAudio' as const
+    pending?: true
+    transcription_id: string
+    text: string
+    constructor(options: {
+        pending?: true
+        transcription_id: string
+        text: string
+    }) {
+        this.pending = options.pending;
+        this.transcription_id = options.transcription_id;
+        this.text = options.text;
+    }
+}
+
+export class PredicateDialogFilterDefault {
+    _ = 'dialogFilterDefault' as const
+}
+
+export class PredicateHelpPremiumPromo {
+    _ = 'help.premiumPromo' as const
+    status_text: string
+    status_entities: MessageEntity[]
+    video_sections: string[]
+    videos: Document[]
+    period_options: PremiumSubscriptionOption[]
+    users: User[]
+    constructor(options: {
+        status_text: string
+        status_entities: MessageEntity[]
+        video_sections: string[]
+        videos: Document[]
+        period_options: PremiumSubscriptionOption[]
+        users: User[]
+    }) {
+        this.status_text = options.status_text;
+        this.status_entities = options.status_entities;
+        this.video_sections = options.video_sections;
+        this.videos = options.videos;
+        this.period_options = options.period_options;
+        this.users = options.users;
+    }
+}
+
+export class PredicateMessageEntityCustomEmoji {
+    _ = 'messageEntityCustomEmoji' as const
+    offset: number
+    length: number
+    document_id: string
+    constructor(options: {
+        offset: number
+        length: number
+        document_id: string
+    }) {
+        this.offset = options.offset;
+        this.length = options.length;
+        this.document_id = options.document_id;
+    }
+}
+
+export class PredicateDocumentAttributeCustomEmoji {
+    _ = 'documentAttributeCustomEmoji' as const
+    free?: true
+    text_color?: true
+    alt: string
+    stickerset: InputStickerSet
+    constructor(options: {
+        free?: true
+        text_color?: true
+        alt: string
+        stickerset: InputStickerSet
+    }) {
+        this.free = options.free;
+        this.text_color = options.text_color;
+        this.alt = options.alt;
+        this.stickerset = options.stickerset;
+    }
+}
+
+export class PredicateStickerSetFullCovered {
+    _ = 'stickerSetFullCovered' as const
+    set: StickerSet
+    packs: StickerPack[]
+    keywords: StickerKeyword[]
+    documents: Document[]
+    constructor(options: {
+        set: StickerSet
+        packs: StickerPack[]
+        keywords: StickerKeyword[]
+        documents: Document[]
+    }) {
+        this.set = options.set;
+        this.packs = options.packs;
+        this.keywords = options.keywords;
+        this.documents = options.documents;
+    }
+}
+
+export class PredicateInputStorePaymentPremiumSubscription {
+    _ = 'inputStorePaymentPremiumSubscription' as const
+    restore?: true
+    upgrade?: true
+    constructor(options: {
+        restore?: true
+        upgrade?: true
+    } = {}) {
+        this.restore = options.restore;
+        this.upgrade = options.upgrade;
+    }
+}
+
+export class PredicateInputStorePaymentGiftPremium {
+    _ = 'inputStorePaymentGiftPremium' as const
+    user_id: InputUser
+    currency: string
+    amount: string
+    constructor(options: {
+        user_id: InputUser
+        currency: string
+        amount: string
+    }) {
+        this.user_id = options.user_id;
+        this.currency = options.currency;
+        this.amount = options.amount;
+    }
+}
+
+export class PredicateMessageActionGiftPremium {
+    _ = 'messageActionGiftPremium' as const
+    currency: string
+    amount: string
+    months: number
+    crypto_currency?: string
+    crypto_amount?: string
+    constructor(options: {
+        currency: string
+        amount: string
+        months: number
+        crypto_currency?: string
+        crypto_amount?: string
+    }) {
+        this.currency = options.currency;
+        this.amount = options.amount;
+        this.months = options.months;
+        this.crypto_currency = options.crypto_currency;
+        this.crypto_amount = options.crypto_amount;
+    }
+}
+
+export class PredicatePremiumGiftOption {
+    _ = 'premiumGiftOption' as const
+    months: number
+    currency: string
+    amount: string
+    bot_url: string
+    store_product?: string
+    constructor(options: {
+        months: number
+        currency: string
+        amount: string
+        bot_url: string
+        store_product?: string
+    }) {
+        this.months = options.months;
+        this.currency = options.currency;
+        this.amount = options.amount;
+        this.bot_url = options.bot_url;
+        this.store_product = options.store_product;
+    }
+}
+
+export class PredicateInputStickerSetPremiumGifts {
+    _ = 'inputStickerSetPremiumGifts' as const
+}
+
+export class PredicateUpdateReadFeaturedEmojiStickers {
+    _ = 'updateReadFeaturedEmojiStickers' as const
+}
+
+export class PredicateInputPrivacyKeyVoiceMessages {
+    _ = 'inputPrivacyKeyVoiceMessages' as const
+}
+
+export class PredicatePrivacyKeyVoiceMessages {
+    _ = 'privacyKeyVoiceMessages' as const
+}
+
+export class PredicatePaymentFormMethod {
+    _ = 'paymentFormMethod' as const
+    url: string
+    title: string
+    constructor(options: {
+        url: string
+        title: string
+    }) {
+        this.url = options.url;
+        this.title = options.title;
+    }
+}
+
+export class PredicateInputWebFileAudioAlbumThumbLocation {
+    _ = 'inputWebFileAudioAlbumThumbLocation' as const
+    small?: true
+    document?: InputDocument
+    title?: string
+    performer?: string
+    constructor(options: {
+        small?: true
+        document?: InputDocument
+        title?: string
+        performer?: string
+    } = {}) {
+        this.small = options.small;
+        this.document = options.document;
+        this.title = options.title;
+        this.performer = options.performer;
+    }
+}
+
+export class PredicateEmojiStatusEmpty {
+    _ = 'emojiStatusEmpty' as const
+}
+
+export class PredicateEmojiStatus {
+    _ = 'emojiStatus' as const
+    document_id: string
+    constructor(options: {
+        document_id: string
+    }) {
+        this.document_id = options.document_id;
+    }
+}
+
+export class PredicateEmojiStatusUntil {
+    _ = 'emojiStatusUntil' as const
+    document_id: string
+    until: number
+    constructor(options: {
+        document_id: string
+        until: number
+    }) {
+        this.document_id = options.document_id;
+        this.until = options.until;
+    }
+}
+
+export class PredicateUpdateUserEmojiStatus {
+    _ = 'updateUserEmojiStatus' as const
+    user_id: string
+    emoji_status: EmojiStatus
+    constructor(options: {
+        user_id: string
+        emoji_status: EmojiStatus
+    }) {
+        this.user_id = options.user_id;
+        this.emoji_status = options.emoji_status;
+    }
+}
+
+export class PredicateUpdateRecentEmojiStatuses {
+    _ = 'updateRecentEmojiStatuses' as const
+}
+
+export class PredicateAccountEmojiStatusesNotModified {
+    _ = 'account.emojiStatusesNotModified' as const
+}
+
+export class PredicateAccountEmojiStatuses {
+    _ = 'account.emojiStatuses' as const
+    hash: string
+    statuses: EmojiStatus[]
+    constructor(options: {
+        hash: string
+        statuses: EmojiStatus[]
+    }) {
+        this.hash = options.hash;
+        this.statuses = options.statuses;
+    }
+}
+
+export class PredicateReactionEmpty {
+    _ = 'reactionEmpty' as const
+}
+
+export class PredicateReactionEmoji {
+    _ = 'reactionEmoji' as const
+    emoticon: string
+    constructor(options: {
+        emoticon: string
+    }) {
+        this.emoticon = options.emoticon;
+    }
+}
+
+export class PredicateReactionCustomEmoji {
+    _ = 'reactionCustomEmoji' as const
+    document_id: string
+    constructor(options: {
+        document_id: string
+    }) {
+        this.document_id = options.document_id;
+    }
+}
+
+export class PredicateChatReactionsNone {
+    _ = 'chatReactionsNone' as const
+}
+
+export class PredicateChatReactionsAll {
+    _ = 'chatReactionsAll' as const
+    allow_custom?: true
+    constructor(options: {
+        allow_custom?: true
+    } = {}) {
+        this.allow_custom = options.allow_custom;
+    }
+}
+
+export class PredicateChatReactionsSome {
+    _ = 'chatReactionsSome' as const
+    reactions: Reaction[]
+    constructor(options: {
+        reactions: Reaction[]
+    }) {
+        this.reactions = options.reactions;
+    }
+}
+
+export class PredicateMessagesReactionsNotModified {
+    _ = 'messages.reactionsNotModified' as const
+}
+
+export class PredicateMessagesReactions {
+    _ = 'messages.reactions' as const
+    hash: string
+    reactions: Reaction[]
+    constructor(options: {
+        hash: string
+        reactions: Reaction[]
+    }) {
+        this.hash = options.hash;
+        this.reactions = options.reactions;
+    }
+}
+
+export class PredicateUpdateRecentReactions {
+    _ = 'updateRecentReactions' as const
+}
+
+export class PredicateUpdateMoveStickerSetToTop {
+    _ = 'updateMoveStickerSetToTop' as const
+    masks?: true
+    emojis?: true
+    stickerset: string
+    constructor(options: {
+        masks?: true
+        emojis?: true
+        stickerset: string
+    }) {
+        this.masks = options.masks;
+        this.emojis = options.emojis;
+        this.stickerset = options.stickerset;
+    }
+}
+
+export class PredicateAuthSentCodeTypeEmailCode {
+    _ = 'auth.sentCodeTypeEmailCode' as const
+    apple_signin_allowed?: true
+    google_signin_allowed?: true
+    email_pattern: string
+    length: number
+    reset_available_period?: number
+    reset_pending_date?: number
+    constructor(options: {
+        apple_signin_allowed?: true
+        google_signin_allowed?: true
+        email_pattern: string
+        length: number
+        reset_available_period?: number
+        reset_pending_date?: number
+    }) {
+        this.apple_signin_allowed = options.apple_signin_allowed;
+        this.google_signin_allowed = options.google_signin_allowed;
+        this.email_pattern = options.email_pattern;
+        this.length = options.length;
+        this.reset_available_period = options.reset_available_period;
+        this.reset_pending_date = options.reset_pending_date;
+    }
+}
+
+export class PredicateAuthSentCodeTypeSetUpEmailRequired {
+    _ = 'auth.sentCodeTypeSetUpEmailRequired' as const
+    apple_signin_allowed?: true
+    google_signin_allowed?: true
+    constructor(options: {
+        apple_signin_allowed?: true
+        google_signin_allowed?: true
+    } = {}) {
+        this.apple_signin_allowed = options.apple_signin_allowed;
+        this.google_signin_allowed = options.google_signin_allowed;
+    }
+}
+
+export class PredicateEmailVerifyPurposeLoginSetup {
+    _ = 'emailVerifyPurposeLoginSetup' as const
+    phone_number: string
+    phone_code_hash: string
+    constructor(options: {
+        phone_number: string
+        phone_code_hash: string
+    }) {
+        this.phone_number = options.phone_number;
+        this.phone_code_hash = options.phone_code_hash;
+    }
+}
+
+export class PredicateEmailVerifyPurposeLoginChange {
+    _ = 'emailVerifyPurposeLoginChange' as const
+}
+
+export class PredicateEmailVerifyPurposePassport {
+    _ = 'emailVerifyPurposePassport' as const
+}
+
+export class PredicateEmailVerificationCode {
+    _ = 'emailVerificationCode' as const
+    code: string
+    constructor(options: {
+        code: string
+    }) {
+        this.code = options.code;
+    }
+}
+
+export class PredicateEmailVerificationGoogle {
+    _ = 'emailVerificationGoogle' as const
+    token: string
+    constructor(options: {
+        token: string
+    }) {
+        this.token = options.token;
+    }
+}
+
+export class PredicateEmailVerificationApple {
+    _ = 'emailVerificationApple' as const
+    token: string
+    constructor(options: {
+        token: string
+    }) {
+        this.token = options.token;
+    }
+}
+
+export class PredicateAccountEmailVerified {
+    _ = 'account.emailVerified' as const
+    email: string
+    constructor(options: {
+        email: string
+    }) {
+        this.email = options.email;
+    }
+}
+
+export class PredicateAccountEmailVerifiedLogin {
+    _ = 'account.emailVerifiedLogin' as const
+    email: string
+    sent_code: AuthSentCode
+    constructor(options: {
+        email: string
+        sent_code: AuthSentCode
+    }) {
+        this.email = options.email;
+        this.sent_code = options.sent_code;
+    }
+}
+
+export class PredicatePremiumSubscriptionOption {
+    _ = 'premiumSubscriptionOption' as const
+    current?: true
+    can_purchase_upgrade?: true
+    transaction?: string
+    months: number
+    currency: string
+    amount: string
+    bot_url: string
+    store_product?: string
+    constructor(options: {
+        current?: true
+        can_purchase_upgrade?: true
+        transaction?: string
+        months: number
+        currency: string
+        amount: string
+        bot_url: string
+        store_product?: string
+    }) {
+        this.current = options.current;
+        this.can_purchase_upgrade = options.can_purchase_upgrade;
+        this.transaction = options.transaction;
+        this.months = options.months;
+        this.currency = options.currency;
+        this.amount = options.amount;
+        this.bot_url = options.bot_url;
+        this.store_product = options.store_product;
+    }
+}
+
+export class PredicateInputStickerSetEmojiGenericAnimations {
+    _ = 'inputStickerSetEmojiGenericAnimations' as const
+}
+
+export class PredicateInputStickerSetEmojiDefaultStatuses {
+    _ = 'inputStickerSetEmojiDefaultStatuses' as const
+}
+
+export class PredicateSendAsPeer {
+    _ = 'sendAsPeer' as const
+    premium_required?: true
+    peer: Peer
+    constructor(options: {
+        premium_required?: true
+        peer: Peer
+    }) {
+        this.premium_required = options.premium_required;
+        this.peer = options.peer;
+    }
+}
+
+export class PredicateMessageExtendedMediaPreview {
+    _ = 'messageExtendedMediaPreview' as const
+    w?: number
+    h?: number
+    thumb?: PhotoSize
+    video_duration?: number
+    constructor(options: {
+        w?: number
+        h?: number
+        thumb?: PhotoSize
+        video_duration?: number
+    } = {}) {
+        this.w = options.w;
+        this.h = options.h;
+        this.thumb = options.thumb;
+        this.video_duration = options.video_duration;
+    }
+}
+
+export class PredicateMessageExtendedMedia {
+    _ = 'messageExtendedMedia' as const
+    media: MessageMedia
+    constructor(options: {
+        media: MessageMedia
+    }) {
+        this.media = options.media;
+    }
+}
+
+export class PredicateUpdateMessageExtendedMedia {
+    _ = 'updateMessageExtendedMedia' as const
+    peer: Peer
+    msg_id: number
+    extended_media: MessageExtendedMedia
+    constructor(options: {
+        peer: Peer
+        msg_id: number
+        extended_media: MessageExtendedMedia
+    }) {
+        this.peer = options.peer;
+        this.msg_id = options.msg_id;
+        this.extended_media = options.extended_media;
+    }
+}
+
+export class PredicateStickerKeyword {
+    _ = 'stickerKeyword' as const
+    document_id: string
+    keyword: string[]
+    constructor(options: {
+        document_id: string
+        keyword: string[]
+    }) {
+        this.document_id = options.document_id;
+        this.keyword = options.keyword;
+    }
+}
+
+export class PredicateUsername {
+    _ = 'username' as const
+    editable?: true
+    active?: true
+    username: string
+    constructor(options: {
+        editable?: true
+        active?: true
+        username: string
+    }) {
+        this.editable = options.editable;
+        this.active = options.active;
+        this.username = options.username;
+    }
+}
+
+export class PredicateChannelAdminLogEventActionChangeUsernames {
+    _ = 'channelAdminLogEventActionChangeUsernames' as const
+    prev_value: string[]
+    new_value: string[]
+    constructor(options: {
+        prev_value: string[]
+        new_value: string[]
+    }) {
+        this.prev_value = options.prev_value;
+        this.new_value = options.new_value;
+    }
+}
+
+export class PredicateChannelAdminLogEventActionToggleForum {
+    _ = 'channelAdminLogEventActionToggleForum' as const
+    new_value: boolean
+    constructor(options: {
+        new_value: boolean
+    }) {
+        this.new_value = options.new_value;
+    }
+}
+
+export class PredicateChannelAdminLogEventActionCreateTopic {
+    _ = 'channelAdminLogEventActionCreateTopic' as const
+    topic: ForumTopic
+    constructor(options: {
+        topic: ForumTopic
+    }) {
+        this.topic = options.topic;
+    }
+}
+
+export class PredicateChannelAdminLogEventActionEditTopic {
+    _ = 'channelAdminLogEventActionEditTopic' as const
+    prev_topic: ForumTopic
+    new_topic: ForumTopic
+    constructor(options: {
+        prev_topic: ForumTopic
+        new_topic: ForumTopic
+    }) {
+        this.prev_topic = options.prev_topic;
+        this.new_topic = options.new_topic;
+    }
+}
+
+export class PredicateChannelAdminLogEventActionDeleteTopic {
+    _ = 'channelAdminLogEventActionDeleteTopic' as const
+    topic: ForumTopic
+    constructor(options: {
+        topic: ForumTopic
+    }) {
+        this.topic = options.topic;
+    }
+}
+
+export class PredicateChannelAdminLogEventActionPinTopic {
+    _ = 'channelAdminLogEventActionPinTopic' as const
+    prev_topic?: ForumTopic
+    new_topic?: ForumTopic
+    constructor(options: {
+        prev_topic?: ForumTopic
+        new_topic?: ForumTopic
+    } = {}) {
+        this.prev_topic = options.prev_topic;
+        this.new_topic = options.new_topic;
+    }
+}
+
+export class PredicateForumTopicDeleted {
+    _ = 'forumTopicDeleted' as const
+    id: number
+    constructor(options: {
+        id: number
+    }) {
+        this.id = options.id;
+    }
+}
+
+export class PredicateForumTopic {
+    _ = 'forumTopic' as const
+    my?: true
+    closed?: true
+    pinned?: true
+    short?: true
+    hidden?: true
+    id: number
+    date: number
+    title: string
+    icon_color: number
+    icon_emoji_id?: string
+    top_message: number
+    read_inbox_max_id: number
+    read_outbox_max_id: number
+    unread_count: number
+    unread_mentions_count: number
+    unread_reactions_count: number
+    from_id: Peer
+    notify_settings: PeerNotifySettings
+    draft?: DraftMessage
+    constructor(options: {
+        my?: true
+        closed?: true
+        pinned?: true
+        short?: true
+        hidden?: true
+        id: number
+        date: number
+        title: string
+        icon_color: number
+        icon_emoji_id?: string
+        top_message: number
+        read_inbox_max_id: number
+        read_outbox_max_id: number
+        unread_count: number
+        unread_mentions_count: number
+        unread_reactions_count: number
+        from_id: Peer
+        notify_settings: PeerNotifySettings
+        draft?: DraftMessage
+    }) {
+        this.my = options.my;
+        this.closed = options.closed;
+        this.pinned = options.pinned;
+        this.short = options.short;
+        this.hidden = options.hidden;
+        this.id = options.id;
+        this.date = options.date;
+        this.title = options.title;
+        this.icon_color = options.icon_color;
+        this.icon_emoji_id = options.icon_emoji_id;
+        this.top_message = options.top_message;
+        this.read_inbox_max_id = options.read_inbox_max_id;
+        this.read_outbox_max_id = options.read_outbox_max_id;
+        this.unread_count = options.unread_count;
+        this.unread_mentions_count = options.unread_mentions_count;
+        this.unread_reactions_count = options.unread_reactions_count;
+        this.from_id = options.from_id;
+        this.notify_settings = options.notify_settings;
+        this.draft = options.draft;
+    }
+}
+
+export class PredicateMessagesForumTopics {
+    _ = 'messages.forumTopics' as const
+    order_by_create_date?: true
+    count: number
+    topics: ForumTopic[]
+    messages: Message[]
+    chats: Chat[]
+    users: User[]
+    pts: number
+    constructor(options: {
+        order_by_create_date?: true
+        count: number
+        topics: ForumTopic[]
+        messages: Message[]
+        chats: Chat[]
+        users: User[]
+        pts: number
+    }) {
+        this.order_by_create_date = options.order_by_create_date;
+        this.count = options.count;
+        this.topics = options.topics;
+        this.messages = options.messages;
+        this.chats = options.chats;
+        this.users = options.users;
+        this.pts = options.pts;
+    }
+}
+
+export class PredicateMessageActionTopicCreate {
+    _ = 'messageActionTopicCreate' as const
+    title: string
+    icon_color: number
+    icon_emoji_id?: string
+    constructor(options: {
+        title: string
+        icon_color: number
+        icon_emoji_id?: string
+    }) {
+        this.title = options.title;
+        this.icon_color = options.icon_color;
+        this.icon_emoji_id = options.icon_emoji_id;
+    }
+}
+
+export class PredicateMessageActionTopicEdit {
+    _ = 'messageActionTopicEdit' as const
+    title?: string
+    icon_emoji_id?: string
+    closed?: boolean
+    hidden?: boolean
+    constructor(options: {
+        title?: string
+        icon_emoji_id?: string
+        closed?: boolean
+        hidden?: boolean
+    } = {}) {
+        this.title = options.title;
+        this.icon_emoji_id = options.icon_emoji_id;
+        this.closed = options.closed;
+        this.hidden = options.hidden;
+    }
+}
+
+export class PredicateUpdateChannelPinnedTopic {
+    _ = 'updateChannelPinnedTopic' as const
+    pinned?: true
+    channel_id: string
+    topic_id: number
+    constructor(options: {
+        pinned?: true
+        channel_id: string
+        topic_id: number
+    }) {
+        this.pinned = options.pinned;
+        this.channel_id = options.channel_id;
+        this.topic_id = options.topic_id;
+    }
+}
+
+export class PredicateInputNotifyForumTopic {
+    _ = 'inputNotifyForumTopic' as const
+    peer: InputPeer
+    top_msg_id: number
+    constructor(options: {
+        peer: InputPeer
+        top_msg_id: number
+    }) {
+        this.peer = options.peer;
+        this.top_msg_id = options.top_msg_id;
+    }
+}
+
+export class PredicateNotifyForumTopic {
+    _ = 'notifyForumTopic' as const
+    peer: Peer
+    top_msg_id: number
+    constructor(options: {
+        peer: Peer
+        top_msg_id: number
+    }) {
+        this.peer = options.peer;
+        this.top_msg_id = options.top_msg_id;
+    }
+}
+
+export class PredicateInputStickerSetEmojiDefaultTopicIcons {
+    _ = 'inputStickerSetEmojiDefaultTopicIcons' as const
+}
+
+export class PredicateMessagesSponsoredMessagesEmpty {
+    _ = 'messages.sponsoredMessagesEmpty' as const
+}
+
+export class PredicateUpdateChannelPinnedTopics {
+    _ = 'updateChannelPinnedTopics' as const
+    channel_id: string
+    order?: number[]
+    constructor(options: {
+        channel_id: string
+        order?: number[]
+    }) {
+        this.channel_id = options.channel_id;
+        this.order = options.order;
+    }
+}
+
+export class PredicateDefaultHistoryTTL {
+    _ = 'defaultHistoryTTL' as const
+    period: number
+    constructor(options: {
+        period: number
+    }) {
+        this.period = options.period;
+    }
+}
+
+export class PredicateAuthCodeTypeFragmentSms {
+    _ = 'auth.codeTypeFragmentSms' as const
+}
+
+export class PredicateAuthSentCodeTypeFragmentSms {
+    _ = 'auth.sentCodeTypeFragmentSms' as const
+    url: string
+    length: number
+    constructor(options: {
+        url: string
+        length: number
+    }) {
+        this.url = options.url;
+        this.length = options.length;
+    }
+}
+
+export class PredicateExportedContactToken {
+    _ = 'exportedContactToken' as const
+    url: string
+    expires: number
+    constructor(options: {
+        url: string
+        expires: number
+    }) {
+        this.url = options.url;
+        this.expires = options.expires;
+    }
+}
+
+export class PredicateChannelAdminLogEventActionToggleAntiSpam {
+    _ = 'channelAdminLogEventActionToggleAntiSpam' as const
+    new_value: boolean
+    constructor(options: {
+        new_value: boolean
+    }) {
+        this.new_value = options.new_value;
+    }
+}
+
+export class PredicateMessageActionSuggestProfilePhoto {
+    _ = 'messageActionSuggestProfilePhoto' as const
+    photo: Photo
+    constructor(options: {
+        photo: Photo
+    }) {
+        this.photo = options.photo;
+    }
+}
+
+export class PredicateStickerSetNoCovered {
+    _ = 'stickerSetNoCovered' as const
+    set: StickerSet
+    constructor(options: {
+        set: StickerSet
+    }) {
+        this.set = options.set;
+    }
+}
+
+export class PredicateUpdateUser {
+    _ = 'updateUser' as const
+    user_id: string
+    constructor(options: {
+        user_id: string
+    }) {
+        this.user_id = options.user_id;
+    }
+}
+
+export class PredicateAuthSentCodeSuccess {
+    _ = 'auth.sentCodeSuccess' as const
+    authorization: AuthAuthorization
+    constructor(options: {
+        authorization: AuthAuthorization
+    }) {
+        this.authorization = options.authorization;
+    }
+}
+
+export class PredicateMessageActionRequestedPeer {
+    _ = 'messageActionRequestedPeer' as const
+    button_id: number
+    peer: Peer
+    constructor(options: {
+        button_id: number
+        peer: Peer
+    }) {
+        this.button_id = options.button_id;
+        this.peer = options.peer;
+    }
+}
+
+export class PredicateRequestPeerTypeUser {
+    _ = 'requestPeerTypeUser' as const
+    bot?: boolean
+    premium?: boolean
+    constructor(options: {
+        bot?: boolean
+        premium?: boolean
+    } = {}) {
+        this.bot = options.bot;
+        this.premium = options.premium;
+    }
+}
+
+export class PredicateRequestPeerTypeChat {
+    _ = 'requestPeerTypeChat' as const
+    creator?: true
+    bot_participant?: true
+    has_username?: boolean
+    forum?: boolean
+    user_admin_rights?: ChatAdminRights
+    bot_admin_rights?: ChatAdminRights
+    constructor(options: {
+        creator?: true
+        bot_participant?: true
+        has_username?: boolean
+        forum?: boolean
+        user_admin_rights?: ChatAdminRights
+        bot_admin_rights?: ChatAdminRights
+    } = {}) {
+        this.creator = options.creator;
+        this.bot_participant = options.bot_participant;
+        this.has_username = options.has_username;
+        this.forum = options.forum;
+        this.user_admin_rights = options.user_admin_rights;
+        this.bot_admin_rights = options.bot_admin_rights;
+    }
+}
+
+export class PredicateRequestPeerTypeBroadcast {
+    _ = 'requestPeerTypeBroadcast' as const
+    creator?: true
+    has_username?: boolean
+    user_admin_rights?: ChatAdminRights
+    bot_admin_rights?: ChatAdminRights
+    constructor(options: {
+        creator?: true
+        has_username?: boolean
+        user_admin_rights?: ChatAdminRights
+        bot_admin_rights?: ChatAdminRights
+    } = {}) {
+        this.creator = options.creator;
+        this.has_username = options.has_username;
+        this.user_admin_rights = options.user_admin_rights;
+        this.bot_admin_rights = options.bot_admin_rights;
+    }
+}
+
+export class PredicateKeyboardButtonRequestPeer {
+    _ = 'keyboardButtonRequestPeer' as const
+    text: string
+    button_id: number
+    peer_type: RequestPeerType
+    constructor(options: {
+        text: string
+        button_id: number
+        peer_type: RequestPeerType
+    }) {
+        this.text = options.text;
+        this.button_id = options.button_id;
+        this.peer_type = options.peer_type;
+    }
+}
+
+export class PredicateEmojiListNotModified {
+    _ = 'emojiListNotModified' as const
+}
+
+export class PredicateEmojiList {
+    _ = 'emojiList' as const
+    hash: string
+    document_id: string[]
+    constructor(options: {
+        hash: string
+        document_id: string[]
+    }) {
+        this.hash = options.hash;
+        this.document_id = options.document_id;
+    }
+}
+
+export class PredicateAuthSentCodeTypeFirebaseSms {
+    _ = 'auth.sentCodeTypeFirebaseSms' as const
+    nonce?: Uint8Array
+    receipt?: string
+    push_timeout?: number
+    length: number
+    constructor(options: {
+        nonce?: Uint8Array
+        receipt?: string
+        push_timeout?: number
+        length: number
+    }) {
+        this.nonce = options.nonce;
+        this.receipt = options.receipt;
+        this.push_timeout = options.push_timeout;
+        this.length = options.length;
+    }
+}
+
+export class PredicateEmojiGroup {
+    _ = 'emojiGroup' as const
+    title: string
+    icon_emoji_id: string
+    emoticons: string[]
+    constructor(options: {
+        title: string
+        icon_emoji_id: string
+        emoticons: string[]
+    }) {
+        this.title = options.title;
+        this.icon_emoji_id = options.icon_emoji_id;
+        this.emoticons = options.emoticons;
+    }
+}
+
+export class PredicateMessagesEmojiGroupsNotModified {
+    _ = 'messages.emojiGroupsNotModified' as const
+}
+
+export class PredicateMessagesEmojiGroups {
+    _ = 'messages.emojiGroups' as const
+    hash: number
+    groups: EmojiGroup[]
+    constructor(options: {
+        hash: number
+        groups: EmojiGroup[]
+    }) {
+        this.hash = options.hash;
+        this.groups = options.groups;
+    }
+}
+
+export class PredicateVideoSizeEmojiMarkup {
+    _ = 'videoSizeEmojiMarkup' as const
+    emoji_id: string
+    background_colors: number[]
+    constructor(options: {
+        emoji_id: string
+        background_colors: number[]
+    }) {
+        this.emoji_id = options.emoji_id;
+        this.background_colors = options.background_colors;
+    }
+}
+
+export class PredicateVideoSizeStickerMarkup {
+    _ = 'videoSizeStickerMarkup' as const
+    stickerset: InputStickerSet
+    sticker_id: string
+    background_colors: number[]
+    constructor(options: {
+        stickerset: InputStickerSet
+        sticker_id: string
+        background_colors: number[]
+    }) {
+        this.stickerset = options.stickerset;
+        this.sticker_id = options.sticker_id;
+        this.background_colors = options.background_colors;
+    }
+}
+
+export class PredicateTextWithEntities {
+    _ = 'textWithEntities' as const
+    text: string
+    entities: MessageEntity[]
+    constructor(options: {
+        text: string
+        entities: MessageEntity[]
+    }) {
+        this.text = options.text;
+        this.entities = options.entities;
+    }
+}
+
+export class PredicateMessagesTranslateResult {
+    _ = 'messages.translateResult' as const
+    result: TextWithEntities[]
+    constructor(options: {
+        result: TextWithEntities[]
+    }) {
+        this.result = options.result;
+    }
+}
+
+export class PredicateAutoSaveSettings {
+    _ = 'autoSaveSettings' as const
+    photos?: true
+    videos?: true
+    video_max_size?: string
+    constructor(options: {
+        photos?: true
+        videos?: true
+        video_max_size?: string
+    } = {}) {
+        this.photos = options.photos;
+        this.videos = options.videos;
+        this.video_max_size = options.video_max_size;
+    }
+}
+
+export class PredicateAutoSaveException {
+    _ = 'autoSaveException' as const
+    peer: Peer
+    settings: AutoSaveSettings
+    constructor(options: {
+        peer: Peer
+        settings: AutoSaveSettings
+    }) {
+        this.peer = options.peer;
+        this.settings = options.settings;
+    }
+}
+
+export class PredicateAccountAutoSaveSettings {
+    _ = 'account.autoSaveSettings' as const
+    users_settings: AutoSaveSettings
+    chats_settings: AutoSaveSettings
+    broadcasts_settings: AutoSaveSettings
+    exceptions: AutoSaveException[]
+    chats: Chat[]
+    users: User[]
+    constructor(options: {
+        users_settings: AutoSaveSettings
+        chats_settings: AutoSaveSettings
+        broadcasts_settings: AutoSaveSettings
+        exceptions: AutoSaveException[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.users_settings = options.users_settings;
+        this.chats_settings = options.chats_settings;
+        this.broadcasts_settings = options.broadcasts_settings;
+        this.exceptions = options.exceptions;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
+}
+
+export class PredicateUpdateAutoSaveSettings {
+    _ = 'updateAutoSaveSettings' as const
+}
+
+export class PredicateHelpAppConfigNotModified {
+    _ = 'help.appConfigNotModified' as const
+}
+
+export class PredicateHelpAppConfig {
+    _ = 'help.appConfig' as const
+    hash: number
+    config: JSONValue
+    constructor(options: {
+        hash: number
+        config: JSONValue
+    }) {
+        this.hash = options.hash;
+        this.config = options.config;
+    }
+}
+
+export class PredicateInputBotAppID {
+    _ = 'inputBotAppID' as const
+    id: string
+    access_hash: string
+    constructor(options: {
+        id: string
+        access_hash: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+    }
+}
+
+export class PredicateInputBotAppShortName {
+    _ = 'inputBotAppShortName' as const
+    bot_id: InputUser
+    short_name: string
+    constructor(options: {
+        bot_id: InputUser
+        short_name: string
+    }) {
+        this.bot_id = options.bot_id;
+        this.short_name = options.short_name;
+    }
+}
+
+export class PredicateBotAppNotModified {
+    _ = 'botAppNotModified' as const
+}
+
+export class PredicateBotApp {
+    _ = 'botApp' as const
+    id: string
+    access_hash: string
+    short_name: string
+    title: string
+    description: string
+    photo: Photo
+    document?: Document
+    hash: string
+    constructor(options: {
+        id: string
+        access_hash: string
+        short_name: string
+        title: string
+        description: string
+        photo: Photo
+        document?: Document
+        hash: string
+    }) {
+        this.id = options.id;
+        this.access_hash = options.access_hash;
+        this.short_name = options.short_name;
+        this.title = options.title;
+        this.description = options.description;
+        this.photo = options.photo;
+        this.document = options.document;
+        this.hash = options.hash;
+    }
+}
+
+export class PredicateMessagesBotApp {
+    _ = 'messages.botApp' as const
+    inactive?: true
+    request_write_access?: true
+    app: BotApp
+    constructor(options: {
+        inactive?: true
+        request_write_access?: true
+        app: BotApp
+    }) {
+        this.inactive = options.inactive;
+        this.request_write_access = options.request_write_access;
+        this.app = options.app;
+    }
+}
+
+export class PredicateAppWebViewResultUrl {
+    _ = 'appWebViewResultUrl' as const
+    url: string
+    constructor(options: {
+        url: string
+    }) {
+        this.url = options.url;
+    }
+}
+
+export class PredicateInlineBotWebView {
+    _ = 'inlineBotWebView' as const
+    text: string
+    url: string
+    constructor(options: {
+        text: string
+        url: string
+    }) {
+        this.text = options.text;
+        this.url = options.url;
+    }
+}
+
+export class PredicateReadParticipantDate {
+    _ = 'readParticipantDate' as const
+    user_id: string
+    date: number
+    constructor(options: {
+        user_id: string
+        date: number
+    }) {
+        this.user_id = options.user_id;
+        this.date = options.date;
+    }
+}
+
+export class PredicateUpdateGroupInvitePrivacyForbidden {
+    _ = 'updateGroupInvitePrivacyForbidden' as const
+    user_id: string
+    constructor(options: {
+        user_id: string
+    }) {
+        this.user_id = options.user_id;
+    }
+}
+
+export class PredicateDialogFilterChatlist {
+    _ = 'dialogFilterChatlist' as const
+    has_my_invites?: true
+    id: number
+    title: string
+    emoticon?: string
+    pinned_peers: InputPeer[]
+    include_peers: InputPeer[]
+    constructor(options: {
+        has_my_invites?: true
+        id: number
+        title: string
+        emoticon?: string
+        pinned_peers: InputPeer[]
+        include_peers: InputPeer[]
+    }) {
+        this.has_my_invites = options.has_my_invites;
+        this.id = options.id;
+        this.title = options.title;
+        this.emoticon = options.emoticon;
+        this.pinned_peers = options.pinned_peers;
+        this.include_peers = options.include_peers;
+    }
+}
+
+export class PredicateInputChatlistDialogFilter {
+    _ = 'inputChatlistDialogFilter' as const
+    filter_id: number
+    constructor(options: {
+        filter_id: number
+    }) {
+        this.filter_id = options.filter_id;
+    }
+}
+
+export class PredicateExportedChatlistInvite {
+    _ = 'exportedChatlistInvite' as const
+    title: string
+    url: string
+    peers: Peer[]
+    constructor(options: {
+        title: string
+        url: string
+        peers: Peer[]
+    }) {
+        this.title = options.title;
+        this.url = options.url;
+        this.peers = options.peers;
+    }
+}
+
+export class PredicateChatlistsExportedChatlistInvite {
+    _ = 'chatlists.exportedChatlistInvite' as const
+    filter: DialogFilter
+    invite: ExportedChatlistInvite
+    constructor(options: {
+        filter: DialogFilter
+        invite: ExportedChatlistInvite
+    }) {
+        this.filter = options.filter;
+        this.invite = options.invite;
+    }
+}
+
+export class PredicateChatlistsExportedInvites {
+    _ = 'chatlists.exportedInvites' as const
+    invites: ExportedChatlistInvite[]
+    chats: Chat[]
+    users: User[]
+    constructor(options: {
+        invites: ExportedChatlistInvite[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.invites = options.invites;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
+}
+
+export class PredicateChatlistsChatlistInviteAlready {
+    _ = 'chatlists.chatlistInviteAlready' as const
+    filter_id: number
+    missing_peers: Peer[]
+    already_peers: Peer[]
+    chats: Chat[]
+    users: User[]
+    constructor(options: {
+        filter_id: number
+        missing_peers: Peer[]
+        already_peers: Peer[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.filter_id = options.filter_id;
+        this.missing_peers = options.missing_peers;
+        this.already_peers = options.already_peers;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
+}
+
+export class PredicateChatlistsChatlistInvite {
+    _ = 'chatlists.chatlistInvite' as const
+    title: string
+    emoticon?: string
+    peers: Peer[]
+    chats: Chat[]
+    users: User[]
+    constructor(options: {
+        title: string
+        emoticon?: string
+        peers: Peer[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.title = options.title;
+        this.emoticon = options.emoticon;
+        this.peers = options.peers;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
+}
+
+export class PredicateChatlistsChatlistUpdates {
+    _ = 'chatlists.chatlistUpdates' as const
+    missing_peers: Peer[]
+    chats: Chat[]
+    users: User[]
+    constructor(options: {
+        missing_peers: Peer[]
+        chats: Chat[]
+        users: User[]
+    }) {
+        this.missing_peers = options.missing_peers;
+        this.chats = options.chats;
+        this.users = options.users;
+    }
+}
+
+export class PredicateMessageActionSetChatWallPaper {
+    _ = 'messageActionSetChatWallPaper' as const
+    wallpaper: WallPaper
+    constructor(options: {
+        wallpaper: WallPaper
+    }) {
+        this.wallpaper = options.wallpaper;
+    }
+}
+
+export class PredicateMessageActionSetSameChatWallPaper {
+    _ = 'messageActionSetSameChatWallPaper' as const
+    wallpaper: WallPaper
+    constructor(options: {
+        wallpaper: WallPaper
+    }) {
+        this.wallpaper = options.wallpaper;
+    }
+}
+
+export class PredicateBotsBotInfo {
+    _ = 'bots.botInfo' as const
+    name: string
+    about: string
+    description: string
+    constructor(options: {
+        name: string
+        about: string
+        description: string
+    }) {
+        this.name = options.name;
+        this.about = options.about;
+        this.description = options.description;
+    }
+}
+
+export class PredicateInlineQueryPeerTypeBotPM {
+    _ = 'inlineQueryPeerTypeBotPM' as const
+}
+
 export type Error = PredicateError;
 
 export type InputPeer = PredicateInputPeerEmpty | PredicateInputPeerSelf | PredicateInputPeerChat | PredicateInputPeerUser | PredicateInputPeerChannel | PredicateInputPeerUserFromMessage | PredicateInputPeerChannelFromMessage;
@@ -13962,7 +16111,7 @@ export type Message = PredicateMessageEmpty | PredicateMessage | PredicateMessag
 
 export type MessageMedia = PredicateMessageMediaEmpty | PredicateMessageMediaPhoto | PredicateMessageMediaGeo | PredicateMessageMediaContact | PredicateMessageMediaUnsupported | PredicateMessageMediaDocument | PredicateMessageMediaWebPage | PredicateMessageMediaVenue | PredicateMessageMediaGame | PredicateMessageMediaInvoice | PredicateMessageMediaGeoLive | PredicateMessageMediaPoll | PredicateMessageMediaDice;
 
-export type MessageAction = PredicateMessageActionEmpty | PredicateMessageActionChatCreate | PredicateMessageActionChatEditTitle | PredicateMessageActionChatEditPhoto | PredicateMessageActionChatDeletePhoto | PredicateMessageActionChatAddUser | PredicateMessageActionChatDeleteUser | PredicateMessageActionChatJoinedByLink | PredicateMessageActionChannelCreate | PredicateMessageActionChatMigrateTo | PredicateMessageActionChannelMigrateFrom | PredicateMessageActionPinMessage | PredicateMessageActionHistoryClear | PredicateMessageActionGameScore | PredicateMessageActionPaymentSentMe | PredicateMessageActionPaymentSent | PredicateMessageActionPhoneCall | PredicateMessageActionScreenshotTaken | PredicateMessageActionCustomAction | PredicateMessageActionBotAllowed | PredicateMessageActionSecureValuesSentMe | PredicateMessageActionSecureValuesSent | PredicateMessageActionContactSignUp | PredicateMessageActionGeoProximityReached | PredicateMessageActionGroupCall | PredicateMessageActionInviteToGroupCall | PredicateMessageActionSetMessagesTTL | PredicateMessageActionGroupCallScheduled | PredicateMessageActionSetChatTheme | PredicateMessageActionChatJoinedByRequest;
+export type MessageAction = PredicateMessageActionEmpty | PredicateMessageActionChatCreate | PredicateMessageActionChatEditTitle | PredicateMessageActionChatEditPhoto | PredicateMessageActionChatDeletePhoto | PredicateMessageActionChatAddUser | PredicateMessageActionChatDeleteUser | PredicateMessageActionChatJoinedByLink | PredicateMessageActionChannelCreate | PredicateMessageActionChatMigrateTo | PredicateMessageActionChannelMigrateFrom | PredicateMessageActionPinMessage | PredicateMessageActionHistoryClear | PredicateMessageActionGameScore | PredicateMessageActionPaymentSentMe | PredicateMessageActionPaymentSent | PredicateMessageActionPhoneCall | PredicateMessageActionScreenshotTaken | PredicateMessageActionCustomAction | PredicateMessageActionBotAllowed | PredicateMessageActionSecureValuesSentMe | PredicateMessageActionSecureValuesSent | PredicateMessageActionContactSignUp | PredicateMessageActionGeoProximityReached | PredicateMessageActionGroupCall | PredicateMessageActionInviteToGroupCall | PredicateMessageActionSetMessagesTTL | PredicateMessageActionGroupCallScheduled | PredicateMessageActionSetChatTheme | PredicateMessageActionChatJoinedByRequest | PredicateMessageActionWebViewDataSentMe | PredicateMessageActionWebViewDataSent | PredicateMessageActionGiftPremium | PredicateMessageActionTopicCreate | PredicateMessageActionTopicEdit | PredicateMessageActionSuggestProfilePhoto | PredicateMessageActionRequestedPeer | PredicateMessageActionSetChatWallPaper | PredicateMessageActionSetSameChatWallPaper;
 
 export type Dialog = PredicateDialog | PredicateDialogFolder;
 
@@ -13972,13 +16121,13 @@ export type PhotoSize = PredicatePhotoSizeEmpty | PredicatePhotoSize | Predicate
 
 export type GeoPoint = PredicateGeoPointEmpty | PredicateGeoPoint;
 
-export type AuthSentCode = PredicateAuthSentCode;
+export type AuthSentCode = PredicateAuthSentCode | PredicateAuthSentCodeSuccess;
 
 export type AuthAuthorization = PredicateAuthAuthorization | PredicateAuthAuthorizationSignUpRequired;
 
 export type AuthExportedAuthorization = PredicateAuthExportedAuthorization;
 
-export type InputNotifyPeer = PredicateInputNotifyPeer | PredicateInputNotifyUsers | PredicateInputNotifyChats | PredicateInputNotifyBroadcasts;
+export type InputNotifyPeer = PredicateInputNotifyPeer | PredicateInputNotifyUsers | PredicateInputNotifyChats | PredicateInputNotifyBroadcasts | PredicateInputNotifyForumTopic;
 
 export type InputPeerNotifySettings = PredicateInputPeerNotifySettings;
 
@@ -14016,7 +16165,7 @@ export type MessagesAffectedHistory = PredicateMessagesAffectedHistory;
 
 export type MessagesFilter = PredicateInputMessagesFilterEmpty | PredicateInputMessagesFilterPhotos | PredicateInputMessagesFilterVideo | PredicateInputMessagesFilterPhotoVideo | PredicateInputMessagesFilterDocument | PredicateInputMessagesFilterUrl | PredicateInputMessagesFilterGif | PredicateInputMessagesFilterVoice | PredicateInputMessagesFilterMusic | PredicateInputMessagesFilterChatPhotos | PredicateInputMessagesFilterPhoneCalls | PredicateInputMessagesFilterRoundVoice | PredicateInputMessagesFilterRoundVideo | PredicateInputMessagesFilterMyMentions | PredicateInputMessagesFilterGeo | PredicateInputMessagesFilterContacts | PredicateInputMessagesFilterPinned;
 
-export type Update = PredicateUpdateNewMessage | PredicateUpdateMessageID | PredicateUpdateDeleteMessages | PredicateUpdateUserTyping | PredicateUpdateChatUserTyping | PredicateUpdateChatParticipants | PredicateUpdateUserStatus | PredicateUpdateUserName | PredicateUpdateUserPhoto | PredicateUpdateNewEncryptedMessage | PredicateUpdateEncryptedChatTyping | PredicateUpdateEncryption | PredicateUpdateEncryptedMessagesRead | PredicateUpdateChatParticipantAdd | PredicateUpdateChatParticipantDelete | PredicateUpdateDcOptions | PredicateUpdateNotifySettings | PredicateUpdateServiceNotification | PredicateUpdatePrivacy | PredicateUpdateUserPhone | PredicateUpdateReadHistoryInbox | PredicateUpdateReadHistoryOutbox | PredicateUpdateWebPage | PredicateUpdateReadMessagesContents | PredicateUpdateChannelTooLong | PredicateUpdateChannel | PredicateUpdateNewChannelMessage | PredicateUpdateReadChannelInbox | PredicateUpdateDeleteChannelMessages | PredicateUpdateChannelMessageViews | PredicateUpdateChatParticipantAdmin | PredicateUpdateNewStickerSet | PredicateUpdateStickerSetsOrder | PredicateUpdateStickerSets | PredicateUpdateSavedGifs | PredicateUpdateBotInlineQuery | PredicateUpdateBotInlineSend | PredicateUpdateEditChannelMessage | PredicateUpdateBotCallbackQuery | PredicateUpdateEditMessage | PredicateUpdateInlineBotCallbackQuery | PredicateUpdateReadChannelOutbox | PredicateUpdateDraftMessage | PredicateUpdateReadFeaturedStickers | PredicateUpdateRecentStickers | PredicateUpdateConfig | PredicateUpdatePtsChanged | PredicateUpdateChannelWebPage | PredicateUpdateDialogPinned | PredicateUpdatePinnedDialogs | PredicateUpdateBotWebhookJSON | PredicateUpdateBotWebhookJSONQuery | PredicateUpdateBotShippingQuery | PredicateUpdateBotPrecheckoutQuery | PredicateUpdatePhoneCall | PredicateUpdateLangPackTooLong | PredicateUpdateLangPack | PredicateUpdateFavedStickers | PredicateUpdateChannelReadMessagesContents | PredicateUpdateContactsReset | PredicateUpdateChannelAvailableMessages | PredicateUpdateDialogUnreadMark | PredicateUpdateMessagePoll | PredicateUpdateChatDefaultBannedRights | PredicateUpdateFolderPeers | PredicateUpdatePeerSettings | PredicateUpdatePeerLocated | PredicateUpdateNewScheduledMessage | PredicateUpdateDeleteScheduledMessages | PredicateUpdateTheme | PredicateUpdateGeoLiveViewed | PredicateUpdateLoginToken | PredicateUpdateMessagePollVote | PredicateUpdateDialogFilter | PredicateUpdateDialogFilterOrder | PredicateUpdateDialogFilters | PredicateUpdatePhoneCallSignalingData | PredicateUpdateChannelMessageForwards | PredicateUpdateReadChannelDiscussionInbox | PredicateUpdateReadChannelDiscussionOutbox | PredicateUpdatePeerBlocked | PredicateUpdateChannelUserTyping | PredicateUpdatePinnedMessages | PredicateUpdatePinnedChannelMessages | PredicateUpdateChat | PredicateUpdateGroupCallParticipants | PredicateUpdateGroupCall | PredicateUpdatePeerHistoryTTL | PredicateUpdateChatParticipant | PredicateUpdateChannelParticipant | PredicateUpdateBotStopped | PredicateUpdateGroupCallConnection | PredicateUpdateBotCommands | PredicateUpdatePendingJoinRequests | PredicateUpdateBotChatInviteRequester | PredicateUpdateMessageReactions;
+export type Update = PredicateUpdateNewMessage | PredicateUpdateMessageID | PredicateUpdateDeleteMessages | PredicateUpdateUserTyping | PredicateUpdateChatUserTyping | PredicateUpdateChatParticipants | PredicateUpdateUserStatus | PredicateUpdateUserName | PredicateUpdateNewEncryptedMessage | PredicateUpdateEncryptedChatTyping | PredicateUpdateEncryption | PredicateUpdateEncryptedMessagesRead | PredicateUpdateChatParticipantAdd | PredicateUpdateChatParticipantDelete | PredicateUpdateDcOptions | PredicateUpdateNotifySettings | PredicateUpdateServiceNotification | PredicateUpdatePrivacy | PredicateUpdateUserPhone | PredicateUpdateReadHistoryInbox | PredicateUpdateReadHistoryOutbox | PredicateUpdateWebPage | PredicateUpdateReadMessagesContents | PredicateUpdateChannelTooLong | PredicateUpdateChannel | PredicateUpdateNewChannelMessage | PredicateUpdateReadChannelInbox | PredicateUpdateDeleteChannelMessages | PredicateUpdateChannelMessageViews | PredicateUpdateChatParticipantAdmin | PredicateUpdateNewStickerSet | PredicateUpdateStickerSetsOrder | PredicateUpdateStickerSets | PredicateUpdateSavedGifs | PredicateUpdateBotInlineQuery | PredicateUpdateBotInlineSend | PredicateUpdateEditChannelMessage | PredicateUpdateBotCallbackQuery | PredicateUpdateEditMessage | PredicateUpdateInlineBotCallbackQuery | PredicateUpdateReadChannelOutbox | PredicateUpdateDraftMessage | PredicateUpdateReadFeaturedStickers | PredicateUpdateRecentStickers | PredicateUpdateConfig | PredicateUpdatePtsChanged | PredicateUpdateChannelWebPage | PredicateUpdateDialogPinned | PredicateUpdatePinnedDialogs | PredicateUpdateBotWebhookJSON | PredicateUpdateBotWebhookJSONQuery | PredicateUpdateBotShippingQuery | PredicateUpdateBotPrecheckoutQuery | PredicateUpdatePhoneCall | PredicateUpdateLangPackTooLong | PredicateUpdateLangPack | PredicateUpdateFavedStickers | PredicateUpdateChannelReadMessagesContents | PredicateUpdateContactsReset | PredicateUpdateChannelAvailableMessages | PredicateUpdateDialogUnreadMark | PredicateUpdateMessagePoll | PredicateUpdateChatDefaultBannedRights | PredicateUpdateFolderPeers | PredicateUpdatePeerSettings | PredicateUpdatePeerLocated | PredicateUpdateNewScheduledMessage | PredicateUpdateDeleteScheduledMessages | PredicateUpdateTheme | PredicateUpdateGeoLiveViewed | PredicateUpdateLoginToken | PredicateUpdateMessagePollVote | PredicateUpdateDialogFilter | PredicateUpdateDialogFilterOrder | PredicateUpdateDialogFilters | PredicateUpdatePhoneCallSignalingData | PredicateUpdateChannelMessageForwards | PredicateUpdateReadChannelDiscussionInbox | PredicateUpdateReadChannelDiscussionOutbox | PredicateUpdatePeerBlocked | PredicateUpdateChannelUserTyping | PredicateUpdatePinnedMessages | PredicateUpdatePinnedChannelMessages | PredicateUpdateChat | PredicateUpdateGroupCallParticipants | PredicateUpdateGroupCall | PredicateUpdatePeerHistoryTTL | PredicateUpdateChatParticipant | PredicateUpdateChannelParticipant | PredicateUpdateBotStopped | PredicateUpdateGroupCallConnection | PredicateUpdateBotCommands | PredicateUpdatePendingJoinRequests | PredicateUpdateBotChatInviteRequester | PredicateUpdateMessageReactions | PredicateUpdateAttachMenuBots | PredicateUpdateWebViewResultSent | PredicateUpdateBotMenuButton | PredicateUpdateSavedRingtones | PredicateUpdateTranscribedAudio | PredicateUpdateReadFeaturedEmojiStickers | PredicateUpdateUserEmojiStatus | PredicateUpdateRecentEmojiStatuses | PredicateUpdateRecentReactions | PredicateUpdateMoveStickerSetToTop | PredicateUpdateMessageExtendedMedia | PredicateUpdateChannelPinnedTopic | PredicateUpdateChannelPinnedTopics | PredicateUpdateUser | PredicateUpdateAutoSaveSettings | PredicateUpdateGroupInvitePrivacyForbidden;
 
 export type UpdatesState = PredicateUpdatesState;
 
@@ -14060,15 +16209,15 @@ export type Document = PredicateDocumentEmpty | PredicateDocument;
 
 export type HelpSupport = PredicateHelpSupport;
 
-export type NotifyPeer = PredicateNotifyPeer | PredicateNotifyUsers | PredicateNotifyChats | PredicateNotifyBroadcasts;
+export type NotifyPeer = PredicateNotifyPeer | PredicateNotifyUsers | PredicateNotifyChats | PredicateNotifyBroadcasts | PredicateNotifyForumTopic;
 
 export type SendMessageAction = PredicateSendMessageTypingAction | PredicateSendMessageCancelAction | PredicateSendMessageRecordVideoAction | PredicateSendMessageUploadVideoAction | PredicateSendMessageRecordAudioAction | PredicateSendMessageUploadAudioAction | PredicateSendMessageUploadPhotoAction | PredicateSendMessageUploadDocumentAction | PredicateSendMessageGeoLocationAction | PredicateSendMessageChooseContactAction | PredicateSendMessageGamePlayAction | PredicateSendMessageRecordRoundAction | PredicateSendMessageUploadRoundAction | PredicateSpeakingInGroupCallAction | PredicateSendMessageHistoryImportAction | PredicateSendMessageChooseStickerAction | PredicateSendMessageEmojiInteraction | PredicateSendMessageEmojiInteractionSeen;
 
 export type ContactsFound = PredicateContactsFound;
 
-export type InputPrivacyKey = PredicateInputPrivacyKeyStatusTimestamp | PredicateInputPrivacyKeyChatInvite | PredicateInputPrivacyKeyPhoneCall | PredicateInputPrivacyKeyPhoneP2P | PredicateInputPrivacyKeyForwards | PredicateInputPrivacyKeyProfilePhoto | PredicateInputPrivacyKeyPhoneNumber | PredicateInputPrivacyKeyAddedByPhone;
+export type InputPrivacyKey = PredicateInputPrivacyKeyStatusTimestamp | PredicateInputPrivacyKeyChatInvite | PredicateInputPrivacyKeyPhoneCall | PredicateInputPrivacyKeyPhoneP2P | PredicateInputPrivacyKeyForwards | PredicateInputPrivacyKeyProfilePhoto | PredicateInputPrivacyKeyPhoneNumber | PredicateInputPrivacyKeyAddedByPhone | PredicateInputPrivacyKeyVoiceMessages;
 
-export type PrivacyKey = PredicatePrivacyKeyStatusTimestamp | PredicatePrivacyKeyChatInvite | PredicatePrivacyKeyPhoneCall | PredicatePrivacyKeyPhoneP2P | PredicatePrivacyKeyForwards | PredicatePrivacyKeyProfilePhoto | PredicatePrivacyKeyPhoneNumber | PredicatePrivacyKeyAddedByPhone;
+export type PrivacyKey = PredicatePrivacyKeyStatusTimestamp | PredicatePrivacyKeyChatInvite | PredicatePrivacyKeyPhoneCall | PredicatePrivacyKeyPhoneP2P | PredicatePrivacyKeyForwards | PredicatePrivacyKeyProfilePhoto | PredicatePrivacyKeyPhoneNumber | PredicatePrivacyKeyAddedByPhone | PredicatePrivacyKeyVoiceMessages;
 
 export type InputPrivacyRule = PredicateInputPrivacyValueAllowContacts | PredicateInputPrivacyValueAllowAll | PredicateInputPrivacyValueAllowUsers | PredicateInputPrivacyValueDisallowContacts | PredicateInputPrivacyValueDisallowAll | PredicateInputPrivacyValueDisallowUsers | PredicateInputPrivacyValueAllowChatParticipants | PredicateInputPrivacyValueDisallowChatParticipants;
 
@@ -14078,7 +16227,7 @@ export type AccountPrivacyRules = PredicateAccountPrivacyRules;
 
 export type AccountDaysTTL = PredicateAccountDaysTTL;
 
-export type DocumentAttribute = PredicateDocumentAttributeImageSize | PredicateDocumentAttributeAnimated | PredicateDocumentAttributeSticker | PredicateDocumentAttributeVideo | PredicateDocumentAttributeAudio | PredicateDocumentAttributeFilename | PredicateDocumentAttributeHasStickers;
+export type DocumentAttribute = PredicateDocumentAttributeImageSize | PredicateDocumentAttributeAnimated | PredicateDocumentAttributeSticker | PredicateDocumentAttributeVideo | PredicateDocumentAttributeAudio | PredicateDocumentAttributeFilename | PredicateDocumentAttributeHasStickers | PredicateDocumentAttributeCustomEmoji;
 
 export type MessagesStickers = PredicateMessagesStickersNotModified | PredicateMessagesStickers;
 
@@ -14104,11 +16253,11 @@ export type AuthPasswordRecovery = PredicateAuthPasswordRecovery;
 
 export type ReceivedNotifyMessage = PredicateReceivedNotifyMessage;
 
-export type ExportedChatInvite = PredicateChatInviteExported;
+export type ExportedChatInvite = PredicateChatInviteExported | PredicateChatInvitePublicJoinRequests;
 
 export type ChatInvite = PredicateChatInviteAlready | PredicateChatInvite | PredicateChatInvitePeek;
 
-export type InputStickerSet = PredicateInputStickerSetEmpty | PredicateInputStickerSetID | PredicateInputStickerSetShortName | PredicateInputStickerSetAnimatedEmoji | PredicateInputStickerSetDice | PredicateInputStickerSetAnimatedEmojiAnimations;
+export type InputStickerSet = PredicateInputStickerSetEmpty | PredicateInputStickerSetID | PredicateInputStickerSetShortName | PredicateInputStickerSetAnimatedEmoji | PredicateInputStickerSetDice | PredicateInputStickerSetAnimatedEmojiAnimations | PredicateInputStickerSetPremiumGifts | PredicateInputStickerSetEmojiGenericAnimations | PredicateInputStickerSetEmojiDefaultStatuses | PredicateInputStickerSetEmojiDefaultTopicIcons;
 
 export type StickerSet = PredicateStickerSet;
 
@@ -14118,13 +16267,13 @@ export type BotCommand = PredicateBotCommand;
 
 export type BotInfo = PredicateBotInfo;
 
-export type KeyboardButton = PredicateKeyboardButton | PredicateKeyboardButtonUrl | PredicateKeyboardButtonCallback | PredicateKeyboardButtonRequestPhone | PredicateKeyboardButtonRequestGeoLocation | PredicateKeyboardButtonSwitchInline | PredicateKeyboardButtonGame | PredicateKeyboardButtonBuy | PredicateKeyboardButtonUrlAuth | PredicateInputKeyboardButtonUrlAuth | PredicateKeyboardButtonRequestPoll | PredicateInputKeyboardButtonUserProfile | PredicateKeyboardButtonUserProfile;
+export type KeyboardButton = PredicateKeyboardButton | PredicateKeyboardButtonUrl | PredicateKeyboardButtonCallback | PredicateKeyboardButtonRequestPhone | PredicateKeyboardButtonRequestGeoLocation | PredicateKeyboardButtonSwitchInline | PredicateKeyboardButtonGame | PredicateKeyboardButtonBuy | PredicateKeyboardButtonUrlAuth | PredicateInputKeyboardButtonUrlAuth | PredicateKeyboardButtonRequestPoll | PredicateInputKeyboardButtonUserProfile | PredicateKeyboardButtonUserProfile | PredicateKeyboardButtonWebView | PredicateKeyboardButtonSimpleWebView | PredicateKeyboardButtonRequestPeer;
 
 export type KeyboardButtonRow = PredicateKeyboardButtonRow;
 
 export type ReplyMarkup = PredicateReplyKeyboardHide | PredicateReplyKeyboardForceReply | PredicateReplyKeyboardMarkup | PredicateReplyInlineMarkup;
 
-export type MessageEntity = PredicateMessageEntityUnknown | PredicateMessageEntityMention | PredicateMessageEntityHashtag | PredicateMessageEntityBotCommand | PredicateMessageEntityUrl | PredicateMessageEntityEmail | PredicateMessageEntityBold | PredicateMessageEntityItalic | PredicateMessageEntityCode | PredicateMessageEntityPre | PredicateMessageEntityTextUrl | PredicateMessageEntityMentionName | PredicateInputMessageEntityMentionName | PredicateMessageEntityPhone | PredicateMessageEntityCashtag | PredicateMessageEntityUnderline | PredicateMessageEntityStrike | PredicateMessageEntityBlockquote | PredicateMessageEntityBankCard | PredicateMessageEntitySpoiler;
+export type MessageEntity = PredicateMessageEntityUnknown | PredicateMessageEntityMention | PredicateMessageEntityHashtag | PredicateMessageEntityBotCommand | PredicateMessageEntityUrl | PredicateMessageEntityEmail | PredicateMessageEntityBold | PredicateMessageEntityItalic | PredicateMessageEntityCode | PredicateMessageEntityPre | PredicateMessageEntityTextUrl | PredicateMessageEntityMentionName | PredicateInputMessageEntityMentionName | PredicateMessageEntityPhone | PredicateMessageEntityCashtag | PredicateMessageEntityUnderline | PredicateMessageEntityStrike | PredicateMessageEntityBankCard | PredicateMessageEntitySpoiler | PredicateMessageEntityCustomEmoji;
 
 export type InputChannel = PredicateInputChannelEmpty | PredicateInputChannel | PredicateInputChannelFromMessage;
 
@@ -14162,9 +16311,9 @@ export type ExportedMessageLink = PredicateExportedMessageLink;
 
 export type MessageFwdHeader = PredicateMessageFwdHeader;
 
-export type AuthCodeType = PredicateAuthCodeTypeSms | PredicateAuthCodeTypeCall | PredicateAuthCodeTypeFlashCall | PredicateAuthCodeTypeMissedCall;
+export type AuthCodeType = PredicateAuthCodeTypeSms | PredicateAuthCodeTypeCall | PredicateAuthCodeTypeFlashCall | PredicateAuthCodeTypeMissedCall | PredicateAuthCodeTypeFragmentSms;
 
-export type AuthSentCodeType = PredicateAuthSentCodeTypeApp | PredicateAuthSentCodeTypeSms | PredicateAuthSentCodeTypeCall | PredicateAuthSentCodeTypeFlashCall | PredicateAuthSentCodeTypeMissedCall;
+export type AuthSentCodeType = PredicateAuthSentCodeTypeApp | PredicateAuthSentCodeTypeSms | PredicateAuthSentCodeTypeCall | PredicateAuthSentCodeTypeFlashCall | PredicateAuthSentCodeTypeMissedCall | PredicateAuthSentCodeTypeEmailCode | PredicateAuthSentCodeTypeSetUpEmailRequired | PredicateAuthSentCodeTypeFragmentSms | PredicateAuthSentCodeTypeFirebaseSms;
 
 export type MessagesBotCallbackAnswer = PredicateMessagesBotCallbackAnswer;
 
@@ -14194,7 +16343,7 @@ export type MessagesArchivedStickers = PredicateMessagesArchivedStickers;
 
 export type MessagesStickerSetInstallResult = PredicateMessagesStickerSetInstallResultSuccess | PredicateMessagesStickerSetInstallResultArchive;
 
-export type StickerSetCovered = PredicateStickerSetCovered | PredicateStickerSetMultiCovered;
+export type StickerSetCovered = PredicateStickerSetCovered | PredicateStickerSetMultiCovered | PredicateStickerSetFullCovered | PredicateStickerSetNoCovered;
 
 export type MaskCoords = PredicateMaskCoords;
 
@@ -14232,7 +16381,7 @@ export type WebDocument = PredicateWebDocument | PredicateWebDocumentNoProxy;
 
 export type InputWebDocument = PredicateInputWebDocument;
 
-export type InputWebFileLocation = PredicateInputWebFileLocation | PredicateInputWebFileGeoPointLocation;
+export type InputWebFileLocation = PredicateInputWebFileLocation | PredicateInputWebFileGeoPointLocation | PredicateInputWebFileAudioAlbumThumbLocation;
 
 export type UploadWebFile = PredicateUploadWebFile;
 
@@ -14276,7 +16425,7 @@ export type LangPackDifference = PredicateLangPackDifference;
 
 export type LangPackLanguage = PredicateLangPackLanguage;
 
-export type ChannelAdminLogEventAction = PredicateChannelAdminLogEventActionChangeTitle | PredicateChannelAdminLogEventActionChangeAbout | PredicateChannelAdminLogEventActionChangeUsername | PredicateChannelAdminLogEventActionChangePhoto | PredicateChannelAdminLogEventActionToggleInvites | PredicateChannelAdminLogEventActionToggleSignatures | PredicateChannelAdminLogEventActionUpdatePinned | PredicateChannelAdminLogEventActionEditMessage | PredicateChannelAdminLogEventActionDeleteMessage | PredicateChannelAdminLogEventActionParticipantJoin | PredicateChannelAdminLogEventActionParticipantLeave | PredicateChannelAdminLogEventActionParticipantInvite | PredicateChannelAdminLogEventActionParticipantToggleBan | PredicateChannelAdminLogEventActionParticipantToggleAdmin | PredicateChannelAdminLogEventActionChangeStickerSet | PredicateChannelAdminLogEventActionTogglePreHistoryHidden | PredicateChannelAdminLogEventActionDefaultBannedRights | PredicateChannelAdminLogEventActionStopPoll | PredicateChannelAdminLogEventActionChangeLinkedChat | PredicateChannelAdminLogEventActionChangeLocation | PredicateChannelAdminLogEventActionToggleSlowMode | PredicateChannelAdminLogEventActionStartGroupCall | PredicateChannelAdminLogEventActionDiscardGroupCall | PredicateChannelAdminLogEventActionParticipantMute | PredicateChannelAdminLogEventActionParticipantUnmute | PredicateChannelAdminLogEventActionToggleGroupCallSetting | PredicateChannelAdminLogEventActionParticipantJoinByInvite | PredicateChannelAdminLogEventActionExportedInviteDelete | PredicateChannelAdminLogEventActionExportedInviteRevoke | PredicateChannelAdminLogEventActionExportedInviteEdit | PredicateChannelAdminLogEventActionParticipantVolume | PredicateChannelAdminLogEventActionChangeHistoryTTL | PredicateChannelAdminLogEventActionParticipantJoinByRequest | PredicateChannelAdminLogEventActionToggleNoForwards | PredicateChannelAdminLogEventActionSendMessage | PredicateChannelAdminLogEventActionChangeAvailableReactions;
+export type ChannelAdminLogEventAction = PredicateChannelAdminLogEventActionChangeTitle | PredicateChannelAdminLogEventActionChangeAbout | PredicateChannelAdminLogEventActionChangeUsername | PredicateChannelAdminLogEventActionChangePhoto | PredicateChannelAdminLogEventActionToggleInvites | PredicateChannelAdminLogEventActionToggleSignatures | PredicateChannelAdminLogEventActionUpdatePinned | PredicateChannelAdminLogEventActionEditMessage | PredicateChannelAdminLogEventActionDeleteMessage | PredicateChannelAdminLogEventActionParticipantJoin | PredicateChannelAdminLogEventActionParticipantLeave | PredicateChannelAdminLogEventActionParticipantInvite | PredicateChannelAdminLogEventActionParticipantToggleBan | PredicateChannelAdminLogEventActionParticipantToggleAdmin | PredicateChannelAdminLogEventActionChangeStickerSet | PredicateChannelAdminLogEventActionTogglePreHistoryHidden | PredicateChannelAdminLogEventActionDefaultBannedRights | PredicateChannelAdminLogEventActionStopPoll | PredicateChannelAdminLogEventActionChangeLinkedChat | PredicateChannelAdminLogEventActionChangeLocation | PredicateChannelAdminLogEventActionToggleSlowMode | PredicateChannelAdminLogEventActionStartGroupCall | PredicateChannelAdminLogEventActionDiscardGroupCall | PredicateChannelAdminLogEventActionParticipantMute | PredicateChannelAdminLogEventActionParticipantUnmute | PredicateChannelAdminLogEventActionToggleGroupCallSetting | PredicateChannelAdminLogEventActionParticipantJoinByInvite | PredicateChannelAdminLogEventActionExportedInviteDelete | PredicateChannelAdminLogEventActionExportedInviteRevoke | PredicateChannelAdminLogEventActionExportedInviteEdit | PredicateChannelAdminLogEventActionParticipantVolume | PredicateChannelAdminLogEventActionChangeHistoryTTL | PredicateChannelAdminLogEventActionParticipantJoinByRequest | PredicateChannelAdminLogEventActionToggleNoForwards | PredicateChannelAdminLogEventActionSendMessage | PredicateChannelAdminLogEventActionChangeAvailableReactions | PredicateChannelAdminLogEventActionChangeUsernames | PredicateChannelAdminLogEventActionToggleForum | PredicateChannelAdminLogEventActionCreateTopic | PredicateChannelAdminLogEventActionEditTopic | PredicateChannelAdminLogEventActionDeleteTopic | PredicateChannelAdminLogEventActionPinTopic | PredicateChannelAdminLogEventActionToggleAntiSpam;
 
 export type ChannelAdminLogEvent = PredicateChannelAdminLogEvent;
 
@@ -14458,7 +16607,7 @@ export type BankCardOpenUrl = PredicateBankCardOpenUrl;
 
 export type PaymentsBankCardData = PredicatePaymentsBankCardData;
 
-export type DialogFilter = PredicateDialogFilter;
+export type DialogFilter = PredicateDialogFilter | PredicateDialogFilterDefault | PredicateDialogFilterChatlist;
 
 export type DialogFilterSuggested = PredicateDialogFilterSuggested;
 
@@ -14476,7 +16625,7 @@ export type StatsBroadcastStats = PredicateStatsBroadcastStats;
 
 export type HelpPromoData = PredicateHelpPromoDataEmpty | PredicateHelpPromoData;
 
-export type VideoSize = PredicateVideoSize;
+export type VideoSize = PredicateVideoSize | PredicateVideoSizeEmojiMarkup | PredicateVideoSizeStickerMarkup;
 
 export type StatsGroupTopPoster = PredicateStatsGroupTopPoster;
 
@@ -14518,7 +16667,7 @@ export type PhoneGroupCall = PredicatePhoneGroupCall;
 
 export type PhoneGroupParticipants = PredicatePhoneGroupParticipants;
 
-export type InlineQueryPeerType = PredicateInlineQueryPeerTypeSameBotPM | PredicateInlineQueryPeerTypePM | PredicateInlineQueryPeerTypeChat | PredicateInlineQueryPeerTypeMegagroup | PredicateInlineQueryPeerTypeBroadcast;
+export type InlineQueryPeerType = PredicateInlineQueryPeerTypeSameBotPM | PredicateInlineQueryPeerTypePM | PredicateInlineQueryPeerTypeChat | PredicateInlineQueryPeerTypeMegagroup | PredicateInlineQueryPeerTypeBroadcast | PredicateInlineQueryPeerTypeBotPM;
 
 export type MessagesHistoryImport = PredicateMessagesHistoryImport;
 
@@ -14556,7 +16705,7 @@ export type AccountResetPasswordResult = PredicateAccountResetPasswordFailedWait
 
 export type SponsoredMessage = PredicateSponsoredMessage;
 
-export type MessagesSponsoredMessages = PredicateMessagesSponsoredMessages;
+export type MessagesSponsoredMessages = PredicateMessagesSponsoredMessages | PredicateMessagesSponsoredMessagesEmpty;
 
 export type SearchResultsCalendarPeriod = PredicateSearchResultsCalendarPeriod;
 
@@ -14584,8 +16733,6 @@ export type AvailableReaction = PredicateAvailableReaction;
 
 export type MessagesAvailableReactions = PredicateMessagesAvailableReactionsNotModified | PredicateMessagesAvailableReactions;
 
-export type MessagesTranslatedText = PredicateMessagesTranslateNoResult | PredicateMessagesTranslateResultText;
-
 export type MessagePeerReaction = PredicateMessagePeerReaction;
 
 export type GroupCallStreamChannel = PredicateGroupCallStreamChannel;
@@ -14593,6 +16740,126 @@ export type GroupCallStreamChannel = PredicateGroupCallStreamChannel;
 export type PhoneGroupCallStreamChannels = PredicatePhoneGroupCallStreamChannels;
 
 export type PhoneGroupCallStreamRtmpUrl = PredicatePhoneGroupCallStreamRtmpUrl;
+
+export type AttachMenuBotIconColor = PredicateAttachMenuBotIconColor;
+
+export type AttachMenuBotIcon = PredicateAttachMenuBotIcon;
+
+export type AttachMenuBot = PredicateAttachMenuBot;
+
+export type AttachMenuBots = PredicateAttachMenuBotsNotModified | PredicateAttachMenuBots;
+
+export type AttachMenuBotsBot = PredicateAttachMenuBotsBot;
+
+export type WebViewResult = PredicateWebViewResultUrl;
+
+export type SimpleWebViewResult = PredicateSimpleWebViewResultUrl;
+
+export type WebViewMessageSent = PredicateWebViewMessageSent;
+
+export type BotMenuButton = PredicateBotMenuButtonDefault | PredicateBotMenuButtonCommands | PredicateBotMenuButton;
+
+export type AccountSavedRingtones = PredicateAccountSavedRingtonesNotModified | PredicateAccountSavedRingtones;
+
+export type NotificationSound = PredicateNotificationSoundDefault | PredicateNotificationSoundNone | PredicateNotificationSoundLocal | PredicateNotificationSoundRingtone;
+
+export type AccountSavedRingtone = PredicateAccountSavedRingtone | PredicateAccountSavedRingtoneConverted;
+
+export type AttachMenuPeerType = PredicateAttachMenuPeerTypeSameBotPM | PredicateAttachMenuPeerTypeBotPM | PredicateAttachMenuPeerTypePM | PredicateAttachMenuPeerTypeChat | PredicateAttachMenuPeerTypeBroadcast;
+
+export type InputInvoice = PredicateInputInvoiceMessage | PredicateInputInvoiceSlug;
+
+export type PaymentsExportedInvoice = PredicatePaymentsExportedInvoice;
+
+export type MessagesTranscribedAudio = PredicateMessagesTranscribedAudio;
+
+export type HelpPremiumPromo = PredicateHelpPremiumPromo;
+
+export type InputStorePaymentPurpose = PredicateInputStorePaymentPremiumSubscription | PredicateInputStorePaymentGiftPremium;
+
+export type PremiumGiftOption = PredicatePremiumGiftOption;
+
+export type PaymentFormMethod = PredicatePaymentFormMethod;
+
+export type EmojiStatus = PredicateEmojiStatusEmpty | PredicateEmojiStatus | PredicateEmojiStatusUntil;
+
+export type AccountEmojiStatuses = PredicateAccountEmojiStatusesNotModified | PredicateAccountEmojiStatuses;
+
+export type Reaction = PredicateReactionEmpty | PredicateReactionEmoji | PredicateReactionCustomEmoji;
+
+export type ChatReactions = PredicateChatReactionsNone | PredicateChatReactionsAll | PredicateChatReactionsSome;
+
+export type MessagesReactions = PredicateMessagesReactionsNotModified | PredicateMessagesReactions;
+
+export type EmailVerifyPurpose = PredicateEmailVerifyPurposeLoginSetup | PredicateEmailVerifyPurposeLoginChange | PredicateEmailVerifyPurposePassport;
+
+export type EmailVerification = PredicateEmailVerificationCode | PredicateEmailVerificationGoogle | PredicateEmailVerificationApple;
+
+export type AccountEmailVerified = PredicateAccountEmailVerified | PredicateAccountEmailVerifiedLogin;
+
+export type PremiumSubscriptionOption = PredicatePremiumSubscriptionOption;
+
+export type SendAsPeer = PredicateSendAsPeer;
+
+export type MessageExtendedMedia = PredicateMessageExtendedMediaPreview | PredicateMessageExtendedMedia;
+
+export type StickerKeyword = PredicateStickerKeyword;
+
+export type Username = PredicateUsername;
+
+export type ForumTopic = PredicateForumTopicDeleted | PredicateForumTopic;
+
+export type MessagesForumTopics = PredicateMessagesForumTopics;
+
+export type DefaultHistoryTTL = PredicateDefaultHistoryTTL;
+
+export type ExportedContactToken = PredicateExportedContactToken;
+
+export type RequestPeerType = PredicateRequestPeerTypeUser | PredicateRequestPeerTypeChat | PredicateRequestPeerTypeBroadcast;
+
+export type EmojiList = PredicateEmojiListNotModified | PredicateEmojiList;
+
+export type EmojiGroup = PredicateEmojiGroup;
+
+export type MessagesEmojiGroups = PredicateMessagesEmojiGroupsNotModified | PredicateMessagesEmojiGroups;
+
+export type TextWithEntities = PredicateTextWithEntities;
+
+export type MessagesTranslatedText = PredicateMessagesTranslateResult;
+
+export type AutoSaveSettings = PredicateAutoSaveSettings;
+
+export type AutoSaveException = PredicateAutoSaveException;
+
+export type AccountAutoSaveSettings = PredicateAccountAutoSaveSettings;
+
+export type HelpAppConfig = PredicateHelpAppConfigNotModified | PredicateHelpAppConfig;
+
+export type InputBotApp = PredicateInputBotAppID | PredicateInputBotAppShortName;
+
+export type BotApp = PredicateBotAppNotModified | PredicateBotApp;
+
+export type MessagesBotApp = PredicateMessagesBotApp;
+
+export type AppWebViewResult = PredicateAppWebViewResultUrl;
+
+export type InlineBotWebView = PredicateInlineBotWebView;
+
+export type ReadParticipantDate = PredicateReadParticipantDate;
+
+export type InputChatlist = PredicateInputChatlistDialogFilter;
+
+export type ExportedChatlistInvite = PredicateExportedChatlistInvite;
+
+export type ChatlistsExportedChatlistInvite = PredicateChatlistsExportedChatlistInvite;
+
+export type ChatlistsExportedInvites = PredicateChatlistsExportedInvites;
+
+export type ChatlistsChatlistInvite = PredicateChatlistsChatlistInviteAlready | PredicateChatlistsChatlistInvite;
+
+export type ChatlistsChatlistUpdates = PredicateChatlistsChatlistUpdates;
+
+export type BotsBotInfo = PredicateBotsBotInfo;
 
 export interface TgUserApiRequestResponseSuccess<Data = any> {
     success: true
@@ -14660,6 +16927,7 @@ export const authSignIn = (dependencies: TgUserApiDependencies) => async (params
     phone_number?: string
     phone_code_hash?: string
     phone_code?: string
+    email_verification?: EmailVerification
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthAuthorization>('auth.signIn', params, ...args);
 
 export const authLogOut = (dependencies: TgUserApiDependencies) => async (params: {
@@ -14855,8 +17123,10 @@ export const messagesSendMessage = (dependencies: TgUserApiDependencies) => asyn
     background?: true
     clear_draft?: true
     noforwards?: true
+    update_stickersets_order?: true
     peer?: InputPeer
     reply_to_msg_id?: number
+    top_msg_id?: number
     message?: string
     random_id?: string
     reply_markup?: ReplyMarkup
@@ -14870,8 +17140,10 @@ export const messagesSendMedia = (dependencies: TgUserApiDependencies) => async 
     background?: true
     clear_draft?: true
     noforwards?: true
+    update_stickersets_order?: true
     peer?: InputPeer
     reply_to_msg_id?: number
+    top_msg_id?: number
     media?: InputMedia
     message?: string
     random_id?: string
@@ -14892,6 +17164,7 @@ export const messagesForwardMessages = (dependencies: TgUserApiDependencies) => 
     id?: number[]
     random_id?: string[]
     to_peer?: InputPeer
+    top_msg_id?: number
     schedule_date?: number
     send_as?: InputPeer
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.forwardMessages', params, ...args);
@@ -14944,6 +17217,7 @@ export const messagesDeleteChatUser = (dependencies: TgUserApiDependencies) => a
 export const messagesCreateChat = (dependencies: TgUserApiDependencies) => async (params: {
     users?: InputUser[]
     title?: string
+    ttl_period?: number
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.createChat', params, ...args);
 
 export const updatesGetState = (dependencies: TgUserApiDependencies) => async (params: {
@@ -14958,13 +17232,18 @@ export const updatesGetDifference = (dependencies: TgUserApiDependencies) => asy
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<UpdatesDifference>('updates.getDifference', params, ...args);
 
 export const photosUpdateProfilePhoto = (dependencies: TgUserApiDependencies) => async (params: {
+    fallback?: true
+    bot?: InputUser
     id?: InputPhoto
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhotosPhoto>('photos.updateProfilePhoto', params, ...args);
 
 export const photosUploadProfilePhoto = (dependencies: TgUserApiDependencies) => async (params: {
+    fallback?: true
+    bot?: InputUser
     file?: InputFile
     video?: InputFile
     video_start_ts?: number
+    video_emoji_markup?: VideoSize
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhotosPhoto>('photos.uploadProfilePhoto', params, ...args);
 
 export const photosDeletePhotos = (dependencies: TgUserApiDependencies) => async (params: {
@@ -14981,7 +17260,7 @@ export const uploadGetFile = (dependencies: TgUserApiDependencies) => async (par
     precise?: true
     cdn_supported?: true
     location?: InputFileLocation
-    offset?: number
+    offset?: string
     limit?: number
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<UploadFile>('upload.getFile', params, ...args);
 
@@ -15121,6 +17400,7 @@ export const accountSetPrivacy = (dependencies: TgUserApiDependencies) => async 
 
 export const accountDeleteAccount = (dependencies: TgUserApiDependencies) => async (params: {
     reason?: string
+    password?: InputCheckPasswordSRP
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.deleteAccount', params, ...args);
 
 export const accountGetAccountTTL = (dependencies: TgUserApiDependencies) => async (params: {
@@ -15308,10 +17588,12 @@ export const channelsCreateChannel = (dependencies: TgUserApiDependencies) => as
     broadcast?: true
     megagroup?: true
     for_import?: true
+    forum?: true
     title?: string
     about?: string
     geo_point?: InputGeoPoint
     address?: string
+    ttl_period?: number
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.createChannel', params, ...args);
 
 export const channelsEditAdmin = (dependencies: TgUserApiDependencies) => async (params: {
@@ -15396,7 +17678,7 @@ export const messagesReorderStickerSets = (dependencies: TgUserApiDependencies) 
 
 export const messagesGetDocumentByHash = (dependencies: TgUserApiDependencies) => async (params: {
     sha256?: Uint8Array
-    size?: number
+    size?: string
     mime_type?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Document>('messages.getDocumentByHash', params, ...args);
 
@@ -15425,6 +17707,7 @@ export const messagesSetInlineBotResults = (dependencies: TgUserApiDependencies)
     cache_time?: number
     next_offset?: string
     switch_pm?: InlineBotSwitchPM
+    switch_webview?: InlineBotWebView
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.setInlineBotResults', params, ...args);
 
 export const messagesSendInlineBotResult = (dependencies: TgUserApiDependencies) => async (params: {
@@ -15434,6 +17717,7 @@ export const messagesSendInlineBotResult = (dependencies: TgUserApiDependencies)
     hide_via?: true
     peer?: InputPeer
     reply_to_msg_id?: number
+    top_msg_id?: number
     random_id?: string
     query_id?: string
     id?: string
@@ -15530,6 +17814,7 @@ export const messagesGetPeerDialogs = (dependencies: TgUserApiDependencies) => a
 export const messagesSaveDraft = (dependencies: TgUserApiDependencies) => async (params: {
     no_webpage?: true
     reply_to_msg_id?: number
+    top_msg_id?: number
     peer?: InputPeer
     message?: string
     entities?: MessageEntity[]
@@ -15630,10 +17915,6 @@ export const messagesGetCommonChats = (dependencies: TgUserApiDependencies) => a
     limit?: number
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChats>('messages.getCommonChats', params, ...args);
 
-export const messagesGetAllChats = (dependencies: TgUserApiDependencies) => async (params: {
-    except_ids?: string[]
-} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesChats>('messages.getAllChats', params, ...args);
-
 export const helpSetBotUpdatesStatus = (dependencies: TgUserApiDependencies) => async (params: {
     pending_updates_count?: number
     message?: string
@@ -15676,8 +17957,7 @@ export const uploadGetWebFile = (dependencies: TgUserApiDependencies) => async (
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<UploadWebFile>('upload.getWebFile', params, ...args);
 
 export const paymentsGetPaymentForm = (dependencies: TgUserApiDependencies) => async (params: {
-    peer?: InputPeer
-    msg_id?: number
+    invoice?: InputInvoice
     theme_params?: DataJSON
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PaymentsPaymentForm>('payments.getPaymentForm', params, ...args);
 
@@ -15688,15 +17968,13 @@ export const paymentsGetPaymentReceipt = (dependencies: TgUserApiDependencies) =
 
 export const paymentsValidateRequestedInfo = (dependencies: TgUserApiDependencies) => async (params: {
     save?: true
-    peer?: InputPeer
-    msg_id?: number
+    invoice?: InputInvoice
     info?: PaymentRequestedInfo
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PaymentsValidatedRequestedInfo>('payments.validateRequestedInfo', params, ...args);
 
 export const paymentsSendPaymentForm = (dependencies: TgUserApiDependencies) => async (params: {
     form_id?: string
-    peer?: InputPeer
-    msg_id?: number
+    invoice?: InputInvoice
     requested_info_id?: string
     shipping_option_id?: string
     credentials?: InputPaymentCredentials
@@ -15733,6 +18011,8 @@ export const stickersCreateStickerSet = (dependencies: TgUserApiDependencies) =>
     masks?: true
     animated?: true
     videos?: true
+    emojis?: true
+    text_color?: true
     user_id?: InputUser
     title?: string
     short_name?: string
@@ -15811,7 +18091,7 @@ export const phoneSaveCallDebug = (dependencies: TgUserApiDependencies) => async
 
 export const uploadGetCdnFile = (dependencies: TgUserApiDependencies) => async (params: {
     file_token?: Uint8Array
-    offset?: number
+    offset?: string
     limit?: number
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<UploadCdnFile>('upload.getCdnFile', params, ...args);
 
@@ -15863,7 +18143,7 @@ export const channelsGetAdminLog = (dependencies: TgUserApiDependencies) => asyn
 
 export const uploadGetCdnFileHashes = (dependencies: TgUserApiDependencies) => async (params: {
     file_token?: Uint8Array
-    offset?: number
+    offset?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<FileHash[]>('upload.getCdnFileHashes', params, ...args);
 
 export const messagesSendScreenshotNotification = (dependencies: TgUserApiDependencies) => async (params: {
@@ -15897,6 +18177,7 @@ export const contactsResetSaved = (dependencies: TgUserApiDependencies) => async
 
 export const messagesGetUnreadMentions = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
+    top_msg_id?: number
     offset_id?: number
     add_offset?: number
     limit?: number
@@ -15905,9 +18186,10 @@ export const messagesGetUnreadMentions = (dependencies: TgUserApiDependencies) =
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.getUnreadMentions', params, ...args);
 
 export const channelsDeleteHistory = (dependencies: TgUserApiDependencies) => async (params: {
+    for_everyone?: true
     channel?: InputChannel
     max_id?: number
-} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('channels.deleteHistory', params, ...args);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.deleteHistory', params, ...args);
 
 export const helpGetRecentMeUrls = (dependencies: TgUserApiDependencies) => async (params: {
     referer?: string
@@ -15920,6 +18202,7 @@ export const channelsTogglePreHistoryHidden = (dependencies: TgUserApiDependenci
 
 export const messagesReadMentions = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
+    top_msg_id?: number
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAffectedHistory>('messages.readMentions', params, ...args);
 
 export const messagesGetRecentLocations = (dependencies: TgUserApiDependencies) => async (params: {
@@ -15933,8 +18216,10 @@ export const messagesSendMultiMedia = (dependencies: TgUserApiDependencies) => a
     background?: true
     clear_draft?: true
     noforwards?: true
+    update_stickersets_order?: true
     peer?: InputPeer
     reply_to_msg_id?: number
+    top_msg_id?: number
     multi_media?: InputSingleMedia[]
     schedule_date?: number
     send_as?: InputPeer
@@ -15965,7 +18250,7 @@ export const messagesSearchStickerSets = (dependencies: TgUserApiDependencies) =
 
 export const uploadGetFileHashes = (dependencies: TgUserApiDependencies) => async (params: {
     location?: InputFileLocation
-    offset?: number
+    offset?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<FileHash[]>('upload.getFileHashes', params, ...args);
 
 export const helpGetTermsOfServiceUpdate = (dependencies: TgUserApiDependencies) => async (params: {
@@ -16024,13 +18309,14 @@ export const accountVerifyPhone = (dependencies: TgUserApiDependencies) => async
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.verifyPhone', params, ...args);
 
 export const accountSendVerifyEmailCode = (dependencies: TgUserApiDependencies) => async (params: {
+    purpose?: EmailVerifyPurpose
     email?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountSentEmailCode>('account.sendVerifyEmailCode', params, ...args);
 
 export const accountVerifyEmail = (dependencies: TgUserApiDependencies) => async (params: {
-    email?: string
-    code?: string
-} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.verifyEmail', params, ...args);
+    purpose?: EmailVerifyPurpose
+    verification?: EmailVerification
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountEmailVerified>('account.verifyEmail', params, ...args);
 
 export const helpGetDeepLinkInfo = (dependencies: TgUserApiDependencies) => async (params: {
     path?: string
@@ -16051,7 +18337,7 @@ export const accountInitTakeoutSession = (dependencies: TgUserApiDependencies) =
     message_megagroups?: true
     message_channels?: true
     files?: true
-    file_max_size?: number
+    file_max_size?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountTakeout>('account.initTakeoutSession', params, ...args);
 
 export const accountFinishTakeoutSession = (dependencies: TgUserApiDependencies) => async (params: {
@@ -16090,8 +18376,8 @@ export const messagesClearAllDrafts = (dependencies: TgUserApiDependencies) => a
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.clearAllDrafts', params, ...args);
 
 export const helpGetAppConfig = (dependencies: TgUserApiDependencies) => async (params: {
-
-} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<JSONValue>('help.getAppConfig', params, ...args);
+    hash?: number
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<HelpAppConfig>('help.getAppConfig', params, ...args);
 
 export const helpSaveAppLog = (dependencies: TgUserApiDependencies) => async (params: {
     events?: InputAppEvent[]
@@ -16183,6 +18469,7 @@ export const accountGetWallPaper = (dependencies: TgUserApiDependencies) => asyn
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<WallPaper>('account.getWallPaper', params, ...args);
 
 export const accountUploadWallPaper = (dependencies: TgUserApiDependencies) => async (params: {
+    for_chat?: true
     file?: InputFile
     mime_type?: string
     settings?: WallPaperSettings
@@ -16234,12 +18521,9 @@ export const foldersEditPeerFolders = (dependencies: TgUserApiDependencies) => a
     folder_peers?: InputFolderPeer[]
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('folders.editPeerFolders', params, ...args);
 
-export const foldersDeleteFolder = (dependencies: TgUserApiDependencies) => async (params: {
-    folder_id?: number
-} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('folders.deleteFolder', params, ...args);
-
 export const messagesGetSearchCounters = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
+    top_msg_id?: number
     filters?: MessagesFilter[]
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesSearchCounter[]>('messages.getSearchCounters', params, ...args);
 
@@ -16364,7 +18648,6 @@ export const accountInstallTheme = (dependencies: TgUserApiDependencies) => asyn
 export const accountGetTheme = (dependencies: TgUserApiDependencies) => async (params: {
     format?: string
     theme?: InputTheme
-    document_id?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Theme>('account.getTheme', params, ...args);
 
 export const accountGetThemes = (dependencies: TgUserApiDependencies) => async (params: {
@@ -16451,6 +18734,7 @@ export const statsLoadAsyncGraph = (dependencies: TgUserApiDependencies) => asyn
 export const stickersSetStickerSetThumb = (dependencies: TgUserApiDependencies) => async (params: {
     stickerset?: InputStickerSet
     thumb?: InputDocument
+    thumb_document_id?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesStickerSet>('stickers.setStickerSetThumb', params, ...args);
 
 export const botsSetBotCommands = (dependencies: TgUserApiDependencies) => async (params: {
@@ -16548,6 +18832,7 @@ export const statsGetMessageStats = (dependencies: TgUserApiDependencies) => asy
 
 export const messagesUnpinAllMessages = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
+    top_msg_id?: number
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAffectedHistory>('messages.unpinAllMessages', params, ...args);
 
 export const phoneCreateGroupCall = (dependencies: TgUserApiDependencies) => async (params: {
@@ -16810,7 +19095,7 @@ export const channelsGetSponsoredMessages = (dependencies: TgUserApiDependencies
 export const messagesGetMessageReadParticipants = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     msg_id?: number
-} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<string[]>('messages.getMessageReadParticipants', params, ...args);
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ReadParticipantDate[]>('messages.getMessageReadParticipants', params, ...args);
 
 export const messagesGetSearchResultsCalendar = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
@@ -16869,9 +19154,10 @@ export const channelsDeleteParticipantHistory = (dependencies: TgUserApiDependen
 
 export const messagesSendReaction = (dependencies: TgUserApiDependencies) => async (params: {
     big?: true
+    add_to_recent?: true
     peer?: InputPeer
     msg_id?: number
-    reaction?: string
+    reaction?: Reaction[]
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.sendReaction', params, ...args);
 
 export const messagesGetMessagesReactions = (dependencies: TgUserApiDependencies) => async (params: {
@@ -16882,14 +19168,14 @@ export const messagesGetMessagesReactions = (dependencies: TgUserApiDependencies
 export const messagesGetMessageReactionsList = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
     id?: number
-    reaction?: string
+    reaction?: Reaction
     offset?: string
     limit?: number
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessageReactionsList>('messages.getMessageReactionsList', params, ...args);
 
 export const messagesSetChatAvailableReactions = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-    available_reactions?: string[]
+    available_reactions?: ChatReactions
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.setChatAvailableReactions', params, ...args);
 
 export const messagesGetAvailableReactions = (dependencies: TgUserApiDependencies) => async (params: {
@@ -16897,19 +19183,19 @@ export const messagesGetAvailableReactions = (dependencies: TgUserApiDependencie
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAvailableReactions>('messages.getAvailableReactions', params, ...args);
 
 export const messagesSetDefaultReaction = (dependencies: TgUserApiDependencies) => async (params: {
-    reaction?: string
+    reaction?: Reaction
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.setDefaultReaction', params, ...args);
 
 export const messagesTranslateText = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
-    msg_id?: number
-    text?: string
-    from_lang?: string
+    id?: number[]
+    text?: TextWithEntities[]
     to_lang?: string
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesTranslatedText>('messages.translateText', params, ...args);
 
 export const messagesGetUnreadReactions = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
+    top_msg_id?: number
     offset_id?: number
     add_offset?: number
     limit?: number
@@ -16919,6 +19205,7 @@ export const messagesGetUnreadReactions = (dependencies: TgUserApiDependencies) 
 
 export const messagesReadReactions = (dependencies: TgUserApiDependencies) => async (params: {
     peer?: InputPeer
+    top_msg_id?: number
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAffectedHistory>('messages.readReactions', params, ...args);
 
 export const contactsResolvePhone = (dependencies: TgUserApiDependencies) => async (params: {
@@ -16939,6 +19226,502 @@ export const messagesSearchSentMedia = (dependencies: TgUserApiDependencies) => 
     filter?: MessagesFilter
     limit?: number
 } = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesMessages>('messages.searchSentMedia', params, ...args);
+
+export const messagesGetAttachMenuBots = (dependencies: TgUserApiDependencies) => async (params: {
+    hash?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AttachMenuBots>('messages.getAttachMenuBots', params, ...args);
+
+export const messagesGetAttachMenuBot = (dependencies: TgUserApiDependencies) => async (params: {
+    bot?: InputUser
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AttachMenuBotsBot>('messages.getAttachMenuBot', params, ...args);
+
+export const messagesToggleBotInAttachMenu = (dependencies: TgUserApiDependencies) => async (params: {
+    write_allowed?: true
+    bot?: InputUser
+    enabled?: boolean
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.toggleBotInAttachMenu', params, ...args);
+
+export const messagesRequestWebView = (dependencies: TgUserApiDependencies) => async (params: {
+    from_bot_menu?: true
+    silent?: true
+    peer?: InputPeer
+    bot?: InputUser
+    url?: string
+    start_param?: string
+    theme_params?: DataJSON
+    platform?: string
+    reply_to_msg_id?: number
+    top_msg_id?: number
+    send_as?: InputPeer
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<WebViewResult>('messages.requestWebView', params, ...args);
+
+export const messagesProlongWebView = (dependencies: TgUserApiDependencies) => async (params: {
+    silent?: true
+    peer?: InputPeer
+    bot?: InputUser
+    query_id?: string
+    reply_to_msg_id?: number
+    top_msg_id?: number
+    send_as?: InputPeer
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.prolongWebView', params, ...args);
+
+export const messagesRequestSimpleWebView = (dependencies: TgUserApiDependencies) => async (params: {
+    from_switch_webview?: true
+    bot?: InputUser
+    url?: string
+    theme_params?: DataJSON
+    platform?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<SimpleWebViewResult>('messages.requestSimpleWebView', params, ...args);
+
+export const messagesSendWebViewResultMessage = (dependencies: TgUserApiDependencies) => async (params: {
+    bot_query_id?: string
+    result?: InputBotInlineResult
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<WebViewMessageSent>('messages.sendWebViewResultMessage', params, ...args);
+
+export const messagesSendWebViewData = (dependencies: TgUserApiDependencies) => async (params: {
+    bot?: InputUser
+    random_id?: string
+    button_text?: string
+    data?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.sendWebViewData', params, ...args);
+
+export const botsSetBotMenuButton = (dependencies: TgUserApiDependencies) => async (params: {
+    user_id?: InputUser
+    button?: BotMenuButton
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('bots.setBotMenuButton', params, ...args);
+
+export const botsGetBotMenuButton = (dependencies: TgUserApiDependencies) => async (params: {
+    user_id?: InputUser
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<BotMenuButton>('bots.getBotMenuButton', params, ...args);
+
+export const accountGetSavedRingtones = (dependencies: TgUserApiDependencies) => async (params: {
+    hash?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountSavedRingtones>('account.getSavedRingtones', params, ...args);
+
+export const accountSaveRingtone = (dependencies: TgUserApiDependencies) => async (params: {
+    id?: InputDocument
+    unsave?: boolean
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountSavedRingtone>('account.saveRingtone', params, ...args);
+
+export const accountUploadRingtone = (dependencies: TgUserApiDependencies) => async (params: {
+    file?: InputFile
+    file_name?: string
+    mime_type?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Document>('account.uploadRingtone', params, ...args);
+
+export const botsSetBotBroadcastDefaultAdminRights = (dependencies: TgUserApiDependencies) => async (params: {
+    admin_rights?: ChatAdminRights
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('bots.setBotBroadcastDefaultAdminRights', params, ...args);
+
+export const botsSetBotGroupDefaultAdminRights = (dependencies: TgUserApiDependencies) => async (params: {
+    admin_rights?: ChatAdminRights
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('bots.setBotGroupDefaultAdminRights', params, ...args);
+
+export const phoneSaveCallLog = (dependencies: TgUserApiDependencies) => async (params: {
+    peer?: InputPhoneCall
+    file?: InputFile
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('phone.saveCallLog', params, ...args);
+
+export const channelsToggleJoinToSend = (dependencies: TgUserApiDependencies) => async (params: {
+    channel?: InputChannel
+    enabled?: boolean
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.toggleJoinToSend', params, ...args);
+
+export const channelsToggleJoinRequest = (dependencies: TgUserApiDependencies) => async (params: {
+    channel?: InputChannel
+    enabled?: boolean
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.toggleJoinRequest', params, ...args);
+
+export const paymentsExportInvoice = (dependencies: TgUserApiDependencies) => async (params: {
+    invoice_media?: InputMedia
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PaymentsExportedInvoice>('payments.exportInvoice', params, ...args);
+
+export const messagesTranscribeAudio = (dependencies: TgUserApiDependencies) => async (params: {
+    peer?: InputPeer
+    msg_id?: number
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesTranscribedAudio>('messages.transcribeAudio', params, ...args);
+
+export const messagesRateTranscribedAudio = (dependencies: TgUserApiDependencies) => async (params: {
+    peer?: InputPeer
+    msg_id?: number
+    transcription_id?: string
+    good?: boolean
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.rateTranscribedAudio', params, ...args);
+
+export const paymentsAssignAppStoreTransaction = (dependencies: TgUserApiDependencies) => async (params: {
+    receipt?: Uint8Array
+    purpose?: InputStorePaymentPurpose
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('payments.assignAppStoreTransaction', params, ...args);
+
+export const paymentsAssignPlayMarketTransaction = (dependencies: TgUserApiDependencies) => async (params: {
+    receipt?: DataJSON
+    purpose?: InputStorePaymentPurpose
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('payments.assignPlayMarketTransaction', params, ...args);
+
+export const paymentsCanPurchasePremium = (dependencies: TgUserApiDependencies) => async (params: {
+    purpose?: InputStorePaymentPurpose
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('payments.canPurchasePremium', params, ...args);
+
+export const helpGetPremiumPromo = (dependencies: TgUserApiDependencies) => async (params: {
+
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<HelpPremiumPromo>('help.getPremiumPromo', params, ...args);
+
+export const messagesGetCustomEmojiDocuments = (dependencies: TgUserApiDependencies) => async (params: {
+    document_id?: string[]
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Document[]>('messages.getCustomEmojiDocuments', params, ...args);
+
+export const messagesGetEmojiStickers = (dependencies: TgUserApiDependencies) => async (params: {
+    hash?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAllStickers>('messages.getEmojiStickers', params, ...args);
+
+export const messagesGetFeaturedEmojiStickers = (dependencies: TgUserApiDependencies) => async (params: {
+    hash?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesFeaturedStickers>('messages.getFeaturedEmojiStickers', params, ...args);
+
+export const accountUpdateEmojiStatus = (dependencies: TgUserApiDependencies) => async (params: {
+    emoji_status?: EmojiStatus
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.updateEmojiStatus', params, ...args);
+
+export const accountGetDefaultEmojiStatuses = (dependencies: TgUserApiDependencies) => async (params: {
+    hash?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountEmojiStatuses>('account.getDefaultEmojiStatuses', params, ...args);
+
+export const accountGetRecentEmojiStatuses = (dependencies: TgUserApiDependencies) => async (params: {
+    hash?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountEmojiStatuses>('account.getRecentEmojiStatuses', params, ...args);
+
+export const accountClearRecentEmojiStatuses = (dependencies: TgUserApiDependencies) => async (params: {
+
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.clearRecentEmojiStatuses', params, ...args);
+
+export const messagesReportReaction = (dependencies: TgUserApiDependencies) => async (params: {
+    peer?: InputPeer
+    id?: number
+    reaction_peer?: InputPeer
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.reportReaction', params, ...args);
+
+export const messagesGetTopReactions = (dependencies: TgUserApiDependencies) => async (params: {
+    limit?: number
+    hash?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesReactions>('messages.getTopReactions', params, ...args);
+
+export const messagesGetRecentReactions = (dependencies: TgUserApiDependencies) => async (params: {
+    limit?: number
+    hash?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesReactions>('messages.getRecentReactions', params, ...args);
+
+export const messagesClearRecentReactions = (dependencies: TgUserApiDependencies) => async (params: {
+
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.clearRecentReactions', params, ...args);
+
+export const messagesGetExtendedMedia = (dependencies: TgUserApiDependencies) => async (params: {
+    peer?: InputPeer
+    id?: number[]
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.getExtendedMedia', params, ...args);
+
+export const authImportWebTokenAuthorization = (dependencies: TgUserApiDependencies) => async (params: {
+    api_id?: number
+    api_hash?: string
+    web_auth_token?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthAuthorization>('auth.importWebTokenAuthorization', params, ...args);
+
+export const accountReorderUsernames = (dependencies: TgUserApiDependencies) => async (params: {
+    order?: string[]
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.reorderUsernames', params, ...args);
+
+export const accountToggleUsername = (dependencies: TgUserApiDependencies) => async (params: {
+    username?: string
+    active?: boolean
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.toggleUsername', params, ...args);
+
+export const channelsReorderUsernames = (dependencies: TgUserApiDependencies) => async (params: {
+    channel?: InputChannel
+    order?: string[]
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('channels.reorderUsernames', params, ...args);
+
+export const channelsToggleUsername = (dependencies: TgUserApiDependencies) => async (params: {
+    channel?: InputChannel
+    username?: string
+    active?: boolean
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('channels.toggleUsername', params, ...args);
+
+export const channelsDeactivateAllUsernames = (dependencies: TgUserApiDependencies) => async (params: {
+    channel?: InputChannel
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('channels.deactivateAllUsernames', params, ...args);
+
+export const channelsToggleForum = (dependencies: TgUserApiDependencies) => async (params: {
+    channel?: InputChannel
+    enabled?: boolean
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.toggleForum', params, ...args);
+
+export const channelsCreateForumTopic = (dependencies: TgUserApiDependencies) => async (params: {
+    channel?: InputChannel
+    title?: string
+    icon_color?: number
+    icon_emoji_id?: string
+    random_id?: string
+    send_as?: InputPeer
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.createForumTopic', params, ...args);
+
+export const channelsGetForumTopics = (dependencies: TgUserApiDependencies) => async (params: {
+    channel?: InputChannel
+    q?: string
+    offset_date?: number
+    offset_id?: number
+    offset_topic?: number
+    limit?: number
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesForumTopics>('channels.getForumTopics', params, ...args);
+
+export const channelsGetForumTopicsByID = (dependencies: TgUserApiDependencies) => async (params: {
+    channel?: InputChannel
+    topics?: number[]
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesForumTopics>('channels.getForumTopicsByID', params, ...args);
+
+export const channelsEditForumTopic = (dependencies: TgUserApiDependencies) => async (params: {
+    channel?: InputChannel
+    topic_id?: number
+    title?: string
+    icon_emoji_id?: string
+    closed?: boolean
+    hidden?: boolean
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.editForumTopic', params, ...args);
+
+export const channelsUpdatePinnedForumTopic = (dependencies: TgUserApiDependencies) => async (params: {
+    channel?: InputChannel
+    topic_id?: number
+    pinned?: boolean
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.updatePinnedForumTopic', params, ...args);
+
+export const channelsDeleteTopicHistory = (dependencies: TgUserApiDependencies) => async (params: {
+    channel?: InputChannel
+    top_msg_id?: number
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesAffectedHistory>('channels.deleteTopicHistory', params, ...args);
+
+export const channelsReorderPinnedForumTopics = (dependencies: TgUserApiDependencies) => async (params: {
+    force?: true
+    channel?: InputChannel
+    order?: number[]
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.reorderPinnedForumTopics', params, ...args);
+
+export const channelsToggleAntiSpam = (dependencies: TgUserApiDependencies) => async (params: {
+    channel?: InputChannel
+    enabled?: boolean
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.toggleAntiSpam', params, ...args);
+
+export const channelsReportAntiSpamFalsePositive = (dependencies: TgUserApiDependencies) => async (params: {
+    channel?: InputChannel
+    msg_id?: number
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('channels.reportAntiSpamFalsePositive', params, ...args);
+
+export const messagesSetDefaultHistoryTTL = (dependencies: TgUserApiDependencies) => async (params: {
+    period?: number
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.setDefaultHistoryTTL', params, ...args);
+
+export const messagesGetDefaultHistoryTTL = (dependencies: TgUserApiDependencies) => async (params: {
+
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<DefaultHistoryTTL>('messages.getDefaultHistoryTTL', params, ...args);
+
+export const contactsExportContactToken = (dependencies: TgUserApiDependencies) => async (params: {
+
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ExportedContactToken>('contacts.exportContactToken', params, ...args);
+
+export const contactsImportContactToken = (dependencies: TgUserApiDependencies) => async (params: {
+    token?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<User>('contacts.importContactToken', params, ...args);
+
+export const photosUploadContactProfilePhoto = (dependencies: TgUserApiDependencies) => async (params: {
+    suggest?: true
+    save?: true
+    user_id?: InputUser
+    file?: InputFile
+    video?: InputFile
+    video_start_ts?: number
+    video_emoji_markup?: VideoSize
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<PhotosPhoto>('photos.uploadContactProfilePhoto', params, ...args);
+
+export const channelsToggleParticipantsHidden = (dependencies: TgUserApiDependencies) => async (params: {
+    channel?: InputChannel
+    enabled?: boolean
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('channels.toggleParticipantsHidden', params, ...args);
+
+export const messagesSendBotRequestedPeer = (dependencies: TgUserApiDependencies) => async (params: {
+    peer?: InputPeer
+    msg_id?: number
+    button_id?: number
+    requested_peer?: InputPeer
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.sendBotRequestedPeer', params, ...args);
+
+export const accountGetDefaultProfilePhotoEmojis = (dependencies: TgUserApiDependencies) => async (params: {
+    hash?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<EmojiList>('account.getDefaultProfilePhotoEmojis', params, ...args);
+
+export const accountGetDefaultGroupPhotoEmojis = (dependencies: TgUserApiDependencies) => async (params: {
+    hash?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<EmojiList>('account.getDefaultGroupPhotoEmojis', params, ...args);
+
+export const authRequestFirebaseSms = (dependencies: TgUserApiDependencies) => async (params: {
+    phone_number?: string
+    phone_code_hash?: string
+    safety_net_token?: string
+    ios_push_secret?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('auth.requestFirebaseSms', params, ...args);
+
+export const messagesGetEmojiGroups = (dependencies: TgUserApiDependencies) => async (params: {
+    hash?: number
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesEmojiGroups>('messages.getEmojiGroups', params, ...args);
+
+export const messagesGetEmojiStatusGroups = (dependencies: TgUserApiDependencies) => async (params: {
+    hash?: number
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesEmojiGroups>('messages.getEmojiStatusGroups', params, ...args);
+
+export const messagesGetEmojiProfilePhotoGroups = (dependencies: TgUserApiDependencies) => async (params: {
+    hash?: number
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesEmojiGroups>('messages.getEmojiProfilePhotoGroups', params, ...args);
+
+export const messagesSearchCustomEmoji = (dependencies: TgUserApiDependencies) => async (params: {
+    emoticon?: string
+    hash?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<EmojiList>('messages.searchCustomEmoji', params, ...args);
+
+export const messagesTogglePeerTranslations = (dependencies: TgUserApiDependencies) => async (params: {
+    disabled?: true
+    peer?: InputPeer
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('messages.togglePeerTranslations', params, ...args);
+
+export const accountGetAutoSaveSettings = (dependencies: TgUserApiDependencies) => async (params: {
+
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AccountAutoSaveSettings>('account.getAutoSaveSettings', params, ...args);
+
+export const accountSaveAutoSaveSettings = (dependencies: TgUserApiDependencies) => async (params: {
+    users?: true
+    chats?: true
+    broadcasts?: true
+    peer?: InputPeer
+    settings?: AutoSaveSettings
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.saveAutoSaveSettings', params, ...args);
+
+export const accountDeleteAutoSaveExceptions = (dependencies: TgUserApiDependencies) => async (params: {
+
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('account.deleteAutoSaveExceptions', params, ...args);
+
+export const stickersChangeSticker = (dependencies: TgUserApiDependencies) => async (params: {
+    sticker?: InputDocument
+    emoji?: string
+    mask_coords?: MaskCoords
+    keywords?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesStickerSet>('stickers.changeSticker', params, ...args);
+
+export const stickersRenameStickerSet = (dependencies: TgUserApiDependencies) => async (params: {
+    stickerset?: InputStickerSet
+    title?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesStickerSet>('stickers.renameStickerSet', params, ...args);
+
+export const stickersDeleteStickerSet = (dependencies: TgUserApiDependencies) => async (params: {
+    stickerset?: InputStickerSet
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('stickers.deleteStickerSet', params, ...args);
+
+export const messagesGetBotApp = (dependencies: TgUserApiDependencies) => async (params: {
+    app?: InputBotApp
+    hash?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<MessagesBotApp>('messages.getBotApp', params, ...args);
+
+export const messagesRequestAppWebView = (dependencies: TgUserApiDependencies) => async (params: {
+    write_allowed?: true
+    peer?: InputPeer
+    app?: InputBotApp
+    start_param?: string
+    theme_params?: DataJSON
+    platform?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AppWebViewResult>('messages.requestAppWebView', params, ...args);
+
+export const botsSetBotInfo = (dependencies: TgUserApiDependencies) => async (params: {
+    bot?: InputUser
+    lang_code?: string
+    name?: string
+    about?: string
+    description?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('bots.setBotInfo', params, ...args);
+
+export const botsGetBotInfo = (dependencies: TgUserApiDependencies) => async (params: {
+    bot?: InputUser
+    lang_code?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<BotsBotInfo>('bots.getBotInfo', params, ...args);
+
+export const authResetLoginEmail = (dependencies: TgUserApiDependencies) => async (params: {
+    phone_number?: string
+    phone_code_hash?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<AuthSentCode>('auth.resetLoginEmail', params, ...args);
+
+export const chatlistsExportChatlistInvite = (dependencies: TgUserApiDependencies) => async (params: {
+    chatlist?: InputChatlist
+    title?: string
+    peers?: InputPeer[]
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ChatlistsExportedChatlistInvite>('chatlists.exportChatlistInvite', params, ...args);
+
+export const chatlistsDeleteExportedInvite = (dependencies: TgUserApiDependencies) => async (params: {
+    chatlist?: InputChatlist
+    slug?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('chatlists.deleteExportedInvite', params, ...args);
+
+export const chatlistsEditExportedInvite = (dependencies: TgUserApiDependencies) => async (params: {
+    chatlist?: InputChatlist
+    slug?: string
+    title?: string
+    peers?: InputPeer[]
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ExportedChatlistInvite>('chatlists.editExportedInvite', params, ...args);
+
+export const chatlistsGetExportedInvites = (dependencies: TgUserApiDependencies) => async (params: {
+    chatlist?: InputChatlist
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ChatlistsExportedInvites>('chatlists.getExportedInvites', params, ...args);
+
+export const chatlistsCheckChatlistInvite = (dependencies: TgUserApiDependencies) => async (params: {
+    slug?: string
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ChatlistsChatlistInvite>('chatlists.checkChatlistInvite', params, ...args);
+
+export const chatlistsJoinChatlistInvite = (dependencies: TgUserApiDependencies) => async (params: {
+    slug?: string
+    peers?: InputPeer[]
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('chatlists.joinChatlistInvite', params, ...args);
+
+export const chatlistsGetChatlistUpdates = (dependencies: TgUserApiDependencies) => async (params: {
+    chatlist?: InputChatlist
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<ChatlistsChatlistUpdates>('chatlists.getChatlistUpdates', params, ...args);
+
+export const chatlistsJoinChatlistUpdates = (dependencies: TgUserApiDependencies) => async (params: {
+    chatlist?: InputChatlist
+    peers?: InputPeer[]
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('chatlists.joinChatlistUpdates', params, ...args);
+
+export const chatlistsHideChatlistUpdates = (dependencies: TgUserApiDependencies) => async (params: {
+    chatlist?: InputChatlist
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('chatlists.hideChatlistUpdates', params, ...args);
+
+export const chatlistsGetLeaveChatlistSuggestions = (dependencies: TgUserApiDependencies) => async (params: {
+    chatlist?: InputChatlist
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Peer[]>('chatlists.getLeaveChatlistSuggestions', params, ...args);
+
+export const chatlistsLeaveChatlist = (dependencies: TgUserApiDependencies) => async (params: {
+    chatlist?: InputChatlist
+    peers?: InputPeer[]
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('chatlists.leaveChatlist', params, ...args);
+
+export const botsReorderUsernames = (dependencies: TgUserApiDependencies) => async (params: {
+    bot?: InputUser
+    order?: string[]
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('bots.reorderUsernames', params, ...args);
+
+export const botsToggleUsername = (dependencies: TgUserApiDependencies) => async (params: {
+    bot?: InputUser
+    username?: string
+    active?: boolean
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<boolean>('bots.toggleUsername', params, ...args);
+
+export const messagesSetChatWallPaper = (dependencies: TgUserApiDependencies) => async (params: {
+    peer?: InputPeer
+    wallpaper?: InputWallPaper
+    settings?: WallPaperSettings
+    id?: number
+} = {}, ...args: any[]) => tgUserApiRequest(dependencies)<Updates>('messages.setChatWallPaper', params, ...args);
 
 export const makeTgUserApiMethods = (dependencies: TgUserApiDependencies) => ({
     invokeAfterMsg: invokeAfterMsg(dependencies),
@@ -17115,7 +19898,6 @@ export const makeTgUserApiMethods = (dependencies: TgUserApiDependencies) => ({
     messagesGetGameHighScores: messagesGetGameHighScores(dependencies),
     messagesGetInlineGameHighScores: messagesGetInlineGameHighScores(dependencies),
     messagesGetCommonChats: messagesGetCommonChats(dependencies),
-    messagesGetAllChats: messagesGetAllChats(dependencies),
     helpSetBotUpdatesStatus: helpSetBotUpdatesStatus(dependencies),
     messagesGetWebPage: messagesGetWebPage(dependencies),
     messagesToggleDialogPin: messagesToggleDialogPin(dependencies),
@@ -17231,7 +20013,6 @@ export const makeTgUserApiMethods = (dependencies: TgUserApiDependencies) => ({
     messagesGetEmojiKeywordsLanguages: messagesGetEmojiKeywordsLanguages(dependencies),
     messagesGetEmojiURL: messagesGetEmojiURL(dependencies),
     foldersEditPeerFolders: foldersEditPeerFolders(dependencies),
-    foldersDeleteFolder: foldersDeleteFolder(dependencies),
     messagesGetSearchCounters: messagesGetSearchCounters(dependencies),
     channelsGetGroupsForDiscussion: channelsGetGroupsForDiscussion(dependencies),
     channelsSetDiscussionGroup: channelsSetDiscussionGroup(dependencies),
@@ -17360,4 +20141,97 @@ export const makeTgUserApiMethods = (dependencies: TgUserApiDependencies) => ({
     phoneGetGroupCallStreamChannels: phoneGetGroupCallStreamChannels(dependencies),
     phoneGetGroupCallStreamRtmpUrl: phoneGetGroupCallStreamRtmpUrl(dependencies),
     messagesSearchSentMedia: messagesSearchSentMedia(dependencies),
+    messagesGetAttachMenuBots: messagesGetAttachMenuBots(dependencies),
+    messagesGetAttachMenuBot: messagesGetAttachMenuBot(dependencies),
+    messagesToggleBotInAttachMenu: messagesToggleBotInAttachMenu(dependencies),
+    messagesRequestWebView: messagesRequestWebView(dependencies),
+    messagesProlongWebView: messagesProlongWebView(dependencies),
+    messagesRequestSimpleWebView: messagesRequestSimpleWebView(dependencies),
+    messagesSendWebViewResultMessage: messagesSendWebViewResultMessage(dependencies),
+    messagesSendWebViewData: messagesSendWebViewData(dependencies),
+    botsSetBotMenuButton: botsSetBotMenuButton(dependencies),
+    botsGetBotMenuButton: botsGetBotMenuButton(dependencies),
+    accountGetSavedRingtones: accountGetSavedRingtones(dependencies),
+    accountSaveRingtone: accountSaveRingtone(dependencies),
+    accountUploadRingtone: accountUploadRingtone(dependencies),
+    botsSetBotBroadcastDefaultAdminRights: botsSetBotBroadcastDefaultAdminRights(dependencies),
+    botsSetBotGroupDefaultAdminRights: botsSetBotGroupDefaultAdminRights(dependencies),
+    phoneSaveCallLog: phoneSaveCallLog(dependencies),
+    channelsToggleJoinToSend: channelsToggleJoinToSend(dependencies),
+    channelsToggleJoinRequest: channelsToggleJoinRequest(dependencies),
+    paymentsExportInvoice: paymentsExportInvoice(dependencies),
+    messagesTranscribeAudio: messagesTranscribeAudio(dependencies),
+    messagesRateTranscribedAudio: messagesRateTranscribedAudio(dependencies),
+    paymentsAssignAppStoreTransaction: paymentsAssignAppStoreTransaction(dependencies),
+    paymentsAssignPlayMarketTransaction: paymentsAssignPlayMarketTransaction(dependencies),
+    paymentsCanPurchasePremium: paymentsCanPurchasePremium(dependencies),
+    helpGetPremiumPromo: helpGetPremiumPromo(dependencies),
+    messagesGetCustomEmojiDocuments: messagesGetCustomEmojiDocuments(dependencies),
+    messagesGetEmojiStickers: messagesGetEmojiStickers(dependencies),
+    messagesGetFeaturedEmojiStickers: messagesGetFeaturedEmojiStickers(dependencies),
+    accountUpdateEmojiStatus: accountUpdateEmojiStatus(dependencies),
+    accountGetDefaultEmojiStatuses: accountGetDefaultEmojiStatuses(dependencies),
+    accountGetRecentEmojiStatuses: accountGetRecentEmojiStatuses(dependencies),
+    accountClearRecentEmojiStatuses: accountClearRecentEmojiStatuses(dependencies),
+    messagesReportReaction: messagesReportReaction(dependencies),
+    messagesGetTopReactions: messagesGetTopReactions(dependencies),
+    messagesGetRecentReactions: messagesGetRecentReactions(dependencies),
+    messagesClearRecentReactions: messagesClearRecentReactions(dependencies),
+    messagesGetExtendedMedia: messagesGetExtendedMedia(dependencies),
+    authImportWebTokenAuthorization: authImportWebTokenAuthorization(dependencies),
+    accountReorderUsernames: accountReorderUsernames(dependencies),
+    accountToggleUsername: accountToggleUsername(dependencies),
+    channelsReorderUsernames: channelsReorderUsernames(dependencies),
+    channelsToggleUsername: channelsToggleUsername(dependencies),
+    channelsDeactivateAllUsernames: channelsDeactivateAllUsernames(dependencies),
+    channelsToggleForum: channelsToggleForum(dependencies),
+    channelsCreateForumTopic: channelsCreateForumTopic(dependencies),
+    channelsGetForumTopics: channelsGetForumTopics(dependencies),
+    channelsGetForumTopicsByID: channelsGetForumTopicsByID(dependencies),
+    channelsEditForumTopic: channelsEditForumTopic(dependencies),
+    channelsUpdatePinnedForumTopic: channelsUpdatePinnedForumTopic(dependencies),
+    channelsDeleteTopicHistory: channelsDeleteTopicHistory(dependencies),
+    channelsReorderPinnedForumTopics: channelsReorderPinnedForumTopics(dependencies),
+    channelsToggleAntiSpam: channelsToggleAntiSpam(dependencies),
+    channelsReportAntiSpamFalsePositive: channelsReportAntiSpamFalsePositive(dependencies),
+    messagesSetDefaultHistoryTTL: messagesSetDefaultHistoryTTL(dependencies),
+    messagesGetDefaultHistoryTTL: messagesGetDefaultHistoryTTL(dependencies),
+    contactsExportContactToken: contactsExportContactToken(dependencies),
+    contactsImportContactToken: contactsImportContactToken(dependencies),
+    photosUploadContactProfilePhoto: photosUploadContactProfilePhoto(dependencies),
+    channelsToggleParticipantsHidden: channelsToggleParticipantsHidden(dependencies),
+    messagesSendBotRequestedPeer: messagesSendBotRequestedPeer(dependencies),
+    accountGetDefaultProfilePhotoEmojis: accountGetDefaultProfilePhotoEmojis(dependencies),
+    accountGetDefaultGroupPhotoEmojis: accountGetDefaultGroupPhotoEmojis(dependencies),
+    authRequestFirebaseSms: authRequestFirebaseSms(dependencies),
+    messagesGetEmojiGroups: messagesGetEmojiGroups(dependencies),
+    messagesGetEmojiStatusGroups: messagesGetEmojiStatusGroups(dependencies),
+    messagesGetEmojiProfilePhotoGroups: messagesGetEmojiProfilePhotoGroups(dependencies),
+    messagesSearchCustomEmoji: messagesSearchCustomEmoji(dependencies),
+    messagesTogglePeerTranslations: messagesTogglePeerTranslations(dependencies),
+    accountGetAutoSaveSettings: accountGetAutoSaveSettings(dependencies),
+    accountSaveAutoSaveSettings: accountSaveAutoSaveSettings(dependencies),
+    accountDeleteAutoSaveExceptions: accountDeleteAutoSaveExceptions(dependencies),
+    stickersChangeSticker: stickersChangeSticker(dependencies),
+    stickersRenameStickerSet: stickersRenameStickerSet(dependencies),
+    stickersDeleteStickerSet: stickersDeleteStickerSet(dependencies),
+    messagesGetBotApp: messagesGetBotApp(dependencies),
+    messagesRequestAppWebView: messagesRequestAppWebView(dependencies),
+    botsSetBotInfo: botsSetBotInfo(dependencies),
+    botsGetBotInfo: botsGetBotInfo(dependencies),
+    authResetLoginEmail: authResetLoginEmail(dependencies),
+    chatlistsExportChatlistInvite: chatlistsExportChatlistInvite(dependencies),
+    chatlistsDeleteExportedInvite: chatlistsDeleteExportedInvite(dependencies),
+    chatlistsEditExportedInvite: chatlistsEditExportedInvite(dependencies),
+    chatlistsGetExportedInvites: chatlistsGetExportedInvites(dependencies),
+    chatlistsCheckChatlistInvite: chatlistsCheckChatlistInvite(dependencies),
+    chatlistsJoinChatlistInvite: chatlistsJoinChatlistInvite(dependencies),
+    chatlistsGetChatlistUpdates: chatlistsGetChatlistUpdates(dependencies),
+    chatlistsJoinChatlistUpdates: chatlistsJoinChatlistUpdates(dependencies),
+    chatlistsHideChatlistUpdates: chatlistsHideChatlistUpdates(dependencies),
+    chatlistsGetLeaveChatlistSuggestions: chatlistsGetLeaveChatlistSuggestions(dependencies),
+    chatlistsLeaveChatlist: chatlistsLeaveChatlist(dependencies),
+    botsReorderUsernames: botsReorderUsernames(dependencies),
+    botsToggleUsername: botsToggleUsername(dependencies),
+    messagesSetChatWallPaper: messagesSetChatWallPaper(dependencies),
 });
