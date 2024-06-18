@@ -7,7 +7,7 @@ import { parseTgUserApiSchemaMethods } from './parsers/parseTgUserApiSchemaMetho
 import { groupBy } from '../utils/groupBy';
 
 export const getTgUserApiSchema = async (): Promise<TgUserApiSchema> => {
-    const tgUserApiJSONSchema = await readJSONFile<TgUserApiJSONSchema>(path.resolve(__dirname, './tgUserApiSchema158.json'));
+    const tgUserApiJSONSchema = await readJSONFile<TgUserApiJSONSchema>(path.resolve(__dirname, './tgUserApiSchema170.json'));
     const constructors = parseTgUserApiSchemaConstructors(tgUserApiJSONSchema.constructors);
     const constructorsByType = groupBy(constructors, (it) => it.groupTypeName);
     const methods = parseTgUserApiSchemaMethods(tgUserApiJSONSchema.methods);
